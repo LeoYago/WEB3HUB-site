@@ -1,0 +1,2018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WEB3HUB — Politecnico di Milano | Blockchain &amp; Web3 Research Lab</title>
+<meta name="description" content="WEB3HUB is the Blockchain & Web3 Research and Projects Lab of the Politecnico di Milano — #1 in Italy, #6 in Europe, #33 globally for blockchain research (CoinDesk 2022)." />
+<meta property="og:title" content="WEB3HUB — Politecnico di Milano" />
+<meta property="og:description" content="Blockchain & Web3 Research and Applied Projects Lab. Two Souls, One Mission." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+<style>
+/* ════════════════════════════════════════════════════════════════
+   WEB3HUB — Editorial system
+   A research publication that breathes.
+   Warm paper, navy ink, italic serif accents.
+════════════════════════════════════════════════════════════════ */
+:root{
+  --paper:#f4f1ea;
+  --paper-2:#ede9df;
+  --paper-3:#e6e1d4;
+  --paper-warm:#faf7f0;
+  --ink:#0a1126;
+  --ink-soft:#1a2342;
+  --navy:#1B3664;
+  --navy-deep:#0f2040;
+  --navy-mid:#2a5298;
+  --navy-light:#3a6bc8;
+  --rule:#cdc7b8;
+  --rule-soft:#dfd9c9;
+  --rule-strong:#a39d8c;
+  --muted:#6a6555;
+  --muted-2:#8a8676;
+  --accent:#c66a3a;
+  --accent-soft:#e2a884;
+
+  --display:'Fraunces',Georgia,serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --body:'Inter',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+
+  --ease:cubic-bezier(.7,0,.2,1);
+  --spring:cubic-bezier(.34,1.45,.64,1);
+
+  --gutter:clamp(20px,4vw,56px);
+
+  --hair:1px solid var(--rule);
+  --hair-strong:1px solid var(--rule-strong);
+  --hair-ink:1px solid var(--ink);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;scroll-padding-top:88px}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-weight:400;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:1;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+  opacity:.045;mix-blend-mode:multiply;
+}
+::selection{background:var(--ink);color:var(--paper)}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit;background:none;border:none;color:inherit}
+svg{display:block}
+
+#progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--ink);z-index:1100;transition:width .12s linear}
+
+.serif{font-family:var(--serif);font-style:italic;font-weight:400}
+.display{font-family:var(--display);font-weight:400;letter-spacing:-.025em;line-height:1}
+.mono{font-family:var(--mono);font-weight:500;text-transform:uppercase;letter-spacing:.12em}
+
+.kicker{font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:14px}
+.kicker .idx{color:var(--ink);font-weight:600}
+.kicker .rule{display:inline-block;width:40px;height:1px;background:var(--ink)}
+.kicker .dot{width:5px;height:5px;border-radius:50%;background:var(--ink);display:inline-block}
+
+.h-hero{font-family:var(--display);font-weight:300;font-size:clamp(3.2rem,9.5vw,9.6rem);letter-spacing:-.045em;line-height:.88;color:var(--ink);font-variation-settings:"opsz" 144}
+.h-hero em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em;color:var(--navy)}
+.h-1{font-family:var(--display);font-weight:300;font-size:clamp(2.6rem,6.4vw,5.6rem);letter-spacing:-.04em;line-height:.96;font-variation-settings:"opsz" 144;color:var(--ink)}
+.h-1 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--navy);letter-spacing:-.015em}
+.h-2{font-family:var(--display);font-weight:300;font-size:clamp(2rem,4.6vw,3.6rem);letter-spacing:-.035em;line-height:1.02;font-variation-settings:"opsz" 96;color:var(--ink)}
+.h-2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--navy);letter-spacing:-.01em}
+.h-3{font-family:var(--display);font-weight:400;font-size:clamp(1.4rem,2.2vw,1.95rem);letter-spacing:-.025em;line-height:1.15;color:var(--ink)}
+.h-3 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--navy)}
+.h-4{font-family:var(--display);font-weight:500;font-size:1.05rem;letter-spacing:-.015em;line-height:1.25;color:var(--ink)}
+.body-lg{font-size:clamp(1.05rem,1.3vw,1.18rem);line-height:1.65;color:var(--ink-soft);font-weight:400}
+.body{font-size:1rem;line-height:1.65;color:var(--muted)}
+.body-sm{font-size:.86rem;line-height:1.6;color:var(--muted)}
+.body-xs{font-size:.78rem;line-height:1.55;color:var(--muted)}
+
+.wrap{width:100%;max-width:1440px;margin:0 auto;padding:0 var(--gutter)}
+.wrap--wide{max-width:1600px}
+.wrap--narrow{max-width:1100px}
+.section{padding:clamp(80px,11vw,160px) 0;position:relative}
+.section--tight{padding:clamp(56px,7vw,96px) 0}
+
+.section-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,72px);align-items:end;margin-bottom:clamp(48px,7vw,88px)}
+
+.rule-x{height:1px;background:var(--rule);transform:scaleX(0);transform-origin:left;transition:transform 1.2s var(--ease)}
+.rule-x.in{transform:scaleX(1)}
+.rule-x--ink{background:var(--ink)}
+
+.btn{position:relative;display:inline-flex;align-items:center;gap:12px;padding:14px 22px 14px 26px;border-radius:0;font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;border:none;white-space:nowrap;cursor:pointer;transition:all .35s var(--ease)}
+.btn .arrow{display:inline-block;width:22px;height:1px;background:currentColor;position:relative;transition:transform .4s var(--ease)}
+.btn .arrow::after{content:'';position:absolute;right:0;top:50%;width:7px;height:1px;background:currentColor;transform:translateY(-50%) rotate(40deg);transform-origin:right center}
+.btn .arrow::before{content:'';position:absolute;right:0;top:50%;width:7px;height:1px;background:currentColor;transform:translateY(-50%) rotate(-40deg);transform-origin:right center}
+.btn:hover .arrow{transform:translateX(6px)}
+.btn--ink{background:var(--ink);color:var(--paper)}
+.btn--ink:hover{background:var(--navy)}
+.btn--paper{background:var(--paper);color:var(--ink);border:1px solid var(--ink)}
+.btn--paper:hover{background:var(--ink);color:var(--paper)}
+.btn--ghost{background:transparent;color:var(--ink);padding-left:0;padding-right:22px}
+.btn--ghost:hover{color:var(--navy)}
+.btn--white{background:var(--paper-warm);color:var(--ink)}
+.btn--white:hover{background:#fff}
+.btn--outline-white{background:transparent;color:var(--paper);border:1px solid rgba(255,255,255,.4)}
+.btn--outline-white:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+
+.link-x{display:inline-block;position:relative;padding-bottom:3px;font-family:var(--mono);font-size:.74rem;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--ink)}
+.link-x::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--ink);transform:scaleX(1);transform-origin:left;transition:transform .45s var(--ease)}
+.link-x:hover::after{transform-origin:right;transform:scaleX(0)}
+.link-x--soft{color:var(--muted)}
+.link-x--soft::after{background:var(--muted-2)}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:900;padding:18px var(--gutter);transition:padding .4s var(--ease);pointer-events:none}
+#nav>*{pointer-events:auto}
+.nav-inner{max-width:1600px;margin:0 auto;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px;padding:14px 18px 14px 22px;background:rgba(244,241,234,.72);backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);border:1px solid rgba(10,17,38,.08);border-bottom-color:rgba(10,17,38,.12);transition:background .4s var(--ease),border-color .4s var(--ease)}
+#nav.scrolled .nav-inner{background:rgba(244,241,234,.92);border-color:rgba(10,17,38,.16)}
+.nav-brand{display:flex;align-items:center;gap:14px}
+.nav-brand img.w3{height:30px;width:auto;object-fit:contain}
+.nav-brand .hair-v{width:1px;height:24px;background:rgba(10,17,38,.2)}
+.nav-brand img.polimi{height:24px;width:auto;object-fit:contain;opacity:.85}
+.nav-links{display:flex;align-items:center;justify-content:center;gap:6px;list-style:none}
+.nav-links a{position:relative;padding:9px 14px;display:block;font-family:var(--mono);font-size:.66rem;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:var(--ink-soft);transition:color .25s}
+.nav-links a::before{content:'';position:absolute;left:14px;right:14px;bottom:5px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::before,.nav-links a.is-active::before{transform:scaleX(1)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.nav-cta .timecode{font-family:var(--mono);font-size:.62rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.nav-cta .timecode .live{display:inline-block;width:6px;height:6px;border-radius:50%;background:#16a34a;margin-right:6px;position:relative;vertical-align:1px}
+.nav-cta .timecode .live::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1px solid #16a34a;opacity:.6;animation:ping 2s ease-out infinite}
+@keyframes ping{0%{transform:scale(.7);opacity:.7}100%{transform:scale(1.8);opacity:0}}
+.nav-burger{display:none;flex-direction:column;gap:5px;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:1.5px;background:var(--ink);transition:all .25s}
+#mobile-nav{display:none;position:fixed;inset:0;z-index:899;background:var(--paper);flex-direction:column;align-items:flex-start;justify-content:center;gap:14px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease);padding:0 var(--gutter)}
+#mobile-nav.open{opacity:1;pointer-events:all}
+#mobile-nav a{font-family:var(--display);font-size:clamp(2rem,7vw,3.4rem);font-weight:300;color:var(--ink);letter-spacing:-.03em;line-height:1.1}
+#mobile-nav a em{font-family:var(--serif);color:var(--navy)}
+.mobile-close{position:absolute;top:24px;right:28px;font-size:1.4rem;padding:10px;font-family:var(--mono)}
+
+/* HERO */
+#hero{position:relative;min-height:100vh;padding:120px 0 60px;display:flex;flex-direction:column;justify-content:flex-end;border-bottom:var(--hair);background:radial-gradient(ellipse 70% 50% at 85% 20%,rgba(58,107,200,.10),transparent 70%),radial-gradient(ellipse 90% 60% at 0% 90%,rgba(27,54,100,.07),transparent 70%)}
+.hero-grid-bg{position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(to right,rgba(10,17,38,.06) 1px,transparent 1px);background-size:calc(100%/12) 100%;mask-image:linear-gradient(to bottom,transparent 0%,black 30%,black 90%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 30%,black 90%,transparent 100%);opacity:.55}
+.hero-content{position:relative;z-index:2;width:100%;max-width:1600px;margin:0 auto;padding:0 var(--gutter)}
+.hero-meta{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:24px;padding-bottom:20px;margin-bottom:clamp(40px,6vw,72px);border-bottom:var(--hair-ink);font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.hero-meta .meta-cell{display:flex;align-items:center;gap:10px;color:var(--muted)}
+.hero-meta .meta-cell strong{color:var(--ink);font-weight:600}
+.hero-meta .meta-cell .dot{width:5px;height:5px;border-radius:50%;background:var(--ink)}
+.hero-meta .meta-cell .live-dot{width:7px;height:7px;border-radius:50%;background:#16a34a;animation:livepulse 1.6s ease-in-out infinite}
+@keyframes livepulse{0%,100%{opacity:.6;transform:scale(.85)}50%{opacity:1;transform:scale(1.1)}}
+.hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(36px,6vw,80px);align-items:end}
+.hero-title{margin-bottom:clamp(28px,4vw,44px)}
+.hero-title .line{display:block;overflow:hidden}
+.hero-title .line span{display:inline-block;transform:translateY(110%);transition:transform 1s var(--ease)}
+.hero-title.in .line span{transform:translateY(0)}
+.hero-title .line:nth-child(2) span{transition-delay:.12s}
+.hero-title .line:nth-child(3) span{transition-delay:.22s}
+.hero-title .underline-em{position:relative;display:inline-block}
+.hero-title .underline-em::after{content:'';position:absolute;left:0;right:0;bottom:.08em;height:.18em;background:rgba(198,106,58,.32);z-index:-1;transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease) 1s}
+.hero-title.in .underline-em::after{transform:scaleX(1)}
+.hero-lede{font-family:var(--display);font-weight:300;font-size:clamp(1.15rem,1.6vw,1.45rem);line-height:1.5;letter-spacing:-.01em;color:var(--ink-soft);max-width:560px;margin-bottom:48px}
+.hero-lede em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.hero-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:clamp(40px,5vw,64px)}
+.hero-spine{position:relative;border-left:var(--hair-ink);padding-left:clamp(20px,3vw,36px);align-self:stretch;display:flex;flex-direction:column;justify-content:flex-end;gap:28px;min-height:340px}
+.spine-label{font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px}
+.spine-label .live-dot{width:6px;height:6px;border-radius:50%;background:#16a34a;animation:livepulse 1.6s ease-in-out infinite}
+.spine-feed{display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;max-height:260px;mask-image:linear-gradient(to bottom,transparent 0%,black 18%,black 100%);-webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 18%,black 100%)}
+.spine-row{display:grid;grid-template-columns:64px 1fr auto;align-items:baseline;gap:16px;font-family:var(--mono);font-size:.78rem;color:var(--ink);font-weight:500;padding-bottom:8px;border-bottom:var(--hair);animation:spine-up 18s linear infinite}
+.spine-row .idx{color:var(--muted);font-size:.66rem;letter-spacing:.1em}
+.spine-row .name{font-family:var(--display);font-weight:400;font-size:.95rem;letter-spacing:-.01em}
+.spine-row .name em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.spine-row .val{color:var(--navy);font-size:.7rem;letter-spacing:.05em}
+@keyframes spine-up{0%{transform:translateY(0)}100%{transform:translateY(calc(-100% - 14px))}}
+.hero-creds{margin-top:clamp(36px,5vw,56px);display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:var(--hair-ink)}
+.cred-cell{padding:24px clamp(16px,2vw,28px) 8px 0;border-right:var(--hair);display:flex;flex-direction:column;gap:10px;position:relative}
+.cred-cell:last-child{border-right:none;padding-right:0}
+.cred-cell .cred-tag{font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.cred-cell .cred-figure{font-family:var(--display);font-weight:300;font-size:clamp(2.6rem,4.6vw,4rem);letter-spacing:-.04em;line-height:.95;color:var(--ink)}
+.cred-cell .cred-figure em{font-family:var(--serif);font-style:italic;color:var(--navy);font-weight:400}
+.cred-cell .cred-figure sup{font-size:.42em;vertical-align:.55em;letter-spacing:0;color:var(--navy);font-family:var(--serif);font-style:italic}
+.cred-cell .cred-desc{font-size:.82rem;line-height:1.55;color:var(--muted);max-width:36ch}
+.cred-cell .cred-src{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-top:auto;padding-top:6px}
+.cred-ranks{display:flex;gap:18px;align-items:baseline}
+.cred-ranks .rank{display:flex;flex-direction:column;gap:4px}
+.cred-ranks .rank b{font-family:var(--display);font-weight:300;font-size:2rem;letter-spacing:-.03em;color:var(--ink);line-height:.9}
+.cred-ranks .rank b em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.cred-ranks .rank b sup{font-size:.45em;vertical-align:.6em;color:var(--navy);font-family:var(--serif);font-style:italic}
+.cred-ranks .rank span{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.cred-coindesk-mark{font-family:var(--serif);font-style:italic;font-size:1.2rem;color:var(--navy);letter-spacing:-.01em}
+
+/* WIRE */
+.wire{position:relative;padding:18px 0;border-top:var(--hair-ink);border-bottom:var(--hair);background:var(--paper);overflow:hidden}
+.wire::before,.wire::after{content:'';position:absolute;top:0;bottom:0;width:160px;z-index:2;pointer-events:none}
+.wire::before{left:0;background:linear-gradient(90deg,var(--paper) 0%,transparent 100%)}
+.wire::after{right:0;background:linear-gradient(270deg,var(--paper) 0%,transparent 100%)}
+.wire-tag{position:absolute;left:var(--gutter);top:50%;transform:translateY(-50%);z-index:3;font-family:var(--mono);font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--paper);padding:6px 14px 6px 0;display:flex;align-items:center;gap:10px}
+.wire-tag .live-dot{width:6px;height:6px;border-radius:50%;background:#16a34a;animation:livepulse 1.6s ease-in-out infinite}
+.wire-track-outer{padding-left:200px}
+.wire-track{display:flex;align-items:center;width:max-content;animation:wire-scroll 90s linear infinite;gap:0}
+.wire:hover .wire-track{animation-play-state:paused}
+@keyframes wire-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.wire-item{display:inline-flex;align-items:center;justify-content:center;padding:0 28px;white-space:nowrap;height:30px}
+.wire-item img{height:24px;width:auto;object-fit:contain;filter:saturate(.9)}
+.wire-item-text{font-family:var(--mono);font-size:.74rem;font-weight:500;color:var(--ink);letter-spacing:.04em}
+.wire-sep{display:inline-block;width:3px;height:3px;border-radius:50%;background:var(--rule-strong);flex-shrink:0}
+
+/* IDENTITY */
+#identity{position:relative;padding:0;background:var(--paper-warm);border-top:var(--hair);border-bottom:var(--hair)}
+.identity-head{padding:clamp(72px,9vw,120px) var(--gutter) clamp(40px,5vw,72px);text-align:center;max-width:1100px;margin:0 auto}
+.identity-head .h-1{margin-top:24px}
+.identity-split{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:520px;border-top:var(--hair-ink)}
+.identity-split::before{content:'';position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--rule-strong);transform:skewX(-8deg);transform-origin:top;z-index:2}
+.identity-amp{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;font-family:var(--serif);font-style:italic;font-size:clamp(4rem,8vw,7rem);color:var(--navy);background:var(--paper-warm);padding:0 14px;line-height:1}
+.soul{position:relative;padding:clamp(56px,7vw,96px) clamp(32px,5vw,80px);display:flex;flex-direction:column;justify-content:space-between;gap:48px;overflow:hidden}
+.soul--research{padding-right:calc(clamp(32px,5vw,80px) + 24px)}
+.soul--projects{padding-left:calc(clamp(32px,5vw,80px) + 24px)}
+.soul-mark{font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:14px}
+.soul-mark span:first-child{color:var(--ink);font-weight:600}
+.soul-mark .rule{width:36px;height:1px;background:var(--ink);display:inline-block}
+.soul-display{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(4rem,11vw,9rem);letter-spacing:-.025em;line-height:.88;color:var(--navy)}
+.soul-display .small{font-family:var(--display);font-style:normal;font-size:.32em;letter-spacing:-.03em;color:var(--ink);display:block;margin-bottom:-.05em;font-weight:300;line-height:1}
+.soul-body{max-width:42ch}
+.soul-body .h-3{margin-bottom:14px}
+.soul-foot{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+
+/* STATS */
+.stats{background:var(--ink);color:var(--paper);position:relative;padding:clamp(60px,7vw,100px) 0;overflow:hidden}
+.stats::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(to right,rgba(255,255,255,.05) 1px,transparent 1px);background-size:calc(100%/12) 100%}
+.stats-head{padding:0 var(--gutter);margin-bottom:clamp(40px,5vw,64px);display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end}
+.stats-head .kicker{color:rgba(244,241,234,.7)}
+.stats-head .kicker .idx{color:var(--paper)}
+.stats-head .kicker .rule{background:var(--paper)}
+.stats-head .h-2{color:var(--paper);max-width:640px}
+.stats-head .h-2 em{color:var(--accent-soft)}
+.stat-row{display:grid;grid-template-columns:minmax(280px,2fr) 1fr;gap:clamp(24px,5vw,80px);align-items:end;padding:clamp(32px,4vw,52px) var(--gutter);border-top:1px solid rgba(255,255,255,.14);position:relative}
+.stat-row:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+.stat-row .num{font-family:var(--display);font-weight:300;font-size:clamp(4.5rem,12vw,11rem);letter-spacing:-.05em;line-height:.86;color:var(--paper);font-variation-settings:"opsz" 144}
+.stat-row .num em{font-family:var(--serif);font-style:italic;color:var(--accent-soft)}
+.stat-row .num .suffix{font-family:var(--serif);font-style:italic;font-size:.55em;color:var(--accent-soft);vertical-align:.18em;letter-spacing:-.02em;margin-left:.05em}
+.stat-row .right{display:flex;flex-direction:column;gap:14px;padding-bottom:14px}
+.stat-row .right .tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,234,.62)}
+.stat-row .right .desc{font-family:var(--display);font-weight:300;font-size:clamp(1.05rem,1.5vw,1.4rem);line-height:1.4;color:var(--paper);letter-spacing:-.015em;max-width:42ch}
+.stat-row .right .desc em{font-family:var(--serif);font-style:italic;color:var(--accent-soft)}
+.stat-row .row-idx{position:absolute;top:24px;right:var(--gutter);font-family:var(--mono);font-size:.66rem;color:rgba(244,241,234,.5);letter-spacing:.18em}
+
+/* RESEARCH */
+#research{background:var(--paper)}
+.research-intro{display:grid;grid-template-columns:7fr 5fr;gap:clamp(36px,6vw,80px);align-items:end;margin-bottom:clamp(56px,7vw,96px)}
+.research-intro .lede{padding-bottom:8px}
+.pillars-ledger{border-top:var(--hair-ink);border-bottom:var(--hair-ink)}
+.pillar-row{display:grid;grid-template-columns:clamp(70px,8vw,120px) clamp(140px,16vw,220px) 1fr auto;gap:clamp(20px,3vw,48px);align-items:center;padding:clamp(28px,4vw,40px) 0;border-bottom:var(--hair);cursor:default;transition:padding .4s var(--ease),background .4s var(--ease)}
+.pillar-row:last-child{border-bottom:none}
+.pillar-row:hover{padding-left:14px;padding-right:14px;background:var(--paper-warm)}
+.pillar-row .p-idx{font-family:var(--mono);font-size:.78rem;letter-spacing:.18em;color:var(--muted);font-weight:500}
+.pillar-row .p-name{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,3vw,2.5rem);letter-spacing:-.03em;line-height:1;color:var(--ink);transition:color .3s}
+.pillar-row .p-name em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.pillar-row:hover .p-name{color:var(--navy)}
+.pillar-row .p-desc{font-size:.92rem;line-height:1.55;color:var(--muted);max-width:48ch}
+.pillar-row .p-arrow{width:42px;height:1px;background:var(--ink);position:relative;transition:width .35s var(--ease)}
+.pillar-row .p-arrow::after,.pillar-row .p-arrow::before{content:'';position:absolute;right:0;top:50%;width:8px;height:1px;background:var(--ink);transform-origin:right center}
+.pillar-row .p-arrow::after{transform:translateY(-50%) rotate(40deg)}
+.pillar-row .p-arrow::before{transform:translateY(-50%) rotate(-40deg)}
+.pillar-row:hover .p-arrow{width:60px}
+
+.themes-block{margin-top:clamp(56px,7vw,96px)}
+.themes-block .themes-head{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end;margin-bottom:28px}
+.themes-cloud{display:flex;flex-wrap:wrap;gap:6px 18px;padding:clamp(28px,4vw,44px) 0;border-top:var(--hair);border-bottom:var(--hair);line-height:1.05;letter-spacing:-.02em}
+.themes-cloud .t{display:inline-block;font-family:var(--display);font-weight:300;color:var(--ink);transition:color .25s,transform .25s var(--ease);cursor:default;font-size:clamp(1.4rem,3vw,2.4rem);letter-spacing:-.02em}
+.themes-cloud .t em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.themes-cloud .t:hover{color:var(--navy);transform:translateY(-2px)}
+.themes-cloud .t.sm{font-size:clamp(1rem,1.6vw,1.4rem);color:var(--muted)}
+.themes-cloud .t.lg{font-size:clamp(2rem,4.2vw,3.4rem)}
+.themes-cloud .sep{align-self:center;color:var(--rule-strong);font-family:var(--serif);font-style:italic;font-size:1.2rem}
+
+.activity-ribbon{margin-top:clamp(56px,7vw,96px)}
+.activity-ribbon .a-head{margin-bottom:24px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end}
+.activity-row{display:grid;grid-template-columns:repeat(5,1fr);border-top:var(--hair-ink);border-bottom:var(--hair-ink)}
+.activity-cell{padding:clamp(24px,3vw,36px) clamp(16px,2vw,28px);border-right:var(--hair);display:flex;flex-direction:column;gap:10px;transition:background .3s}
+.activity-cell:last-child{border-right:none}
+.activity-cell:hover{background:var(--paper-warm)}
+.activity-cell .a-fig{font-family:var(--display);font-weight:300;font-size:clamp(2.4rem,4vw,3.4rem);letter-spacing:-.03em;line-height:.92;color:var(--ink)}
+.activity-cell .a-fig em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.activity-cell .a-fig sup{font-family:var(--serif);font-style:italic;font-size:.55em;vertical-align:.4em;color:var(--navy)}
+.activity-cell .a-name{font-family:var(--display);font-weight:500;font-size:.95rem;color:var(--ink)}
+.activity-cell .a-desc{font-size:.78rem;line-height:1.5;color:var(--muted)}
+
+.intl-row{margin-top:clamp(40px,5vw,64px)}
+.intl-row .a-head{margin-bottom:20px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end}
+.intl-list{display:grid;grid-template-columns:repeat(4,1fr);border-top:var(--hair)}
+.intl-cell{padding:clamp(24px,3vw,32px) clamp(12px,2vw,24px) clamp(24px,3vw,32px) 0;border-right:var(--hair);display:flex;flex-direction:column;gap:10px}
+.intl-cell:last-child{border-right:none}
+.intl-cell .i-flag{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;color:var(--muted);font-weight:500}
+.intl-cell .i-city{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,2.6vw,2.1rem);letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.intl-cell .i-city em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.intl-cell .i-venue{font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;color:var(--muted)}
+
+/* PROJECTS */
+#projects{background:var(--paper-warm);border-top:var(--hair);border-bottom:var(--hair)}
+.proj-intro{display:grid;grid-template-columns:7fr 5fr;gap:clamp(36px,6vw,80px);align-items:end;margin-bottom:clamp(56px,7vw,96px)}
+.why-block{margin-bottom:clamp(72px,9vw,120px)}
+.why-head{margin-bottom:36px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end}
+.why-list{border-top:var(--hair-ink)}
+.why-row{display:grid;grid-template-columns:80px 1fr 1fr;gap:clamp(24px,4vw,56px);padding:clamp(28px,4vw,44px) 0;border-bottom:var(--hair);align-items:start}
+.why-row:last-child{border-bottom:var(--hair-ink)}
+.why-row .w-idx{font-family:var(--serif);font-style:italic;font-size:2.4rem;color:var(--navy);line-height:.9;font-weight:400}
+.why-row .w-title{font-family:var(--display);font-weight:400;font-size:clamp(1.3rem,2.2vw,1.85rem);letter-spacing:-.025em;line-height:1.1;color:var(--ink)}
+.why-row .w-title em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.why-row .w-desc{font-size:.95rem;line-height:1.6;color:var(--muted);max-width:48ch}
+
+.services-menu{margin-bottom:clamp(72px,9vw,120px)}
+.services-head{margin-bottom:36px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end}
+.service-row{display:grid;grid-template-columns:120px 1fr 2fr auto;gap:clamp(20px,3vw,40px);padding:clamp(24px,3vw,36px) 0;border-top:var(--hair);align-items:baseline;transition:padding .35s var(--ease);cursor:default}
+.service-row:first-of-type{border-top:var(--hair-ink)}
+.service-row:last-of-type{border-bottom:var(--hair-ink)}
+.service-row:hover{padding-left:12px}
+.service-row .s-tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.service-row .s-title{font-family:var(--display);font-weight:400;font-size:clamp(1.3rem,2.2vw,1.85rem);letter-spacing:-.025em;line-height:1.1;color:var(--ink)}
+.service-row .s-title em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.service-row .s-desc{font-size:.88rem;line-height:1.55;color:var(--muted);max-width:52ch}
+.service-row .s-duration{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--ink);white-space:nowrap;padding:6px 12px;border:1px solid var(--rule-strong)}
+
+.cases-block .cases-head{margin-bottom:36px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end}
+.cases-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:var(--hair-ink)}
+.case-card{padding:clamp(28px,3vw,40px) clamp(20px,2vw,32px);border-right:var(--hair);border-bottom:var(--hair);display:flex;flex-direction:column;gap:20px;background:var(--paper-warm);transition:background .35s var(--ease);min-height:300px}
+.case-card:nth-child(3n){border-right:none}
+.case-card:hover{background:#fff}
+.case-card .c-head{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:36px}
+.case-card .c-logo{height:32px;width:auto;object-fit:contain;max-width:130px;filter:saturate(.85)}
+.case-card .c-num{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--muted)}
+.case-card .c-title{font-family:var(--display);font-weight:400;font-size:1.25rem;letter-spacing:-.02em;line-height:1.2;color:var(--ink);margin-top:auto}
+.case-card .c-title em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.case-card .c-desc{font-size:.85rem;line-height:1.55;color:var(--muted)}
+
+/* PARTNER */
+#partner{background:var(--paper)}
+.partner-intro{display:grid;grid-template-columns:6fr 6fr;gap:clamp(36px,6vw,80px);align-items:end;margin-bottom:clamp(56px,7vw,96px)}
+.partner-grid{display:grid;grid-template-columns:7fr 5fr;gap:clamp(40px,6vw,80px);align-items:start;margin-bottom:clamp(72px,9vw,120px)}
+.values-head{margin-bottom:28px}
+.values-list{border-top:var(--hair-ink)}
+.value-row{display:grid;grid-template-columns:42px 1fr;gap:18px;padding:clamp(22px,2.5vw,30px) 0;border-bottom:var(--hair);align-items:start;transition:padding .3s var(--ease)}
+.value-row:last-child{border-bottom:var(--hair-ink)}
+.value-row:hover{padding-left:8px}
+.value-row .v-idx{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;color:var(--muted);padding-top:2px}
+.value-row .v-content strong{display:block;font-family:var(--display);font-weight:500;font-size:1.1rem;letter-spacing:-.015em;line-height:1.2;margin-bottom:6px;color:var(--ink)}
+.value-row .v-content strong em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.value-row .v-content span{display:block;font-size:.86rem;line-height:1.55;color:var(--muted);max-width:54ch}
+.tiers-stack{display:flex;flex-direction:column;gap:0;border-top:var(--hair-ink)}
+.tier{padding:clamp(28px,3vw,40px) 0;border-bottom:var(--hair-ink);display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,3vw,40px);position:relative}
+.tier--featured{background:linear-gradient(90deg,transparent,rgba(27,54,100,.04) 30%,rgba(27,54,100,.04) 100%);padding-left:clamp(20px,2vw,32px);padding-right:clamp(20px,2vw,32px)}
+.tier .t-name{font-family:var(--display);font-weight:300;font-size:clamp(2.4rem,4.5vw,3.6rem);letter-spacing:-.04em;line-height:.9;color:var(--ink)}
+.tier .t-name em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.tier .t-name .tag{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;color:var(--muted);font-weight:500;margin-bottom:8px;text-transform:uppercase}
+.tier .t-feats{display:flex;flex-direction:column;gap:8px}
+.tier .t-feat{display:grid;grid-template-columns:14px 1fr;gap:10px;align-items:start;font-size:.86rem;color:var(--ink-soft);line-height:1.5}
+.tier .t-feat::before{content:'';display:block;width:8px;height:1px;background:var(--ink);margin-top:.7em}
+.partner-cta-inline{margin-top:24px;display:flex;gap:18px;align-items:center}
+.logos-block{margin-top:clamp(56px,7vw,96px)}
+.logos-tier{margin-bottom:48px}
+.logos-tier:last-child{margin-bottom:0}
+.logos-tier-head{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;margin-bottom:24px}
+.logos-tier-head .label{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:500}
+.logos-tier-head .label em{font-family:var(--serif);font-style:italic;color:var(--navy);text-transform:none;letter-spacing:0;font-size:.85rem;margin-left:8px;font-weight:400}
+.logos-tier-head .count{font-family:var(--mono);font-size:.66rem;color:var(--muted);letter-spacing:.1em}
+.logos-tier-head .rule{height:1px;background:var(--rule)}
+.logos-flow{display:flex;flex-wrap:wrap;gap:0;border-top:var(--hair);border-left:var(--hair)}
+.logos-flow .lp{flex:1 1 160px;min-height:72px;display:flex;align-items:center;justify-content:center;padding:14px 20px;border-right:var(--hair);border-bottom:var(--hair);background:var(--paper);transition:background .3s,transform .3s var(--ease)}
+.logos-flow .lp:hover{background:var(--paper-warm)}
+.logos-flow .lp img{max-height:30px;width:auto;object-fit:contain;filter:saturate(.85);transition:filter .3s,transform .3s var(--ease)}
+.logos-flow .lp:hover img{filter:saturate(1);transform:scale(1.06)}
+.logos-flow .lp .lp-text{font-family:var(--mono);font-size:.72rem;font-weight:500;color:var(--ink);letter-spacing:.06em;text-align:center}
+.logos-flow.partner-tier .lp{background:rgba(27,54,100,.05)}
+.logos-flow.partner-tier .lp:hover{background:rgba(27,54,100,.09)}
+.logos-flow.advisory-tier .lp .lp-text{font-size:.66rem;color:var(--navy)}
+.partner-cta{margin-top:clamp(72px,9vw,120px);background:var(--ink);color:var(--paper);padding:clamp(56px,7vw,96px) var(--gutter);margin-left:calc(-1 * var(--gutter));margin-right:calc(-1 * var(--gutter));position:relative;overflow:hidden;display:grid;grid-template-columns:7fr 5fr;gap:clamp(40px,6vw,72px);align-items:end}
+.partner-cta::before{content:'';position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,.05) 1px,transparent 1px);background-size:calc(100%/12) 100%;pointer-events:none}
+.partner-cta>*{position:relative;z-index:1}
+.partner-cta .pc-tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,234,.6);margin-bottom:24px;display:flex;align-items:center;gap:14px}
+.partner-cta .pc-tag .rule{width:36px;height:1px;background:var(--paper)}
+.partner-cta .pc-title{font-family:var(--display);font-weight:300;font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.035em;line-height:1.02;color:var(--paper);margin-bottom:20px;font-variation-settings:"opsz" 144}
+.partner-cta .pc-title em{font-family:var(--serif);font-style:italic;color:var(--accent-soft)}
+.partner-cta .pc-body{font-size:1rem;line-height:1.65;color:rgba(244,241,234,.75);max-width:48ch}
+.partner-cta .pc-body strong{color:var(--paper)}
+.partner-cta .pc-actions{display:flex;flex-direction:column;gap:14px;align-items:flex-start;padding-bottom:8px}
+
+/* EVENTS */
+#events{background:var(--paper-warm);border-top:var(--hair);border-bottom:var(--hair);position:relative;overflow:hidden}
+.events-intro{display:grid;grid-template-columns:7fr 5fr;gap:clamp(36px,6vw,80px);align-items:end;margin-bottom:clamp(48px,6vw,72px)}
+.events-aside{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:var(--hair-ink);border-bottom:var(--hair-ink);margin-bottom:clamp(40px,5vw,64px)}
+.ea-cell{padding:clamp(24px,3vw,36px) clamp(16px,2vw,24px);border-right:var(--hair);display:flex;flex-direction:column;gap:10px}
+.ea-cell:last-child{border-right:none}
+.ea-cell .ea-tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.ea-cell .ea-num{font-family:var(--display);font-weight:300;font-size:clamp(2.4rem,4vw,3.4rem);letter-spacing:-.04em;line-height:.92;color:var(--ink)}
+.ea-cell .ea-num em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.ea-cell .ea-num sup{font-family:var(--serif);font-style:italic;font-size:.55em;vertical-align:.4em;color:var(--navy)}
+.ea-cell .ea-desc{font-size:.78rem;line-height:1.5;color:var(--muted)}
+.ea-cell--ink{background:var(--ink);color:var(--paper);border-right-color:rgba(255,255,255,.15)}
+.ea-cell--ink .ea-tag{color:rgba(244,241,234,.6)}
+.ea-cell--ink .ea-num{color:var(--paper)}
+.ea-cell--ink .ea-num em{color:var(--accent-soft)}
+.ea-cell--ink .ea-desc{color:rgba(244,241,234,.7)}
+.timeline-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px;gap:24px;flex-wrap:wrap}
+.timeline-hint{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px}
+.timeline-hint .arrow{display:inline-block;width:24px;height:1px;background:var(--muted);position:relative}
+.timeline-hint .arrow::after{content:'';position:absolute;right:0;top:50%;width:6px;height:1px;background:var(--muted);transform:translateY(-50%) rotate(40deg);transform-origin:right}
+.timeline-hint .arrow::before{content:'';position:absolute;right:0;top:50%;width:6px;height:1px;background:var(--muted);transform:translateY(-50%) rotate(-40deg);transform-origin:right}
+.timeline-scroller{position:relative;margin:0 calc(-1 * var(--gutter));padding:0 var(--gutter);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none}
+.timeline-scroller::-webkit-scrollbar{display:none}
+.timeline-track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(280px,320px);gap:0;border-top:var(--hair-ink);padding-top:0}
+.t-event{scroll-snap-align:start;padding:36px 28px 36px 0;border-right:var(--hair);display:flex;flex-direction:column;gap:18px;position:relative;transition:background .3s}
+.t-event:last-child{border-right:var(--hair-ink)}
+.t-event:hover{background:rgba(255,255,255,.5)}
+.t-event::before{content:'';position:absolute;top:-7px;left:0;width:13px;height:13px;border-radius:50%;background:var(--paper-warm);border:1.5px solid var(--ink)}
+.t-event.active::before{background:var(--ink)}
+.t-event.next::before{background:var(--accent);border-color:var(--accent)}
+.t-event .t-month{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);font-weight:600;padding-top:18px}
+.t-event .t-type{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.t-event .t-type--intl{color:var(--accent);font-weight:600}
+.t-event .t-title{font-family:var(--display);font-weight:400;font-size:1.15rem;letter-spacing:-.02em;line-height:1.2;color:var(--ink)}
+.t-event .t-title em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.t-event .t-desc{font-size:.82rem;line-height:1.55;color:var(--muted)}
+.t-event .t-desc strong{color:var(--ink);font-weight:500}
+.events-intl{margin-top:clamp(48px,6vw,72px);display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end;margin-bottom:20px}
+.intl-mini{display:grid;grid-template-columns:repeat(4,1fr);border-top:var(--hair);border-bottom:var(--hair)}
+.intl-mini .im{padding:20px 16px 20px 0;border-right:var(--hair);display:flex;flex-direction:column;gap:6px}
+.intl-mini .im:last-child{border-right:none}
+.intl-mini .im .flag{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;color:var(--muted)}
+.intl-mini .im .city{font-family:var(--display);font-weight:400;font-size:1.3rem;letter-spacing:-.02em;color:var(--ink)}
+.intl-mini .im .city em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.intl-mini .im .venue{font-family:var(--mono);font-size:.66rem;color:var(--muted)}
+
+/* TEAM */
+#team{background:var(--paper);border-top:var(--hair)}
+.team-intro{display:grid;grid-template-columns:7fr 5fr;gap:clamp(36px,6vw,80px);align-items:end;margin-bottom:clamp(56px,7vw,96px)}
+.team-block{margin-bottom:clamp(56px,7vw,80px)}
+.team-block:last-child{margin-bottom:0}
+.team-block-head{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;margin-bottom:24px}
+.team-block-head .label{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:500}
+.team-block-head .label em{font-family:var(--serif);font-style:italic;color:var(--navy);text-transform:none;letter-spacing:0;font-size:.85rem;margin-left:8px;font-weight:400}
+.team-block-head .rule{height:1px;background:var(--rule)}
+.team-block-head .count{font-family:var(--mono);font-size:.66rem;color:var(--muted);letter-spacing:.1em}
+.team-mosaic{display:grid;gap:0;border-top:var(--hair);border-left:var(--hair)}
+.team-mosaic.scientific{grid-template-columns:repeat(2,1fr)}
+.team-mosaic.directors{grid-template-columns:repeat(3,1fr)}
+.team-mosaic.projects{grid-template-columns:repeat(2,1fr);max-width:780px}
+.team-mosaic.researchers{grid-template-columns:repeat(6,1fr)}
+.team-member{padding:clamp(24px,3vw,36px) clamp(20px,2vw,28px);border-right:var(--hair);border-bottom:var(--hair);background:var(--paper);transition:background .3s,transform .3s var(--ease);display:flex;flex-direction:column;gap:16px;position:relative}
+.team-member:hover{background:var(--paper-warm)}
+.team-member .m-avatar{width:54px;height:54px;border-radius:50%;background:var(--paper-warm);border:1px solid var(--rule-strong);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.78rem;font-weight:600;color:var(--navy);letter-spacing:.04em}
+.team-member.large .m-avatar{width:72px;height:72px;background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:.95rem}
+.team-member .m-name{font-family:var(--display);font-weight:500;font-size:1.05rem;letter-spacing:-.015em;line-height:1.15;color:var(--ink)}
+.team-member.large .m-name{font-family:var(--display);font-weight:400;font-size:clamp(1.3rem,1.8vw,1.55rem);letter-spacing:-.02em}
+.team-member.large .m-name em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.team-member .m-role{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;line-height:1.5}
+.team-member .m-email{margin-top:auto;font-family:var(--mono);font-size:.66rem;color:var(--navy);letter-spacing:.04em;display:inline-flex;align-items:center;gap:6px;padding-top:8px}
+.team-member .m-email::after{content:'↗';font-family:var(--display);font-size:.85rem}
+.team-mosaic.researchers .team-member{padding:24px 18px}
+.team-mosaic.researchers .team-member .m-avatar{width:42px;height:42px;font-size:.7rem}
+.team-mosaic.researchers .team-member .m-name{font-size:.92rem;font-weight:500}
+.team-mosaic.researchers .team-member .m-role{font-size:.62rem}
+
+.team-advisory{margin-top:clamp(56px,7vw,80px);padding:clamp(40px,5vw,64px) 0;border-top:var(--hair-ink);border-bottom:var(--hair-ink);display:grid;grid-template-columns:5fr 7fr;gap:clamp(36px,5vw,64px)}
+.team-advisory .a-side .label{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:500;margin-bottom:14px;display:block}
+.team-advisory .a-side .h-3{margin-bottom:14px}
+.team-advisory .a-list{display:flex;flex-direction:column;gap:0}
+.team-advisory .a-item{padding:18px 0;border-top:var(--hair);display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline}
+.team-advisory .a-item:first-child{border-top:none}
+.team-advisory .a-item .a-name{font-family:var(--display);font-weight:500;font-size:1.05rem;letter-spacing:-.015em;color:var(--ink)}
+.team-advisory .a-item .a-name em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.team-advisory .a-item .a-role{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--muted)}
+
+/* RESOURCES */
+#resources{background:var(--paper-warm);border-top:var(--hair);border-bottom:var(--hair)}
+.resources-intro{display:grid;grid-template-columns:7fr 5fr;gap:clamp(36px,6vw,80px);align-items:end;margin-bottom:clamp(56px,7vw,96px)}
+.resources-list{border-top:var(--hair-ink)}
+.res-row{display:grid;grid-template-columns:80px 1.2fr 2fr auto;gap:clamp(24px,3vw,48px);padding:clamp(28px,4vw,40px) 0;border-bottom:var(--hair);align-items:start;cursor:default;transition:padding .35s var(--ease),background .35s var(--ease)}
+.res-row:last-child{border-bottom:var(--hair-ink)}
+.res-row:hover{padding-left:12px;padding-right:12px;background:rgba(255,255,255,.5)}
+.res-row.clickable{cursor:pointer}
+.res-row .r-idx{font-family:var(--mono);font-size:.78rem;letter-spacing:.16em;color:var(--muted);padding-top:4px}
+.res-row .r-name{display:flex;flex-direction:column;gap:8px}
+.res-row .r-tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);font-weight:500}
+.res-row .r-title{font-family:var(--display);font-weight:400;font-size:clamp(1.3rem,2vw,1.75rem);letter-spacing:-.02em;line-height:1.15;color:var(--ink)}
+.res-row .r-title em{font-family:var(--serif);font-style:italic;color:var(--navy)}
+.res-row .r-desc{font-size:.92rem;line-height:1.6;color:var(--muted);max-width:60ch;padding-top:4px}
+.res-row .r-desc strong{color:var(--ink);font-weight:500}
+.res-row .r-link{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);white-space:nowrap;padding-top:8px;display:flex;align-items:center;gap:8px}
+.res-row .r-link::after{content:'→';transition:transform .3s}
+.res-row:hover .r-link::after{transform:translateX(5px)}
+
+.resources-cta{margin-top:clamp(48px,6vw,72px);padding:clamp(40px,5vw,56px) clamp(32px,4vw,48px);border:var(--hair-ink);display:grid;grid-template-columns:1fr auto;gap:clamp(24px,4vw,48px);align-items:center;background:var(--paper)}
+.resources-cta .h-3{margin-bottom:6px}
+.resources-cta .body{max-width:54ch}
+.resources-cta .actions{display:flex;gap:14px;flex-wrap:wrap}
+
+/* FOOTER */
+footer{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+footer::before{content:'';position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,.05) 1px,transparent 1px);background-size:calc(100%/12) 100%;pointer-events:none}
+footer>*{position:relative;z-index:1}
+.footer-wordmark{padding:clamp(72px,9vw,120px) var(--gutter) clamp(24px,3vw,40px);text-align:center;border-bottom:1px solid rgba(255,255,255,.12);overflow:hidden}
+.footer-wordmark .wm{font-family:var(--display);font-weight:300;font-size:clamp(4rem,18vw,18rem);letter-spacing:-.06em;line-height:.85;color:var(--paper);font-variation-settings:"opsz" 144;display:block}
+.footer-wordmark .wm em{font-family:var(--serif);font-style:italic;color:var(--accent-soft);font-weight:400}
+.footer-wordmark .wm-sub{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,234,.5);margin-top:20px;display:block}
+.footer-cols{display:grid;grid-template-columns:2.2fr 1fr 1fr 1.3fr;gap:clamp(32px,5vw,72px);padding:clamp(56px,7vw,80px) var(--gutter);max-width:1600px;margin:0 auto;border-bottom:1px solid rgba(255,255,255,.12)}
+.footer-col .f-title{font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,234,.4);margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.12)}
+.footer-col .f-brand-logo{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.footer-col .f-brand-logo img{height:32px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.92}
+.footer-col .f-brand-logo .hair-v{width:1px;height:24px;background:rgba(255,255,255,.2)}
+.footer-col .f-brand-logo .polimi-mini{height:26px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.7}
+.footer-col .f-desc{font-family:var(--display);font-weight:300;font-size:1.05rem;line-height:1.55;color:rgba(244,241,234,.78);letter-spacing:-.01em;margin-bottom:24px;max-width:36ch}
+.footer-col .f-desc em{font-family:var(--serif);font-style:italic;color:var(--accent-soft)}
+.footer-col .f-desc strong{color:var(--paper);font-weight:400}
+.footer-col .f-socials{display:flex;flex-wrap:wrap;gap:8px}
+.footer-col .f-socials a{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,241,234,.7);padding:8px 14px;border:1px solid rgba(255,255,255,.18);transition:all .3s}
+.footer-col .f-socials a:hover{color:var(--ink);background:var(--paper);border-color:var(--paper)}
+.footer-col .f-nav{display:flex;flex-direction:column;gap:12px}
+.footer-col .f-nav a{font-family:var(--display);font-size:1rem;color:rgba(244,241,234,.75);transition:color .25s;letter-spacing:-.005em;position:relative;display:inline-block;width:fit-content}
+.footer-col .f-nav a::after{content:'';position:absolute;left:0;bottom:-2px;height:1px;width:100%;background:var(--paper);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.footer-col .f-nav a:hover{color:var(--paper)}
+.footer-col .f-nav a:hover::after{transform:scaleX(1)}
+.footer-col .f-contact{display:flex;flex-direction:column;gap:18px}
+.footer-col .f-contact .f-c-item strong{display:block;font-family:var(--display);font-size:.95rem;font-weight:500;color:var(--paper);margin-bottom:3px}
+.footer-col .f-contact .f-c-item a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:rgba(244,241,234,.6);transition:color .25s}
+.footer-col .f-contact .f-c-item a:hover{color:var(--paper)}
+.footer-col .f-inst{padding:24px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
+.footer-col .f-inst img{height:30px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.78;margin-bottom:16px}
+.footer-col .f-inst p{font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;color:rgba(244,241,234,.55);line-height:1.7;margin-bottom:14px}
+.footer-col .f-inst a{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,241,234,.75);transition:color .25s}
+.footer-col .f-inst a:hover{color:var(--paper)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;padding:28px var(--gutter);max-width:1600px;margin:0 auto}
+.footer-copy{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;color:rgba(244,241,234,.4)}
+.footer-bottom-links{display:flex;gap:24px}
+.footer-bottom-links a{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,241,234,.55);transition:color .25s}
+.footer-bottom-links a:hover{color:var(--paper)}
+
+/* CONTACT OVERLAY */
+#contact-page{display:none;position:fixed;inset:0;z-index:950;background:var(--paper);overflow-y:auto}
+#contact-page.open{display:block}
+.contact-inner{min-height:100vh;display:flex;flex-direction:column}
+.contact-header{padding:20px var(--gutter);display:flex;align-items:center;justify-content:space-between;border-bottom:var(--hair);background:var(--paper);position:sticky;top:0;z-index:10}
+.contact-back{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);padding:8px 12px}
+.contact-back:hover{color:var(--navy)}
+.contact-brand{display:flex;align-items:center;gap:10px}
+.contact-brand img{height:22px;width:auto;object-fit:contain}
+.contact-brand span{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.contact-body{flex:1;padding:clamp(48px,7vw,96px) var(--gutter) clamp(48px,7vw,96px)}
+.contact-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:5fr 7fr;gap:clamp(40px,6vw,96px);align-items:start}
+.contact-left .h-1{margin:24px 0 24px}
+.contact-info{margin-top:36px;border-top:var(--hair-ink)}
+.contact-member{display:grid;grid-template-columns:48px 1fr;gap:16px;padding:20px 0;border-bottom:var(--hair);align-items:start}
+.contact-member:last-of-type{border-bottom:var(--hair-ink)}
+.contact-avatar{width:48px;height:48px;border-radius:50%;background:var(--paper-warm);border:1px solid var(--rule-strong);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.74rem;font-weight:600;color:var(--navy)}
+.contact-member .m-name{font-family:var(--display);font-weight:500;font-size:1rem;color:var(--ink);margin-bottom:2px}
+.contact-member .m-role{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;color:var(--muted);margin-bottom:8px;text-transform:uppercase}
+.contact-member .m-email{font-family:var(--mono);font-size:.72rem;color:var(--navy);letter-spacing:.04em}
+.contact-general{padding:18px 0;border-bottom:var(--hair-ink)}
+.contact-general .g-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.contact-general a{font-family:var(--mono);font-size:.78rem;color:var(--navy);letter-spacing:.04em}
+.contact-form-card{padding:clamp(32px,4vw,48px);border:var(--hair-ink);background:var(--paper-warm)}
+.contact-form{display:flex;flex-direction:column;gap:22px;margin-top:24px}
+.form-group{display:flex;flex-direction:column;gap:8px}
+.form-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);font-weight:500}
+.form-input,.form-textarea,.form-select{background:transparent;border:none;border-bottom:1px solid var(--rule-strong);padding:10px 0;font-family:var(--display);font-weight:400;font-size:1rem;color:var(--ink);width:100%;outline:none;transition:border-color .25s;letter-spacing:-.005em}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--muted-2)}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-bottom-color:var(--ink)}
+.form-textarea{min-height:140px;resize:vertical;font-family:var(--body);font-size:.95rem;line-height:1.55}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.form-select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236a6555' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 6px center;cursor:pointer}
+.form-submit-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding-top:8px}
+.form-note{font-family:var(--mono);font-size:.66rem;color:var(--muted);letter-spacing:.06em}
+
+/* ENTRANCE ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.fade-up.in{opacity:1;transform:translateY(0)}
+.delay-1{transition-delay:.09s}.delay-2{transition-delay:.18s}.delay-3{transition-delay:.27s}.delay-4{transition-delay:.36s}.delay-5{transition-delay:.45s}
+
+/* RESPONSIVE */
+@media(max-width:1080px){
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-spine{border-left:none;border-top:var(--hair-ink);padding-left:0;padding-top:28px;min-height:auto}
+  .research-intro,.proj-intro,.partner-intro,.events-intro,.team-intro,.resources-intro{grid-template-columns:1fr;gap:32px}
+  .partner-grid{grid-template-columns:1fr}
+  .partner-cta{grid-template-columns:1fr;gap:32px}
+  .team-mosaic.scientific{grid-template-columns:repeat(2,1fr)}
+  .team-mosaic.directors{grid-template-columns:repeat(2,1fr)}
+  .team-mosaic.researchers{grid-template-columns:repeat(3,1fr)}
+  .activity-row{grid-template-columns:repeat(2,1fr)}
+  .activity-cell:nth-child(2n){border-right:none}
+  .intl-list,.intl-mini,.events-aside{grid-template-columns:repeat(2,1fr)}
+  .events-aside .ea-cell:nth-child(2){border-right:none}
+  .cases-strip{grid-template-columns:repeat(2,1fr)}
+  .case-card:nth-child(3n){border-right:var(--hair)}
+  .case-card:nth-child(2n){border-right:none}
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  .nav-cta .timecode{display:none}
+  .contact-grid{grid-template-columns:1fr;gap:48px}
+  .footer-cols{grid-template-columns:1fr 1fr}
+  .team-advisory{grid-template-columns:1fr}
+  .pillar-row{grid-template-columns:60px 1fr;gap:16px}
+  .pillar-row .p-desc{grid-column:1/-1;padding-left:76px}
+  .pillar-row .p-arrow{display:none}
+  .why-row{grid-template-columns:60px 1fr;gap:18px}
+  .why-row .w-desc{grid-column:1/-1;padding-left:78px}
+  .service-row{grid-template-columns:90px 1fr;gap:16px}
+  .service-row .s-desc,.service-row .s-duration{grid-column:1/-1;padding-left:106px}
+  .service-row .s-duration{justify-self:start}
+  .res-row{grid-template-columns:60px 1fr;gap:16px}
+  .res-row .r-desc,.res-row .r-link{grid-column:1/-1;padding-left:76px}
+  .resources-cta{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .partner-cta-inline{flex-direction:column;align-items:flex-start}
+  .identity-split{grid-template-columns:1fr;min-height:auto}
+  .identity-split::before{display:none}
+  .identity-amp{display:none}
+  .soul--research{padding-right:clamp(32px,5vw,80px);border-bottom:var(--hair-ink)}
+  .soul--projects{padding-left:clamp(32px,5vw,80px)}
+}
+@media(max-width:680px){
+  #mobile-nav{display:flex}
+  .hero-creds{grid-template-columns:1fr;border-top:var(--hair-ink)}
+  .cred-cell{border-right:none;border-bottom:var(--hair);padding-right:0}
+  .cred-cell:last-child{border-bottom:none}
+  .hero-meta{grid-template-columns:1fr 1fr;font-size:.6rem;gap:14px}
+  .stat-row{grid-template-columns:1fr;gap:20px}
+  .stat-row .row-idx{position:static;margin-bottom:8px}
+  .activity-row,.intl-list,.intl-mini,.events-aside,.cases-strip{grid-template-columns:1fr}
+  .activity-cell,.intl-cell,.intl-mini .im,.ea-cell,.case-card{border-right:none;border-bottom:var(--hair)}
+  .activity-cell:last-child,.case-card:last-child{border-bottom:none}
+  .team-mosaic.scientific,.team-mosaic.directors,.team-mosaic.projects,.team-mosaic.researchers{grid-template-columns:repeat(2,1fr)}
+  .footer-cols{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+  .nav-brand img.polimi{display:none}
+  .nav-brand .hair-v{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .wire-track,.spine-row{animation:none!important}
+  .fade-up,.hero-title .line span{opacity:1!important;transform:none!important}
+  .hero-title .underline-em::after{transform:scaleX(1)!important}
+  .rule-x{transform:scaleX(1)!important}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ════════════════════════ NAVIGATION ════════════════════════ -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand" aria-label="WEB3HUB Homepage">
+      <img src="assets/logos/logo-web3hub.png" alt="WEB3HUB" class="w3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div style="display:none;align-items:center;justify-content:center;width:36px;height:30px;background:var(--ink);font-family:var(--mono);font-size:.66rem;font-weight:600;color:var(--paper);letter-spacing:.05em">W3H</div>
+      <span class="hair-v"></span>
+      <img src="assets/logos/logo-polimi.png" alt="Politecnico di Milano" class="polimi" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+      <span style="display:none;font-family:var(--mono);font-size:.6rem;font-weight:500;color:var(--muted);letter-spacing:.04em;line-height:1.2">Politecnico<br/>di Milano</span>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#partner">Partners</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#resources">Resources</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <span class="timecode" id="navClock"><span class="live"></span>MILAN · 12:00</span>
+      <button class="btn btn--ink" onclick="openContact()">Contact <span class="arrow"></span></button>
+      <button class="nav-burger" id="burgerBtn" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div id="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <button class="mobile-close" id="mobileClose" aria-label="Close navigation">CLOSE ✕</button>
+  <a href="#research" class="mobile-link">01 — <em>Research</em></a>
+  <a href="#projects" class="mobile-link">02 — <em>Projects</em></a>
+  <a href="#partner" class="mobile-link">03 — <em>Partners</em></a>
+  <a href="#events" class="mobile-link">04 — <em>Events</em></a>
+  <a href="#team" class="mobile-link">05 — <em>Team</em></a>
+  <a href="#resources" class="mobile-link">06 — <em>Resources</em></a>
+  <button class="btn btn--ink" onclick="openContact();closeMobile()" style="margin-top:24px">Contact Us <span class="arrow"></span></button>
+</div>
+
+<!-- ════════════════════════ CONTACT OVERLAY ════════════════════════ -->
+<div id="contact-page" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+  <div class="contact-inner">
+    <div class="contact-header">
+      <button class="contact-back" onclick="closeContact()">← Back to WEB3HUB</button>
+      <div class="contact-brand">
+        <img src="assets/logos/logo-web3hub.png" alt="WEB3HUB" onerror="this.style.display='none'" />
+        <span>Politecnico di Milano</span>
+      </div>
+    </div>
+    <div class="contact-body">
+      <div class="contact-grid">
+        <div class="contact-left">
+          <span class="kicker"><span class="rule"></span>Get in touch</span>
+          <h1 class="h-1" id="contact-title">Let's start a<br/><em>conversation.</em></h1>
+          <p class="body-lg" style="max-width:42ch">Whether you are a company exploring blockchain opportunities, a researcher interested in collaboration, or an institution looking for independent analysis — we would love to hear from you.</p>
+
+          <div class="contact-info">
+            <div class="contact-member">
+              <div class="contact-avatar">JF</div>
+              <div>
+                <div class="m-name">Jacopo Fracassi</div>
+                <div class="m-role">Director · WEB3HUB Projects</div>
+                <a href="mailto:jacopo.fracassi@polimi.it" class="m-email">jacopo.fracassi@polimi.it</a>
+              </div>
+            </div>
+            <div class="contact-member">
+              <div class="contact-avatar">GV</div>
+              <div>
+                <div class="m-name">Giacomo Vella</div>
+                <div class="m-role">Director · Blockchain &amp; Web3 Observatory</div>
+                <a href="mailto:giacomo.vella@polimi.it" class="m-email">giacomo.vella@polimi.it</a>
+              </div>
+            </div>
+            <div class="contact-general">
+              <div class="g-label">General enquiries</div>
+              <a href="mailto:ettore.zauli@polimi.it">ettore.zauli@polimi.it</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-card">
+          <span class="kicker"><span class="idx">02</span><span class="rule"></span>The form</span>
+          <h2 class="h-3" style="margin-top:14px">Send us a message.</h2>
+          <p class="body-sm" style="margin-top:6px">Your message will be delivered to both Jacopo Fracassi and Giacomo Vella.</p>
+          <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="cf-name">Full Name *</label>
+                <input class="form-input" id="cf-name" name="name" type="text" placeholder="Your name" required autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cf-company">Company / Institution</label>
+                <input class="form-input" id="cf-company" name="company" type="text" placeholder="Your organisation" autocomplete="organization" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-email">Email Address *</label>
+              <input class="form-input" id="cf-email" name="email" type="email" placeholder="your@email.com" required autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-subject">Subject</label>
+              <select class="form-select" id="cf-subject" name="subject">
+                <option value="">Select a topic…</option>
+                <option value="research-partnership">Research Partnership</option>
+                <option value="project-collaboration">Project Collaboration</option>
+                <option value="become-partner">Become a Partner / Sponsor</option>
+                <option value="custom-research">Custom Research Request</option>
+                <option value="events">Events &amp; Workshops</option>
+                <option value="press-media">Press &amp; Media</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-message">Message *</label>
+              <textarea class="form-textarea" id="cf-message" name="message" placeholder="Describe your interest or request…" required></textarea>
+            </div>
+            <div class="form-group">
+              <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+                <input type="checkbox" id="cf-privacy" name="privacy" required style="margin-top:4px;accent-color:var(--ink);flex-shrink:0" />
+                <span style="font-size:.8rem;color:var(--muted);line-height:1.5">I have read and accept the <a href="https://www.polimi.it/en/privacy-policy" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline">Privacy Policy</a> of Politecnico di Milano. *</span>
+              </label>
+            </div>
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn--ink">Send Message <span class="arrow"></span></button>
+              <p class="form-note">Fields marked * are required</p>
+            </div>
+            <div id="form-success" style="display:none;padding:16px;background:rgba(27,54,100,.07);border-left:2px solid var(--navy);font-size:.86rem;color:var(--navy);margin-top:8px" role="alert">✓ Your message has been prepared. Your email client will open to complete sending.</div>
+            <div id="form-error" style="display:none;padding:16px;background:rgba(220,38,38,.05);border-left:2px solid #b91c1c;font-size:.86rem;color:#b91c1c;margin-top:8px" role="alert">Please fill in all required fields correctly.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ════════════════════════ HERO ════════════════════════ -->
+<section id="hero" aria-labelledby="hero-title">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="hero-content">
+
+    <div class="hero-meta">
+      <div class="meta-cell"><span class="live-dot"></span><strong>WEB3HUB</strong> · LAB N°2026</div>
+      <div class="meta-cell">Politecnico di Milano · Est. 2017</div>
+      <div class="meta-cell">Vol. <strong>VIII</strong> · Issue 01</div>
+      <div class="meta-cell">Milan, Italy · 45.4773° N</div>
+    </div>
+
+    <div class="hero-grid">
+
+      <div class="hero-left">
+        <h1 class="hero-title h-hero" id="hero-title">
+          <span class="line"><span>The future</span></span>
+          <span class="line"><span>of <em>Web3</em></span></span>
+          <span class="line"><span>is <span class="underline-em">built here.</span></span></span>
+        </h1>
+
+        <p class="hero-lede">
+          WEB3HUB is the Blockchain &amp; Web3 <em>Research and Projects Lab</em> of the Politecnico di Milano — where rigorous academic research meets applied innovation for companies and institutions worldwide.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn--ink">Explore Projects <span class="arrow"></span></a>
+          <a href="#research" class="btn btn--paper">Explore Research <span class="arrow"></span></a>
+          <button class="btn btn--ghost" onclick="openContact()">Get in touch <span class="arrow"></span></button>
+        </div>
+      </div>
+
+      <aside class="hero-spine" aria-label="Recent research signals">
+        <div class="spine-label"><span class="live-dot"></span>Live research signal</div>
+        <div class="spine-feed" id="spineFeed">
+          <!-- duplicated for seamless loop -->
+          <div class="spine-row"><span class="idx">№ 084</span><span class="name">On-chain <em>energy</em> trading</span><span class="val">ENEA · 2024</span></div>
+          <div class="spine-row"><span class="idx">№ 083</span><span class="name">Rollups &amp; <em>ZK</em> proofs</span><span class="val">NTT · 2024</span></div>
+          <div class="spine-row"><span class="idx">№ 082</span><span class="name">Verifiable <em>credentials</em></span><span class="val">GFX · 2023</span></div>
+          <div class="spine-row"><span class="idx">№ 081</span><span class="name">NFT <em>copyright</em> layer</span><span class="val">Accenture · 2023</span></div>
+          <div class="spine-row"><span class="idx">№ 080</span><span class="name">Wallet-<em>as</em>-a-Service</span><span class="val">Enel · 2022</span></div>
+          <div class="spine-row"><span class="idx">№ 079</span><span class="name">Italian <em>startup</em> map</span><span class="val">PwC · 2022</span></div>
+          <div class="spine-row"><span class="idx">№ 084</span><span class="name">On-chain <em>energy</em> trading</span><span class="val">ENEA · 2024</span></div>
+          <div class="spine-row"><span class="idx">№ 083</span><span class="name">Rollups &amp; <em>ZK</em> proofs</span><span class="val">NTT · 2024</span></div>
+          <div class="spine-row"><span class="idx">№ 082</span><span class="name">Verifiable <em>credentials</em></span><span class="val">GFX · 2023</span></div>
+        </div>
+      </aside>
+
+    </div>
+
+    <div class="hero-creds" role="list">
+      <div class="cred-cell" role="listitem">
+        <span class="cred-tag">№ 01 / The Origin</span>
+        <span class="cred-figure">2017</span>
+        <p class="cred-desc">Year the Observatory was founded. <em class="serif">Eight years</em> of continuous research on blockchain and Web3.</p>
+      </div>
+      <div class="cred-cell" role="listitem">
+        <span class="cred-tag">№ 02 / The Ranking</span>
+        <span class="cred-coindesk-mark">CoinDesk Ranking 2022</span>
+        <div class="cred-ranks">
+          <div class="rank"><b>#1</b><span>in Italy</span></div>
+          <div class="rank"><b>6<sup>th</sup></b><span>in Europe</span></div>
+          <div class="rank"><b>33<sup>rd</sup></b><span>globally</span></div>
+        </div>
+        <span class="cred-src">Best Universities for Blockchain · 2022</span>
+      </div>
+      <div class="cred-cell" role="listitem">
+        <span class="cred-tag">№ 03 / The Reach</span>
+        <span class="cred-figure">2<em>M</em><span style="font-size:.5em;vertical-align:.3em">+</span></span>
+        <p class="cred-desc">LinkedIn views. <em class="serif">300+</em> posts published. <em class="serif">500+</em> webinar participants on Osservatori.net each year.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════ WIRE / PARTNERS TICKER ════════════════════════ -->
+<div class="wire" aria-label="Community of partners and sponsors">
+  <div class="wire-tag"><span class="live-dot"></span>Community Wire</div>
+  <div class="wire-track-outer">
+    <div class="wire-track" id="wireTrack">
+      <!-- SET 1 -->
+      <span class="wire-item"><img src="assets/logos/accenture.png" alt="Accenture" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Accenture</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/almaviva.png" alt="Almaviva" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Almaviva</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/mediolanum-banca.png" alt="Mediolanum Banca" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Mediolanum Banca</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/binance.png" alt="Binance" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Binance</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/enel.png" alt="Enel" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Enel</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/ey.png" alt="EY" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">EY</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/fleap.png" alt="Fleap" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Fleap</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/ntt-data.png" alt="NTT Data" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">NTT Data</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/pwc.png" alt="PwC" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">PwC</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/vechain.png" alt="VeChain" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">VeChain</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><span class="wire-item-text">Wbcode</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><span class="wire-item-text">Horizen Labs</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><span class="wire-item-text">Pomiager</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/altrefiamme.png" alt="Altrefiamme" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Altrefiamme</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/amundi.png" alt="Amundi" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Amundi</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/banca-generali.png" alt="Banca Generali" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Banca Generali</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/bnl-bnp-paribas.svg" alt="BNL BNP Paribas" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">BNL BNP Paribas</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/deloitte.png" alt="Deloitte" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Deloitte</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/gfx.png" alt="GFX Security &amp; IT" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">GFX Security</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/mediobanca.png" alt="Mediobanca" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Mediobanca</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/illimity.png" alt="illimity Banca" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">illimity Banca</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/nexi.png" alt="Nexi" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Nexi</span></span><span class="wire-sep"></span>
+      <!-- SET 2 (duplicate for seamless loop) -->
+      <span class="wire-item"><img src="assets/logos/accenture.png" alt="Accenture" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Accenture</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/almaviva.png" alt="Almaviva" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Almaviva</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/mediolanum-banca.png" alt="Mediolanum Banca" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Mediolanum Banca</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/binance.png" alt="Binance" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Binance</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/enel.png" alt="Enel" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Enel</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/ey.png" alt="EY" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">EY</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/fleap.png" alt="Fleap" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Fleap</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/ntt-data.png" alt="NTT Data" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">NTT Data</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/pwc.png" alt="PwC" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">PwC</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/vechain.png" alt="VeChain" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">VeChain</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><span class="wire-item-text">Wbcode</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><span class="wire-item-text">Horizen Labs</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><span class="wire-item-text">Pomiager</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/altrefiamme.png" alt="Altrefiamme" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Altrefiamme</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/amundi.png" alt="Amundi" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Amundi</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/banca-generali.png" alt="Banca Generali" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Banca Generali</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/bnl-bnp-paribas.svg" alt="BNL BNP Paribas" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">BNL BNP Paribas</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/deloitte.png" alt="Deloitte" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Deloitte</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/gfx.png" alt="GFX Security &amp; IT" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">GFX Security</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/mediobanca.png" alt="Mediobanca" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Mediobanca</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/illimity.png" alt="illimity Banca" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">illimity Banca</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/nexi.png" alt="Nexi" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Nexi</span></span><span class="wire-sep"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════ IDENTITY — TWO SOULS ════════════════════════ -->
+<section id="identity" aria-labelledby="identity-heading">
+  <div class="identity-head">
+    <span class="kicker fade-up"><span class="idx">I</span><span class="rule"></span>Two souls · One mission</span>
+    <h2 class="h-1 fade-up delay-1" id="identity-heading">
+      Research and application,<br/><em>without compromise.</em>
+    </h2>
+  </div>
+  <div class="identity-split">
+    <span class="identity-amp" aria-hidden="true">&amp;</span>
+
+    <article class="soul soul--research fade-up">
+      <div class="soul-mark"><span>WEB3HUB</span><span class="rule"></span><span>Research</span></div>
+      <div class="soul-display"><span class="small">The Blockchain &amp; Web3</span>Observatory.</div>
+      <div class="soul-body">
+        <p class="body-lg">Since 2017, the Observatory has been dedicated to generating and sharing knowledge on blockchain and Web3, contributing to the growth of the Italian and international market. <em class="serif">Four pillars</em> — Research, Network, Education, Communication — drive everything we do.</p>
+        <div class="soul-foot" style="margin-top:24px"><a href="#research" class="link-x">Read the research →</a></div>
+      </div>
+    </article>
+
+    <article class="soul soul--projects fade-up delay-2">
+      <div class="soul-mark"><span>WEB3HUB</span><span class="rule"></span><span>Projects</span></div>
+      <div class="soul-display"><span class="small">The Applied Research</span>Lab.</div>
+      <div class="soul-body">
+        <p class="body-lg">An independent, <em class="serif">pre-competitive</em> research lab for designing, prototyping and certifying real blockchain solutions. WEB3HUB supports organisations from ideation through to Proof of Concept, creating collaborative ecosystems that overcome centralisation.</p>
+        <div class="soul-foot" style="margin-top:24px"><a href="#projects" class="link-x">See our projects →</a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ════════════════════════ STATS ════════════════════════ -->
+<div class="stats" role="region" aria-label="Key metrics">
+  <div class="stats-head fade-up">
+    <span class="kicker"><span class="idx">II</span><span class="rule"></span>By the numbers</span>
+    <h2 class="h-2">Eight years of frontier research, <em>measured.</em></h2>
+  </div>
+
+  <div class="stat-row fade-up">
+    <span class="row-idx">N° 01</span>
+    <div class="num" data-target="8">0<span class="suffix">+</span></div>
+    <div class="right">
+      <span class="tag">Years of research</span>
+      <p class="desc">Continuous blockchain &amp; Web3 research, <em>since 2017.</em></p>
+    </div>
+  </div>
+
+  <div class="stat-row fade-up delay-1">
+    <span class="row-idx">N° 02</span>
+    <div class="num" data-target="30">0<span class="suffix">+</span></div>
+    <div class="right">
+      <span class="tag">Annual workshops</span>
+      <p class="desc">Closed-door sessions with CIOs, CTOs &amp; IT managers from <em>leading Italian organisations.</em></p>
+    </div>
+  </div>
+
+  <div class="stat-row fade-up delay-2">
+    <span class="row-idx">N° 03</span>
+    <div class="num" data-target="4">0</div>
+    <div class="right">
+      <span class="tag">International working groups</span>
+      <p class="desc"><em>Inatba</em>, EU Blockchain Forum, <em>EBSI</em>, IBSI — shaping European regulatory dialogue.</p>
+    </div>
+  </div>
+
+  <div class="stat-row fade-up delay-3">
+    <span class="row-idx">N° 04</span>
+    <div class="num" data-target="2000">0<span class="suffix">+</span></div>
+    <div class="right">
+      <span class="tag">National conference attendees</span>
+      <p class="desc">Registered per edition — the <em>most attended</em> blockchain gathering in Italy.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════ RESEARCH ════════════════════════ -->
+<section id="research" class="section" aria-labelledby="research-title">
+  <div class="wrap">
+    <div class="research-intro">
+      <div>
+        <span class="kicker fade-up"><span class="idx">III</span><span class="rule"></span>WEB3HUB Research</span>
+        <h2 class="h-1 fade-up delay-1" id="research-title" style="margin-top:24px">The Blockchain &amp;<br/><em>Web3 Observatory.</em></h2>
+      </div>
+      <p class="body-lg lede fade-up delay-2">Since its founding in 2017, the Observatory has been generating frontier knowledge on blockchain and Web3, shaping the Italian and international market through <em class="serif">four foundational pillars.</em></p>
+    </div>
+
+    <!-- PILLARS as numbered ledger -->
+    <div class="pillars-ledger fade-up">
+      <div class="pillar-row">
+        <span class="p-idx">01 / IV</span>
+        <span class="p-name"><em>Research</em></span>
+        <p class="p-desc">Developing in-depth analyses and studies to understand what blockchain and Web3 are, and what concrete opportunities they generate for businesses and institutions.</p>
+        <span class="p-arrow" aria-hidden="true"></span>
+      </div>
+      <div class="pillar-row">
+        <span class="p-idx">02 / IV</span>
+        <span class="p-name"><em>Network</em></span>
+        <p class="p-desc">Building an international community of experts, demand and supply-side actors — facilitating exchange and collaboration to advance responsible adoption of blockchain and Web3.</p>
+        <span class="p-arrow" aria-hidden="true"></span>
+      </div>
+      <div class="pillar-row">
+        <span class="p-idx">03 / IV</span>
+        <span class="p-name"><em>Education</em></span>
+        <p class="p-desc">Serving as the reference point for organisations that want to stay updated on market evolutions and technological developments in blockchain and Web3.</p>
+        <span class="p-arrow" aria-hidden="true"></span>
+      </div>
+      <div class="pillar-row">
+        <span class="p-idx">04 / IV</span>
+        <span class="p-name"><em>Communication</em></span>
+        <p class="p-desc">Creating culture and spreading knowledge on blockchain and Web3, raising awareness among organisations that could benefit from these technologies.</p>
+        <span class="p-arrow" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <!-- THEMES as word cloud -->
+    <div class="themes-block">
+      <div class="themes-head fade-up">
+        <span class="kicker"><span class="rule"></span>Research themes</span>
+        <span class="body-sm">A sample of the topics we cover — from infrastructure to applications.</span>
+      </div>
+      <div class="themes-cloud fade-up">
+        <span class="t lg"><em>DeFi</em></span>
+        <span class="sep">/</span>
+        <span class="t">Tokenisation</span>
+        <span class="sep">/</span>
+        <span class="t sm">Stablecoins</span>
+        <span class="sep">/</span>
+        <span class="t"><em>NFTs</em></span>
+        <span class="sep">/</span>
+        <span class="t lg">CBDC</span>
+        <span class="sep">/</span>
+        <span class="t sm">DAOs</span>
+        <span class="sep">/</span>
+        <span class="t">Self-Sovereign <em>Identity</em></span>
+        <span class="sep">/</span>
+        <span class="t sm">Layer-2 Rollups</span>
+        <span class="sep">/</span>
+        <span class="t"><em>Zero Knowledge</em></span>
+        <span class="sep">/</span>
+        <span class="t lg">MiCA</span>
+        <span class="sep">/</span>
+        <span class="t sm">Verifiable Credentials</span>
+        <span class="sep">/</span>
+        <span class="t">Smart Contracts</span>
+        <span class="sep">/</span>
+        <span class="t sm">Web3 Infrastructure</span>
+        <span class="sep">/</span>
+        <span class="t"><em>RWA</em></span>
+        <span class="sep">/</span>
+        <span class="t sm">Energy &amp; Sustainability</span>
+      </div>
+    </div>
+
+    <!-- ACTIVITIES as data ribbon -->
+    <div class="activity-ribbon">
+      <div class="a-head fade-up">
+        <span class="kicker"><span class="rule"></span>Observatory activities</span>
+        <span class="body-sm">A measurable presence in Italy and internationally, shaping the blockchain ecosystem.</span>
+      </div>
+      <div class="activity-row fade-up">
+        <div class="activity-cell">
+          <span class="a-fig">8<sup>×</sup></span>
+          <span class="a-name">National Conferences</span>
+          <span class="a-desc">Each with 2,000+ registered attendees — Italy's most important blockchain event.</span>
+        </div>
+        <div class="activity-cell">
+          <span class="a-fig">30<em>+</em></span>
+          <span class="a-name">Annual Workshops</span>
+          <span class="a-desc">300+ participants/year, including CIOs, CTOs and IT Managers from leading Italian organisations.</span>
+        </div>
+        <div class="activity-cell">
+          <span class="a-fig">500<em>+</em></span>
+          <span class="a-name">Webinar Participants</span>
+          <span class="a-desc">Annual attendance on Osservatori.net, with educational content and market updates.</span>
+        </div>
+        <div class="activity-cell">
+          <span class="a-fig">4</span>
+          <span class="a-name">Intl. Working Groups</span>
+          <span class="a-desc">Active participation in Inatba, EU Blockchain Forum, EBSI and IBSI — shaping European dialogue.</span>
+        </div>
+        <div class="activity-cell">
+          <span class="a-fig">300<em>+</em></span>
+          <span class="a-name">LinkedIn Posts</span>
+          <span class="a-desc">Over 2 million views — the authoritative Italian voice in blockchain and Web3.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTERNATIONAL PRESENCE -->
+    <div class="intl-row">
+      <div class="a-head fade-up">
+        <span class="kicker"><span class="rule"></span>International presence</span>
+        <span class="body-sm">Workshops &amp; conferences held abroad — London, Paris, Brussels, Milan.</span>
+      </div>
+      <div class="intl-list fade-up">
+        <div class="intl-cell">
+          <span class="i-flag">UK · 01</span>
+          <span class="i-city">London</span>
+          <span class="i-venue">UCL · 2022</span>
+        </div>
+        <div class="intl-cell">
+          <span class="i-flag">FR · 02</span>
+          <span class="i-city">Paris</span>
+          <span class="i-venue">OECD · 2022</span>
+        </div>
+        <div class="intl-cell">
+          <span class="i-flag">BE · 03</span>
+          <span class="i-city">Brussels</span>
+          <span class="i-venue">EU Parliament · 2023</span>
+        </div>
+        <div class="intl-cell">
+          <span class="i-flag">IT · 04</span>
+          <span class="i-city">Milan</span>
+          <span class="i-venue">Politecnico · since 2017</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════ PROJECTS ════════════════════════ -->
+<section id="projects" class="section" aria-labelledby="projects-title">
+  <div class="wrap">
+    <div class="proj-intro">
+      <div>
+        <span class="kicker fade-up"><span class="idx">IV</span><span class="rule"></span>WEB3HUB Projects</span>
+        <h2 class="h-1 fade-up delay-1" id="projects-title" style="margin-top:24px">Applied research.<br/><em>Real impact.</em></h2>
+      </div>
+      <p class="body-lg lede fade-up delay-2">WEB3HUB is a <em class="serif">pre-competitive, independent</em> research centre that supports organisations in designing, prototyping and certifying blockchain and Web3 solutions — from concept to working prototype.</p>
+    </div>
+
+    <!-- WHY -->
+    <div class="why-block">
+      <div class="why-head fade-up">
+        <span class="kicker"><span class="rule"></span>Why work with WEB3HUB</span>
+        <span class="body-sm">Three fundamental reasons to choose the Politecnico's lab.</span>
+      </div>
+      <div class="why-list">
+        <div class="why-row fade-up">
+          <span class="w-idx">i.</span>
+          <h3 class="w-title">Super-partes <em>guarantor.</em></h3>
+          <p class="w-desc">The Politecnico di Milano's independence ensures objective analysis, free from commercial conflicts of interest — a guarantee that few private partners can match.</p>
+        </div>
+        <div class="why-row fade-up delay-1">
+          <span class="w-idx">ii.</span>
+          <h3 class="w-title">Specialised expertise, <em>years in the field.</em></h3>
+          <p class="w-desc">Our team brings deep, vertical competence built over years of hands-on work in blockchain and Web3 — combining academic rigour with direct experience on real industry projects.</p>
+        </div>
+        <div class="why-row fade-up delay-2">
+          <span class="w-idx">iii.</span>
+          <h3 class="w-title">Ecosystem <em>development.</em></h3>
+          <p class="w-desc">Supporting each project means contributing to the growth of the entire blockchain ecosystem — value that extends beyond the individual initiative.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <div class="services-menu">
+      <div class="services-head fade-up">
+        <span class="kicker"><span class="rule"></span>Our projects &amp; services</span>
+        <span class="body-sm">Four lines of work — from analysis to certified prototype.</span>
+      </div>
+      <div class="fade-up">
+        <div class="service-row">
+          <span class="s-tag">Project Design</span>
+          <h4 class="s-title">Analysis &amp; <em>Design</em></h4>
+          <p class="s-desc">AS IS mapping, functional and technical requirements, TO BE solution design. Politecnico di Milano super-partes certification included.</p>
+          <span class="s-duration">3–4 months</span>
+        </div>
+        <div class="service-row">
+          <span class="s-tag">Prototyping</span>
+          <h4 class="s-title">PoC &amp; <em>Prototype</em></h4>
+          <p class="s-desc">Full development of a working blockchain prototype — from requirements analysis to demo, testing and partner support for implementation.</p>
+          <span class="s-duration">5–7 months</span>
+        </div>
+        <div class="service-row">
+          <span class="s-tag">Ad-hoc Research</span>
+          <h4 class="s-title">Sector <em>Research</em></h4>
+          <p class="s-desc">Custom research focused on a specific domain or sector — market mapping, international benchmarking, technical analysis.</p>
+          <span class="s-duration">On request</span>
+        </div>
+        <div class="service-row">
+          <span class="s-tag">Startup Review</span>
+          <h4 class="s-title">Project <em>Evaluation</em></h4>
+          <p class="s-desc">Independent analysis and structured feedback on an existing blockchain project or startup — Politecnico di Milano certification.</p>
+          <span class="s-duration">2–3 months</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE STUDIES -->
+    <div class="cases-block">
+      <div class="cases-head fade-up">
+        <span class="kicker"><span class="rule"></span>Selected project examples</span>
+        <span class="body-sm">Real projects delivered in collaboration with leading organisations.</span>
+      </div>
+      <div class="cases-strip fade-up">
+        <article class="case-card">
+          <div class="c-head">
+            <img src="assets/logos/enea.png" alt="ENEA" class="c-logo" onerror="this.outerHTML='<span class=&quot;c-num&quot;>ENEA</span>'" />
+            <span class="c-num">№ 01</span>
+          </div>
+          <h4 class="c-title">Automated on-chain <em>energy</em> trading</h4>
+          <p class="c-desc">Prototype for a blockchain system enabling automated buy and sell of energy on-chain, exploring the intersection of DLT and energy market infrastructure.</p>
+        </article>
+        <article class="case-card">
+          <div class="c-head">
+            <img src="assets/logos/gfx.png" alt="GFX Security &amp; IT Services" class="c-logo" onerror="this.outerHTML='<span class=&quot;c-num&quot;>GFX</span>'" />
+            <span class="c-num">№ 02</span>
+          </div>
+          <h4 class="c-title">Verifiable <em>credentials</em> platform</h4>
+          <p class="c-desc">Solution for issuing and verifying verifiable credentials, designed to enable data interoperability in the procurement domain.</p>
+        </article>
+        <article class="case-card">
+          <div class="c-head">
+            <img src="assets/logos/accenture.png" alt="Accenture" class="c-logo" onerror="this.outerHTML='<span class=&quot;c-num&quot;>Accenture</span>'" />
+            <span class="c-num">№ 03</span>
+          </div>
+          <h4 class="c-title">NFT <em>copyright</em> protection</h4>
+          <p class="c-desc">Support in developing NFTs associated with multimedia content protected by copyright law, bridging digital creation and intellectual property.</p>
+        </article>
+        <article class="case-card">
+          <div class="c-head">
+            <img src="assets/logos/pwc.png" alt="PwC" class="c-logo" onerror="this.outerHTML='<span class=&quot;c-num&quot;>PwC</span>'" />
+            <span class="c-num">№ 04</span>
+          </div>
+          <h4 class="c-title">Italian blockchain <em>startup</em> ecosystem</h4>
+          <p class="c-desc">Custom research study on the blockchain startup ecosystem in Italy, co-developed with PwC in 2022.</p>
+        </article>
+        <article class="case-card">
+          <div class="c-head">
+            <img src="assets/logos/ntt-data.png" alt="NTT Data" class="c-logo" onerror="this.outerHTML='<span class=&quot;c-num&quot;>NTT Data</span>'" />
+            <span class="c-num">№ 05</span>
+          </div>
+          <h4 class="c-title">Rollups &amp; <em>Zero Knowledge</em> proofs</h4>
+          <p class="c-desc">Dedicated research project on rollup architectures and Zero Knowledge proof technologies for enterprise applications.</p>
+        </article>
+        <article class="case-card">
+          <div class="c-head">
+            <img src="assets/logos/enel.png" alt="Enel" class="c-logo" onerror="this.outerHTML='<span class=&quot;c-num&quot;>Enel</span>'" />
+            <span class="c-num">№ 06</span>
+          </div>
+          <h4 class="c-title"><em>Wallet</em>-as-a-Service selection</h4>
+          <p class="c-desc">Study on Wallet-as-a-Service providers and selection of the optimal blockchain platform for Enel's strategic requirements.</p>
+        </article>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════ PARTNER ════════════════════════ -->
+<section id="partner" class="section" aria-labelledby="partner-title">
+  <div class="wrap">
+    <div class="partner-intro">
+      <div>
+        <span class="kicker fade-up"><span class="idx">V</span><span class="rule"></span>Partner with WEB3HUB</span>
+        <h2 class="h-1 fade-up delay-1" id="partner-title" style="margin-top:24px">Why partner<br/>with <em>WEB3HUB?</em></h2>
+      </div>
+      <p class="body-lg fade-up delay-2">Joining WEB3HUB means becoming part of Italy's most authoritative blockchain research ecosystem — backed by the credibility of the Politecnico di Milano, which ranks <strong style="color:var(--ink)">#1 in Italy, #6 in Europe and #33 globally</strong> for blockchain according to CoinDesk.</p>
+    </div>
+
+    <div class="partner-grid">
+      <div>
+        <div class="values-head fade-up">
+          <span class="kicker"><span class="rule"></span>Six reasons to join</span>
+        </div>
+        <div class="values-list fade-up">
+          <div class="value-row">
+            <span class="v-idx">i.</span>
+            <div class="v-content">
+              <strong>Direct access to <em>decision makers.</em></strong>
+              <span>Alongside you in this journey are companies, experts, entrepreneurs and C-level executives — from those approaching blockchain for the first time to those who have worked in it for years.</span>
+            </div>
+          </div>
+          <div class="value-row">
+            <span class="v-idx">ii.</span>
+            <div class="v-content">
+              <strong>Research-first <em>business intelligence.</em></strong>
+              <span>We analyse topics on the frontier of innovation, always interpreted through a business lens — providing guidance on how to navigate the Italian and international market.</span>
+            </div>
+          </div>
+          <div class="value-row">
+            <span class="v-idx">iii.</span>
+            <div class="v-content">
+              <strong>Dialogue with <em>key institutions.</em></strong>
+              <span>Direct engagement with leading Italian and European institutions — Banca d'Italia, CONSOB, EU Blockchain Forum and more — in closed-door workshops.</span>
+            </div>
+          </div>
+          <div class="value-row">
+            <span class="v-idx">iv.</span>
+            <div class="v-content">
+              <strong>Premium visibility &amp; <em>brand authority.</em></strong>
+              <span>Your brand alongside the Politecnico di Milano on research reports, conference materials, LinkedIn content reaching over 2 million views per year.</span>
+            </div>
+          </div>
+          <div class="value-row">
+            <span class="v-idx">v.</span>
+            <div class="v-content">
+              <strong>Early access to <em>research findings.</em></strong>
+              <span>In our exclusive workshops, partners receive research results directly from Observatory researchers before public release — plus interaction with international top-level speakers.</span>
+            </div>
+          </div>
+          <div class="value-row">
+            <span class="v-idx">vi.</span>
+            <div class="v-content">
+              <strong>Authentic <em>pre-competitive</em> environment.</strong>
+              <span>Closed-door events in an informal, genuinely pre-competitive atmosphere — designed to share experience and generate real value for the community.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="values-head fade-up">
+          <span class="kicker"><span class="rule"></span>Membership options</span>
+        </div>
+        <div class="tiers-stack fade-up">
+          <div class="tier tier--featured">
+            <div class="t-name"><span class="tag">Tier 01</span><em>Partner</em></div>
+            <div class="t-feats">
+              <div class="t-feat"><span></span>Participation in all 5 workshops per year</div>
+              <div class="t-feat"><span></span>Roundtable participation</div>
+              <div class="t-feat"><span></span>Raw data sharing — list of 1,000+ blockchain projects</div>
+              <div class="t-feat"><span></span>Direct calls with Observatory researchers</div>
+              <div class="t-feat"><span></span>1-page company profile in final conference booklet</div>
+              <div class="t-feat"><span></span>Logo on conference cover, reports &amp; website</div>
+              <div class="t-feat"><span></span>Participant list (GDPR compliant)</div>
+            </div>
+          </div>
+          <div class="tier">
+            <div class="t-name"><span class="tag">Tier 02</span>Sponsor</div>
+            <div class="t-feats">
+              <div class="t-feat"><span></span>Participation in 3 workshops per year</div>
+              <div class="t-feat"><span></span>½ page company profile in final booklet</div>
+              <div class="t-feat"><span></span>Logo on online reports &amp; Observatory website</div>
+              <div class="t-feat"><span></span>Logo in conference invitations</div>
+            </div>
+          </div>
+        </div>
+        <div class="partner-cta-inline">
+          <button class="btn btn--ink" onclick="openContact()">Request Partnership Info <span class="arrow"></span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGOS -->
+    <div class="logos-block">
+      <div class="logos-tier fade-up">
+        <div class="logos-tier-head">
+          <span class="label">Partners <em>· tier 01</em></span>
+          <span class="rule"></span>
+          <span class="count">13 organisations</span>
+        </div>
+        <div class="logos-flow partner-tier">
+          <div class="lp"><img src="assets/logos/accenture.png" alt="Accenture" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Accenture</span>'" /></div>
+          <div class="lp"><img src="assets/logos/almaviva.png" alt="Almaviva" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Almaviva</span>'" /></div>
+          <div class="lp"><img src="assets/logos/mediolanum-banca.png" alt="Mediolanum Banca" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Mediolanum Banca</span>'" /></div>
+          <div class="lp"><span class="lp-text">Wbcode</span></div>
+          <div class="lp"><img src="assets/logos/binance.png" alt="Binance" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Binance</span>'" /></div>
+          <div class="lp"><img src="assets/logos/enel.png" alt="Enel" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Enel</span>'" /></div>
+          <div class="lp"><img src="assets/logos/ey.png" alt="EY" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>EY</span>'" /></div>
+          <div class="lp"><img src="assets/logos/fleap.png" alt="Fleap" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Fleap</span>'" /></div>
+          <div class="lp"><span class="lp-text">Horizen Labs</span></div>
+          <div class="lp"><img src="assets/logos/ntt-data.png" alt="NTT Data" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>NTT Data</span>'" /></div>
+          <div class="lp"><img src="assets/logos/pwc.png" alt="PwC" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>PwC</span>'" /></div>
+          <div class="lp"><img src="assets/logos/vechain.png" alt="VeChain" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>VeChain</span>'" /></div>
+          <div class="lp"><span class="lp-text">Pomiager</span></div>
+        </div>
+      </div>
+
+      <div class="logos-tier fade-up">
+        <div class="logos-tier-head">
+          <span class="label">Sponsors <em>· tier 02</em></span>
+          <span class="rule"></span>
+          <span class="count">18 organisations</span>
+        </div>
+        <div class="logos-flow">
+          <div class="lp"><span class="lp-text">42LF Innovation</span></div>
+          <div class="lp"><img src="assets/logos/altrefiamme.png" alt="Altrefiamme" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Altrefiamme</span>'" /></div>
+          <div class="lp"><img src="assets/logos/amundi.png" alt="Amundi Asset Management" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Amundi</span>'" /></div>
+          <div class="lp"><span class="lp-text">B3yond</span></div>
+          <div class="lp"><img src="assets/logos/banca-generali.png" alt="Banca Generali" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Banca Generali</span>'" /></div>
+          <div class="lp"><span class="lp-text">CGIL</span></div>
+          <div class="lp"><img src="assets/logos/bnl-bnp-paribas.svg" alt="BNL BNP Paribas" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>BNL BNP Paribas</span>'" /></div>
+          <div class="lp"><span class="lp-text">Creostudios</span></div>
+          <div class="lp"><img src="assets/logos/deloitte.png" alt="Deloitte" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Deloitte</span>'" /></div>
+          <div class="lp"><img src="assets/logos/gfx.png" alt="GFX Security &amp; IT" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>GFX Security</span>'" /></div>
+          <div class="lp"><span class="lp-text">GS1</span></div>
+          <div class="lp"><img src="assets/logos/mediobanca.png" alt="Mediobanca" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Mediobanca</span>'" /></div>
+          <div class="lp"><span class="lp-text">MoneyViz</span></div>
+          <div class="lp"><img src="assets/logos/illimity.png" alt="illimity Banca" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>illimity Banca</span>'" /></div>
+          <div class="lp"><img src="assets/logos/nexi.png" alt="Nexi" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Nexi</span>'" /></div>
+          <div class="lp"><span class="lp-text">OTB</span></div>
+          <div class="lp"><span class="lp-text">FISAC Milano e Lombardia</span></div>
+        </div>
+      </div>
+
+      <div class="logos-tier fade-up">
+        <div class="logos-tier-head">
+          <span class="label">Advisory Board <em>· institutional</em></span>
+          <span class="rule"></span>
+          <span class="count">7 institutions</span>
+        </div>
+        <div class="logos-flow advisory-tier">
+          <div class="lp"><span class="lp-text">Phigitally</span></div>
+          <div class="lp"><img src="assets/logos/unipolsai.png" alt="UnipolSai" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>UnipolSai</span>'" /></div>
+          <div class="lp"><img src="assets/logos/abi.png" alt="ABI" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>ABI</span>'" /></div>
+          <div class="lp"><img src="assets/logos/banca-italia.png" alt="Banca d'Italia" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Banca d&#39;Italia</span>'" /></div>
+          <div class="lp"><img src="assets/logos/consob.png" alt="CONSOB" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>CONSOB</span>'" /></div>
+          <div class="lp"><span class="lp-text">Ministero delle Imprese</span></div>
+          <div class="lp"><img src="assets/logos/management.png" alt="Polimi School of Management" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Polimi SoM</span>'" /></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARTNER CTA -->
+    <div class="partner-cta fade-up">
+      <div>
+        <div class="pc-tag"><span class="rule"></span>Unique in Italy</div>
+        <h3 class="pc-title">Ready to invest in<br/>your company's <em>future?</em></h3>
+        <p class="pc-body">Join Italy's most authoritative blockchain research community. Gain exclusive insights, build a network with industry decision makers, and shape the future of Web3 alongside the Politecnico di Milano — <strong>#1 in Italy for blockchain research.</strong></p>
+      </div>
+      <div class="pc-actions">
+        <a href="#research" class="btn btn--white">Explore Our Research <span class="arrow"></span></a>
+        <a href="#projects" class="btn btn--outline-white">Start a Project <span class="arrow"></span></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════ EVENTS ════════════════════════ -->
+<section id="events" class="section" aria-labelledby="events-title">
+  <div class="wrap">
+    <div class="events-intro">
+      <div>
+        <span class="kicker fade-up"><span class="idx">VI</span><span class="rule"></span>Annual programme</span>
+        <h2 class="h-1 fade-up delay-1" id="events-title" style="margin-top:24px">Events<br/><em>&amp; activities.</em></h2>
+      </div>
+      <p class="body-lg fade-up delay-2">Every year the Observatory runs a structured cycle of events — from intimate closed-door workshops to major national and international conferences — giving partners and sponsors privileged access to research findings and peer networks.</p>
+    </div>
+
+    <div class="events-aside fade-up">
+      <div class="ea-cell ea-cell--ink">
+        <span class="ea-tag">CoinDesk Ranking · 2022</span>
+        <span class="ea-num">#<em>1</em></span>
+        <p class="ea-desc">Politecnico di Milano ranked <strong style="color:#fff">#1 in Italy</strong>, #6 in Europe, #33 globally among Best Universities for Blockchain.</p>
+      </div>
+      <div class="ea-cell">
+        <span class="ea-tag">Scale of impact</span>
+        <span class="ea-num">2,000<em>+</em></span>
+        <p class="ea-desc">Registered attendees at each national conference — the most attended blockchain gathering in Italy.</p>
+      </div>
+      <div class="ea-cell">
+        <span class="ea-tag">Workshops per year</span>
+        <span class="ea-num">30<em>+</em></span>
+        <p class="ea-desc">Annual sessions with <strong style="color:var(--ink)">300+ participants</strong> per year — CIOs, CTOs, IT Managers, senior decision makers.</p>
+      </div>
+      <div class="ea-cell">
+        <span class="ea-tag">Intl. working groups</span>
+        <span class="ea-num">4</span>
+        <p class="ea-desc">Inatba · EU Blockchain Forum · EBSI · IBSI — shaping European regulatory dialogue.</p>
+      </div>
+    </div>
+
+    <div class="timeline-head fade-up">
+      <span class="kicker"><span class="rule"></span>Annual calendar · 2026</span>
+      <span class="timeline-hint">Scroll horizontally <span class="arrow"></span></span>
+    </div>
+    <div class="timeline-scroller" id="timelineScroller" aria-label="Annual calendar">
+      <div class="timeline-track">
+        <div class="t-event active">
+          <span class="t-month">March</span>
+          <span class="t-type">Kick-Off</span>
+          <h4 class="t-title">Annual <em>Kick-Off</em> Workshop</h4>
+          <p class="t-desc">The Observatory's opening session of the year. Research priorities are presented, the annual agenda is shared, and partners engage in the first structured roundtable of the cycle.</p>
+        </div>
+        <div class="t-event">
+          <span class="t-month">May</span>
+          <span class="t-type">Workshop</span>
+          <h4 class="t-title">Research deep-dive <em>workshop</em></h4>
+          <p class="t-desc">Closed-door session with early-stage research results. Participants include CIOs, CTOs and IT Managers who receive findings directly from Observatory researchers before public release.</p>
+        </div>
+        <div class="t-event">
+          <span class="t-month">June &amp; July</span>
+          <span class="t-type">Workshop</span>
+          <h4 class="t-title">Summer technical <em>workshops</em></h4>
+          <p class="t-desc">Focused sessions on specific technical and market themes identified during the first half of the research cycle — with international speakers and live case discussion.</p>
+        </div>
+        <div class="t-event">
+          <span class="t-month">Sept &amp; Oct</span>
+          <span class="t-type">Workshop</span>
+          <h4 class="t-title">Autumn <em>workshops</em></h4>
+          <p class="t-desc">Two dedicated sessions combining updated research data with structured exchange among community members — in the informal, pre-competitive atmosphere that defines WEB3HUB events.</p>
+        </div>
+        <div class="t-event">
+          <span class="t-month">November</span>
+          <span class="t-type t-type--intl">★ International Conference</span>
+          <h4 class="t-title">International <em>Conference</em> — Annual Highlight</h4>
+          <p class="t-desc">The Observatory's flagship event: a major international conference presenting the full year's research results, with <strong>2,000+ registered attendees</strong>, global keynote speakers and extensive partner visibility.</p>
+        </div>
+        <div class="t-event">
+          <span class="t-month">December</span>
+          <span class="t-type">Workshop</span>
+          <h4 class="t-title">Year-end <em>workshop</em></h4>
+          <p class="t-desc">Final community session of the year — reviewing key takeaways, gathering input for the next research cycle and celebrating the community's growth.</p>
+        </div>
+        <div class="t-event next">
+          <span class="t-month">January 2026 · New</span>
+          <span class="t-type t-type--intl">✦ Italian Conference</span>
+          <h4 class="t-title">Italian <em>National</em> Conference 2026</h4>
+          <p class="t-desc">A dedicated Italian-market conference launching in 2026 — expanding the Observatory's event offering and deepening engagement with domestic institutions, companies and researchers.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="events-intl">
+      <span class="kicker"><span class="rule"></span>International track record</span>
+    </div>
+    <div class="intl-mini fade-up">
+      <div class="im"><span class="flag">UK · 01</span><span class="city">London</span><span class="venue">UCL · 2022</span></div>
+      <div class="im"><span class="flag">FR · 02</span><span class="city">Paris</span><span class="venue">OECD · 2022</span></div>
+      <div class="im"><span class="flag">BE · 03</span><span class="city">Brussels</span><span class="venue">EU Parliament · 2023</span></div>
+      <div class="im"><span class="flag">EU · 04</span><span class="city">4 Working <em>Groups</em></span><span class="venue">Inatba · EBSI · IBSI</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════ TEAM ════════════════════════ -->
+<section id="team" class="section" aria-labelledby="team-title">
+  <div class="wrap">
+    <div class="team-intro">
+      <div>
+        <span class="kicker fade-up"><span class="idx">VII</span><span class="rule"></span>The people behind WEB3HUB</span>
+        <h2 class="h-1 fade-up delay-1" id="team-title" style="margin-top:24px">Our<br/><em>research team.</em></h2>
+      </div>
+      <p class="body-lg fade-up delay-2">WEB3HUB brings together senior academics, research directors and domain specialists from the Politecnico di Milano — combining scientific rigour with applied expertise in blockchain, Web3 and digital finance.</p>
+    </div>
+
+    <div class="team-block fade-up">
+      <div class="team-block-head">
+        <span class="label">Scientific Direction <em>· principal</em></span>
+        <span class="rule"></span>
+        <span class="count">2 directors</span>
+      </div>
+      <div class="team-mosaic scientific">
+        <div class="team-member large">
+          <div class="m-avatar">AP</div>
+          <h4 class="m-name">Alessandro <em>Perego</em></h4>
+          <div class="m-role">Scientific Director · WEB3HUB</div>
+        </div>
+        <div class="team-member large">
+          <div class="m-avatar">DS</div>
+          <h4 class="m-name">Donatella <em>Sciuto</em></h4>
+          <div class="m-role">Scientific Director · WEB3HUB</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-block fade-up">
+      <div class="team-block-head">
+        <span class="label">Observatory Directors <em>· research</em></span>
+        <span class="rule"></span>
+        <span class="count">3 directors</span>
+      </div>
+      <div class="team-mosaic directors">
+        <div class="team-member">
+          <div class="m-avatar">FB</div>
+          <h4 class="m-name">Francesco Bruschi</h4>
+          <div class="m-role">Director · Blockchain &amp; Web3 Observatory</div>
+        </div>
+        <div class="team-member">
+          <div class="m-avatar">VP</div>
+          <h4 class="m-name">Valeria Portale</h4>
+          <div class="m-role">Director · Blockchain &amp; Web3 Observatory</div>
+        </div>
+        <div class="team-member">
+          <div class="m-avatar">GV</div>
+          <h4 class="m-name">Giacomo Vella</h4>
+          <div class="m-role">Director · Blockchain &amp; Web3 Observatory</div>
+          <a href="mailto:giacomo.vella@polimi.it" class="m-email">giacomo.vella@polimi.it</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-block fade-up">
+      <div class="team-block-head">
+        <span class="label">Project Directors <em>· WEB3HUB Projects Lab</em></span>
+        <span class="rule"></span>
+        <span class="count">2 directors</span>
+      </div>
+      <div class="team-mosaic projects">
+        <div class="team-member">
+          <div class="m-avatar">JF</div>
+          <h4 class="m-name">Jacopo Fracassi</h4>
+          <div class="m-role">Director · WEB3HUB Projects</div>
+          <a href="mailto:jacopo.fracassi@polimi.it" class="m-email">jacopo.fracassi@polimi.it</a>
+        </div>
+        <div class="team-member">
+          <div class="m-avatar">VR</div>
+          <h4 class="m-name">Vincenzo Rana</h4>
+          <div class="m-role">Director · WEB3HUB Projects</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-block fade-up">
+      <div class="team-block-head">
+        <span class="label">Researchers &amp; Analysts <em>· core team</em></span>
+        <span class="rule"></span>
+        <span class="count">6 members</span>
+      </div>
+      <div class="team-mosaic researchers">
+        <div class="team-member">
+          <div class="m-avatar">DG</div>
+          <h4 class="m-name">Davide Ghezzi</h4>
+          <div class="m-role">Researcher</div>
+        </div>
+        <div class="team-member">
+          <div class="m-avatar">TP</div>
+          <h4 class="m-name">Tommaso Paulon</h4>
+          <div class="m-role">Researcher</div>
+        </div>
+        <div class="team-member">
+          <div class="m-avatar">EZ</div>
+          <h4 class="m-name">Ettore Zauli</h4>
+          <div class="m-role">Researcher</div>
+        </div>
+        <div class="team-member">
+          <div class="m-avatar">ME</div>
+          <h4 class="m-name">Marco Esposito</h4>
+          <div class="m-role">Analyst</div>
+        </div>
+        <div class="team-member">
+          <div class="m-avatar">GW</div>
+          <h4 class="m-name">Giacomo Weiss</h4>
+          <div class="m-role">Analyst</div>
+        </div>
+        <div class="team-member">
+          <div class="m-avatar">MF</div>
+          <h4 class="m-name">Michela Franzese</h4>
+          <div class="m-role">Community Coordinator</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-advisory fade-up">
+      <div class="a-side">
+        <span class="label">Advisory Board</span>
+        <h3 class="h-3" style="margin-top:10px">Institutional <em class="serif">Partners</em> &amp; Advisory.</h3>
+        <p class="body-sm" style="max-width:44ch">WEB3HUB maintains direct relationships with the leading Italian and European regulatory and institutional bodies — ensuring research remains grounded in the real policy landscape.</p>
+      </div>
+      <div class="a-list">
+        <div class="a-item"><span class="a-name">ABI</span><span class="a-role">Associazione Bancaria Italiana</span></div>
+        <div class="a-item"><span class="a-name">Banca d'<em>Italia</em></span><span class="a-role">Eurosystem</span></div>
+        <div class="a-item"><span class="a-name">Banca d'<em>Italia</em></span><span class="a-role">Milan Office</span></div>
+        <div class="a-item"><span class="a-name">CONSOB</span><span class="a-role">Commissione Nazionale per le Società e la Borsa</span></div>
+        <div class="a-item"><span class="a-name">Ministero delle <em>Imprese</em></span><span class="a-role">e del Made in Italy</span></div>
+        <div class="a-item"><span class="a-name">Polimi <em>School of Management</em></span><span class="a-role">Osservatori Digital Innovation</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════ RESOURCES ════════════════════════ -->
+<section id="resources" class="section" aria-labelledby="resources-title">
+  <div class="wrap">
+    <div class="resources-intro">
+      <div>
+        <span class="kicker fade-up"><span class="idx">VIII</span><span class="rule"></span>Knowledge &amp; insights</span>
+        <h2 class="h-1 fade-up delay-1" id="resources-title" style="margin-top:24px">Resources<br/><em>&amp; publications.</em></h2>
+      </div>
+      <p class="body-lg fade-up delay-2">Observatory partners and sponsors gain access to an <em class="serif">exclusive library</em> of research materials — from in-depth reports to weekly news digests — all produced by WEB3HUB researchers at the Politecnico di Milano.</p>
+    </div>
+
+    <div class="resources-list fade-up">
+      <div class="res-row clickable" onclick="window.open('https://www.osservatori.net','_blank','noopener')">
+        <span class="r-idx">№ 01</span>
+        <div class="r-name">
+          <span class="r-tag">Research Reports</span>
+          <h4 class="r-title">In-depth <em>research reports</em></h4>
+        </div>
+        <p class="r-desc"><strong>4 to 5 thematic reports</strong> published annually, each focusing on a specific blockchain or Web3 research area. Observatory supporters can access all reports free of charge via the Osservatori.net platform.</p>
+        <span class="r-link">Access on Osservatori.net</span>
+      </div>
+      <div class="res-row">
+        <span class="r-idx">№ 02</span>
+        <div class="r-name">
+          <span class="r-tag">Monthly Newsletter</span>
+          <h4 class="r-title">Blockchain <em>monthly</em> overview</h4>
+        </div>
+        <p class="r-desc">A monthly newsletter reserved for the WEB3HUB community, analysing two macro-trends observed during the month and providing comprehensive market monitoring for cryptocurrencies, tokens, DApps, NFTs and DeFi — with rankings, charts and detailed analysis.</p>
+        <span class="r-link">Community exclusive</span>
+      </div>
+      <div class="res-row">
+        <span class="r-idx">№ 03</span>
+        <div class="r-name">
+          <span class="r-tag">Weekly Digest</span>
+          <h4 class="r-title">Weekly <em>news</em> digest</h4>
+        </div>
+        <p class="r-desc">A weekly curation of the most important national and international news in blockchain and Web3, delivered directly to the community. Supporters are also able to submit news, content and events for inclusion.</p>
+        <span class="r-link">Community exclusive</span>
+      </div>
+      <div class="res-row">
+        <span class="r-idx">№ 04</span>
+        <div class="r-name">
+          <span class="r-tag">Online Repository</span>
+          <h4 class="r-title">Shared <em>knowledge</em> repository</h4>
+        </div>
+        <p class="r-desc">A curated online repository containing the most relevant documents on blockchain and Web3 — a combination of secondary sources and original content developed by the Observatory team, kept continuously updated.</p>
+        <span class="r-link">Partner access</span>
+      </div>
+      <div class="res-row">
+        <span class="r-idx">№ 05</span>
+        <div class="r-name">
+          <span class="r-tag">Partner Only</span>
+          <h4 class="r-title">Raw <em>research</em> data</h4>
+        </div>
+        <p class="r-desc">Partners receive direct access to raw datasets generated by the Observatory — including the list of <strong>1,000+ blockchain projects and startups</strong> mapped globally — enabling bespoke internal analysis.</p>
+        <span class="r-link">Partner tier only</span>
+      </div>
+      <div class="res-row clickable" onclick="window.open('https://www.osservatori.net','_blank','noopener')">
+        <span class="r-idx">№ 06</span>
+        <div class="r-name">
+          <span class="r-tag">Events &amp; Media</span>
+          <h4 class="r-title">Webinars &amp; <em>workshop</em> materials</h4>
+        </div>
+        <p class="r-desc">Access to recordings, presentations and workshop materials from all Observatory events — including the annual international conference, closed-door workshops and webinars with <strong>500+ participants per year</strong> on Osservatori.net.</p>
+        <span class="r-link">Visit Osservatori.net</span>
+      </div>
+    </div>
+
+    <div class="resources-cta fade-up">
+      <div>
+        <span class="kicker"><span class="rule"></span>Exclusive access</span>
+        <h3 class="h-3" style="margin-top:14px">Full access is reserved for <em>Observatory</em> community members.</h3>
+        <p class="body" style="margin-top:8px">Becoming a Partner or Sponsor unlocks all research outputs — reports, raw data, repository, monthly newsletter and workshop materials. Contact us to learn more.</p>
+      </div>
+      <div class="actions">
+        <button class="btn btn--ink" onclick="openContact()">Request Access <span class="arrow"></span></button>
+        <a href="https://www.osservatori.net" target="_blank" rel="noopener" class="btn btn--paper">Osservatori.net <span class="arrow"></span></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ════════════════════════ FOOTER ════════════════════════ -->
+<footer role="contentinfo">
+  <div class="footer-wordmark">
+    <span class="wm">WEB3<em>HUB</em></span>
+    <span class="wm-sub">Politecnico di Milano · Blockchain &amp; Web3 Research and Projects Lab</span>
+  </div>
+
+  <div class="footer-cols">
+    <div class="footer-col">
+      <div class="f-brand-logo">
+        <img src="assets/logos/logo-web3hub.png" alt="WEB3HUB" onerror="this.style.display='none'" />
+        <span class="hair-v"></span>
+        <img src="assets/logos/logo-polimi.png" alt="Politecnico di Milano" class="polimi-mini" onerror="this.style.display='none'" />
+      </div>
+      <p class="f-desc">The Blockchain &amp; Web3 Research and Projects Lab of the Politecnico di Milano — <strong>#1 in Italy</strong> for blockchain research <em>(CoinDesk, 2022).</em></p>
+      <div class="f-socials">
+        <a href="https://www.linkedin.com/company/web3hub-polimi" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://web3hub.polimi.it" target="_blank" rel="noopener">web3hub.polimi.it ↗</a>
+        <a href="https://www.osservatori.net" target="_blank" rel="noopener">Osservatori.net ↗</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <p class="f-title">Explore</p>
+      <nav class="f-nav" aria-label="Footer navigation">
+        <a href="#research">WEB3HUB Research</a>
+        <a href="#projects">WEB3HUB Projects</a>
+        <a href="#partner">Partner</a>
+        <a href="#events">Events</a>
+        <a href="#team">Team</a>
+        <a href="#resources">Resources</a>
+      </nav>
+    </div>
+
+    <div class="footer-col">
+      <p class="f-title">Contacts</p>
+      <div class="f-contact">
+        <div class="f-c-item">
+          <strong>Jacopo Fracassi</strong>
+          <a href="mailto:jacopo.fracassi@polimi.it">jacopo.fracassi@polimi.it</a>
+        </div>
+        <div class="f-c-item">
+          <strong>Giacomo Vella</strong>
+          <a href="mailto:giacomo.vella@polimi.it">giacomo.vella@polimi.it</a>
+        </div>
+        <div class="f-c-item">
+          <strong>General Enquiries</strong>
+          <a href="mailto:ettore.zauli@polimi.it">ettore.zauli@polimi.it</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <p class="f-title">Institution</p>
+      <div class="f-inst">
+        <img src="assets/logos/logo-polimi.png" alt="Politecnico di Milano" onerror="this.outerHTML='<span style=&quot;font-family:var(--mono);font-size:.72rem;color:rgba(244,241,234,.85);letter-spacing:.05em;display:block;margin-bottom:14px&quot;>POLITECNICO DI MILANO</span>'" />
+        <p>Osservatori Digital Innovation<br/>School of Management<br/>DEIB · Dept. of Electronics, Information &amp; Bioengineering</p>
+        <a href="https://www.polimi.it" target="_blank" rel="noopener">polimi.it ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 WEB3HUB · Osservatori Digital Innovation · Politecnico di Milano · All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="https://www.polimi.it/en/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
+      <a href="https://www.polimi.it" target="_blank" rel="noopener">Politecnico di Milano</a>
+      <a href="https://www.osservatori.net" target="_blank" rel="noopener">Osservatori.net</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════ SCRIPTS ════════════════════════ -->
+<script>
+/* ───────── NAV scroll + active link ───────── */
+const nav = document.getElementById('nav');
+const onScroll = () => {
+  nav.classList.toggle('scrolled', window.scrollY > 30);
+  const p = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+  document.getElementById('progress').style.width = Math.min(100, Math.max(0, p)) + '%';
+};
+window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const sectObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      navLinks.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === `#${id}`));
+    }
+  });
+}, {threshold:.35});
+sections.forEach(s => sectObs.observe(s));
+
+/* ───────── MOBILE NAV ───────── */
+const burgerBtn = document.getElementById('burgerBtn');
+const mobileNav = document.getElementById('mobile-nav');
+const mobileClose = document.getElementById('mobileClose');
+const mobileLinks = document.querySelectorAll('.mobile-link');
+function openMobile(){mobileNav.classList.add('open');burgerBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'}
+function closeMobile(){mobileNav.classList.remove('open');burgerBtn.setAttribute('aria-expanded','false');document.body.style.overflow=''}
+window.closeMobile = closeMobile;
+burgerBtn.addEventListener('click', openMobile);
+mobileClose.addEventListener('click', closeMobile);
+mobileLinks.forEach(l => l.addEventListener('click', closeMobile));
+
+/* ───────── CONTACT OVERLAY ───────── */
+const contactPage = document.getElementById('contact-page');
+function openContact(){closeMobile();contactPage.classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>{const f=contactPage.querySelector('button,[href],input,select,textarea');if(f)f.focus()},100)}
+function closeContact(){contactPage.classList.remove('open');document.body.style.overflow=''}
+window.openContact = openContact;
+window.closeContact = closeContact;
+document.addEventListener('keydown', e => {if(e.key==='Escape'){closeMobile();closeContact()}});
+
+/* ───────── CONTACT FORM ───────── */
+function handleFormSubmit(e){
+  e.preventDefault();
+  const success = document.getElementById('form-success');
+  const error = document.getElementById('form-error');
+  success.style.display='none'; error.style.display='none';
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const message = document.getElementById('cf-message').value.trim();
+  const privacy = document.getElementById('cf-privacy').checked;
+  const company = document.getElementById('cf-company').value.trim();
+  const subject = document.getElementById('cf-subject').value;
+  if (!name || !email || !message || !privacy) {error.style.display='block';error.scrollIntoView({behavior:'smooth',block:'nearest'});return}
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {error.textContent='Please enter a valid email address.';error.style.display='block';return}
+  const recipients = 'jacopo.fracassi@polimi.it,giacomo.vella@polimi.it';
+  const subjectLine = subject ? `[WEB3HUB] ${subject} — ${name}` : `[WEB3HUB] Enquiry from ${name}`;
+  const body = [`Name: ${name}`, company ? `Company / Institution: ${company}`:'', `Email: ${email}`, subject ? `Topic: ${subject}`:'', '', 'Message:', message, '', '---', 'Sent via WEB3HUB website contact form', 'web3hub.polimi.it'].filter(Boolean).join('\n');
+  window.location.href = `mailto:${recipients}?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(body)}`;
+  success.style.display='block'; success.scrollIntoView({behavior:'smooth',block:'nearest'});
+  setTimeout(()=>document.getElementById('contactForm').reset(),1500);
+}
+window.handleFormSubmit = handleFormSubmit;
+
+/* ───────── FADE-UP ENTRANCE ───────── */
+const fadeEls = document.querySelectorAll('.fade-up, .hero-title, .rule-x');
+const fadeObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      fadeObs.unobserve(e.target);
+    }
+  });
+}, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+fadeEls.forEach(el => fadeObs.observe(el));
+
+/* hero title fires immediately */
+window.addEventListener('load', () => {
+  setTimeout(() => document.querySelector('.hero-title').classList.add('in'), 120);
+});
+
+/* ───────── SMOOTH SCROLL ───────── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e){
+    const t = document.querySelector(this.getAttribute('href'));
+    if (!t) return;
+    e.preventDefault(); closeMobile(); closeContact();
+    setTimeout(() => t.scrollIntoView({behavior:'smooth'}), 120);
+  });
+});
+
+/* ───────── STAT COUNTERS ───────── */
+function animate(el, target, dur){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    el.firstChild.nodeValue = target.toLocaleString(); return;
+  }
+  const start = performance.now();
+  const orig = el.innerHTML;
+  const hasSuffix = orig.includes('suffix');
+  const suffix = hasSuffix ? '<span class="suffix">+</span>' : '';
+  const step = now => {
+    const p = Math.min((now-start)/dur, 1);
+    const eased = 1 - Math.pow(1-p, 3);
+    const cur = Math.floor(eased * target);
+    el.innerHTML = cur.toLocaleString() + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const statNums = document.querySelectorAll('.stat-row .num');
+const statObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const target = parseInt(e.target.dataset.target, 10);
+    animate(e.target, target, 1800);
+    statObs.unobserve(e.target);
+  });
+}, {threshold:.4});
+statNums.forEach(el => statObs.observe(el));
+
+/* ───────── NAV CLOCK ───────── */
+function updateClock(){
+  const c = document.getElementById('navClock');
+  if (!c) return;
+  const opts = {timeZone:'Europe/Rome', hour:'2-digit', minute:'2-digit', hour12:false};
+  const t = new Date().toLocaleTimeString('en-GB', opts);
+  c.innerHTML = `<span class="live"></span>MILAN · ${t}`;
+}
+updateClock(); setInterval(updateClock, 30000);
+
+/* ───────── TIMELINE auto-position to active ───────── */
+window.addEventListener('load', () => {
+  const sc = document.getElementById('timelineScroller');
+  if (sc) {
+    const active = sc.querySelector('.t-event.active');
+    if (active && window.innerWidth > 1080) {
+      // nudge slightly to show motion
+    }
+  }
+});
+
+/* ───────── BOOTUP TAG ───────── */
+if ('requestIdleCallback' in window) {
+  requestIdleCallback(() => {
+    console.info('%cWEB3HUB · Politecnico di Milano','color:#1B3664;font-family:Fraunces,serif;font-weight:500;font-size:14px');
+    console.info('%c#1 in Italy for Blockchain Research — CoinDesk 2022','color:#6a6555;font-family:JetBrains Mono,monospace;font-size:11px');
+  });
+}
+</script>
+
+</body>
+</html>

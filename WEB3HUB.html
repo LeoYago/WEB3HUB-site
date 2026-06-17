@@ -1,0 +1,3035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WEB3HUB — Politecnico di Milano | Blockchain & Web3 Research Lab</title>
+  <meta name="description" content="WEB3HUB is the Blockchain & Web3 Research and Projects Lab of the Politecnico di Milano — #1 in Italy, #6 in Europe, #33 globally for blockchain research (CoinDesk 2022)." />
+  <meta property="og:title" content="WEB3HUB — Politecnico di Milano" />
+  <meta property="og:description" content="Blockchain & Web3 Research and Applied Projects Lab. Two Souls, One Mission." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;1,14..32,300;1,14..32,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ================================================================
+       DESIGN TOKENS — INSTITUTIONAL PALETTE
+       Navy #1B3664 on White #ffffff
+    ================================================================ */
+    :root {
+      --bg:            #ffffff;
+      --bg-2:          #f0f5fb;
+      --bg-3:          #e8eef8;
+      --surface:       #f7f9fd;
+      --border:        #dde4f0;
+      --border-accent: rgba(27,54,100,0.28);
+
+      --blue:          #1B3664;
+      --blue-light:    #2a4d8f;
+      --blue-mid:      #2a5298;
+      --blue-pale:     #d6e2f5;
+      --blue-ultra:    #eef3fb;
+      --navy-dark:     #0f2040;
+
+      --text:          #0f1f3d;
+      --text-muted:    #4a6080;
+      --text-subtle:   #8fa3be;
+
+      --grad:          linear-gradient(135deg,#1B3664 0%,#2a5298 100%);
+      --grad-soft:     linear-gradient(135deg,rgba(27,54,100,.08) 0%,rgba(42,82,152,.08) 100%);
+      --grad-blue:     linear-gradient(135deg,#1e4080 0%,#3a6bc8 100%);
+      --grad-hero:     linear-gradient(160deg,#f7f9fd 0%,#eef3fb 40%,#f0f5fb 100%);
+
+      --shadow-sm:     0 1px 8px rgba(27,54,100,.06);
+      --shadow-card:   0 2px 16px rgba(27,54,100,.08);
+      --shadow-md:     0 4px 24px rgba(27,54,100,.11);
+      --shadow-lg:     0 8px 40px rgba(27,54,100,.13);
+
+      --ease:          cubic-bezier(.4,0,.2,1);
+      --spring:        cubic-bezier(.34,1.56,.64,1);
+
+      --font-display:  'Space Grotesk',sans-serif;
+      --font-body:     'Inter',sans-serif;
+
+      --r-sm: 6px; --r-md: 12px; --r-lg: 18px; --r-xl: 24px; --r-2xl: 36px;
+    }
+
+    /* ================================================================
+       RESET & BASE
+    ================================================================ */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px;scroll-padding-top:80px}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-weight:400;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    ::selection{background:rgba(27,54,100,.14);color:var(--navy-dark)}
+    img{display:block;max-width:100%}
+    a{text-decoration:none;color:inherit}
+    button{cursor:pointer;font-family:inherit}
+
+    /* ================================================================
+       TYPOGRAPHY
+    ================================================================ */
+    .d-xl{font-family:var(--font-display);font-size:clamp(2.8rem,6.5vw,5.5rem);font-weight:700;letter-spacing:-.04em;line-height:1.05}
+    .d-lg{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.25rem);font-weight:700;letter-spacing:-.03em;line-height:1.1}
+    .d-md{font-family:var(--font-display);font-size:clamp(1.5rem,2.5vw,2.25rem);font-weight:600;letter-spacing:-.025em;line-height:1.2}
+    .t-lg{font-family:var(--font-display);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:600;letter-spacing:-.015em;line-height:1.25}
+    .t-md{font-family:var(--font-display);font-size:1.05rem;font-weight:600;letter-spacing:-.01em}
+    .b-lg{font-size:1.1rem;line-height:1.75}
+    .b-md{font-size:1rem;line-height:1.7}
+    .b-sm{font-size:.875rem;line-height:1.65}
+    .label{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+
+    .grad-text{background:var(--grad-blue);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .muted{color:var(--text-muted)}
+    .subtle{color:var(--text-subtle)}
+
+    /* McKinsey-style animated underline */
+    .link-line{display:inline-block;position:relative;padding-bottom:2px}
+    .link-line::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1.5px;background:currentColor;transform:scaleX(1);transform-origin:left center;transition:transform .35s var(--ease)}
+    .link-line:hover::after{transform:scaleX(0);transform-origin:right center}
+
+    /* ================================================================
+       LAYOUT
+    ================================================================ */
+    .wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 32px}
+    .wrap--narrow{max-width:960px}
+    .section{padding:96px 0;position:relative}
+    .divider{height:1px;background:var(--border)}
+
+    .section-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+    .section-eyebrow::before{content:'';display:block;width:28px;height:2px;background:var(--blue);border-radius:2px;flex-shrink:0}
+
+    /* Section number accent */
+    .section-number{font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.2em;color:var(--text-subtle);display:block;margin-bottom:6px}
+
+    /* ================================================================
+       SVG ICON SYSTEM
+    ================================================================ */
+    .ico{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+    .ico svg{stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+    .ico-sm svg{width:16px;height:16px}
+    .ico-md svg{width:20px;height:20px}
+    .ico-lg svg{width:24px;height:24px}
+
+    /* ================================================================
+       COMPONENTS — CARDS
+    ================================================================ */
+    .card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-card);transition:transform .32s var(--ease),border-color .32s var(--ease),box-shadow .32s var(--ease)}
+    .card:hover{transform:translateY(-4px);border-color:rgba(27,54,100,.22);box-shadow:var(--shadow-md)}
+
+    /* Top-accent card */
+    .card-accent{position:relative;overflow:hidden}
+    .card-accent::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+    .card-accent:hover::before{transform:scaleX(1)}
+
+    /* ================================================================
+       COMPONENTS — BUTTONS
+    ================================================================ */
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:var(--r-md);font-family:var(--font-display);font-size:.82rem;font-weight:600;letter-spacing:.04em;border:none;white-space:nowrap;transition:all .28s var(--ease)}
+    .btn-primary{background:var(--blue);color:#fff;box-shadow:0 2px 12px rgba(27,54,100,.22)}
+    .btn-primary:hover{background:var(--navy-dark);box-shadow:0 4px 20px rgba(27,54,100,.32);transform:translateY(-2px)}
+    .btn-outline{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
+    .btn-outline:hover{background:var(--blue);color:#fff}
+    .btn-white{background:#fff;color:var(--blue);font-weight:700}
+    .btn-white:hover{background:var(--bg-2)}
+    .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.35);backdrop-filter:blur(8px)}
+    .btn-ghost:hover{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.6)}
+    .btn-sm{padding:9px 18px;font-size:.78rem}
+
+    /* ================================================================
+       COMPONENTS — BADGES
+    ================================================================ */
+    .badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:100px;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.06em}
+    .badge-blue{background:var(--blue-ultra);color:var(--blue);border:1px solid var(--blue-pale)}
+    .badge-white{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}
+
+    /* ================================================================
+       NAVIGATION — Centered logo, split links
+    ================================================================ */
+    #nav{position:fixed;top:0;left:0;right:0;z-index:900;padding:0 32px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:all .4s var(--ease)}
+    #nav.scrolled{background:rgba(255,255,255,.99);box-shadow:0 2px 24px rgba(27,54,100,.08)}
+
+    .nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;height:72px;gap:0}
+
+    /* Left / right link groups — flex:1 each to push logo to true centre */
+    .nav-links--left,.nav-links--right{display:flex;align-items:center;gap:2px;list-style:none;flex:1}
+    .nav-links--right{justify-content:flex-end}
+    .nav-links--left a,.nav-links--right a{display:block;padding:8px 14px;font-family:var(--font-display);font-size:.82rem;font-weight:500;color:var(--text-muted);border-radius:6px;transition:all .2s var(--ease)}
+    .nav-links--left a:hover,.nav-links--right a:hover{color:var(--blue);background:var(--blue-ultra)}
+
+    /* Nav CTA buttons (Projects / Research) — stay readable in every state */
+    .nav-links--left a.btn-primary,.nav-links--right a.btn-primary{color:#fff;padding:9px 18px}
+    .nav-links--left a.btn-primary:hover,.nav-links--right a.btn-primary:hover{color:#fff;background:var(--navy-dark)}
+    .nav-links--left a.btn-primary.nav-btn-active,.nav-links--right a.btn-primary.nav-btn-active{background:#fff;color:var(--blue);box-shadow:inset 0 0 0 1.5px var(--blue)}
+
+    /* Logo in centre */
+    .nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;margin:0 24px}
+    .nav-logo-img{height:32px;width:auto;object-fit:contain}
+    .nav-logo-divider{width:1px;height:22px;background:var(--border);margin:0 4px}
+    .nav-logo-polimi{height:24px;width:auto;object-fit:contain;opacity:.75}
+
+    /* Contact CTA */
+    .nav-cta{flex-shrink:0;margin-left:20px}
+
+    /* Hamburger */
+    .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:8px;margin-left:auto}
+    .nav-burger span{display:block;width:22px;height:2px;background:var(--blue);border-radius:2px;transition:all .25s var(--ease)}
+
+    /* Mobile overlay */
+    #mobile-nav{display:none;position:fixed;inset:0;z-index:899;background:rgba(255,255,255,.98);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:6px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+    #mobile-nav.open{opacity:1;pointer-events:all}
+    #mobile-nav a{font-family:var(--font-display);font-size:1.4rem;font-weight:600;color:var(--text);padding:12px 32px;border-radius:var(--r-md);transition:color .2s}
+    #mobile-nav a:hover{color:var(--blue)}
+    .mobile-close{position:absolute;top:24px;right:28px;background:none;border:none;color:var(--text-muted);font-size:1.5rem;padding:8px}
+
+    /* ================================================================
+       CONTACT PAGE OVERLAY
+    ================================================================ */
+    #contact-page{display:none;position:fixed;inset:0;z-index:950;background:var(--bg);overflow-y:auto}
+    #contact-page.open{display:block}
+    .contact-page-inner{min-height:100vh;display:flex;flex-direction:column}
+    .contact-header{padding:20px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:0;z-index:10}
+    .contact-back{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-size:.875rem;font-weight:600;color:var(--text-muted);background:none;border:none;padding:8px 12px;border-radius:var(--r-sm);transition:all .2s var(--ease)}
+    .contact-back:hover{color:var(--blue);background:var(--blue-ultra)}
+    .contact-body{flex:1;padding:80px 32px}
+    .contact-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start}
+    .contact-info-card{padding:32px;border-radius:var(--r-xl);background:var(--bg-2);border:1px solid var(--border)}
+    .contact-member{display:flex;gap:16px;align-items:flex-start;padding:18px;border-radius:var(--r-md);background:var(--bg);border:1px solid var(--border);margin-bottom:12px}
+    .contact-member:last-of-type{margin-bottom:0}
+    .contact-avatar{width:50px;height:50px;border-radius:50%;background:var(--blue-ultra);border:1.5px solid var(--blue-pale);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:.95rem;color:var(--blue);flex-shrink:0}
+    .contact-form{display:flex;flex-direction:column;gap:20px}
+    .form-group{display:flex;flex-direction:column;gap:7px}
+    .form-label{font-family:var(--font-display);font-size:.75rem;font-weight:700;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase}
+    .form-input,.form-textarea,.form-select{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-md);padding:13px 16px;font-family:var(--font-body);font-size:.9rem;color:var(--text);width:100%;outline:none;transition:border-color .2s var(--ease),box-shadow .2s var(--ease)}
+    .form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,54,100,.1)}
+    .form-input::placeholder,.form-textarea::placeholder{color:var(--text-subtle)}
+    .form-textarea{min-height:160px;resize:vertical}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .form-select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a6080' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;cursor:pointer}
+    .form-select option{background:var(--bg)}
+    .form-submit-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .form-note{font-size:.78rem;color:var(--text-muted);line-height:1.5}
+
+    /* ================================================================
+       HERO — background image, centred layout
+    ================================================================ */
+    #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding-top:72px}
+    .hero-bg{position:absolute;inset:0;z-index:0}
+    .hero-bg-image{position:absolute;inset:0;background-image:url('assets/images/hero-bg.jpg');background-size:cover;background-position:center center;background-repeat:no-repeat}
+    .hero-bg-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.52) 42%,rgba(255,255,255,.90) 72%,rgba(255,255,255,1.00) 100%)}
+    .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(27,54,100,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(27,54,100,.03) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 65% at 50% 0%,black 0%,transparent 100%)}
+
+    .hero-content{position:relative;z-index:1;padding:80px 32px 100px}
+    .hero-wrap{max-width:1280px;margin:0 auto}
+
+    .hero-eyebrow{display:flex;justify-content:center;margin-bottom:28px}
+    .hero-eyebrow-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 18px 6px 10px;background:var(--blue-ultra);border:1px solid var(--blue-pale);border-radius:100px}
+    .hero-dot{width:7px;height:7px;border-radius:50%;background:var(--blue);flex-shrink:0}
+
+    .hero-title{font-family:var(--font-display);font-size:clamp(3rem,7.5vw,5.8rem);font-weight:700;letter-spacing:-.045em;line-height:1.0;color:var(--blue);margin-bottom:24px;text-align:center}
+    .hero-subtitle{font-size:clamp(.95rem,1.4vw,1.2rem);color:var(--text-muted);max-width:580px;line-height:1.75;margin:0 auto 44px;text-align:center}
+
+    .hero-actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px;margin-bottom:72px}
+
+    /* Credential strip */
+    .cred-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .cred-card{padding:22px 24px;background:var(--bg);border:1px solid var(--border);border-top:3px solid var(--border);border-radius:var(--r-md);box-shadow:var(--shadow-card);transition:border-top-color .3s var(--ease)}
+    .cred-card:hover{border-top-color:var(--blue)}
+    .cred-card--gold{background:var(--blue);border-color:var(--blue);border-top-color:rgba(255,255,255,.25)}
+    .cred-card--gold .cred-num,.cred-card--gold .cred-desc,.cred-card--gold strong{color:#fff!important;-webkit-text-fill-color:#fff!important}
+    .cred-num{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:6px;display:block;color:var(--blue)}
+    .cred-desc{font-size:.78rem;color:var(--text-muted);line-height:1.45}
+
+    /* ================================================================
+       PARTNER TICKER
+    ================================================================ */
+    .ticker-wrap{width:100%;background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:24px 0;overflow:hidden;position:relative}
+    .ticker-wrap::before,.ticker-wrap::after{content:'';position:absolute;top:0;bottom:0;width:140px;z-index:2;pointer-events:none}
+    .ticker-wrap::before{left:0;background:linear-gradient(90deg,var(--bg) 0%,transparent 100%)}
+    .ticker-wrap::after{right:0;background:linear-gradient(270deg,var(--bg) 0%,transparent 100%)}
+    .ticker-label{text-align:center;margin-bottom:18px}
+    .ticker-track-outer{overflow:hidden;width:100%}
+    .ticker-track{display:flex;align-items:center;width:max-content;animation:ticker-scroll 65s linear infinite}
+    .ticker-wrap:hover .ticker-track{animation-play-state:paused}
+    @keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    .ticker-item{display:inline-flex;align-items:center;justify-content:center;padding:4px 24px;white-space:nowrap;transition:all .2s var(--ease)}
+    .ticker-item img{height:26px;width:auto;object-fit:contain;filter:none;opacity:1;transition:opacity .3s}
+    .ticker-item:hover img{filter:grayscale(0%);opacity:1}
+
+    /* Text fallback for items without logos */
+    .ticker-item-text{font-family:var(--font-display);font-size:.78rem;font-weight:600;color:var(--text-muted);transition:color .2s}
+    .ticker-item-text--partner{color:var(--blue);font-weight:700}
+    .ticker-item:hover .ticker-item-text{color:var(--blue)}
+
+    .ticker-sep{display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--border);flex-shrink:0;margin:0 4px}
+
+    /* ================================================================
+       IDENTITY STRIP
+    ================================================================ */
+    #identity{padding:72px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-2)}
+    .identity-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .identity-soul{padding:36px;border-radius:var(--r-lg);background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow-card);position:relative;overflow:hidden}
+    .identity-soul::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue)}
+    .identity-soul--projects::before{background:var(--grad-blue)}
+    .soul-icon{width:50px;height:50px;border-radius:10px;background:var(--blue-ultra);color:var(--blue);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+    .soul-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+    /* ================================================================
+       STATS BAR
+    ================================================================ */
+    .stats-bar{background:var(--blue);padding:0}
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+    .stat-item{padding:52px 28px;text-align:center;border-right:1px solid rgba(255,255,255,.14);position:relative}
+    .stat-item:last-child{border-right:none}
+    .stat-num{display:block;font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:700;letter-spacing:-.04em;color:#fff;margin-bottom:8px;-webkit-text-fill-color:#fff}
+    .stat-lbl{font-size:.82rem;color:rgba(255,255,255,.72);line-height:1.45}
+
+    /* ================================================================
+       RESEARCH
+    ================================================================ */
+    #research{background:var(--bg)}
+    .research-intro{max-width:680px;margin-bottom:52px}
+    .pillars-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:40px}
+    .pillar{padding:32px;border-radius:var(--r-lg);background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow-card);transition:all .32s var(--ease);cursor:default;position:relative;overflow:hidden}
+    .pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+    .pillar:hover::before{transform:scaleX(1)}
+    .pillar:hover{border-color:rgba(27,54,100,.22);box-shadow:var(--shadow-md);transform:translateY(-3px)}
+    .pillar-icon{width:48px;height:48px;border-radius:10px;background:var(--blue-ultra);color:var(--blue);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+    .pillar-icon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+    .themes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .theme-tag{padding:13px 16px;border-radius:var(--r-md);background:var(--bg-2);border:1px solid var(--border);font-family:var(--font-display);font-size:.82rem;font-weight:500;color:var(--text-muted);display:flex;align-items:center;gap:10px;transition:all .2s var(--ease)}
+    .theme-tag:hover{border-color:rgba(27,54,100,.28);color:var(--blue);background:var(--blue-ultra)}
+    .theme-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0}
+
+    .activity-strip{margin-top:48px;padding:40px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-xl)}
+    .activity-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:28px}
+    .activity-item{display:flex;gap:14px;align-items:flex-start}
+    .activity-ico{width:40px;height:40px;border-radius:10px;background:var(--blue-ultra);color:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .activity-ico svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+    .activity-txt strong{display:block;font-family:var(--font-display);font-size:.875rem;font-weight:600;margin-bottom:3px;color:var(--blue)}
+    .activity-txt span{font-size:.78rem;color:var(--text-muted);line-height:1.5}
+
+    .intl-bar{margin-top:20px;padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg)}
+    .intl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+    .intl-item{padding:16px;border-radius:var(--r-md);background:var(--bg-2);border:1px solid var(--border);text-align:center}
+    .intl-flag-text{font-family:var(--font-display);font-size:.62rem;font-weight:800;letter-spacing:.1em;color:var(--blue);background:var(--blue-ultra);border:1px solid var(--blue-pale);border-radius:4px;padding:3px 7px;margin-bottom:8px;display:inline-block}
+    .intl-city{font-family:var(--font-display);font-size:.8rem;font-weight:600;color:var(--blue);margin-bottom:2px}
+    .intl-venue{font-size:.7rem;color:var(--text-muted)}
+
+    /* ================================================================
+       PROJECTS
+    ================================================================ */
+    #projects{background:var(--bg-2)}
+    .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-bottom:56px}
+    .why-list{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+    .why-item{display:flex;gap:14px;align-items:flex-start;padding:18px;border-radius:var(--r-md);background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow-card);transition:all .22s var(--ease)}
+    .why-item:hover{border-color:rgba(27,54,100,.22);box-shadow:var(--shadow-md)}
+    .why-ico{width:36px;height:36px;border-radius:8px;background:var(--blue-ultra);color:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+    .why-ico svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+    .why-txt strong{display:block;font-family:var(--font-display);font-size:.875rem;font-weight:600;margin-bottom:3px;color:var(--blue)}
+    .why-txt span{font-size:.78rem;color:var(--text-muted);line-height:1.5}
+
+    .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .service-card{padding:26px;border-radius:var(--r-lg);background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow-card);position:relative;overflow:hidden;transition:all .32s var(--ease)}
+    .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue)}
+    .service-card:hover{border-color:rgba(27,54,100,.22);transform:translateY(-3px);box-shadow:var(--shadow-md)}
+    .service-badge{display:inline-block;margin-bottom:12px}
+    .service-price{display:inline-block;font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--blue);margin-top:10px}
+
+    .case-row{margin-top:52px}
+    .case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+    .case-card{padding:26px;border-radius:var(--r-lg);background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow-card);position:relative;overflow:hidden;transition:all .32s var(--ease)}
+    .case-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue)}
+    .case-card:hover{transform:translateY(-4px);border-color:rgba(27,54,100,.22);box-shadow:var(--shadow-md)}
+    .case-co{font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .case-title{font-family:var(--font-display);font-size:.95rem;font-weight:600;margin-bottom:8px;line-height:1.3}
+    .case-desc{font-size:.8rem;color:var(--text-muted);line-height:1.55}
+
+    /* ================================================================
+       PARTNER
+    ================================================================ */
+    #partner{background:var(--bg)}
+    .partner-intro{display:grid;grid-template-columns:6fr 6fr;gap:64px;align-items:start;margin-bottom:64px}
+    .value-list{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+    .value-item{display:flex;gap:14px;align-items:flex-start;padding:18px;border-radius:var(--r-md);background:var(--bg-2);border:1px solid var(--border);transition:all .2s var(--ease)}
+    .value-item:hover{border-color:rgba(27,54,100,.22);background:var(--blue-ultra)}
+    .value-ico{width:38px;height:38px;border-radius:10px;background:var(--blue-ultra);border:1px solid var(--blue-pale);color:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .value-ico svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+    .value-txt strong{display:block;font-family:var(--font-display);font-size:.875rem;font-weight:600;margin-bottom:3px;color:var(--blue)}
+    .value-txt span{font-size:.78rem;color:var(--text-muted);line-height:1.5}
+
+    .tier-stack{display:flex;flex-direction:column;gap:14px}
+    .tier-card{padding:26px;border-radius:var(--r-lg);background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow-card);position:relative;overflow:hidden}
+    .tier-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue)}
+    .tier-card--featured{border-color:rgba(27,54,100,.28);background:var(--blue-ultra)}
+    .tier-name{font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;color:var(--blue)}
+    .tier-price{font-family:var(--font-display);font-size:1.6rem;font-weight:700;letter-spacing:-.03em;margin-bottom:3px;color:var(--blue)}
+    .tier-note{font-size:.72rem;color:var(--text-muted);margin-bottom:14px}
+    .tier-feats{display:flex;flex-direction:column;gap:8px}
+    .tier-feat{display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--text-muted)}
+    .tier-check{width:16px;height:16px;border-radius:50%;background:var(--blue-ultra);border:1px solid var(--blue-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--blue);margin-top:1px}
+    .tier-check svg{width:8px;height:8px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+    .partner-logos-section{margin-top:56px}
+    .tier-label{font-family:var(--font-display);font-size:.67rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;display:flex;align-items:center;gap:14px}
+    .tier-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+    .logo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:32px}
+    .logo-pill{display:flex;align-items:center;justify-content:center;padding:12px 14px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font-display);font-size:.72rem;font-weight:600;color:var(--text-muted);text-align:center;transition:all .2s var(--ease);cursor:default;min-height:50px}
+    .logo-pill:hover{border-color:rgba(27,54,100,.28);color:var(--blue);background:var(--blue-ultra)}
+    .logo-pill--partner{border-color:rgba(27,54,100,.2);color:var(--blue);background:var(--blue-ultra)}
+    .logo-pill--advisory{border-color:rgba(27,54,100,.15);color:var(--blue-light);background:var(--blue-ultra)}
+
+    /* Partner CTA — navy block, left-aligned (institutional style) */
+    .partner-cta{margin-top:56px;padding:52px 64px;border-radius:var(--r-xl);background:var(--blue);display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap}
+    .partner-cta-text{flex:1;min-width:280px}
+    .partner-cta-actions{flex-shrink:0;display:flex;gap:14px;flex-wrap:wrap}
+    .partner-cta h3,.partner-cta p{color:#fff!important;-webkit-text-fill-color:#fff!important}
+    .partner-cta .muted{color:rgba(255,255,255,.72)!important}
+
+    /* ================================================================
+       EVENTS
+    ================================================================ */
+    #events{background:var(--bg-2)}
+    .events-layout{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:start}
+    .timeline{position:relative;padding-left:28px}
+    .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--blue) 0%,rgba(27,54,100,.15) 100%);border-radius:2px}
+    .t-item{position:relative;padding:0 0 28px 36px}
+    .t-item:last-child{padding-bottom:0}
+    .t-dot{position:absolute;left:-36px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--bg-2);border:2px solid var(--blue)}
+    .t-dot--active{background:var(--blue)}
+    .t-month{font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:7px}
+    .t-card{padding:20px 22px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r-md);box-shadow:var(--shadow-card);transition:all .28s var(--ease)}
+    .t-card:hover{border-color:rgba(27,54,100,.22);transform:translateX(4px);box-shadow:var(--shadow-md)}
+    .t-type{display:inline-block;padding:3px 10px;border-radius:100px;font-size:.67rem;font-weight:700;font-family:var(--font-display);letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px}
+    .t-type--kickoff{background:var(--blue-ultra);color:var(--blue);border:1px solid var(--blue-pale)}
+    .t-type--workshop{background:var(--blue-ultra);color:var(--blue);border:1px solid var(--blue-pale)}
+    .t-type--intl{background:var(--blue);color:#fff}
+    .t-type--italian{background:var(--bg-3);color:var(--blue);border:1px solid var(--border)}
+    .t-title{font-family:var(--font-display);font-size:.95rem;font-weight:600;margin-bottom:4px}
+    .t-desc{font-size:.78rem;color:var(--text-muted);line-height:1.5}
+
+    .events-aside{display:flex;flex-direction:column;gap:18px}
+    .events-stat-card{padding:26px;border-radius:var(--r-lg);background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow-card)}
+    .events-stat-card--navy{background:var(--blue);border-color:var(--blue)}
+    .events-stat-card--navy .label,.events-stat-card--navy .big-stat,.events-stat-card--navy p,.events-stat-card--navy strong{color:#fff!important;-webkit-text-fill-color:#fff!important}
+    .events-stat-card--navy .muted{color:rgba(255,255,255,.72)!important}
+    .big-stat{font-family:var(--font-display);font-size:3rem;font-weight:700;letter-spacing:-.05em;line-height:1;display:block;margin-bottom:6px;color:var(--blue);-webkit-text-fill-color:var(--blue)}
+
+    /* ================================================================
+       TEAM
+    ================================================================ */
+    #team{background:var(--bg)}
+    .team-leadership{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:16px}
+    .team-researchers{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .team-card{padding:24px 20px;border-radius:var(--r-lg);background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow-card);text-align:center;transition:all .32s var(--ease)}
+    .team-card:hover{border-color:rgba(27,54,100,.22);transform:translateY(-3px);box-shadow:var(--shadow-md)}
+    .team-card--featured{border-color:rgba(27,54,100,.2);background:var(--blue-ultra)}
+    .t-avatar{width:58px;height:58px;border-radius:50%;background:var(--blue-ultra);border:1.5px solid var(--blue-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--blue)}
+    .t-avatar--navy{background:var(--blue);border-color:var(--blue);color:#fff}
+    .team-name{font-family:var(--font-display);font-size:.9rem;font-weight:600;margin-bottom:4px}
+    .team-role{font-size:.75rem;color:var(--text-muted);line-height:1.4}
+
+    .team-advisory{margin-top:44px;padding:36px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-xl)}
+    .advisory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+    .advisory-item{padding:14px 16px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r-md);transition:all .2s var(--ease)}
+    .advisory-item:hover{border-color:rgba(27,54,100,.22);background:var(--blue-ultra)}
+    .advisory-name{font-family:var(--font-display);font-size:.82rem;font-weight:600;margin-bottom:2px;color:var(--blue)}
+    .advisory-role{font-size:.72rem;color:var(--text-muted)}
+
+    /* ================================================================
+       RESOURCES
+    ================================================================ */
+    #resources{background:var(--bg-2)}
+    .resources-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .res-card{padding:28px;border-radius:var(--r-lg);background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:12px;transition:all .32s var(--ease);cursor:pointer;position:relative;overflow:hidden}
+    .res-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+    .res-card:hover::before{transform:scaleX(1)}
+    .res-card:hover{border-color:rgba(27,54,100,.22);transform:translateY(-4px);box-shadow:var(--shadow-md)}
+    .res-icon{width:46px;height:46px;border-radius:10px;background:var(--blue-ultra);color:var(--blue);display:flex;align-items:center;justify-content:center}
+    .res-icon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+    .res-title{font-family:var(--font-display);font-size:.95rem;font-weight:600;line-height:1.3}
+    .res-desc{font-size:.8rem;color:var(--text-muted);line-height:1.55;flex:1}
+    .res-link{display:flex;align-items:center;gap:5px;font-family:var(--font-display);font-size:.78rem;font-weight:600;color:var(--blue);margin-top:auto}
+    .res-link::after{content:'→';transition:transform .2s}
+    .res-card:hover .res-link::after{transform:translateX(4px)}
+
+    /* ================================================================
+       FOOTER
+    ================================================================ */
+    footer{background:var(--blue);padding:0}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding:56px 0 48px;border-bottom:1px solid rgba(255,255,255,.12)}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;padding:28px 0}
+    .footer-copy{font-size:.75rem;color:rgba(255,255,255,.42)}
+    .footer-links-row{display:flex;gap:24px}
+    .footer-links-row a{font-size:.8rem;color:rgba(255,255,255,.52);transition:color .2s}
+    .footer-links-row a:hover{color:#fff}
+
+    .footer-logo-wrap{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+    .footer-logo-img{height:28px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.9}
+    .footer-desc{font-size:.82rem;color:rgba(255,255,255,.62);line-height:1.65;max-width:300px;margin-bottom:20px}
+    .footer-social{display:flex;gap:10px;flex-wrap:wrap}
+
+    .footer-col-title{font-family:var(--font-display);font-size:.67rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:16px}
+    .footer-nav{display:flex;flex-direction:column;gap:10px}
+    .footer-nav a{font-size:.82rem;color:rgba(255,255,255,.62);transition:color .2s}
+    .footer-nav a:hover{color:#fff}
+
+    .footer-contact-item{margin-bottom:14px}
+    .footer-contact-item strong{display:block;font-family:var(--font-display);font-size:.8rem;font-weight:600;color:rgba(255,255,255,.78);margin-bottom:2px}
+    .footer-contact-item a{font-size:.78rem;color:rgba(255,255,255,.52);transition:color .2s}
+    .footer-contact-item a:hover{color:#fff}
+
+    .footer-inst-card{padding:20px;border-radius:var(--r-md);border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06)}
+    .footer-inst-logo{height:28px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.7;margin-bottom:10px}
+    .footer-inst-card p{font-size:.72rem;color:rgba(255,255,255,.52);line-height:1.6;margin:6px 0}
+    .footer-inst-card a{font-size:.72rem;color:rgba(255,255,255,.52);transition:color .2s}
+    .footer-inst-card a:hover{color:#fff}
+
+    /* ================================================================
+       ANIMATION
+    ================================================================ */
+    .fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+    .fade-up.in{opacity:1;transform:translateY(0)}
+    .delay-1{transition-delay:.1s}
+    .delay-2{transition-delay:.2s}
+    .delay-3{transition-delay:.3s}
+    .delay-4{transition-delay:.4s}
+
+    /* ================================================================
+       RESPONSIVE — TABLET (≤1024px)
+    ================================================================ */
+    @media(max-width:1024px){
+      .nav-links--left,.nav-links--right,.nav-cta{display:none}
+      .nav-burger{display:flex}
+      .cred-strip{grid-template-columns:repeat(2,1fr)}
+      .stats-grid{grid-template-columns:repeat(2,1fr)}
+      .stat-item:nth-child(2){border-right:none}
+      .identity-grid{grid-template-columns:1fr;gap:16px}
+      .pillars-grid{grid-template-columns:1fr 1fr}
+      .themes-grid{grid-template-columns:repeat(2,1fr)}
+      .activity-grid{grid-template-columns:repeat(2,1fr)}
+      .intl-grid{grid-template-columns:repeat(2,1fr)}
+      .why-grid{grid-template-columns:1fr;gap:40px}
+      .services-grid{grid-template-columns:1fr 1fr}
+      .case-grid{grid-template-columns:repeat(2,1fr)}
+      .partner-intro{grid-template-columns:1fr;gap:48px}
+      .events-layout{grid-template-columns:1fr;gap:48px}
+      .team-researchers{grid-template-columns:repeat(3,1fr)}
+      .advisory-grid{grid-template-columns:repeat(2,1fr)}
+      .resources-grid{grid-template-columns:repeat(2,1fr)}
+      .contact-grid{grid-template-columns:1fr;gap:48px}
+      .footer-top{grid-template-columns:1fr 1fr;gap:36px}
+      .partner-cta{flex-direction:column;gap:28px;padding:40px 36px}
+    }
+
+    /* ================================================================
+       RESPONSIVE — MOBILE (≤768px)
+    ================================================================ */
+    @media(max-width:768px){
+      .section{padding:72px 0}
+      #mobile-nav{display:flex}
+      .cred-strip{grid-template-columns:1fr 1fr}
+      .stats-grid{grid-template-columns:1fr 1fr}
+      .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.14)}
+      .stat-item:last-child{border-bottom:none}
+      .pillars-grid{grid-template-columns:1fr}
+      .themes-grid{grid-template-columns:1fr}
+      .activity-grid{grid-template-columns:1fr}
+      .services-grid{grid-template-columns:1fr}
+      .case-grid{grid-template-columns:1fr}
+      .logo-grid{grid-template-columns:repeat(2,1fr)}
+      .partner-cta{padding:32px 24px}
+      .team-leadership{grid-template-columns:1fr 1fr!important}
+      .team-researchers{grid-template-columns:repeat(2,1fr)}
+      .advisory-grid{grid-template-columns:1fr}
+      .resources-grid{grid-template-columns:1fr}
+      .form-row{grid-template-columns:1fr}
+      .events-layout{grid-template-columns:1fr}
+      .footer-top{grid-template-columns:1fr;gap:32px}
+      .footer-bottom{flex-direction:column;align-items:flex-start}
+      .hero-actions{flex-direction:column;align-items:center}
+      .hero-actions .btn{width:100%;max-width:280px;justify-content:center}
+    }
+
+    @media(max-width:480px){
+      .cred-strip{grid-template-columns:1fr}
+      .team-leadership{grid-template-columns:1fr!important}
+      .team-researchers{grid-template-columns:1fr 1fr}
+    }
+
+    /* ================================================================
+       HERO CREDENTIAL STRIP — 3 cards layout
+    ================================================================ */
+
+    /* Override grid to 3 equal columns */
+    /* Override grid to 3 equal columns */
+/* ================================================================
+   CREDENTIAL STRIP — 3 equal columns, no overrides needed
+================================================================ */
+.cred-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  width: 100%;
+}
+
+/* Also delete any other .cred-strip rule you find — keep only this one */
+
+    /* CoinDesk centre card */
+    .cred-card--coindesk {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px 18px;
+      gap: 12px;
+      background: var(--blue-ultra);
+      border-top-color: var(--blue);
+    }
+
+        /* ================================================================
+       COINDESK LOGO — container, image and fallback
+    ================================================================ */
+
+    /* Container centres the logo above the ranking numbers */
+    .cred-coindesk-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      margin-bottom: 6px;
+    }
+
+    /* The logo image itself.
+       The filter chain works in two stages:
+       Stage 1 — brightness(0) collapses any source colour to pure black.
+       Stage 2 — sepia + hue-rotate + brightness lifts that black
+       into the site's institutional navy #1B3664. */
+    #coindesk-img {
+  height: 26px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  display: block;
+  opacity: 0.9;
+  transition: opacity 0.25s ease;
+}
+
+#coindesk-img:hover {
+  opacity: 1;
+}
+
+    /* On hover: lighten slightly to signal interactivity */
+    #coindesk-img:hover {
+      filter:
+        brightness(0)
+        sepia(1)
+        hue-rotate(195deg)
+        saturate(4)
+        brightness(0.65);
+      opacity: 1;
+    }
+
+    /* Styled text fallback — only visible when image fails to load.
+       Uses the same font weight and colour as the logo would have,
+       so the card layout does not break or look unintentional. */
+    #coindesk-fallback {
+      display: none;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--blue);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    /* Three ranking numbers in a row */
+    .cred-coindesk-rankings {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      width: 100%;
+    }
+    .cred-rank-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+    .cred-rank-num {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -.03em;
+      color: var(--blue);
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+    .cred-rank-num sup {
+      font-size: .6em;
+      vertical-align: super;
+      letter-spacing: 0;
+    }
+    .cred-rank-lbl {
+      font-family: var(--font-display);
+      font-size: .65rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .cred-rank-divider {
+      width: 1px;
+      height: 36px;
+      background: var(--border);
+      flex-shrink: 0;
+      margin: 0 4px;
+    }
+
+    /* Small source label below rankings */
+    .cred-coindesk-sub {
+      font-size: .68rem;
+      color: var(--text-subtle);
+      text-align: center;
+      line-height: 1.4;
+      font-style: italic;
+    }
+
+    /* Responsive: stack to 1 column on mobile */
+    @media (max-width: 768px) {
+      .cred-strip { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 1024px) {
+      .cred-strip { grid-template-columns: repeat(3, 1fr); }
+    }
+
+  </style>
+
+  <!-- ================================================================
+       PREMIUM ELEVATION LAYER
+       Light institutional system — refined craft, typographic rigour,
+       ambient depth. Loaded after base styles to enhance, not replace.
+       No HTML content, structure, links or asset paths are altered.
+  ================================================================ -->
+  <style>
+    :root{
+      --font-mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+      --grad:linear-gradient(120deg,#1B3664 0%,#3a6bc8 100%);
+      --grad-blue:linear-gradient(120deg,#1e4080 0%,#5183d6 100%);
+      --grad-line:linear-gradient(90deg,transparent 0%,var(--blue-mid) 50%,transparent 100%);
+      --border:rgba(27,54,100,.10);
+      --border-strong:rgba(27,54,100,.17);
+      --shadow-sm:0 1px 2px rgba(15,31,61,.04);
+      --shadow-card:0 1px 2px rgba(15,31,61,.04),0 10px 28px -10px rgba(27,54,100,.12);
+      --shadow-md:0 2px 6px rgba(15,31,61,.06),0 20px 44px -14px rgba(27,54,100,.18);
+      --shadow-lg:0 4px 10px rgba(15,31,61,.07),0 36px 70px -18px rgba(27,54,100,.24);
+      --ease:cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ---- TYPOGRAPHY — monospace data-labels for tech credibility --- */
+    .label,.section-number,.tier-label,.t-month,.case-co,.footer-col-title,
+    .t-type,.cred-rank-lbl,.intl-flag-text,.footer-copy,.form-label{
+      font-family:var(--font-mono)!important;
+      font-weight:500;
+    }
+    .label{font-size:.68rem;letter-spacing:.18em}
+    .section-number{letter-spacing:.24em}
+    .footer-copy{letter-spacing:.02em}
+    .cred-rank-num{font-family:var(--font-mono)}
+    /* hero headline — mixed weight (light + bold on one line) */
+    .hero-title{font-weight:500}
+    .hero-title .grad-text{font-weight:700}
+    /* refined gradient section eyebrow */
+    .section-eyebrow::before{background:var(--grad);width:32px;height:2px}
+    .grad-text{background:var(--grad-blue);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+    /* ---- LAYOUT — generous, 8px-grid breathing room --------------- */
+    .section{padding:120px 0}
+    #identity{padding:104px 0}
+    .divider{background:var(--border)}
+
+    /* ---- NAVBAR — floating glass panel ---------------------------- */
+    #nav{padding:16px 24px;background:transparent;border-bottom:none;
+      backdrop-filter:none;-webkit-backdrop-filter:none}
+    .nav-inner{
+      height:64px;padding:0 14px 0 22px;border-radius:16px;
+      background:rgba(255,255,255,.72);
+      backdrop-filter:blur(24px) saturate(180%);
+      -webkit-backdrop-filter:blur(24px) saturate(180%);
+      border:1px solid rgba(27,54,100,.09);
+      box-shadow:0 1px 2px rgba(15,31,61,.04),0 8px 28px -10px rgba(27,54,100,.14);
+      transition:background .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease);
+    }
+    #nav.scrolled{box-shadow:none}
+    #nav.scrolled .nav-inner{
+      background:rgba(255,255,255,.91);
+      border-color:rgba(27,54,100,.13);
+      box-shadow:0 2px 4px rgba(15,31,61,.05),0 14px 38px -10px rgba(27,54,100,.20);
+    }
+    .nav-links--left a:not(.btn),.nav-links--right a:not(.btn){
+      position:relative;font-family:var(--font-mono);font-size:.7rem;
+      font-weight:500;text-transform:uppercase;letter-spacing:.1em;
+    }
+    .nav-links--left a:not(.btn):hover,.nav-links--right a:not(.btn):hover{background:transparent}
+    .nav-links--left a:not(.btn)::after,.nav-links--right a:not(.btn)::after{
+      content:'';position:absolute;left:14px;right:14px;bottom:5px;height:1.5px;
+      background:var(--blue);transform:scaleX(0);transform-origin:left center;
+      transition:transform .32s var(--ease);
+    }
+    .nav-links--left a:not(.btn):hover::after,.nav-links--right a:not(.btn):hover::after{transform:scaleX(1)}
+    .nav-links--left a.btn-primary,.nav-links--right a.btn-primary{
+      border-radius:10px;letter-spacing:.05em;
+      box-shadow:0 2px 10px -2px rgba(27,54,100,.35);
+    }
+    .nav-burger span{background:var(--blue)}
+    /* hero offset for the floating nav */
+    #hero{padding-top:104px}
+    html{scroll-padding-top:104px}
+
+    /* ---- HERO — ambient drifting orbs + depth --------------------- */
+    .hero-content::before,.hero-content::after{
+      content:'';position:absolute;border-radius:50%;z-index:-1;
+      filter:blur(90px);pointer-events:none;
+    }
+    .hero-content::before{
+      width:620px;height:620px;top:-220px;left:-160px;
+      background:radial-gradient(circle,rgba(58,107,200,.30),transparent 70%);
+      animation:orb-a 30s var(--ease) infinite;
+    }
+    .hero-content::after{
+      width:540px;height:540px;top:-120px;right:-140px;
+      background:radial-gradient(circle,rgba(27,54,100,.22),transparent 70%);
+      animation:orb-b 36s var(--ease) infinite;
+    }
+    @keyframes orb-a{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,30px) scale(1.12)}}
+    @keyframes orb-b{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-36px,24px) scale(1.08)}}
+    .hero-grid-bg{background-size:56px 56px}
+    /* hero credential cards — refined glass */
+    .cred-card{
+      background:rgba(255,255,255,.74);
+      backdrop-filter:blur(16px) saturate(160%);
+      -webkit-backdrop-filter:blur(16px) saturate(160%);
+      border-color:rgba(27,54,100,.10);
+      box-shadow:var(--shadow-card);
+    }
+    .cred-card--coindesk{background:rgba(238,243,251,.84)}
+    .cred-card--gold{background:var(--blue)}
+    /* hero CTA — slow glow pulse */
+    .hero-actions .btn-primary{position:relative;isolation:isolate}
+    .hero-actions .btn-primary::after{
+      content:'';position:absolute;inset:-2px;border-radius:inherit;z-index:-1;
+      animation:cta-pulse 3.6s ease-in-out infinite;
+    }
+    @keyframes cta-pulse{
+      0%,100%{box-shadow:0 0 0 0 rgba(42,82,152,0)}
+      50%{box-shadow:0 0 28px 3px rgba(42,82,152,.34)}
+    }
+
+    /* ---- UNIFIED PREMIUM CARD SYSTEM ------------------------------ */
+    .card,.pillar,.service-card,.case-card,.tier-card,.team-card,.res-card,
+    .events-stat-card,.why-item,.value-item,.identity-soul,.t-card,
+    .contact-info-card,.contact-member{
+      border-color:var(--border);
+      transition:transform .32s var(--ease),box-shadow .32s var(--ease),
+        border-color .32s var(--ease),background-color .32s var(--ease);
+    }
+    .card:hover,.pillar:hover,.service-card:hover,.case-card:hover,
+    .res-card:hover,.team-card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-md);
+      border-color:var(--border-strong);
+    }
+    .events-stat-card{box-shadow:var(--shadow-card)}
+    .events-stat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+    /* gradient accent bars across the card family */
+    .identity-soul::before,.service-card::before,.case-card::before,
+    .tier-card::before,.card-accent::before,.pillar::before,.res-card::before{
+      background:var(--grad)!important;height:2px;
+    }
+    /* research theme tags — gradient-border pills on hover */
+    .theme-tag{transition:all .25s var(--ease)}
+    .theme-tag:hover{
+      transform:translateY(-2px) scale(1.01);
+      color:var(--blue);
+      border:1px solid transparent;
+      background:linear-gradient(#fff,#fff) padding-box,var(--grad) border-box;
+    }
+
+    /* ---- PARTNER LOGOS — full colour ------------------------------ */
+    .ticker-item img,.logo-pill img,.case-card img{
+      filter:none;opacity:1;
+      transition:transform .25s var(--ease);
+    }
+    .ticker-item:hover img,.logo-pill:hover img,.case-card:hover img{
+      transform:translateY(-1px);
+    }
+    .ticker-wrap{border-color:var(--border)}
+
+    /* ---- STATS BAR — ambient depth -------------------------------- */
+    .stats-bar{position:relative;overflow:hidden}
+    .stats-bar::before{
+      content:'';position:absolute;width:680px;height:680px;border-radius:50%;
+      top:-380px;left:50%;transform:translateX(-50%);pointer-events:none;
+      background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%);
+    }
+    .stats-bar .wrap{position:relative;z-index:1}
+    .stat-item{border-color:rgba(255,255,255,.12)}
+
+    /* ---- SECTION GLOW ORBS — used sparingly ----------------------- */
+    #resources,#events{position:relative;overflow:hidden}
+    #resources::before,#events::before{
+      content:'';position:absolute;width:560px;height:560px;border-radius:50%;
+      filter:blur(40px);pointer-events:none;
+      background:radial-gradient(circle,rgba(58,107,200,.10),transparent 70%);
+    }
+    #resources::before{top:-180px;right:-160px}
+    #events::before{bottom:-220px;left:-180px}
+    /* partner CTA — radial glow on the navy block */
+    .partner-cta{position:relative;overflow:hidden}
+    .partner-cta::after{
+      content:'';position:absolute;width:560px;height:560px;border-radius:50%;
+      top:-280px;right:-140px;pointer-events:none;
+      background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);
+    }
+    .partner-cta>*{position:relative;z-index:1}
+
+    /* ---- BUTTONS — refined micro-interactions --------------------- */
+    .btn{transition:transform .26s var(--ease),box-shadow .26s var(--ease),
+      background-color .26s var(--ease),color .26s var(--ease),border-color .26s var(--ease)}
+    .btn-primary:hover{transform:translateY(-2px) scale(1.015)}
+    .btn-outline:hover{transform:translateY(-2px)}
+    .btn-white:hover{transform:translateY(-2px)}
+
+    /* ---- FOOTER — gradient hairline + link underline slide -------- */
+    footer{position:relative}
+    footer::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:2px;
+      background:var(--grad-line);
+    }
+    .footer-nav a,.footer-links-row a{position:relative}
+    .footer-nav a::after,.footer-links-row a::after{
+      content:'';position:absolute;left:0;bottom:-2px;height:1px;width:100%;
+      background:currentColor;transform:scaleX(0);transform-origin:left;
+      transition:transform .3s var(--ease);
+    }
+    .footer-nav a:hover::after,.footer-links-row a:hover::after{transform:scaleX(1)}
+
+    /* ---- REFINED ENTRANCE ANIMATION ------------------------------- */
+    .fade-up{transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+    .delay-1{transition-delay:.09s}
+    .delay-2{transition-delay:.18s}
+    .delay-3{transition-delay:.27s}
+    .delay-4{transition-delay:.36s}
+
+    /* ---- RESPONSIVE TUNING ---------------------------------------- */
+    @media(max-width:768px){
+      .section{padding:80px 0}
+      #identity{padding:72px 0}
+      #nav{padding:12px 14px}
+      #hero{padding-top:96px}
+      .hero-content::before{width:380px;height:380px;top:-140px;left:-120px}
+      .hero-content::after{width:340px;height:340px}
+    }
+
+    /* ---- REDUCED MOTION — disable all motion ---------------------- */
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{
+        animation-duration:.001ms!important;animation-iteration-count:1!important;
+        transition-duration:.01ms!important;scroll-behavior:auto!important;
+      }
+      .ticker-track{animation:none!important}
+      .fade-up{opacity:1!important;transform:none!important}
+      .hero-content::before,.hero-content::after{animation:none!important}
+      .hero-actions .btn-primary::after{animation:none!important}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     NAVIGATION — centered logo, split links
+================================================================ -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+
+        <!-- LEFT: Projects · Partners · Events -->
+    <ul class="nav-links--left" role="list">
+      <li><a href="#projects" class="btn btn-primary btn-sm">Projects</a></li>
+      <li><a href="#partner">Partners</a></li>
+      <li><a href="#events">Events</a></li>
+    </ul>
+
+    <!-- CENTRE: Logos -->
+    <a href="#hero" class="nav-logo" aria-label="WEB3HUB Homepage">
+      <img
+        src="assets/logos/logo-web3hub.png"
+        alt="WEB3HUB"
+        class="nav-logo-img"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+      />
+      <!-- Text fallback if image not found -->
+      <div style="display:none;align-items:center;justify-content:center;width:38px;height:38px;background:var(--blue);border-radius:8px;font-family:var(--font-display);font-size:.7rem;font-weight:800;color:#fff">W3</div>
+      <div class="nav-logo-divider" aria-hidden="true"></div>
+      <img
+        src="assets/logos/logo-polimi.png"
+        alt="Politecnico di Milano"
+        class="nav-logo-polimi"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+      />
+      <span style="display:none;font-family:var(--font-display);font-size:.62rem;font-weight:700;color:var(--text-muted);letter-spacing:.04em">Politecnico<br/>di Milano</span>
+    </a>
+
+    <!-- RIGHT: Resources · Team · Research -->
+    <ul class="nav-links--right" role="list">
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#research" class="btn btn-primary btn-sm">Research</a></li>
+    </ul>
+
+    <!-- Hamburger -->
+    <button class="nav-burger" id="burgerBtn" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div id="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <button class="mobile-close" id="mobileClose" aria-label="Close navigation">✕</button>
+  <a href="#projects"  class="mobile-link btn btn-primary">Projects</a>
+  <a href="#partner"   class="mobile-link">Partners</a>
+  <a href="#events"    class="mobile-link">Events</a>
+  <a href="#resources" class="mobile-link">Resources</a>
+  <a href="#team"      class="mobile-link">Team</a>
+  <a href="#research"  class="mobile-link btn btn-primary">Research</a>
+  <button class="btn btn-primary" onclick="openContact();closeMobile()" style="margin-top:16px">Contact Us</button>
+</div>
+
+<!-- ================================================================
+     CONTACT PAGE OVERLAY
+================================================================ -->
+<div id="contact-page" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+  <div class="contact-page-inner">
+    <div class="contact-header">
+      <button class="contact-back" onclick="closeContact()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back to WEB3HUB
+      </button>
+      <div style="display:flex;align-items:center;gap:10px">
+        <img src="assets/logos/logo-web3hub.png" alt="WEB3HUB" style="height:22px;width:auto;object-fit:contain" onerror="this.style.display='none'" />
+        <span style="font-family:var(--font-display);font-size:.78rem;font-weight:500;color:var(--text-muted)">Politecnico di Milano</span>
+      </div>
+    </div>
+
+    <div class="contact-body">
+      <div class="contact-grid">
+        <!-- Left info -->
+        <div>
+          <span class="badge badge-blue label" style="margin-bottom:18px">Get in touch</span>
+          <h1 class="d-lg" id="contact-title" style="margin-bottom:16px">
+            Let's start a<br /><span class="grad-text">conversation.</span>
+          </h1>
+          <p class="b-md muted" style="margin-bottom:32px;max-width:420px">
+            Whether you are a company exploring blockchain opportunities, a researcher interested in collaboration, or an institution looking for independent analysis — we would love to hear from you.
+          </p>
+          <div class="contact-info-card">
+            <p class="label muted" style="margin-bottom:18px">Your direct contacts at WEB3HUB</p>
+            <div class="contact-member">
+              <div class="contact-avatar">JF</div>
+              <div>
+                <div style="font-family:var(--font-display);font-size:.9rem;font-weight:600;margin-bottom:3px">Jacopo Fracassi</div>
+                <div style="font-size:.78rem;color:var(--text-muted);margin-bottom:6px">Director, WEB3HUB Projects</div>
+                <a href="mailto:jacopo.fracassi@polimi.it" style="font-size:.8rem;color:var(--blue)" class="link-line">jacopo.fracassi@polimi.it</a>
+              </div>
+            </div>
+            <div class="contact-member" style="margin-bottom:0">
+              <div class="contact-avatar">GV</div>
+              <div>
+                <div style="font-family:var(--font-display);font-size:.9rem;font-weight:600;margin-bottom:3px">Giacomo Vella</div>
+                <div style="font-size:.78rem;color:var(--text-muted);margin-bottom:6px">Director, Blockchain &amp; Web3 Observatory</div>
+                <a href="mailto:giacomo.vella@polimi.it" style="font-size:.8rem;color:var(--blue)" class="link-line">giacomo.vella@polimi.it</a>
+              </div>
+            </div>
+            <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border)">
+              <p class="b-sm muted">General enquiries</p>
+              <a href="mailto:ettore.zauli@polimi.it" style="font-size:.82rem;color:var(--blue);display:block;margin-top:4px" class="link-line">ettore.zauli@polimi.it</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right form -->
+        <div>
+          <div style="padding:36px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl)">
+            <h2 class="t-lg" style="margin-bottom:6px">Send us a message</h2>
+            <p class="b-sm muted" style="margin-bottom:28px">Your message will be delivered to both Jacopo Fracassi and Giacomo Vella.</p>
+            <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="cf-name">Full Name *</label>
+                  <input class="form-input" id="cf-name" name="name" type="text" placeholder="Your name" required autocomplete="name" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="cf-company">Company / Institution</label>
+                  <input class="form-input" id="cf-company" name="company" type="text" placeholder="Your organisation" autocomplete="organization" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cf-email">Email Address *</label>
+                <input class="form-input" id="cf-email" name="email" type="email" placeholder="your@email.com" required autocomplete="email" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cf-subject">Subject</label>
+                <select class="form-select form-input" id="cf-subject" name="subject">
+                  <option value="">Select a topic…</option>
+                  <option value="research-partnership">Research Partnership</option>
+                  <option value="project-collaboration">Project Collaboration</option>
+                  <option value="become-partner">Become a Partner / Sponsor</option>
+                  <option value="custom-research">Custom Research Request</option>
+                  <option value="events">Events &amp; Workshops</option>
+                  <option value="press-media">Press &amp; Media</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cf-message">Message *</label>
+                <textarea class="form-textarea" id="cf-message" name="message" placeholder="Describe your interest or request…" required></textarea>
+              </div>
+              <div class="form-group">
+                <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+                  <input type="checkbox" id="cf-privacy" name="privacy" required style="margin-top:3px;accent-color:var(--blue);flex-shrink:0" />
+                  <span style="font-size:.78rem;color:var(--text-muted);line-height:1.5">
+                    I have read and accept the <a href="https://www.polimi.it/en/privacy-policy" target="_blank" rel="noopener" style="color:var(--blue)">Privacy Policy</a> of Politecnico di Milano. *
+                  </span>
+                </label>
+              </div>
+              <div class="form-submit-row">
+                <button type="submit" class="btn btn-primary">Send Message →</button>
+                <p class="form-note">Fields marked * are required</p>
+              </div>
+              <div id="form-success" style="display:none;padding:16px;background:rgba(27,54,100,.07);border:1px solid rgba(27,54,100,.18);border-radius:var(--r-md);font-size:.875rem;color:var(--blue);margin-top:8px" role="alert">
+                ✓ Your message has been prepared. Your email client will open to complete sending.
+              </div>
+              <div id="form-error" style="display:none;padding:16px;background:rgba(220,38,38,.05);border:1px solid rgba(220,38,38,.18);border-radius:var(--r-md);font-size:.875rem;color:#b91c1c;margin-top:8px" role="alert">
+                Please fill in all required fields correctly.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ================================================================
+     HERO — background image, centred text, three buttons
+================================================================ -->
+<section id="hero" aria-labelledby="hero-title">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-bg-image"></div>
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-grid-bg"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-wrap">
+
+      <!-- Title -->
+      <h1 class="hero-title fade-up delay-1" id="hero-title">
+        The Future of Web3<br /><span class="grad-text">Is Built Here.</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero-subtitle fade-up delay-2">
+        WEB3HUB is the Blockchain &amp; Web3 Research and Projects Lab of the Politecnico di Milano — where rigorous academic research meets applied innovation for companies and institutions worldwide.
+      </p>
+
+      <!-- Three buttons: Projects | Contact | Research -->
+      <div class="hero-actions fade-up delay-3">
+        <a href="#projects" class="btn btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Explore Our Projects
+        </a>
+        <button class="btn btn-primary" onclick="openContact()">
+          Contact Us
+        </button>
+        <a href="#research" class="btn btn-outline">
+          Explore Our Research
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+        </a>
+      </div>
+
+           <!-- Credential strip — 3 cards -->
+              <!-- Credential strip — 3 cards, correct order -->
+        <div class="cred-strip fade-up delay-4" role="list">
+
+          <!-- LEFT: 2017 — founding year -->
+          <div class="cred-card" role="listitem">
+            <span class="cred-num" style="color:var(--blue)">2017</span>
+            <p class="cred-desc">Year the Observatory was founded. Eight years of continuous research on blockchain and Web3.</p>
+          </div>
+
+          <!-- CENTRE: CoinDesk ranking card -->
+          <div class="cred-card cred-card--coindesk" role="listitem">
+            <div class="cred-coindesk-logo">
+              <img
+                id="coindesk-img"
+                src="assets/logos/coindesk-logo.png"
+                alt="CoinDesk — Best Universities for Blockchain"
+                onerror="handleCoinDeskFallback()"
+              />
+              <span id="coindesk-fallback" aria-label="CoinDesk">CoinDesk</span>
+            </div>
+            <div class="cred-coindesk-rankings">
+              <div class="cred-rank-item">
+                <span class="cred-rank-num">#1</span>
+                <span class="cred-rank-lbl">in Italy</span>
+              </div>
+              <div class="cred-rank-divider" aria-hidden="true"></div>
+              <div class="cred-rank-item">
+                <span class="cred-rank-num">6<sup>th</sup></span>
+                <span class="cred-rank-lbl">in Europe</span>
+              </div>
+              <div class="cred-rank-divider" aria-hidden="true"></div>
+              <div class="cred-rank-item">
+                <span class="cred-rank-num">33<sup>rd</sup></span>
+                <span class="cred-rank-lbl">globally</span>
+              </div>
+            </div>
+            <p class="cred-coindesk-sub">Best Universities for Blockchain 2022</p>
+          </div>
+
+          <!-- RIGHT: 2M+ — LinkedIn reach -->
+          <div class="cred-card" role="listitem">
+            <span class="cred-num" style="color:var(--blue)">2M+</span>
+            <p class="cred-desc">LinkedIn views. 300+ posts published. 500+ webinar participants on Osservatori.net each year.</p>
+          </div>
+
+        </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     PARTNER TICKER — with confirmed direct image URLs
+     Partners without confirmed URLs use text fallback automatically
+================================================================ -->
+<div class="ticker-wrap" aria-label="Our community of partners and sponsors" role="region">
+  <div class="ticker-label">
+    <span class="label muted">Our Community of Partners &amp; Sponsors</span>
+  </div>
+<div class="ticker-track" id="tickerTrack">
+
+  <!-- ── SET 1 ─────────────────────────────────── -->
+
+  <span class="ticker-item">
+    <img src="assets/logos/accenture.png" alt="Accenture"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">Accenture</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/almaviva.png" alt="Almaviva"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">Almaviva</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/mediolanum-banca.png" alt="Mediolanum Banca"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">Mediolanum Banca</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/binance.png" alt="Binance"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">Binance</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/enel.png" alt="Enel"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">Enel</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/ey.png" alt="EY"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">EY</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/fleap.png" alt="Fleap"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">Fleap</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/ntt-data.png" alt="NTT Data"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">NTT Data</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/pwc.png" alt="PwC"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">PwC</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/vechain.png" alt="VeChain"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">VeChain</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/altrefiamme.png" alt="Altrefiamme"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">Altrefiamme</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/amundi.png" alt="Amundi Asset Management"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">Amundi</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/banca-generali.png" alt="Banca Generali"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">Banca Generali</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/bnl-bnp-paribas.svg" alt="BNL BNP Paribas"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">BNL BNP Paribas</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/deloitte.png" alt="Deloitte"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">Deloitte</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/gfx.png" alt="GFX Security &amp; IT Services"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">GFX Security &amp; IT</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/mediobanca.png" alt="Mediobanca"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">Mediobanca</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/illimity.png" alt="illimity Banca"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">illimity Banca</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/nexi.png" alt="Nexi"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">Nexi</span>
+  </span><span class="ticker-sep"></span>
+
+  <!-- ── SET 2 — exact duplicate for seamless loop ─── -->
+
+  <span class="ticker-item">
+    <img src="assets/logos/accenture.png" alt="Accenture"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">Accenture</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/almaviva.png" alt="Almaviva"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">Almaviva</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/mediolanum-banca.png" alt="Mediolanum Banca"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">Mediolanum Banca</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/binance.png" alt="Binance"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">Binance</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/enel.png" alt="Enel"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">Enel</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/ey.png" alt="EY"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">EY</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/fleap.png" alt="Fleap"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">Fleap</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/ntt-data.png" alt="NTT Data"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">NTT Data</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/pwc.png" alt="PwC"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">PwC</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/vechain.png" alt="VeChain"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text ticker-item-text--partner" style="display:none">VeChain</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item"><span class="ticker-item-text ticker-item-text--partner">Wbcode</span></span><span class="ticker-sep"></span>
+  <span class="ticker-item"><span class="ticker-item-text ticker-item-text--partner">Horizen Labs</span></span><span class="ticker-sep"></span>
+  <span class="ticker-item"><span class="ticker-item-text ticker-item-text--partner">Pomiager</span></span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/altrefiamme.png" alt="Altrefiamme"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">Altrefiamme</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/amundi.png" alt="Amundi Asset Management"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">Amundi</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/banca-generali.png" alt="Banca Generali"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">Banca Generali</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/cgil.jpg" alt="CGIL"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">CGIL</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/bnl-bnp-paribas.svg" alt="BNL BNP Paribas"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">BNL BNP Paribas</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/deloitte.png" alt="Deloitte"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">Deloitte</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/gfx.png" alt="GFX Security &amp; IT Services"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">GFX Security &amp; IT</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/mediobanca.png" alt="Mediobanca"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">Mediobanca</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/illimity.png" alt="illimity Banca"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">illimity Banca</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item">
+    <img src="assets/logos/nexi.png" alt="Nexi"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+    <span class="ticker-item-text" style="display:none">Nexi</span>
+  </span><span class="ticker-sep"></span>
+
+  <span class="ticker-item"><span class="ticker-item-text">42LF Innovation Law Firm</span></span><span class="ticker-sep"></span>
+  <span class="ticker-item"><span class="ticker-item-text">B3yond</span></span><span class="ticker-sep"></span>
+  <span class="ticker-item"><span class="ticker-item-text">Creostudios</span></span><span class="ticker-sep"></span>
+  <span class="ticker-item"><span class="ticker-item-text">GS1</span></span><span class="ticker-sep"></span>
+  <span class="ticker-item"><span class="ticker-item-text">MoneyViz</span></span><span class="ticker-sep"></span>
+  <span class="ticker-item"><span class="ticker-item-text">OTB</span></span><span class="ticker-sep"></span>
+  <span class="ticker-item"><span class="ticker-item-text">FISAC Milano e Lombardia</span></span><span class="ticker-sep"></span>
+
+</div>
+
+<!-- ================================================================
+     IDENTITY STRIP — Two Souls, One Mission
+================================================================ -->
+<section id="identity" aria-labelledby="identity-heading">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:48px" class="fade-up">
+      <span class="badge badge-blue label" style="margin-bottom:14px">Two Souls, One Mission</span>
+      <h2 class="d-md" id="identity-heading" style="margin-top:12px">
+        Research and application,<br /><span class="grad-text">without compromise.</span>
+      </h2>
+    </div>
+    <div class="identity-grid">
+
+      <div class="identity-soul identity-soul--research fade-up delay-1">
+        <div class="soul-icon">
+          <svg viewBox="0 0 24 24"><path d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15m-6.75-12.063A9.005 9.005 0 0121 9.75m-9.75 9V21m0 0H9m3 0h3"/></svg>
+        </div>
+        <span class="badge badge-blue" style="margin-bottom:14px">WEB3HUB Research</span>
+        <h3 class="t-lg" style="margin-bottom:12px">The Blockchain &amp; Web3 Observatory</h3>
+        <p class="b-md muted">
+          Since 2017, the Observatory has been dedicated to generating and sharing knowledge on blockchain and Web3, contributing to the growth of the Italian and international market. Four pillars — Research, Network, Education, Communication — drive everything we do.
+        </p>
+      </div>
+
+      <div class="identity-soul identity-soul--projects fade-up delay-2">
+        <div class="soul-icon">
+          <svg viewBox="0 0 24 24"><path d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+        </div>
+        <span class="badge badge-blue" style="margin-bottom:14px">WEB3HUB Projects</span>
+        <h3 class="t-lg" style="margin-bottom:12px">The Applied Research Lab</h3>
+        <p class="b-md muted">
+          An independent, pre-competitive research lab for designing, prototyping and certifying real blockchain solutions. WEB3HUB supports organisations from ideation through to Proof of Concept, creating collaborative ecosystems that overcome centralisation.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     STATS BAR
+================================================================ -->
+<div class="stats-bar" role="region" aria-label="Key metrics">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat-item fade-up">
+        <span class="stat-num">8+</span>
+        <span class="stat-lbl">Years of continuous blockchain &amp; Web3 research</span>
+      </div>
+      <div class="stat-item fade-up delay-1">
+        <span class="stat-num">30+</span>
+        <span class="stat-lbl">Annual workshops with CIOs, CTOs &amp; IT managers</span>
+      </div>
+      <div class="stat-item fade-up delay-2">
+        <span class="stat-num">4</span>
+        <span class="stat-lbl">International working groups — Inatba, EU Blockchain Forum, EBSI, IBSI</span>
+      </div>
+      <div class="stat-item fade-up delay-3">
+        <span class="stat-num">2,000+</span>
+        <span class="stat-lbl">Registered attendees per national conference</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ================================================================
+     WEB3HUB RESEARCH
+================================================================ -->
+<section id="research" class="section" aria-labelledby="research-title">
+  <div class="wrap">
+
+    <div class="research-intro">
+      <div class="section-eyebrow fade-up">
+        <span class="label muted">WEB3HUB Research</span>
+      </div>
+      <h2 class="d-lg fade-up delay-1" id="research-title">
+        The Blockchain &amp;<br /><span class="grad-text">Web3 Observatory</span>
+      </h2>
+      <p class="b-lg muted fade-up delay-2" style="margin-top:18px">
+        Since its founding in 2017, the Observatory has been generating frontier knowledge on blockchain and Web3, shaping the Italian and international market through four foundational pillars.
+      </p>
+    </div>
+
+    <!-- Four pillars -->
+    <div class="pillars-grid">
+
+      <div class="pillar fade-up">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 15.803a7.5 7.5 0 0010.607 10.607z"/></svg>
+        </div>
+        <h3 class="t-md" style="margin-bottom:10px">Research</h3>
+        <p class="b-sm muted">Developing in-depth analyses and studies to understand what blockchain and Web3 are, and what concrete opportunities they generate for businesses and institutions.</p>
+      </div>
+
+      <div class="pillar fade-up delay-1">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253"/></svg>
+        </div>
+        <h3 class="t-md" style="margin-bottom:10px">Network</h3>
+        <p class="b-sm muted">Building an international community of experts, demand and supply-side actors — facilitating exchange and collaboration to advance responsible adoption of blockchain and Web3.</p>
+      </div>
+
+      <div class="pillar fade-up delay-2">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24"><path d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+        </div>
+        <h3 class="t-md" style="margin-bottom:10px">Education</h3>
+        <p class="b-sm muted">Serving as the reference point for organisations that want to stay updated on market evolutions and technological developments in blockchain and Web3.</p>
+      </div>
+
+      <div class="pillar fade-up delay-3">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24"><path d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z"/></svg>
+        </div>
+        <h3 class="t-md" style="margin-bottom:10px">Communication</h3>
+        <p class="b-sm muted">Creating culture and spreading knowledge on blockchain and Web3, raising awareness among organisations that could benefit from these technologies.</p>
+      </div>
+
+    </div>
+
+    <!-- Activity strip -->
+    <div class="activity-strip fade-up" style="margin-top:52px">
+      <h3 class="t-md">Observatory Activities</h3>
+      <p class="b-sm muted" style="margin-top:6px">A measurable presence in Italy and internationally, shaping the blockchain ecosystem.</p>
+      <div class="activity-grid">
+
+        <div class="activity-item">
+          <div class="activity-ico">
+            <svg viewBox="0 0 24 24"><path d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+          </div>
+          <div class="activity-txt">
+            <strong>8 National Conferences</strong>
+            <span>Each with more than 2,000 registered attendees — Italy's most important blockchain event.</span>
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-ico">
+            <svg viewBox="0 0 24 24"><path d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0"/></svg>
+          </div>
+          <div class="activity-txt">
+            <strong>30+ Annual Workshops</strong>
+            <span>More than 300 participants each year, including CIOs, CTOs and IT Managers from leading Italian organisations.</span>
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-ico">
+            <svg viewBox="0 0 24 24"><path d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"/></svg>
+          </div>
+          <div class="activity-txt">
+            <strong>500+ Webinar Participants</strong>
+            <span>Annual attendance on the Osservatori.net platform, with educational content and market updates.</span>
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-ico">
+            <svg viewBox="0 0 24 24"><path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3"/></svg>
+          </div>
+          <div class="activity-txt">
+            <strong>International Workshops</strong>
+            <span>Held at UCL (London) and OECD (Paris) in 2022. International conference at the European Parliament, Brussels, 2023.</span>
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-ico">
+            <svg viewBox="0 0 24 24"><path d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
+          </div>
+          <div class="activity-txt">
+            <strong>4 International Working Groups</strong>
+            <span>Active participation in Inatba, EU Blockchain Forum, EBSI and IBSI — shaping European regulatory dialogue.</span>
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-ico">
+            <svg viewBox="0 0 24 24"><path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+          </div>
+          <div class="activity-txt">
+            <strong>300+ LinkedIn Posts</strong>
+            <span>Over 2 million views — the authoritative Italian voice in the blockchain and Web3 ecosystem.</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- International locations -->
+      <div class="intl-bar" style="margin-top:24px">
+        <p class="label muted">International Presence</p>
+        <div class="intl-grid">
+          <div class="intl-item">
+            <div class="intl-flag-text">UK</div>
+            <div class="intl-city">London</div>
+            <div class="intl-venue">UCL · 2022</div>
+          </div>
+          <div class="intl-item">
+            <div class="intl-flag-text">FR</div>
+            <div class="intl-city">Paris</div>
+            <div class="intl-venue">OECD · 2022</div>
+          </div>
+          <div class="intl-item">
+            <div class="intl-flag-text">BE</div>
+            <div class="intl-city">Brussels</div>
+            <div class="intl-venue">EU Parliament · 2023</div>
+          </div>
+          <div class="intl-item">
+            <div class="intl-flag-text">IT</div>
+            <div class="intl-city">Milan</div>
+            <div class="intl-venue">Politecnico · Since 2017</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================================================================
+     PARTNER SECTION
+================================================================ -->
+<section id="partner" class="section" aria-labelledby="partner-title">
+  <div class="wrap">
+
+    <div class="section-eyebrow fade-up">
+      <span class="label muted">Partner with WEB3HUB</span>
+    </div>
+    <h2 class="d-lg fade-up delay-1" id="partner-title" style="margin-bottom:14px">
+      Why Partner with<br /><span class="grad-text">WEB3HUB?</span>
+    </h2>
+
+    <div class="partner-intro">
+
+      <!-- Value propositions -->
+      <div>
+        <p class="b-lg muted fade-up delay-2" style="margin-bottom:24px">
+          Joining WEB3HUB means becoming part of Italy's most authoritative blockchain research ecosystem — backed by the credibility of the Politecnico di Milano, which ranks <strong style="color:var(--blue)">#1 in Italy, #6 in Europe and #33 globally</strong> for blockchain according to CoinDesk.
+        </p>
+        <div class="value-list">
+
+          <div class="value-item fade-up">
+            <div class="value-ico">
+              <svg viewBox="0 0 24 24"><path d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+            </div>
+            <div class="value-txt">
+              <strong>Direct Access to Decision Makers</strong>
+              <span>Alongside you in this journey are companies, experts, entrepreneurs and C-level executives — from those approaching blockchain for the first time to those who have worked in it for years.</span>
+            </div>
+          </div>
+
+          <div class="value-item fade-up delay-1">
+            <div class="value-ico">
+              <svg viewBox="0 0 24 24"><path d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div class="value-txt">
+              <strong>Research-First Business Intelligence</strong>
+              <span>We analyse topics on the frontier of innovation, always interpreted through a business lens — providing guidance on how to navigate the Italian and international market.</span>
+            </div>
+          </div>
+
+          <div class="value-item fade-up delay-2">
+            <div class="value-ico">
+              <svg viewBox="0 0 24 24"><path d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/></svg>
+            </div>
+            <div class="value-txt">
+              <strong>Dialogue with Key Institutions</strong>
+              <span>Direct engagement with leading Italian and European institutions — Banca d'Italia, CONSOB, EU Blockchain Forum and more — in closed-door workshops.</span>
+            </div>
+          </div>
+
+          <div class="value-item fade-up">
+            <div class="value-ico">
+              <svg viewBox="0 0 24 24"><path d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 110-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 01-1.44-4.282m3.102.069a18.03 18.03 0 01-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 018.835 2.535M10.34 6.66a23.847 23.847 0 008.835-2.535m0 0A23.74 23.74 0 0018.795 3m.38 1.125a23.91 23.91 0 011.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 001.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 010 3.46"/></svg>
+            </div>
+            <div class="value-txt">
+              <strong>Premium Visibility &amp; Brand Authority</strong>
+              <span>Your brand alongside the Politecnico di Milano on research reports, conference materials, LinkedIn content reaching over 2 million views per year.</span>
+            </div>
+          </div>
+
+          <div class="value-item fade-up delay-1">
+            <div class="value-ico">
+              <svg viewBox="0 0 24 24"><path d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15"/></svg>
+            </div>
+            <div class="value-txt">
+              <strong>Early Access to Research Findings</strong>
+              <span>In our exclusive workshops, partners receive research results directly from Observatory researchers before public release — plus interaction with international top-level speakers.</span>
+            </div>
+          </div>
+
+          <div class="value-item fade-up delay-2">
+            <div class="value-ico">
+              <svg viewBox="0 0 24 24"><path d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
+            </div>
+            <div class="value-txt">
+              <strong>Authentic Pre-Competitive Environment</strong>
+              <span>Closed-door events in an informal, genuinely pre-competitive atmosphere — designed to share experience and generate real value for the community.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Membership tiers -->
+      <div>
+        <h3 class="t-lg fade-up" style="margin-bottom:18px">Membership Options</h3>
+        <div class="tier-stack">
+
+          <div class="tier-card tier-card--featured fade-up">
+            <div class="tier-price">PARTNER</div>
+            <div class="tier-feats">
+              <div class="tier-feat"><div class="tier-check"><svg viewBox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>Participation in all 5 workshops per year</div>
+              <div class="tier-feat"><div class="tier-check"><svg viewBox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>Roundtable participation</div>
+              <div class="tier-feat"><div class="tier-check"><svg viewBox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>Raw data sharing (e.g. list of 1,000+ blockchain projects)</div>
+              <div class="tier-feat"><div class="tier-check"><svg viewBox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>Direct calls with Observatory researchers</div>
+              <div class="tier-feat"><div class="tier-check"><svg viewBox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>1-page company profile in final conference booklet</div>
+              <div class="tier-feat"><div class="tier-check"><svg viewBox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>Logo on conference cover, reports &amp; website</div>
+              <div class="tier-feat"><div class="tier-check"><svg viewBox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>Participant list (GDPR compliant)</div>
+            </div>
+          </div>
+
+          <div class="tier-card tier-card--sponsor fade-up delay-1">
+            <div class="tier-price">SPONSOR</div>
+            <div class="tier-feats">
+              <div class="tier-feat"><div class="tier-check"><svg viewBox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>Participation in 3 workshops per year</div>
+              <div class="tier-feat"><div class="tier-check"><svg viewBox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>½ page company profile in final booklet</div>
+              <div class="tier-feat"><div class="tier-check"><svg viewBox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>Logo on online reports &amp; Observatory website</div>
+              <div class="tier-feat"><div class="tier-check"><svg viewBox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>Logo in conference invitations</div>
+            </div>
+          </div>
+
+        </div>
+        <button class="btn btn-primary" onclick="openContact()" style="margin-top:20px;width:100%;justify-content:center">
+          Request Partnership Information →
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Current Partners -->
+    <div class="partner-logos-section fade-up">
+      <h3 class="t-lg" style="margin-bottom:28px">Our Community</h3>
+
+        <div class="tier-label">Partner</div>
+        <div class="logo-grid">
+          <div class="logo-pill logo-pill--partner">
+            <img src="assets/logos/accenture.png" alt="Accenture"
+              onerror="this.style.display='none';this.parentElement.setAttribute('data-text','Accenture')"
+              style="height:30px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">Accenture</span>
+          </div>
+          <div class="logo-pill logo-pill--partner">
+            <img src="assets/logos/almaviva.png" alt="Almaviva"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:30px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">Almaviva</span>
+          </div>
+          <div class="logo-pill logo-pill--partner">
+            <img src="assets/logos/mediolanum-banca.png" alt="Mediolanum Banca"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:30px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">Mediolanum Banca</span>
+          </div>
+          <div class="logo-pill logo-pill--partner">Wbcode</div>
+          <div class="logo-pill logo-pill--partner">
+            <img src="assets/logos/binance.png" alt="Binance"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:30px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">Binance</span>
+          </div>
+          <div class="logo-pill logo-pill--partner">
+            <img src="assets/logos/enel.png" alt="Enel"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:30px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">Enel</span>
+          </div>
+          <div class="logo-pill logo-pill--partner">
+            <img src="assets/logos/ey.png" alt="EY"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:30px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">EY</span>
+          </div>
+          <div class="logo-pill logo-pill--partner">
+            <img src="assets/logos/fleap.png" alt="Fleap"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:30px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">Fleap</span>
+          </div>
+          <div class="logo-pill logo-pill--partner">Horizen Labs</div>
+          <div class="logo-pill logo-pill--partner">
+            <img src="assets/logos/ntt-data.png" alt="NTT Data"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:30px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">NTT Data</span>
+          </div>
+          <div class="logo-pill logo-pill--partner">
+            <img src="assets/logos/pwc.png" alt="PwC"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:30px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">PwC</span>
+          </div>
+          <div class="logo-pill logo-pill--partner">
+            <img src="assets/logos/vechain.png" alt="VeChain"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:30px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">VeChain</span>
+          </div>
+          <div class="logo-pill logo-pill--partner">Pomiager</div>
+        </div>
+
+        <div class="tier-label">Sponsor</div>
+        <div class="logo-grid">
+          <div class="logo-pill">42LF Innovation Law Firm</div>
+          <div class="logo-pill">
+            <img src="assets/logos/altrefiamme.png" alt="Altrefiamme"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:28px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">Altrefiamme</span>
+          </div>
+          <div class="logo-pill">
+            <img src="assets/logos/amundi.png" alt="Amundi Asset Management"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:28px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">Amundi Asset Management</span>
+          </div>
+          <div class="logo-pill">B3yond</div>
+          <div class="logo-pill">
+            <img src="assets/logos/banca-generali.png" alt="Banca Generali"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:28px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">Banca Generali</span>
+          </div>
+          <div class="logo-pill">
+            <img src="assets/logos/cgil.jpg" alt="CGIL"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:28px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">CGIL</span>
+          </div>
+          <div class="logo-pill">
+            <img src="assets/logos/bnl-bnp-paribas.svg" alt="BNL BNP Paribas"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:28px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">BNL BNP Paribas</span>
+          </div>
+          <div class="logo-pill">Creostudios</div>
+          <div class="logo-pill">
+            <img src="assets/logos/deloitte.png" alt="Deloitte"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:28px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">Deloitte</span>
+          </div>
+          <div class="logo-pill">
+            <img src="assets/logos/gfx.png" alt="GFX Security &amp; IT Services"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:28px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">GFX Security &amp; IT</span>
+          </div>
+          <div class="logo-pill">GS1</div>
+          <div class="logo-pill">
+            <img src="assets/logos/mediobanca.png" alt="Mediobanca"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:28px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">Mediobanca</span>
+          </div>
+          <div class="logo-pill">MoneyViz</div>
+          <div class="logo-pill">
+            <img src="assets/logos/illimity.png" alt="illimity Banca"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:28px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">illimity Banca</span>
+          </div>
+          <div class="logo-pill">
+            <img src="assets/logos/nexi.png" alt="Nexi"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:28px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">Nexi</span>
+          </div>
+          <div class="logo-pill">OTB</div>
+          <div class="logo-pill">FISAC Milano e Lombardia</div>
+        </div>
+
+        <div class="tier-label">Advisory Board</div>
+        <div class="logo-grid">
+          <div class="logo-pill logo-pill--advisory">Phigitally</div>
+          <div class="logo-pill logo-pill--advisory">
+            <img src="assets/logos/unipolsai.png" alt="UnipolSai Assicurazioni"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:28px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">UnipolSai Assicurazioni</span>
+          </div>
+          <div class="logo-pill logo-pill--advisory">
+            <img src="assets/logos/abi.png" alt="ABI — Associazione Bancaria Italiana"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:28px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">ABI</span>
+          </div>
+          <div class="logo-pill logo-pill--advisory">
+            <img src="assets/logos/banca-italia.png" alt="Banca d'Italia"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:28px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">Banca d'Italia</span>
+          </div>
+          <div class="logo-pill logo-pill--advisory">
+            <img src="assets/logos/consob.png" alt="CONSOB"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:28px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">CONSOB</span>
+          </div>
+          <div class="logo-pill logo-pill--advisory">Ministero delle Imprese</div>
+          <div class="logo-pill logo-pill--advisory">
+            <img src="assets/logos/management.png" alt="Polimi School of Management"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+              style="height:28px;width:auto;object-fit:contain;transition:transform .2s"
+              onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'"/>
+            <span style="display:none">Polimi School of Management</span>
+          </div>
+        </div>
+      </div>
+
+    <!-- Partner CTA -->
+    <div class="partner-cta fade-up">
+      <div class="partner-cta-text">
+        <span class="badge badge-white label" style="margin-bottom:16px">Unique in Italy</span>
+        <h3 class="d-md" style="margin-bottom:14px">
+          Ready to invest in your company's future?
+        </h3>
+        <p class="b-lg muted">
+          Join Italy's most authoritative blockchain research community. Gain exclusive insights, build a network with industry decision makers, and shape the future of Web3 alongside the Politecnico di Milano — <strong>#1 in Italy for blockchain research</strong>.
+        </p>
+      </div>
+      <div class="partner-cta-actions">
+        <a href="#research" class="btn btn-white">Explore Our Research →</a>
+        <a href="#projects" class="btn btn-ghost">Start a Project →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+<!-- ================================================================
+     WEB3HUB PROJECTS
+================================================================ -->
+<section id="projects" class="section" aria-labelledby="projects-title">
+  <div class="wrap">
+
+    <div class="section-eyebrow fade-up">
+      <span class="label muted">WEB3HUB Projects</span>
+    </div>
+    <h2 class="d-lg fade-up delay-1" id="projects-title" style="margin-bottom:14px">
+      Applied Research.<br /><span class="grad-text">Real Impact.</span>
+    </h2>
+    <p class="b-lg muted fade-up delay-2" style="margin-bottom:56px;max-width:640px">
+      WEB3HUB is a <strong>pre-competitive, independent research centre</strong> that supports organisations in designing, prototyping and certifying blockchain and Web3 solutions — from concept to working prototype.
+    </p>
+
+    <div class="why-grid">
+
+      <!-- Why collaborate -->
+      <div>
+        <h3 class="t-lg fade-up" style="margin-bottom:6px">Why Work with WEB3HUB?</h3>
+        <p class="b-sm muted fade-up delay-1" style="margin-bottom:0">Four fundamental reasons to choose the Politecnico's lab.</p>
+        <div class="why-list">
+
+          <div class="why-item fade-up">
+            <div class="why-ico">
+              <svg viewBox="0 0 24 24"><path d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/></svg>
+            </div>
+            <div class="why-txt">
+              <strong>Super-Partes Guarantor</strong>
+              <span>The Politecnico di Milano's independence ensures objective analysis, free from commercial conflicts of interest.</span>
+            </div>
+          </div>
+
+          <div class="why-item fade-up delay-1">
+            <div class="why-ico">
+              <svg viewBox="0 0 24 24"><path d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
+            </div>
+            <div class="why-txt">
+              <strong>Specialised Expertise, Years in the Field</strong>
+              <span>Our team brings deep, vertical competence built over years of hands-on work in blockchain and Web3 — combining academic rigour with direct experience on real industry projects.</span>
+            </div>
+          </div>
+
+          <div class="why-item fade-up delay-3">
+            <div class="why-ico">
+              <svg viewBox="0 0 24 24"><path d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>
+            </div>
+            <div class="why-txt">
+              <strong>Ecosystem Development</strong>
+              <span>Supporting each project means contributing to the growth of the entire blockchain ecosystem — value that extends beyond the individual initiative.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="t-lg fade-up" style="margin-bottom:18px">Our Projects and Services</h3>
+        <div class="services-grid">
+
+          <div class="service-card fade-up">
+            <span class="badge badge-blue service-badge">Project Design</span>
+            <h4 class="t-md" style="margin-bottom:8px">Analysis &amp; Design</h4>
+            <p class="b-sm muted">AS IS mapping, functional and technical requirements, TO BE solution design. Politecnico di Milano super-partes certification included.</p>
+            <div style="margin-top:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+              <span class="badge badge-blue">3–4 months (indicative)</span>
+            </div>
+          </div>
+
+          <div class="service-card fade-up delay-1">
+            <span class="badge badge-blue service-badge">Prototyping</span>
+            <h4 class="t-md" style="margin-bottom:8px">PoC &amp; Prototype</h4>
+            <p class="b-sm muted">Full development of a working blockchain prototype — from requirements analysis to demo, testing and partner support for implementation.</p>
+            <div style="margin-top:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+              <span class="badge badge-blue">5–7 months (indicative)</span>
+            </div>
+          </div>
+
+          <div class="service-card fade-up delay-2">
+            <span class="badge badge-blue service-badge">Ad-hoc Research</span>
+            <h4 class="t-md" style="margin-bottom:8px">Sector Research</h4>
+            <p class="b-sm muted">Custom research focused on a specific domain or sector — market mapping, international benchmarking, technical analysis.</p>
+            <div style="margin-top:14px">
+              <span class="badge badge-blue">Duration on request</span>
+            </div>
+          </div>
+
+          <div class="service-card fade-up delay-3">
+            <span class="badge badge-blue service-badge">Startup Review</span>
+            <h4 class="t-md" style="margin-bottom:8px">Project Evaluation</h4>
+            <p class="b-sm muted">Independent analysis and structured feedback on an existing blockchain project or startup — Politecnico di Milano certification.</p>
+            <div style="margin-top:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+              <span class="badge badge-blue">2–3 months (indicative)</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Case studies -->
+    <div class="case-row">
+      <h3 class="t-lg fade-up" style="margin-bottom:8px">Selected Project Examples</h3>
+      <p class="b-sm muted fade-up delay-1" style="margin-bottom:0">Real projects delivered in collaboration with leading organisations.</p>
+      <div class="case-grid">
+
+        <div class="case-card fade-up">
+          <img src="assets/logos/enea.png" alt="ENEA" style="display:block;max-height:36px;width:auto;object-fit:contain;margin-bottom:18px" />
+          <div class="case-title">Automated On-Chain Energy Trading</div>
+          <p class="case-desc">Prototype for a blockchain system enabling automated buy and sell of energy on-chain, exploring the intersection of DLT and energy market infrastructure.</p>
+        </div>
+
+        <div class="case-card fade-up delay-1">
+          <img src="assets/logos/gfx.png" alt="GFX Security &amp; IT Services" style="display:block;max-height:36px;width:auto;object-fit:contain;margin-bottom:18px" />
+          <div class="case-title">Verifiable Credentials Platform</div>
+          <p class="case-desc">Solution for issuing and verifying verifiable credentials, designed to enable data interoperability in the procurement domain.</p>
+        </div>
+
+        <div class="case-card fade-up delay-2">
+          <img src="assets/logos/accenture.png" alt="Accenture" style="display:block;max-height:36px;width:auto;object-fit:contain;margin-bottom:18px" />
+          <div class="case-title">NFT Copyright Protection</div>
+          <p class="case-desc">Support in developing NFTs associated with multimedia content protected by copyright law, bridging digital creation and intellectual property.</p>
+        </div>
+
+        <div class="case-card fade-up">
+          <img src="assets/logos/pwc.png" alt="PwC" style="display:block;max-height:36px;width:auto;object-fit:contain;margin-bottom:18px" />
+          <div class="case-title">Italian Blockchain Startup Ecosystem</div>
+          <p class="case-desc">Custom research study on the blockchain startup ecosystem in Italy, co-developed with PwC in 2022.</p>
+        </div>
+
+        <div class="case-card fade-up delay-1">
+          <img src="assets/logos/ntt-data.png" alt="NTT Data" style="display:block;max-height:36px;width:auto;object-fit:contain;margin-bottom:18px" />
+          <div class="case-title">Rollups &amp; Zero Knowledge Proofs</div>
+          <p class="case-desc">Dedicated research project on rollup architectures and Zero Knowledge proof technologies for enterprise applications.</p>
+        </div>
+
+        <div class="case-card fade-up delay-2">
+          <img src="assets/logos/enel.png" alt="Enel" style="display:block;max-height:36px;width:auto;object-fit:contain;margin-bottom:18px" />
+          <div class="case-title">Wallet-as-a-Service Selection</div>
+          <p class="case-desc">Study on Wallet-as-a-Service providers and selection of the optimal blockchain platform for Enel's strategic requirements.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ================================================================
+     EVENTS
+================================================================ -->
+<section id="events" class="section" aria-labelledby="events-title">
+  <div class="wrap">
+
+    <div class="section-eyebrow fade-up">
+      <span class="label muted">Annual Programme</span>
+    </div>
+    <h2 class="d-lg fade-up delay-1" id="events-title" style="margin-bottom:14px">
+      Events &amp;<br /><span class="grad-text">Activities</span>
+    </h2>
+    <p class="b-lg muted fade-up delay-2" style="margin-bottom:56px;max-width:640px">
+      Every year the Observatory runs a structured cycle of events — from intimate closed-door workshops to major national and international conferences — giving partners and sponsors privileged access to research findings and peer networks.
+    </p>
+
+    <div class="events-layout">
+
+      <!-- Timeline -->
+      <div>
+        <h3 class="t-lg fade-up" style="margin-bottom:28px">Annual Calendar</h3>
+        <div class="timeline" role="list">
+
+          <div class="t-item fade-up" role="listitem">
+            <div class="t-dot t-dot--active"></div>
+            <div class="t-month">March</div>
+            <div class="t-card">
+              <span class="t-type t-type--kickoff">Kick-Off</span>
+              <div class="t-title">Annual Kick-Off Workshop</div>
+              <p class="t-desc">The Observatory's opening session of the year. Research priorities are presented, the annual agenda is shared, and partners engage in the first structured roundtable of the cycle.</p>
+            </div>
+          </div>
+
+          <div class="t-item fade-up delay-1" role="listitem">
+            <div class="t-dot"></div>
+            <div class="t-month">May</div>
+            <div class="t-card">
+              <span class="t-type t-type--workshop">Workshop</span>
+              <div class="t-title">Research Deep-Dive Workshop</div>
+              <p class="t-desc">Closed-door session with early-stage research results. Participants include CIOs, CTOs and IT Managers who receive findings directly from Observatory researchers before public release.</p>
+            </div>
+          </div>
+
+          <div class="t-item fade-up delay-2" role="listitem">
+            <div class="t-dot"></div>
+            <div class="t-month">June &amp; July</div>
+            <div class="t-card">
+              <span class="t-type t-type--workshop">Workshop</span>
+              <div class="t-title">Summer Technical Workshops</div>
+              <p class="t-desc">Focused sessions on specific technical and market themes identified during the first half of the research cycle — with international speakers and live case discussion.</p>
+            </div>
+          </div>
+
+          <div class="t-item fade-up" role="listitem">
+            <div class="t-dot"></div>
+            <div class="t-month">September &amp; October</div>
+            <div class="t-card">
+              <span class="t-type t-type--workshop">Workshop</span>
+              <div class="t-title">Autumn Workshops</div>
+              <p class="t-desc">Two dedicated sessions combining updated research data with structured exchange among community members — in the informal, pre-competitive atmosphere that defines WEB3HUB events.</p>
+            </div>
+          </div>
+
+          <div class="t-item fade-up delay-1" role="listitem">
+            <div class="t-dot"></div>
+            <div class="t-month">November</div>
+            <div class="t-card">
+              <span class="t-type t-type--intl">International Conference</span>
+              <div class="t-title">International Conference — Annual Highlight</div>
+              <p class="t-desc">The Observatory's flagship event: a major international conference presenting the full year's research results, with <strong>2,000+ registered attendees</strong>, global keynote speakers and extensive partner visibility.</p>
+            </div>
+          </div>
+
+          <div class="t-item fade-up delay-2" role="listitem">
+            <div class="t-dot"></div>
+            <div class="t-month">December</div>
+            <div class="t-card">
+              <span class="t-type t-type--workshop">Workshop</span>
+              <div class="t-title">Year-End Workshop</div>
+              <p class="t-desc">Final community session of the year — reviewing key takeaways, gathering input for the next research cycle and celebrating the community's growth.</p>
+            </div>
+          </div>
+
+          <div class="t-item fade-up" role="listitem">
+            <div class="t-dot t-dot--active" style="border-color:var(--blue-mid)"></div>
+            <div class="t-month" style="color:var(--blue-mid)">January 2026 — New</div>
+            <div class="t-card" style="border-color:rgba(27,54,100,.25);background:var(--blue-ultra)">
+              <span class="t-type t-type--italian">Italian Conference ✦ New</span>
+              <div class="t-title">Italian National Conference 2026</div>
+              <p class="t-desc">A dedicated Italian-market conference launching in 2026 — expanding the Observatory's event offering and deepening engagement with domestic institutions, companies and researchers.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Aside stats -->
+      <div class="events-aside">
+
+        <div class="events-stat-card events-stat-card--navy fade-up">
+          <span class="label" style="display:block;margin-bottom:10px">CoinDesk Ranking 2022</span>
+          <span class="big-stat" style="-webkit-text-fill-color:#fff;color:#fff">#1</span>
+          <p class="b-sm muted" style="margin-top:8px">
+            Politecnico di Milano ranked <strong>#1 in Italy</strong>, #6 in Europe and #33 globally among the Best Universities for Blockchain by CoinDesk.
+          </p>
+        </div>
+
+        <div class="events-stat-card fade-up delay-1">
+          <span class="label" style="color:var(--blue);display:block;margin-bottom:10px">Scale of Impact</span>
+          <span class="big-stat">2,000+</span>
+          <p class="b-sm muted" style="margin-top:8px">Registered attendees at each national conference — making WEB3HUB events the most attended blockchain gatherings in Italy.</p>
+        </div>
+
+        <div class="events-stat-card fade-up delay-2">
+          <span class="label" style="color:var(--blue);display:block;margin-bottom:10px">Workshops per year</span>
+          <span class="big-stat">30+</span>
+          <p class="b-sm muted" style="margin-top:8px">Annual sessions with more than <strong>300 participants per year</strong> — CIOs, CTOs, IT Managers and senior decision makers.</p>
+        </div>
+
+        <div class="events-stat-card fade-up delay-3">
+          <span class="label" style="color:var(--blue);display:block;margin-bottom:14px">International Track Record</span>
+          <div class="intl-grid" style="grid-template-columns:1fr 1fr;gap:10px;margin-top:0">
+            <div class="intl-item">
+              <div class="intl-flag-text">UK</div>
+              <div class="intl-city">London</div>
+              <div class="intl-venue">UCL · 2022</div>
+            </div>
+            <div class="intl-item">
+              <div class="intl-flag-text">FR</div>
+              <div class="intl-city">Paris</div>
+              <div class="intl-venue">OECD · 2022</div>
+            </div>
+            <div class="intl-item">
+              <div class="intl-flag-text">BE</div>
+              <div class="intl-city">Brussels</div>
+              <div class="intl-venue">EU Parliament · 2023</div>
+            </div>
+            <div class="intl-item">
+              <div class="intl-flag-text">EU</div>
+              <div class="intl-city">4 WGs</div>
+              <div class="intl-venue">Inatba · EBSI · IBSI</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================================================================
+     TEAM
+================================================================ -->
+<section id="team" class="section" aria-labelledby="team-title">
+  <div class="wrap">
+
+    <div class="section-eyebrow fade-up">
+      <span class="label muted">The People Behind WEB3HUB</span>
+    </div>
+    <h2 class="d-lg fade-up delay-1" id="team-title" style="margin-bottom:14px">
+      Our<br /><span class="grad-text">Research Team</span>
+    </h2>
+    <p class="b-lg muted fade-up delay-2" style="margin-bottom:52px;max-width:640px">
+      WEB3HUB brings together senior academics, research directors and domain specialists from the Politecnico di Milano — combining scientific rigour with applied expertise in blockchain, Web3 and digital finance.
+    </p>
+
+    <!-- Scientific Direction -->
+    <div style="margin-bottom:14px"><p class="tier-label fade-up">Scientific Direction</p></div>
+    <div class="team-leadership fade-up delay-1">
+      <div class="team-card team-card--featured">
+        <div class="t-avatar t-avatar--navy">AP</div>
+        <div class="team-name">Alessandro Perego</div>
+        <div class="team-role">Scientific Director<br />WEB3HUB</div>
+      </div>
+      <div class="team-card team-card--featured">
+        <div class="t-avatar t-avatar--navy">DS</div>
+        <div class="team-name">Donatella Sciuto</div>
+        <div class="team-role">Scientific Director<br />WEB3HUB</div>
+      </div>
+    </div>
+
+    <!-- Observatory Directors -->
+    <div style="margin:28px 0 14px"><p class="tier-label fade-up">Observatory Directors</p></div>
+    <div class="team-researchers fade-up delay-1" style="grid-template-columns:repeat(3,1fr)">
+      <div class="team-card">
+        <div class="t-avatar">FB</div>
+        <div class="team-name">Francesco Bruschi</div>
+        <div class="team-role">Director<br />Blockchain &amp; Web3 Observatory</div>
+      </div>
+      <div class="team-card">
+        <div class="t-avatar">VP</div>
+        <div class="team-name">Valeria Portale</div>
+        <div class="team-role">Director<br />Blockchain &amp; Web3 Observatory</div>
+      </div>
+      <div class="team-card">
+        <div class="t-avatar">GV</div>
+        <div class="team-name">Giacomo Vella</div>
+        <div class="team-role">Director<br />Blockchain &amp; Web3 Observatory</div>
+        <a href="mailto:giacomo.vella@polimi.it" style="display:inline-block;margin-top:10px;font-size:.72rem;color:var(--blue)" class="link-line">giacomo.vella@polimi.it</a>
+      </div>
+    </div>
+
+    <!-- Project Directors -->
+    <div style="margin:28px 0 14px"><p class="tier-label fade-up">Project Directors — WEB3HUB Projects Lab</p></div>
+    <div class="team-researchers fade-up delay-1" style="grid-template-columns:repeat(2,1fr);max-width:680px">
+      <div class="team-card">
+        <div class="t-avatar">JF</div>
+        <div class="team-name">Jacopo Fracassi</div>
+        <div class="team-role">Director<br />WEB3HUB Projects</div>
+        <a href="mailto:jacopo.fracassi@polimi.it" style="display:inline-block;margin-top:10px;font-size:.72rem;color:var(--blue)" class="link-line">jacopo.fracassi@polimi.it</a>
+      </div>
+      <div class="team-card">
+        <div class="t-avatar">VR</div>
+        <div class="team-name">Vincenzo Rana</div>
+        <div class="team-role">Director<br />WEB3HUB Projects</div>
+      </div>
+    </div>
+
+    <!-- Researchers & Analysts -->
+    <div style="margin:28px 0 14px"><p class="tier-label fade-up">Researchers &amp; Analysts</p></div>
+    <div class="team-researchers fade-up delay-1">
+      <div class="team-card">
+        <div class="t-avatar">DG</div>
+        <div class="team-name">Davide Ghezzi</div>
+        <div class="team-role">Researcher</div>
+      </div>
+      <div class="team-card">
+        <div class="t-avatar">TP</div>
+        <div class="team-name">Tommaso Paulon</div>
+        <div class="team-role">Researcher</div>
+      </div>
+      <div class="team-card">
+        <div class="t-avatar">EZ</div>
+        <div class="team-name">Ettore Zauli</div>
+        <div class="team-role">Researcher</div>
+        <a href="mailto:ettore.zauli@polimi.it" style="display:inline-block;margin-top:10px;font-size:.72rem;color:var(--blue)" class="link-line">ettore.zauli@polimi.it</a>
+      </div>
+      <div class="team-card">
+        <div class="t-avatar">ME</div>
+        <div class="team-name">Marco Esposito</div>
+        <div class="team-role">Analyst</div>
+      </div>
+      <div class="team-card">
+        <div class="t-avatar">GW</div>
+        <div class="team-name">Giacomo Weiss</div>
+        <div class="team-role">Analyst</div>
+      </div>
+      <div class="team-card">
+        <div class="t-avatar">MF</div>
+        <div class="team-name">Michela Franzese</div>
+        <div class="team-role">Community Coordinator</div>
+      </div>
+    </div>
+
+    <!-- Advisory Board -->
+    <div class="team-advisory fade-up" style="margin-top:52px">
+      <span class="badge badge-blue" style="margin-bottom:12px">Advisory Board</span>
+      <h3 class="t-lg" style="margin-bottom:8px">Institutional Partners &amp; Advisory</h3>
+      <p class="b-sm muted" style="max-width:560px">
+        WEB3HUB maintains direct relationships with the leading Italian and European regulatory and institutional bodies — ensuring research remains grounded in the real policy landscape.
+      </p>
+      <div class="advisory-grid" style="margin-top:24px">
+        <div class="advisory-item"><div class="advisory-name">ABI</div><div class="advisory-role">Associazione Bancaria Italiana</div></div>
+        <div class="advisory-item"><div class="advisory-name">Banca d'Italia</div><div class="advisory-role">Eurosystem</div></div>
+        <div class="advisory-item"><div class="advisory-name">Banca d'Italia</div><div class="advisory-role">Milan Office</div></div>
+        <div class="advisory-item"><div class="advisory-name">CONSOB</div><div class="advisory-role">Commissione Nazionale per le Società e la Borsa</div></div>
+        <div class="advisory-item"><div class="advisory-name">Ministero delle Imprese</div><div class="advisory-role">e del Made in Italy</div></div>
+        <div class="advisory-item"><div class="advisory-name">Polimi School of Management</div><div class="advisory-role">Osservatori Digital Innovation</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================================================================
+     RESOURCES
+================================================================ -->
+<section id="resources" class="section" aria-labelledby="resources-title">
+  <div class="wrap">
+
+    <div class="section-eyebrow fade-up">
+      <span class="label muted">Knowledge &amp; Insights</span>
+    </div>
+    <h2 class="d-lg fade-up delay-1" id="resources-title" style="margin-bottom:14px">
+      Resources<br /><span class="grad-text">&amp; Publications</span>
+    </h2>
+    <p class="b-lg muted fade-up delay-2" style="margin-bottom:52px;max-width:640px">
+      Observatory partners and sponsors gain access to an exclusive library of research materials — from in-depth reports to weekly news digests — all produced by WEB3HUB researchers at the Politecnico di Milano.
+    </p>
+
+    <div class="resources-grid">
+
+      <div class="res-card fade-up" onclick="window.open('https://www.osservatori.net','_blank','noopener')" role="article" aria-label="Research Reports">
+        <div class="res-icon">
+          <svg viewBox="0 0 24 24"><path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+        </div>
+        <span class="badge badge-blue" style="width:fit-content">Research Reports</span>
+        <div class="res-title">In-Depth Research Reports</div>
+        <p class="res-desc">4 to 5 thematic reports published annually, each focusing on a specific blockchain or Web3 research area. Observatory supporters can access all reports free of charge via the Osservatori.net platform.</p>
+        <div class="res-link">Access on Osservatori.net</div>
+      </div>
+
+      <div class="res-card fade-up delay-1" role="article">
+        <div class="res-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6V7.5z"/></svg>
+        </div>
+        <span class="badge badge-blue" style="width:fit-content">Monthly Newsletter</span>
+        <div class="res-title">Blockchain Monthly Overview</div>
+        <p class="res-desc">A monthly newsletter reserved for the WEB3HUB community, analysing two macro-trends observed during the month and providing comprehensive market monitoring for cryptocurrencies, tokens, DApps, NFTs and DeFi — with rankings, charts and detailed analysis.</p>
+        <div class="res-link">Community exclusive</div>
+      </div>
+
+      <div class="res-card fade-up delay-2" role="article">
+        <div class="res-icon">
+          <svg viewBox="0 0 24 24"><path d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z"/></svg>
+        </div>
+        <span class="badge badge-blue" style="width:fit-content">Weekly Digest</span>
+        <div class="res-title">Weekly News Digest</div>
+        <p class="res-desc">A weekly curation of the most important national and international news in blockchain and Web3, delivered directly to the community. Supporters are also able to submit news, content and events for inclusion.</p>
+        <div class="res-link">Community exclusive</div>
+      </div>
+
+      <div class="res-card fade-up" role="article">
+        <div class="res-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg>
+        </div>
+        <span class="badge badge-blue" style="width:fit-content">Online Repository</span>
+        <div class="res-title">Shared Knowledge Repository</div>
+        <p class="res-desc">A curated online repository containing the most relevant documents on blockchain and Web3 — a combination of secondary sources and original content developed by the Observatory team, kept continuously updated.</p>
+        <div class="res-link">Partner access</div>
+      </div>
+
+      <div class="res-card fade-up delay-1" role="article">
+        <div class="res-icon">
+          <svg viewBox="0 0 24 24"><path d="M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5l-3.9 19.5m-2.1-19.5l-3.9 19.5"/></svg>
+        </div>
+        <span class="badge badge-blue" style="width:fit-content">Partner Only</span>
+        <div class="res-title">Raw Research Data</div>
+        <p class="res-desc">Partners receive direct access to raw datasets generated by the Observatory — including the list of <strong>1,000+ blockchain projects and startups</strong> mapped globally — enabling bespoke internal analysis.</p>
+        <div class="res-link">Partner tier only</div>
+      </div>
+
+      <div class="res-card fade-up delay-2" onclick="window.open('https://www.osservatori.net','_blank','noopener')" role="article">
+        <div class="res-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"/></svg>
+        </div>
+        <span class="badge badge-blue" style="width:fit-content">Events &amp; Media</span>
+        <div class="res-title">Webinars &amp; Workshop Materials</div>
+        <p class="res-desc">Access to recordings, presentations and workshop materials from all Observatory events — including the annual international conference, closed-door workshops and webinars with <strong>500+ participants per year</strong> on Osservatori.net.</p>
+        <div class="res-link">Visit Osservatori.net</div>
+      </div>
+
+    </div>
+
+    <!-- Access CTA -->
+    <div style="margin-top:52px;padding:40px;border-radius:var(--r-xl);background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow-card);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:28px" class="fade-up">
+      <div>
+        <span class="badge badge-blue" style="margin-bottom:10px">Exclusive Access</span>
+        <h3 class="t-lg" style="margin-bottom:8px">Full access is reserved for Observatory community members.</h3>
+        <p class="b-sm muted" style="max-width:480px">
+          Becoming a Partner or Sponsor unlocks all research outputs — reports, raw data, repository, monthly newsletter and workshop materials. Contact us to learn more.
+        </p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="openContact()">Request Access →</button>
+        <a href="https://www.osservatori.net" target="_blank" rel="noopener" class="btn btn-outline">Osservatori.net ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section><!-- /#resources -->
+
+</main>
+
+<!-- ================================================================
+     FOOTER
+================================================================ -->
+<footer role="contentinfo">
+  <div class="wrap">
+
+    <div class="footer-top">
+
+      <!-- Brand column -->
+      <div>
+        <div class="footer-logo-wrap">
+          <img
+            src="assets/logos/logo-web3hub.png"
+            alt="WEB3HUB"
+            class="footer-logo-img"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          />
+          <!-- Text fallback -->
+          <div style="display:none;align-items:center;gap:8px">
+            <div style="width:32px;height:32px;background:rgba(255,255,255,.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.65rem;font-weight:800;color:#fff">W3</div>
+            <span style="font-family:var(--font-display);font-size:.9rem;font-weight:700;color:#fff">WEB3HUB</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          The Blockchain &amp; Web3 Research and Projects Lab of the Politecnico di Milano — <strong>#1 in Italy</strong> for blockchain research (CoinDesk 2022).
+        </p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/web3hub-polimi" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">LinkedIn ↗</a>
+          <a href="https://web3hub.polimi.it" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">WEB3HUB.polimi.it ↗</a>
+          <a href="https://www.osservatori.net" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Osservatori.net ↗</a>
+        </div>
+      </div>
+
+      <!-- Navigation column -->
+      <div>
+        <p class="footer-col-title">Explore</p>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="#research">WEB3HUB Research</a>
+          <a href="#projects">WEB3HUB Projects</a>
+          <a href="#partner">Partner</a>
+          <a href="#events">Events</a>
+          <a href="#team">Team</a>
+          <a href="#resources">Resources</a>
+        </nav>
+      </div>
+
+      <!-- Contacts column -->
+      <div>
+        <p class="footer-col-title">Contacts</p>
+        <div class="footer-contact-item">
+          <strong>Jacopo Fracassi</strong>
+          <a href="mailto:jacopo.fracassi@polimi.it">jacopo.fracassi@polimi.it</a>
+        </div>
+        <div class="footer-contact-item">
+          <strong>Giacomo Vella</strong>
+          <a href="mailto:giacomo.vella@polimi.it">giacomo.vella@polimi.it</a>
+        </div>
+        <div class="footer-contact-item">
+          <strong>General Enquiries</strong>
+          <a href="mailto:ettore.zauli@polimi.it">ettore.zauli@polimi.it</a>
+        </div>
+      </div>
+
+      <!-- Institution column -->
+      <div>
+        <p class="footer-col-title">Institution</p>
+        <div class="footer-inst-card">
+          <img
+            src="assets/logos/logo-polimi.png"
+            alt="Politecnico di Milano"
+            class="footer-inst-logo"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+          />
+          <span style="display:none;font-family:var(--font-display);font-size:.78rem;font-weight:700;color:rgba(255,255,255,.85);letter-spacing:.03em;margin-bottom:8px;display:block">POLITECNICO DI MILANO</span>
+          <p>Osservatori Digital Innovation<br />School of Management<br />DEIB — Department of Electronics,<br />Information and Bioengineering</p>
+          <a href="https://www.polimi.it" target="_blank" rel="noopener">polimi.it ↗</a>
+        </div>
+      </div>
+
+    </div><!-- /.footer-top -->
+
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        © 2025 WEB3HUB — Osservatori Digital Innovation, Politecnico di Milano. All rights reserved.
+      </p>
+      <div class="footer-links-row">
+        <a href="https://www.polimi.it/en/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
+        <a href="https://www.polimi.it" target="_blank" rel="noopener">Politecnico di Milano</a>
+        <a href="https://www.osservatori.net" target="_blank" rel="noopener">Osservatori.net</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ================================================================
+     JAVASCRIPT — All interactions
+================================================================ -->
+<script>
+  /* ----------------------------------------------------------------
+     1. NAVIGATION — scroll state & active link highlighting
+  ---------------------------------------------------------------- */
+  const nav = document.getElementById('nav');
+
+  const onScroll = () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* Active nav link on scroll */
+  const sections = document.querySelectorAll('section[id]');
+  const navLeftLinks  = document.querySelectorAll('.nav-links--left a');
+  const navRightLinks = document.querySelectorAll('.nav-links--right a');
+  const allNavLinks   = [...navLeftLinks, ...navRightLinks];
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          allNavLinks.forEach(a => {
+            const isMatch = a.getAttribute('href') === `#${id}`;
+            if (a.classList.contains('btn')) {
+              a.classList.toggle('nav-btn-active', isMatch);
+            } else {
+              a.style.color      = isMatch ? 'var(--blue)'      : '';
+              a.style.background = isMatch ? 'var(--blue-ultra)': '';
+            }
+          });
+        }
+      });
+    },
+    { threshold: 0.35 }
+  );
+  sections.forEach(s => sectionObserver.observe(s));
+
+  /* ----------------------------------------------------------------
+     2. MOBILE NAVIGATION
+  ---------------------------------------------------------------- */
+  const burgerBtn   = document.getElementById('burgerBtn');
+  const mobileNav   = document.getElementById('mobile-nav');
+  const mobileClose = document.getElementById('mobileClose');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  function openMobile() {
+    mobileNav.classList.add('open');
+    burgerBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobile() {
+    mobileNav.classList.remove('open');
+    burgerBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  window.closeMobile = closeMobile;
+
+  burgerBtn.addEventListener('click', openMobile);
+  mobileClose.addEventListener('click', closeMobile);
+  mobileLinks.forEach(link => link.addEventListener('click', closeMobile));
+
+  /* ----------------------------------------------------------------
+     3. CONTACT PAGE — open / close
+  ---------------------------------------------------------------- */
+  const contactPage = document.getElementById('contact-page');
+
+  function openContact() {
+    closeMobile();
+    contactPage.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      const first = contactPage.querySelector('button, [href], input, select, textarea');
+      if (first) first.focus();
+    }, 100);
+  }
+
+  function closeContact() {
+    contactPage.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  window.openContact  = openContact;
+  window.closeContact = closeContact;
+
+  /* Escape key closes any overlay */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeMobile();
+      closeContact();
+    }
+  });
+
+  /* ----------------------------------------------------------------
+     4. CONTACT FORM — mailto submission
+  ---------------------------------------------------------------- */
+  const contactForm = document.getElementById('contactForm');
+  const formSuccess = document.getElementById('form-success');
+  const formError   = document.getElementById('form-error');
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    formSuccess.style.display = 'none';
+    formError.style.display   = 'none';
+
+    const name    = document.getElementById('cf-name').value.trim();
+    const email   = document.getElementById('cf-email').value.trim();
+    const message = document.getElementById('cf-message').value.trim();
+    const privacy = document.getElementById('cf-privacy').checked;
+    const company = document.getElementById('cf-company').value.trim();
+    const subject = document.getElementById('cf-subject').value;
+
+    /* Validate required fields */
+    if (!name || !email || !message || !privacy) {
+      formError.style.display = 'block';
+      formError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      return;
+    }
+
+    /* Basic email format check */
+    const emailOK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!emailOK) {
+      formError.textContent   = 'Please enter a valid email address.';
+      formError.style.display = 'block';
+      return;
+    }
+
+    /* Build mailto — delivers to BOTH directors simultaneously */
+    const recipients  = 'jacopo.fracassi@polimi.it,giacomo.vella@polimi.it';
+    const subjectLine = subject
+      ? `[WEB3HUB] ${subject} — ${name}`
+      : `[WEB3HUB] Enquiry from ${name}`;
+
+    const body = [
+      `Name: ${name}`,
+      company ? `Company / Institution: ${company}` : '',
+      `Email: ${email}`,
+      subject ? `Topic: ${subject}` : '',
+      '',
+      'Message:',
+      message,
+      '',
+      '---',
+      'Sent via WEB3HUB website contact form',
+      'web3hub.polimi.it'
+    ].filter(Boolean).join('\n');
+
+    window.location.href =
+      `mailto:${recipients}?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(body)}`;
+
+    formSuccess.style.display = 'block';
+    formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    setTimeout(() => {
+      contactForm.reset();
+    }, 1500);
+  }
+
+  window.handleFormSubmit = handleFormSubmit;
+
+  /* ----------------------------------------------------------------
+     5. SCROLL ANIMATIONS — Intersection Observer for .fade-up
+  ---------------------------------------------------------------- */
+  const fadeEls = document.querySelectorAll('.fade-up');
+
+  const fadeObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  fadeEls.forEach(el => fadeObserver.observe(el));
+
+  /* ----------------------------------------------------------------
+     6. SMOOTH ANCHOR SCROLLING — closes overlays first
+  ---------------------------------------------------------------- */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      closeMobile();
+      closeContact();
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    });
+  });
+
+  /* ----------------------------------------------------------------
+     7. CREDENTIAL NUMBER COUNTER ANIMATION
+  ---------------------------------------------------------------- */
+  function animateCounter(el, target, duration, prefix, suffix) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = prefix + Math.floor(target).toLocaleString() + suffix;
+      return;
+    }
+    const start = performance.now();
+    const step  = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased    = 1 - Math.pow(1 - progress, 3);
+      const current  = eased * target;
+      el.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const credCards = [
+    { selector: '.cred-card:nth-child(1) .cred-num',          prefix: '',   value: 2017, suffix: ''  },
+    { selector: '.cred-card:nth-child(2) .cred-num',          prefix: '',   value: 0,    suffix: ''  },
+    { selector: '.cred-card:nth-child(3) .cred-num',          prefix: '',   value: 2,    suffix: 'M+'},
+  ];
+
+  const credObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const idx = [...document.querySelectorAll('.cred-card')]
+          .indexOf(entry.target.closest('.cred-card'));
+        if (idx >= 0 && credCards[idx]) {
+          const { prefix, value, suffix } = credCards[idx];
+          const el = entry.target.closest('.cred-card').querySelector('.cred-num');
+          if (el && suffix !== 'M+') {
+            animateCounter(el, value, 1400, prefix, suffix);
+          }
+        }
+        credObserver.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.6 }
+  );
+
+  document.querySelectorAll('.cred-card').forEach(el =>
+    credObserver.observe(el)
+  );
+
+  /* ----------------------------------------------------------------
+     8. STATS BAR COUNTER ANIMATION
+  ---------------------------------------------------------------- */
+  const statNums = document.querySelectorAll('.stat-num');
+
+  const statObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const raw     = entry.target.textContent.trim();
+        const numeric = parseFloat(raw.replace(/[^0-9.]/g, ''));
+        if (isNaN(numeric)) return;
+        const prefix  = raw.match(/^[^0-9]*/)?.[0]  || '';
+        const suffix  = raw.match(/[^0-9.,]+$/)?.[0] || '';
+        animateCounter(entry.target, numeric, 1600, prefix, suffix);
+        statObserver.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  statNums.forEach(el => statObserver.observe(el));
+
+  /* ----------------------------------------------------------------
+     9. TICKER — pause/resume on hover (handled by CSS)
+         JS fallback: clone track if animation ever resets unexpectedly
+  ---------------------------------------------------------------- */
+  const track = document.getElementById('tickerTrack');
+  if (track) {
+    track.addEventListener('animationiteration', () => {
+      /* No-op: CSS infinite handles looping. This listener is a
+         safety hook for future enhancement (e.g. GSAP swap). */
+    });
+  }
+
+  /* ----------------------------------------------------------------
+     10. LOGO PILL — subtle press feedback
+  ---------------------------------------------------------------- */
+  document.querySelectorAll('.logo-pill').forEach(pill => {
+    pill.addEventListener('click', function() {
+      this.style.transform = 'scale(0.96)';
+      setTimeout(() => { this.style.transform = ''; }, 180);
+    });
+  });
+
+  /* ----------------------------------------------------------------
+     11. PERFORMANCE — idle callback log
+  ---------------------------------------------------------------- */
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => {
+      console.info(
+        '%cWEB3HUB · Politecnico di Milano',
+        'color:#1B3664;font-family:Space Grotesk,sans-serif;font-weight:700;font-size:14px'
+      );
+      console.info('#1 in Italy for Blockchain Research — CoinDesk 2022 [1]');
+    });
+  }
+    /* ----------------------------------------------------------------
+     12. COINDESK LOGO — robust onerror fallback
+  ---------------------------------------------------------------- */
+  function handleCoinDeskFallback() {
+    const img      = document.getElementById('coindesk-img');
+    const fallback = document.getElementById('coindesk-fallback');
+    if (img)      img.style.display      = 'none';
+    if (fallback) fallback.style.display = 'block';
+  }
+
+  /* Safety check: catch cases where the image loads but has
+     no actual pixel data (broken file rather than missing file) */
+  document.addEventListener('DOMContentLoaded', () => {
+    const img = document.getElementById('coindesk-img');
+    if (img && img.complete && img.naturalWidth === 0) {
+      handleCoinDeskFallback();
+    }
+  });
+</script>
+
+</body>
+</html>
+
+    
