@@ -599,7 +599,7 @@ svg{display:block}
 .wire:hover .wire-track{animation-play-state:paused}
 @keyframes wire-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .wire-item{display:inline-flex;align-items:center;justify-content:center;padding:0 28px;white-space:nowrap;height:34px;position:relative;gap:10px}
-.wire-item img{height:24px;width:auto;object-fit:contain;filter:saturate(.9)}
+.wire-item img{height:30px;max-width:128px;width:auto;object-fit:contain;mix-blend-mode:multiply;filter:saturate(.95)}
 .wire-item-text{font-family:var(--mono);font-size:.74rem;font-weight:600;color:var(--blue);letter-spacing:.04em}
 .wire-sep{display:inline-block;width:1px;height:14px;background:var(--line-3);flex-shrink:0}
 
@@ -1890,10 +1890,10 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
   <div class="nav-inner">
     <span class="nc-tl"></span><span class="nc-br"></span>
     <a href="#home" class="nav-brand" aria-label="WEB3HUB Homepage">
-      <img src="assets/logos/logo-web3hub.png" alt="WEB3HUB" class="w3" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex'" />
+      <img src="assets/logos/polimi%20logo/logo-web3hub.png" alt="WEB3HUB" class="w3" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex'" />
       <span style="display:none;align-items:center;justify-content:center;width:32px;height:28px;background:var(--blue);font-family:var(--mono);font-size:.62rem;font-weight:700;color:#fff;letter-spacing:.04em">W3H</span>
       <span class="hair-v"></span>
-      <img src="assets/logos/logo-polimi.png" alt="Politecnico di Milano" class="polimi" onerror="this.style.display='none'" />
+      <img src="assets/logos/polimi%20logo/logo-polimi.png" alt="Politecnico di Milano" class="polimi" onerror="this.style.display='none'" />
       <span class="lab-id">EST.<br/><b>2017</b></span>
     </a>
 
@@ -1934,7 +1934,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
     <div class="contact-header">
       <button class="contact-back" onclick="closeContact()">← BACK TO LAB</button>
       <div class="contact-brand">
-        <img src="assets/logos/logo-web3hub.png" alt="WEB3HUB" onerror="this.style.display='none'" />
+        <img src="assets/logos/polimi%20logo/logo-web3hub.png" alt="WEB3HUB" onerror="this.style.display='none'" />
         <span>Politecnico di Milano</span>
       </div>
     </div>
@@ -2088,7 +2088,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           </div>
           <div class="metric metric--rank">
             <span class="m-lbl m-lbl--logo">
-              <img src="assets/logos/coindesk-logo.png" alt="CoinDesk" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="m-lbl-fallback" style="display:none">CoinDesk</span> Rank
+              <img src="assets/logos/others/coindesk-logo.png" alt="CoinDesk" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="m-lbl-fallback" style="display:none">CoinDesk</span> Rank
             </span>
             <span class="m-val">#1<small>IT</small> · 6<sup>th</sup><small>EU</small> · 33<sup>rd</sup><small>WW</small></span>
           </div>
@@ -2112,61 +2112,67 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
   <div class="wire-tag">PARTNER COMMUNITY</div>
   <div class="wire-track-outer">
     <div class="wire-track" id="wireTrack">
-      <span class="wire-item"><img src="assets/logos/accenture.png" alt="Accenture" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Accenture</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/almaviva.png" alt="Almaviva" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Almaviva</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/mediolanum-banca.png" alt="Mediolanum Banca" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Mediolanum Banca</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/binance.png" alt="Binance" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Binance</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/enel.png" alt="Enel" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Enel</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/ey.png" alt="EY" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">EY</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/fleap.png" alt="Fleap" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Fleap</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/ntt-data.png" alt="NTT Data" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">NTT Data</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/pwc.png" alt="PwC" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">PwC</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/vechain.png" alt="VeChain" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">VeChain</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/HORIZEN-logo.png" alt="Horizen Labs" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Horizen Labs</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/POMIAGER-logo.png" alt="Pomiager" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Pomiager</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/INTESA-logo.svg" alt="Intesa Sanpaolo" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Intesa Sanpaolo</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/altrefiamme.png" alt="Altrefiamme" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Altrefiamme</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/amundi.png" alt="Amundi" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Amundi</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/banca-generali.png" alt="Banca Generali" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Banca Generali</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/bnl-bnp-paribas.svg" alt="BNL BNP Paribas" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">BNL BNP Paribas</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/deloitte.png" alt="Deloitte" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Deloitte</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/gfx.png" alt="GFX Security &amp; IT" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">GFX Security</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/mediobanca.png" alt="Mediobanca" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Mediobanca</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/illimity.png" alt="illimity Banca" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">illimity Banca</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/nexi.png" alt="Nexi" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Nexi</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/42LF-logo.png" alt="42LF Innovation" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">42LF Innovation</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/CGIL-logo.png" alt="CGIL" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">CGIL</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/moneyviz-logo.png" alt="MoneyViz" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">MoneyViz</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/LABGO-logo.png" alt="Lab-go" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Lab-go</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/SMARTB-logo.png" alt="Smart Brick Investments" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Smart Brick</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/accenture.png" alt="Accenture" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Accenture</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/almaviva.png" alt="Almaviva" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Almaviva</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/BANCOMAT.png" alt="Bancomat" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Bancomat</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/Boerse_Stuttgart_Digital.png" alt="B&ouml;rse Stuttgart Digital" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Börse Stuttgart</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/enel.png" alt="Enel" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Enel</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/ey.png" alt="EY" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">EY</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/fleap.png" alt="Fleap" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Fleap</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/INTESA-logo.svg" alt="Intesa Sanpaolo" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Intesa Sanpaolo</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/mediolanum-banca.png" alt="Mediolanum Banca" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Mediolanum Banca</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/POMIAGER-logo.png" alt="Pomiager" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Pomiager</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/42LF-logo.png" alt="42LF Innovation" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">42LF Innovation</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/bnl-bnp-paribas.svg" alt="BNL BNP Paribas" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">BNL BNP Paribas</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/Crypfy.png" alt="Crypfy" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Crypfy</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/deloitte.png" alt="Deloitte" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Deloitte</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/Fortiland.png" alt="Fortiland" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Fortiland</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/Gruppo%20BCC%20Iccrea.webp" alt="Gruppo BCC Iccrea" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Gruppo BCC Iccrea</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/LABGO-logo.png" alt="Lab-go" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Lab-go</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/moneyviz-logo.png" alt="MoneyViz" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">MoneyViz</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/NEST-Company.png" alt="NEST Company" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">NEST Company</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/nexi.png" alt="Nexi" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Nexi</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/Prometeia.png" alt="Prometeia" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Prometeia</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/Smart%20Brick%20investiment.png" alt="Smart Brick Investments" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Smart Brick</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/advisor/ABI.jpg" alt="ABI" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">ABI</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/advisor/banca-italia.png" alt="Banca d'Italia" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Banca d'Italia</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/advisor/CARABINIERI-logo.svg" alt="Arma dei Carabinieri" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Carabinieri</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/advisor/CONSOB.jpg" alt="CONSOB" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">CONSOB</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/advisor/DIA-logo.png" alt="DIA" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">DIA</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/advisor/ECSDA-logo.png" alt="ECSDA" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">ECSDA</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/advisor/FINANZA-logo.png" alt="Guardia di Finanza" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Guardia di Finanza</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/advisor/NORDIC-logo.png" alt="Nordic Blockchain Association" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Nordic</span></span><span class="wire-sep"></span>
       <!-- duplicate for seamless loop -->
-      <span class="wire-item"><img src="assets/logos/accenture.png" alt="Accenture" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Accenture</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/almaviva.png" alt="Almaviva" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Almaviva</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/mediolanum-banca.png" alt="Mediolanum Banca" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Mediolanum Banca</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/binance.png" alt="Binance" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Binance</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/enel.png" alt="Enel" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Enel</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/ey.png" alt="EY" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">EY</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/fleap.png" alt="Fleap" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Fleap</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/ntt-data.png" alt="NTT Data" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">NTT Data</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/pwc.png" alt="PwC" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">PwC</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/vechain.png" alt="VeChain" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">VeChain</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/HORIZEN-logo.png" alt="Horizen Labs" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Horizen Labs</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/POMIAGER-logo.png" alt="Pomiager" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Pomiager</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/INTESA-logo.svg" alt="Intesa Sanpaolo" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Intesa Sanpaolo</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/altrefiamme.png" alt="Altrefiamme" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Altrefiamme</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/amundi.png" alt="Amundi" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Amundi</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/banca-generali.png" alt="Banca Generali" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Banca Generali</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/bnl-bnp-paribas.svg" alt="BNL BNP Paribas" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">BNL BNP Paribas</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/deloitte.png" alt="Deloitte" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Deloitte</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/gfx.png" alt="GFX Security &amp; IT" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">GFX Security</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/mediobanca.png" alt="Mediobanca" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Mediobanca</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/illimity.png" alt="illimity Banca" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">illimity Banca</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/nexi.png" alt="Nexi" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Nexi</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/42LF-logo.png" alt="42LF Innovation" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">42LF Innovation</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/CGIL-logo.png" alt="CGIL" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">CGIL</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/moneyviz-logo.png" alt="MoneyViz" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">MoneyViz</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/LABGO-logo.png" alt="Lab-go" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Lab-go</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/SMARTB-logo.png" alt="Smart Brick Investments" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Smart Brick</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/accenture.png" alt="Accenture" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Accenture</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/almaviva.png" alt="Almaviva" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Almaviva</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/BANCOMAT.png" alt="Bancomat" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Bancomat</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/Boerse_Stuttgart_Digital.png" alt="B&ouml;rse Stuttgart Digital" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Börse Stuttgart</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/enel.png" alt="Enel" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Enel</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/ey.png" alt="EY" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">EY</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/fleap.png" alt="Fleap" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Fleap</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/INTESA-logo.svg" alt="Intesa Sanpaolo" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Intesa Sanpaolo</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/mediolanum-banca.png" alt="Mediolanum Banca" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Mediolanum Banca</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/partner/POMIAGER-logo.png" alt="Pomiager" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Pomiager</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/42LF-logo.png" alt="42LF Innovation" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">42LF Innovation</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/bnl-bnp-paribas.svg" alt="BNL BNP Paribas" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">BNL BNP Paribas</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/Crypfy.png" alt="Crypfy" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Crypfy</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/deloitte.png" alt="Deloitte" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Deloitte</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/Fortiland.png" alt="Fortiland" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Fortiland</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/Gruppo%20BCC%20Iccrea.webp" alt="Gruppo BCC Iccrea" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Gruppo BCC Iccrea</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/LABGO-logo.png" alt="Lab-go" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Lab-go</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/moneyviz-logo.png" alt="MoneyViz" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">MoneyViz</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/NEST-Company.png" alt="NEST Company" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">NEST Company</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/nexi.png" alt="Nexi" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Nexi</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/Prometeia.png" alt="Prometeia" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Prometeia</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/sponsor/Smart%20Brick%20investiment.png" alt="Smart Brick Investments" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Smart Brick</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/advisor/ABI.jpg" alt="ABI" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">ABI</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/advisor/banca-italia.png" alt="Banca d'Italia" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Banca d'Italia</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/advisor/CARABINIERI-logo.svg" alt="Arma dei Carabinieri" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Carabinieri</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/advisor/CONSOB.jpg" alt="CONSOB" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">CONSOB</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/advisor/DIA-logo.png" alt="DIA" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">DIA</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/advisor/ECSDA-logo.png" alt="ECSDA" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">ECSDA</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/advisor/FINANZA-logo.png" alt="Guardia di Finanza" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Guardia di Finanza</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/advisor/NORDIC-logo.png" alt="Nordic Blockchain Association" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Nordic</span></span><span class="wire-sep"></span>
     </div>
   </div>
 </div>
@@ -2296,21 +2302,20 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <div class="xpl-feature">
         <span class="xpl-feat-label"><span class="dot"></span>01 · ADVISORY BOARD</span>
         <h3 class="xpl-feat-h">Steered by Italy's<br/><span class="accent">institutions.</span></h3>
-        <p class="xpl-feat-desc">A board of regulators, banks and leading firms gives WEB3HUB its independence and authority — the same institutions that anchor a 38-strong ecosystem of partners and research sponsors.</p>
+        <p class="xpl-feat-desc">A board of regulators, banks and leading firms gives WEB3HUB its independence and authority — the same institutions that anchor a 30-strong ecosystem of partners and research sponsors.</p>
 
         <div class="xpl-board" role="list" aria-label="Advisory board members">
-          <span class="xpl-chip" role="listitem"><img src="assets/logos/banca-italia.png" alt="Banca d'Italia" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">Banca d'Italia</span></span>
-          <span class="xpl-chip" role="listitem"><img src="assets/logos/consob.png" alt="CONSOB" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">CONSOB</span></span>
-          <span class="xpl-chip" role="listitem"><img src="assets/logos/abi.png" alt="ABI" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">ABI</span></span>
-          <span class="xpl-chip" role="listitem"><img src="assets/logos/enea.png" alt="ENEA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">ENEA</span></span>
-          <span class="xpl-chip" role="listitem"><img src="assets/logos/mediobanca.png" alt="Mediobanca" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">Mediobanca</span></span>
-          <span class="xpl-chip" role="listitem"><img src="assets/logos/nexi.png" alt="Nexi" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">Nexi</span></span>
-          <span class="xpl-chip" role="listitem"><img src="assets/logos/ey.png" alt="EY" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">EY</span></span>
-          <span class="xpl-chip" role="listitem"><img src="assets/logos/deloitte.png" alt="Deloitte" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">Deloitte</span></span>
-          <span class="xpl-chip" role="listitem"><img src="assets/logos/management.png" alt="Politecnico di Milano · School of Management" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">PoliMi SoM</span></span>
+          <span class="xpl-chip" role="listitem"><img src="assets/logos/advisor/ABI.jpg" alt="ABI" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">ABI</span></span>
+          <span class="xpl-chip" role="listitem"><img src="assets/logos/advisor/banca-italia.png" alt="Banca d'Italia" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">Banca d'Italia</span></span>
+          <span class="xpl-chip" role="listitem"><img src="assets/logos/advisor/CARABINIERI-logo.svg" alt="Arma dei Carabinieri" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">Carabinieri</span></span>
+          <span class="xpl-chip" role="listitem"><img src="assets/logos/advisor/CONSOB.jpg" alt="CONSOB" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">CONSOB</span></span>
+          <span class="xpl-chip" role="listitem"><img src="assets/logos/advisor/DIA-logo.png" alt="DIA" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">DIA</span></span>
+          <span class="xpl-chip" role="listitem"><img src="assets/logos/advisor/ECSDA-logo.png" alt="ECSDA" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">ECSDA</span></span>
+          <span class="xpl-chip" role="listitem"><img src="assets/logos/advisor/FINANZA-logo.png" alt="Guardia di Finanza" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">Guardia di Finanza</span></span>
+          <span class="xpl-chip" role="listitem"><img src="assets/logos/advisor/NORDIC-logo.png" alt="Nordic Blockchain Association" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">Nordic</span></span>
         </div>
 
-        <div class="xpl-feat-meta"><b>9</b> advisory members<span class="sep"></span><b>38</b> ecosystem partners<span class="sep"></span>since <b>2017</b></div>
+        <div class="xpl-feat-meta"><b>8</b> advisory members<span class="sep"></span><b>30</b> ecosystem partners<span class="sep"></span>since <b>2017</b></div>
 
         <div class="xpl-feat-ctas">
           <a href="#partner" class="btn btn--white">Meet the advisory board <span class="arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></a>
@@ -2657,7 +2662,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <span class="cc-bl"></span><span class="cc-br"></span>
         <article class="case-file">
           <div class="case-logo">
-            <img src="assets/logos/enea.png" alt="ENEA" onerror="this.outerHTML='<span class=&quot;case-text&quot;>ENEA</span>'" />
+            <img src="assets/logos/others/enea.png" alt="ENEA" onerror="this.outerHTML='<span class=&quot;case-text&quot;>ENEA</span>'" />
           </div>
           <h4 class="case-title">Automated on-chain energy trading</h4>
           <p class="case-desc">Prototype for a blockchain system enabling automated buy and sell of energy on-chain, exploring the intersection of DLT and energy market infrastructure.</p>
@@ -2665,7 +2670,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         </article>
         <article class="case-file">
           <div class="case-logo">
-            <img src="assets/logos/gfx.png" alt="GFX Security &amp; IT" onerror="this.outerHTML='<span class=&quot;case-text&quot;>GFX</span>'" />
+            <img src="assets/logos/others/gfx.png" alt="GFX Security &amp; IT" onerror="this.outerHTML='<span class=&quot;case-text&quot;>GFX</span>'" />
           </div>
           <h4 class="case-title">Verifiable Credentials platform</h4>
           <p class="case-desc">Solution for issuing and verifying verifiable credentials, designed to enable data interoperability in the procurement domain.</p>
@@ -2673,7 +2678,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         </article>
         <article class="case-file">
           <div class="case-logo">
-            <img src="assets/logos/accenture.png" alt="Accenture" onerror="this.outerHTML='<span class=&quot;case-text&quot;>Accenture</span>'" />
+            <img src="assets/logos/partner/accenture.png" alt="Accenture" onerror="this.outerHTML='<span class=&quot;case-text&quot;>Accenture</span>'" />
           </div>
           <h4 class="case-title">NFT copyright protection</h4>
           <p class="case-desc">Support in developing NFTs associated with multimedia content protected by copyright law, bridging digital creation and intellectual property.</p>
@@ -2681,7 +2686,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         </article>
         <article class="case-file">
           <div class="case-logo">
-            <img src="assets/logos/pwc.png" alt="PwC" onerror="this.outerHTML='<span class=&quot;case-text&quot;>PwC</span>'" />
+            <img src="assets/logos/others/pwc.png" alt="PwC" onerror="this.outerHTML='<span class=&quot;case-text&quot;>PwC</span>'" />
           </div>
           <h4 class="case-title">Italian blockchain startup ecosystem</h4>
           <p class="case-desc">Custom research study on the blockchain startup ecosystem in Italy, co-developed with PwC in 2022.</p>
@@ -2689,7 +2694,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         </article>
         <article class="case-file">
           <div class="case-logo">
-            <img src="assets/logos/ntt-data.png" alt="NTT Data" onerror="this.outerHTML='<span class=&quot;case-text&quot;>NTT Data</span>'" />
+            <img src="assets/logos/others/ntt-data.png" alt="NTT Data" onerror="this.outerHTML='<span class=&quot;case-text&quot;>NTT Data</span>'" />
           </div>
           <h4 class="case-title">Rollups &amp; Zero-Knowledge proofs</h4>
           <p class="case-desc">Dedicated research project on rollup architectures and Zero-Knowledge proof technologies for enterprise applications.</p>
@@ -2697,7 +2702,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         </article>
         <article class="case-file">
           <div class="case-logo">
-            <img src="assets/logos/enel.png" alt="Enel" onerror="this.outerHTML='<span class=&quot;case-text&quot;>Enel</span>'" />
+            <img src="assets/logos/partner/enel.png" alt="Enel" onerror="this.outerHTML='<span class=&quot;case-text&quot;>Enel</span>'" />
           </div>
           <h4 class="case-title">Wallet-as-a-Service selection</h4>
           <p class="case-desc">Study on Wallet-as-a-Service providers and selection of the optimal blockchain platform for Enel's strategic requirements.</p>
@@ -2812,12 +2817,12 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <div class="eco-bar fade-up">
         <div class="eco-bar-lead">
           <span class="tag"><span class="dot"></span>THE ECOSYSTEM</span>
-          <h3 class="eco-title">A network of <span class="accent">38 leading</span> organisations &amp; institutions.</h3>
+          <h3 class="eco-title">A network of <span class="accent">30 leading</span> organisations &amp; institutions.</h3>
         </div>
         <div class="eco-legend" aria-hidden="true">
-          <span class="elg"><i style="--c:var(--blue)"></i><b>13</b>&nbsp;Partners</span>
-          <span class="elg"><i style="--c:var(--blue-bright)"></i><b>14</b>&nbsp;Sponsors</span>
-          <span class="elg"><i style="--c:#5b6b85"></i><b>11</b>&nbsp;Advisors</span>
+          <span class="elg"><i style="--c:var(--blue)"></i><b>10</b>&nbsp;Partners</span>
+          <span class="elg"><i style="--c:var(--blue-bright)"></i><b>12</b>&nbsp;Sponsors</span>
+          <span class="elg"><i style="--c:#5b6b85"></i><b>8</b>&nbsp;Advisors</span>
         </div>
       </div>
 
@@ -2825,58 +2830,50 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <span class="erc tl"></span><span class="erc tr"></span><span class="erc bl"></span><span class="erc br"></span>
 
         <div class="eco-rail" data-dir="l" style="--cat-color:var(--blue)">
-          <div class="eco-rail-label"><span class="erl-cat">Partners</span><span class="erl-count">13 · Tier 01</span></div>
+          <div class="eco-rail-label"><span class="erl-cat">Partners</span><span class="erl-count">10 · Tier 01</span></div>
           <div class="eco-rail-view"><div class="eco-track">
-            <div class="eco-chip" title="Accenture"><img src="assets/logos/accenture.png" alt="Accenture" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Accenture</span>'" /></div>
-            <div class="eco-chip" title="Almaviva"><img src="assets/logos/almaviva.png" alt="Almaviva" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Almaviva</span>'" /></div>
-            <div class="eco-chip" title="Mediolanum Banca"><img src="assets/logos/mediolanum-banca.png" alt="Mediolanum Banca" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Mediolanum Banca</span>'" /></div>
-            <div class="eco-chip" title="Binance"><img src="assets/logos/binance.png" alt="Binance" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Binance</span>'" /></div>
-            <div class="eco-chip" title="Enel"><img src="assets/logos/enel.png" alt="Enel" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Enel</span>'" /></div>
-            <div class="eco-chip" title="EY"><img src="assets/logos/ey.png" alt="EY" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>EY</span>'" /></div>
-            <div class="eco-chip" title="Fleap"><img src="assets/logos/fleap.png" alt="Fleap" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Fleap</span>'" /></div>
-            <div class="eco-chip" title="NTT Data"><img src="assets/logos/ntt-data.png" alt="NTT Data" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>NTT Data</span>'" /></div>
-            <div class="eco-chip" title="PwC"><img src="assets/logos/pwc.png" alt="PwC" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>PwC</span>'" /></div>
-            <div class="eco-chip" title="VeChain"><img src="assets/logos/vechain.png" alt="VeChain" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>VeChain</span>'" /></div>
-            <div class="eco-chip" title="Horizen Labs"><img src="assets/logos/HORIZEN-logo.png" alt="Horizen Labs" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Horizen Labs</span>'" /></div>
-            <div class="eco-chip" title="Pomiager"><img src="assets/logos/POMIAGER-logo.png" alt="Pomiager" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Pomiager</span>'" /></div>
-            <div class="eco-chip" title="Intesa Sanpaolo"><img src="assets/logos/INTESA-logo.svg" alt="Intesa Sanpaolo" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Intesa Sanpaolo</span>'" /></div>
+            <div class="eco-chip" title="Accenture"><img src="assets/logos/partner/accenture.png" alt="Accenture" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Accenture</span>'" /></div>
+            <div class="eco-chip" title="Almaviva"><img src="assets/logos/partner/almaviva.png" alt="Almaviva" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Almaviva</span>'" /></div>
+            <div class="eco-chip" title="Bancomat"><img src="assets/logos/partner/BANCOMAT.png" alt="Bancomat" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Bancomat</span>'" /></div>
+            <div class="eco-chip" title="B&ouml;rse Stuttgart Digital"><img src="assets/logos/partner/Boerse_Stuttgart_Digital.png" alt="B&ouml;rse Stuttgart Digital" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Börse Stuttgart</span>'" /></div>
+            <div class="eco-chip" title="Enel"><img src="assets/logos/partner/enel.png" alt="Enel" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Enel</span>'" /></div>
+            <div class="eco-chip" title="EY"><img src="assets/logos/partner/ey.png" alt="EY" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>EY</span>'" /></div>
+            <div class="eco-chip" title="Fleap"><img src="assets/logos/partner/fleap.png" alt="Fleap" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Fleap</span>'" /></div>
+            <div class="eco-chip" title="Intesa Sanpaolo"><img src="assets/logos/partner/INTESA-logo.svg" alt="Intesa Sanpaolo" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Intesa Sanpaolo</span>'" /></div>
+            <div class="eco-chip" title="Mediolanum Banca"><img src="assets/logos/partner/mediolanum-banca.png" alt="Mediolanum Banca" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Mediolanum Banca</span>'" /></div>
+            <div class="eco-chip" title="Pomiager"><img src="assets/logos/partner/POMIAGER-logo.png" alt="Pomiager" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Pomiager</span>'" /></div>
           </div></div>
         </div>
 
         <div class="eco-rail" data-dir="r" style="--cat-color:var(--blue-bright)">
-          <div class="eco-rail-label"><span class="erl-cat">Sponsors</span><span class="erl-count">14 · Tier 02</span></div>
+          <div class="eco-rail-label"><span class="erl-cat">Sponsors</span><span class="erl-count">12 · Tier 02</span></div>
           <div class="eco-rail-view"><div class="eco-track">
-            <div class="eco-chip" title="Altrefiamme"><img src="assets/logos/altrefiamme.png" alt="Altrefiamme" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Altrefiamme</span>'" /></div>
-            <div class="eco-chip" title="Amundi"><img src="assets/logos/amundi.png" alt="Amundi" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Amundi</span>'" /></div>
-            <div class="eco-chip" title="Banca Generali"><img src="assets/logos/banca-generali.png" alt="Banca Generali" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Banca Generali</span>'" /></div>
-            <div class="eco-chip" title="BNL BNP Paribas"><img src="assets/logos/bnl-bnp-paribas.svg" alt="BNL BNP Paribas" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>BNL BNP Paribas</span>'" /></div>
-            <div class="eco-chip" title="Deloitte"><img src="assets/logos/deloitte.png" alt="Deloitte" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Deloitte</span>'" /></div>
-            <div class="eco-chip" title="GFX Security &amp; IT"><img src="assets/logos/gfx.png" alt="GFX Security &amp; IT" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>GFX Security</span>'" /></div>
-            <div class="eco-chip" title="Mediobanca"><img src="assets/logos/mediobanca.png" alt="Mediobanca" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Mediobanca</span>'" /></div>
-            <div class="eco-chip" title="illimity Banca"><img src="assets/logos/illimity.png" alt="illimity Banca" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>illimity Banca</span>'" /></div>
-            <div class="eco-chip" title="Nexi"><img src="assets/logos/nexi.png" alt="Nexi" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Nexi</span>'" /></div>
-            <div class="eco-chip" title="42LF Innovation"><img src="assets/logos/42LF-logo.png" alt="42LF Innovation" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>42LF Innovation</span>'" /></div>
-            <div class="eco-chip" title="CGIL"><img src="assets/logos/CGIL-logo.png" alt="CGIL" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>CGIL</span>'" /></div>
-            <div class="eco-chip" title="MoneyViz"><img src="assets/logos/moneyviz-logo.png" alt="MoneyViz" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>MoneyViz</span>'" /></div>
-            <div class="eco-chip" title="Lab-go"><img src="assets/logos/LABGO-logo.png" alt="Lab-go" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Lab-go</span>'" /></div>
-            <div class="eco-chip" title="Smart Brick Investments"><img src="assets/logos/SMARTB-logo.png" alt="Smart Brick Investments" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Smart Brick</span>'" /></div>
+            <div class="eco-chip" title="42LF Innovation"><img src="assets/logos/sponsor/42LF-logo.png" alt="42LF Innovation" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>42LF Innovation</span>'" /></div>
+            <div class="eco-chip" title="BNL BNP Paribas"><img src="assets/logos/sponsor/bnl-bnp-paribas.svg" alt="BNL BNP Paribas" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>BNL BNP Paribas</span>'" /></div>
+            <div class="eco-chip" title="Crypfy"><img src="assets/logos/sponsor/Crypfy.png" alt="Crypfy" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Crypfy</span>'" /></div>
+            <div class="eco-chip" title="Deloitte"><img src="assets/logos/sponsor/deloitte.png" alt="Deloitte" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Deloitte</span>'" /></div>
+            <div class="eco-chip" title="Fortiland"><img src="assets/logos/sponsor/Fortiland.png" alt="Fortiland" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Fortiland</span>'" /></div>
+            <div class="eco-chip" title="Gruppo BCC Iccrea"><img src="assets/logos/sponsor/Gruppo%20BCC%20Iccrea.webp" alt="Gruppo BCC Iccrea" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Gruppo BCC Iccrea</span>'" /></div>
+            <div class="eco-chip" title="Lab-go"><img src="assets/logos/sponsor/LABGO-logo.png" alt="Lab-go" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Lab-go</span>'" /></div>
+            <div class="eco-chip" title="MoneyViz"><img src="assets/logos/sponsor/moneyviz-logo.png" alt="MoneyViz" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>MoneyViz</span>'" /></div>
+            <div class="eco-chip" title="NEST Company"><img src="assets/logos/sponsor/NEST-Company.png" alt="NEST Company" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>NEST Company</span>'" /></div>
+            <div class="eco-chip" title="Nexi"><img src="assets/logos/sponsor/nexi.png" alt="Nexi" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Nexi</span>'" /></div>
+            <div class="eco-chip" title="Prometeia"><img src="assets/logos/sponsor/Prometeia.png" alt="Prometeia" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Prometeia</span>'" /></div>
+            <div class="eco-chip" title="Smart Brick Investments"><img src="assets/logos/sponsor/Smart%20Brick%20investiment.png" alt="Smart Brick Investments" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Smart Brick</span>'" /></div>
           </div></div>
         </div>
 
         <div class="eco-rail" data-dir="l" style="--cat-color:#5b6b85">
-          <div class="eco-rail-label"><span class="erl-cat">Advisors</span><span class="erl-count">11 · Institutional</span></div>
+          <div class="eco-rail-label"><span class="erl-cat">Advisors</span><span class="erl-count">8 · Institutional</span></div>
           <div class="eco-rail-view"><div class="eco-track">
-            <div class="eco-chip" title="UnipolSai"><img src="assets/logos/unipolsai.png" alt="UnipolSai" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>UnipolSai</span>'" /></div>
-            <div class="eco-chip" title="ABI"><img src="assets/logos/abi.png" alt="ABI" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>ABI</span>'" /></div>
-            <div class="eco-chip" title="Banca d'Italia"><img src="assets/logos/banca-italia.png" alt="Banca d'Italia" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Banca d&#39;Italia</span>'" /></div>
-            <div class="eco-chip" title="CONSOB"><img src="assets/logos/consob.png" alt="CONSOB" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>CONSOB</span>'" /></div>
-            <div class="eco-chip" title="Ministero delle Imprese e del Made in Italy"><img src="assets/logos/MINISTERO.png" alt="Ministero delle Imprese e del Made in Italy" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Ministero delle Imprese</span>'" /></div>
-            <div class="eco-chip" title="Polimi School of Management"><img src="assets/logos/management.png" alt="Polimi School of Management" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Polimi SoM</span>'" /></div>
-            <div class="eco-chip" title="ECSDA"><img src="assets/logos/ECSDA-logo.png" alt="ECSDA" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>ECSDA</span>'" /></div>
-            <div class="eco-chip" title="Guardia di Finanza"><img src="assets/logos/FINANZA-logo.png" alt="Guardia di Finanza" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Guardia di Finanza</span>'" /></div>
-            <div class="eco-chip" title="Nordic Blockchain Association"><img src="assets/logos/NORDIC-logo.png" alt="Nordic Blockchain Association" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Nordic Blockchain Assoc.</span>'" /></div>
-            <div class="eco-chip" title="DIA"><img src="assets/logos/DIA-logo.png" alt="DIA" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>DIA</span>'" /></div>
-            <div class="eco-chip" title="Arma dei Carabinieri"><img src="assets/logos/CARABINIERI-logo.svg" alt="Arma dei Carabinieri" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Arma dei Carabinieri</span>'" /></div>
+            <div class="eco-chip" title="ABI"><img src="assets/logos/advisor/ABI.jpg" alt="ABI" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>ABI</span>'" /></div>
+            <div class="eco-chip" title="Banca d'Italia"><img src="assets/logos/advisor/banca-italia.png" alt="Banca d'Italia" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Banca d'Italia</span>'" /></div>
+            <div class="eco-chip" title="Arma dei Carabinieri"><img src="assets/logos/advisor/CARABINIERI-logo.svg" alt="Arma dei Carabinieri" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Carabinieri</span>'" /></div>
+            <div class="eco-chip" title="CONSOB"><img src="assets/logos/advisor/CONSOB.jpg" alt="CONSOB" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>CONSOB</span>'" /></div>
+            <div class="eco-chip" title="DIA"><img src="assets/logos/advisor/DIA-logo.png" alt="DIA" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>DIA</span>'" /></div>
+            <div class="eco-chip" title="ECSDA"><img src="assets/logos/advisor/ECSDA-logo.png" alt="ECSDA" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>ECSDA</span>'" /></div>
+            <div class="eco-chip" title="Guardia di Finanza"><img src="assets/logos/advisor/FINANZA-logo.png" alt="Guardia di Finanza" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Guardia di Finanza</span>'" /></div>
+            <div class="eco-chip" title="Nordic Blockchain Association"><img src="assets/logos/advisor/NORDIC-logo.png" alt="Nordic Blockchain Association" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Nordic</span>'" /></div>
           </div></div>
         </div>
       </div>
@@ -3070,7 +3067,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <p class="eco-cta-body">Every workshop and conference brings together the partners, sponsors and advisors that power WEB3HUB — <strong>leading companies and institutions</strong> shaping blockchain and Web3 across Italy and Europe. Discover who stands behind the programme, and the network you can build with.</p>
         <div class="eco-cta-actions">
           <a href="#partner" class="btn btn--solid">Explore the partner ecosystem <span class="arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></a>
-          <span class="eco-cta-meta"><b>13</b> partners · <b>14</b> sponsors · <b>11</b> advisors</span>
+          <span class="eco-cta-meta"><b>10</b> partners · <b>12</b> sponsors · <b>8</b> advisors</span>
         </div>
       </div>
       <div class="eco-cta-aside">
@@ -3271,15 +3268,15 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         </div>
         <div class="ab-wall" role="list" aria-label="Advisory board members">
         <div class="ab-cell" role="listitem">
-          <img src="assets/logos/banca-italia.png" alt="Banca d'Italia" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
+          <img src="assets/logos/advisor/banca-italia.png" alt="Banca d'Italia" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
           <span class="ab-name">Banca d'Italia</span>
         </div>
         <div class="ab-cell" role="listitem">
-          <img src="assets/logos/consob.png" alt="CONSOB" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
+          <img src="assets/logos/advisor/CONSOB.jpg" alt="CONSOB" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
           <span class="ab-name">CONSOB</span>
         </div>
         <div class="ab-cell" role="listitem">
-          <img src="assets/logos/abi.png" alt="ABI — Associazione Bancaria Italiana" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
+          <img src="assets/logos/advisor/ABI.jpg" alt="ABI — Associazione Bancaria Italiana" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
           <span class="ab-name">ABI</span>
         </div>
         <div class="ab-cell" role="listitem">
@@ -3287,27 +3284,27 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <span class="ab-name">Ministero delle Imprese e del Made in Italy</span>
         </div>
         <div class="ab-cell" role="listitem">
-          <img src="assets/logos/FINANZA-logo.png" alt="Guardia di Finanza" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
+          <img src="assets/logos/advisor/FINANZA-logo.png" alt="Guardia di Finanza" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
           <span class="ab-name">Guardia di Finanza</span>
         </div>
         <div class="ab-cell" role="listitem">
-          <img src="assets/logos/CARABINIERI-logo.svg" alt="Arma dei Carabinieri" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
+          <img src="assets/logos/advisor/CARABINIERI-logo.svg" alt="Arma dei Carabinieri" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
           <span class="ab-name">Arma dei Carabinieri</span>
         </div>
         <div class="ab-cell" role="listitem">
-          <img src="assets/logos/DIA-logo.png" alt="DIA — Direzione Investigativa Antimafia" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
+          <img src="assets/logos/advisor/DIA-logo.png" alt="DIA — Direzione Investigativa Antimafia" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
           <span class="ab-name">DIA</span>
         </div>
         <div class="ab-cell" role="listitem">
-          <img src="assets/logos/ECSDA-logo.png" alt="ECSDA — European CSD Association" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
+          <img src="assets/logos/advisor/ECSDA-logo.png" alt="ECSDA — European CSD Association" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
           <span class="ab-name">ECSDA</span>
         </div>
         <div class="ab-cell" role="listitem">
-          <img src="assets/logos/NORDIC-logo.png" alt="Nordic Blockchain Association" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
+          <img src="assets/logos/advisor/NORDIC-logo.png" alt="Nordic Blockchain Association" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
           <span class="ab-name">Nordic Blockchain Association</span>
         </div>
         <div class="ab-cell" role="listitem">
-          <img src="assets/logos/management.png" alt="Politecnico di Milano — School of Management" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
+          <img src="assets/logos/polimi%20logo/management.png" alt="Politecnico di Milano — School of Management" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
           <span class="ab-name">PoliMi · School of Management</span>
         </div>
       </div>
@@ -3432,9 +3429,9 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
     <div class="f-col">
       <p class="f-title">Lab</p>
       <div class="f-brand-row">
-        <span class="f-logo-box"><img src="assets/logos/logo-web3hub.png" alt="WEB3HUB" onerror="this.style.display='none'" /></span>
+        <span class="f-logo-box"><img src="assets/logos/polimi%20logo/logo-web3hub.png" alt="WEB3HUB" onerror="this.style.display='none'" /></span>
         <span class="hair-v"></span>
-        <img src="assets/logos/logo-polimi.png" alt="Politecnico di Milano" class="pol-mini" onerror="this.style.display='none'" />
+        <img src="assets/logos/polimi%20logo/logo-polimi.png" alt="Politecnico di Milano" class="pol-mini" onerror="this.style.display='none'" />
       </div>
       <p class="f-desc">The Blockchain &amp; Web3 Research and Projects Lab of the Politecnico di Milano — <strong>#1 in Italy</strong> for blockchain research (CoinDesk, 2022).</p>
       <div class="f-socials">
@@ -3476,7 +3473,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
     <div class="f-col">
       <p class="f-title">Institution</p>
       <div class="f-inst">
-        <img src="assets/logos/logo-polimi.png" alt="Politecnico di Milano" onerror="this.outerHTML='<span style=&quot;font-family:var(--mono);font-size:.7rem;color:rgba(255,255,255,.85);letter-spacing:.05em;display:block;margin-bottom:14px&quot;>POLITECNICO DI MILANO</span>'" />
+        <img src="assets/logos/polimi%20logo/logo-polimi.png" alt="Politecnico di Milano" onerror="this.outerHTML='<span style=&quot;font-family:var(--mono);font-size:.7rem;color:rgba(255,255,255,.85);letter-spacing:.05em;display:block;margin-bottom:14px&quot;>POLITECNICO DI MILANO</span>'" />
         <p>Osservatori Digital Innovation<br/>School of Management<br/>DEIB · Dept. of Electronics, Information &amp; Bioengineering</p>
         <a href="https://www.polimi.it" target="_blank" rel="noopener">polimi.it ↗</a>
       </div>
