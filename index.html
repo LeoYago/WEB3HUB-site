@@ -950,17 +950,20 @@ svg{display:block}
 .logos-tier-head .count{font-family:var(--mono);font-size:.62rem;color:var(--text-subtle);letter-spacing:.1em}
 
 /* ── ECOSYSTEM SHOWCASE — compact category marquee rails ── */
-.eco-showcase{margin-top:clamp(56px,7vw,88px)}
-.eco-bar{display:flex;justify-content:space-between;align-items:flex-end;gap:18px clamp(24px,3vw,48px);flex-wrap:wrap;margin-bottom:clamp(22px,2.4vw,32px)}
-.eco-bar-lead{display:flex;flex-direction:column;gap:13px}
-.eco-title{font-family:var(--display);font-weight:600;font-size:clamp(1.5rem,2.8vw,2.2rem);letter-spacing:-.03em;line-height:1.08;color:var(--text)}
+/* ECOSYSTEM — the centre of gravity of the site: full-bleed band, above the commercial block */
+.eco-showcase{position:relative;width:100vw;margin-left:calc(50% - 50vw);padding:clamp(48px,6vw,86px) 0;background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);margin-bottom:clamp(72px,9vw,120px)}
+.eco-bar{display:flex;justify-content:space-between;align-items:flex-end;gap:26px clamp(24px,3vw,48px);flex-wrap:wrap;margin-bottom:clamp(28px,3.2vw,44px)}
+.eco-bar-lead{display:flex;flex-direction:column;gap:14px;max-width:60ch}
+.eco-title{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,3.6vw,2.9rem);letter-spacing:-.035em;line-height:1.06;color:var(--text)}
 .eco-title .accent{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
-.eco-legend{display:flex;align-items:center;gap:clamp(12px,1.4vw,22px);flex-wrap:wrap;padding-bottom:4px}
-.elg{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
-.elg i{width:7px;height:7px;border-radius:50%;background:var(--c,var(--blue));box-shadow:0 0 8px var(--glow-soft)}
-.elg b{color:var(--text);font-weight:600;font-family:var(--display);font-size:1.05em;letter-spacing:0}
+.eco-sub{font-size:.92rem;line-height:1.6;color:var(--text-muted);max-width:52ch}
+/* counters promoted from a legend to a headline figure */
+.eco-stats{display:flex;align-items:stretch;gap:clamp(20px,2.4vw,38px);flex-wrap:wrap;padding-bottom:2px}
+.eco-stat{display:flex;flex-direction:column;gap:5px;padding-left:16px;border-left:2px solid var(--c,var(--blue))}
+.es-num{font-family:var(--display);font-weight:700;font-size:clamp(1.7rem,2.4vw,2.2rem);line-height:1;letter-spacing:-.04em;color:var(--text)}
+.es-lbl{font-family:var(--mono);font-size:.6rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--text-subtle)}
 
-.eco-rails{position:relative;border:1px solid var(--line-2);background:var(--bg)}
+.eco-rails{position:relative;border:1px solid var(--line-2);border-radius:var(--r);background:var(--bg);box-shadow:var(--shadow-1);overflow:hidden}
 .eco-rails .erc{position:absolute;width:var(--tick);height:var(--tick);border:var(--tick-w) solid var(--tick-color);pointer-events:none;z-index:6}
 .eco-rails .erc.tl{top:-1px;left:-1px;border-right:none;border-bottom:none}
 .eco-rails .erc.tr{top:-1px;right:-1px;border-left:none;border-bottom:none}
@@ -979,11 +982,11 @@ svg{display:block}
 .eco-rail-view:hover .eco-track{animation-play-state:paused}
 @keyframes ecoMarqL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes ecoMarqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-.eco-chip{flex:none;height:clamp(66px,7vw,84px);width:clamp(128px,13vw,162px);display:flex;align-items:center;justify-content:center;padding:0 18px;border-right:1px solid var(--line);position:relative;transition:background .3s var(--ease)}
+.eco-chip{flex:none;height:clamp(82px,8.4vw,106px);width:clamp(150px,15vw,196px);display:flex;align-items:center;justify-content:center;padding:0 22px;border-right:1px solid var(--line);position:relative;transition:background .3s var(--ease)}
 .eco-chip:hover{background:var(--surface)}
 .eco-chip::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--cat-color);transform:scaleX(0);transition:transform .35s var(--ease)}
 .eco-chip:hover::after{transform:scaleX(1)}
-.eco-chip img{max-height:30px;max-width:86%;width:auto;object-fit:contain;filter:saturate(.88) opacity(.82);transition:filter .4s var(--ease),transform .4s var(--ease)}
+.eco-chip img{max-height:40px;max-width:88%;width:auto;object-fit:contain;filter:saturate(.92) opacity(.9);transition:filter .4s var(--ease),transform .4s var(--ease)}
 .eco-chip:hover img{filter:saturate(1) opacity(1);transform:scale(1.07)}
 .eco-chip .lp-text{font-family:var(--mono);font-size:.66rem;font-weight:600;color:var(--blue);letter-spacing:.02em;text-align:center;line-height:1.25}
 @media(prefers-reduced-motion:reduce){
@@ -2201,7 +2204,6 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <div class="soul-head">
           <div class="soul-id">
             <span class="tag"><span class="dot"></span> 01 · RESEARCH</span>
-            <span class="hid">Observatory · <b>since 2017</b></span>
           </div>
           <div class="soul-icon">
             <svg viewBox="0 0 24 24"><path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 15.803a7.5 7.5 0 0010.607 10.607z"/></svg>
@@ -2229,7 +2231,6 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <div class="soul-head">
           <div class="soul-id">
             <span class="tag"><span class="dot"></span> 02 · PROJECTS</span>
-            <span class="hid">Applied Lab · <b>pre-competitive</b></span>
           </div>
           <div class="soul-icon">
             <svg viewBox="0 0 24 24"><path d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
@@ -2237,10 +2238,10 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         </div>
         <div>
           <h3 class="soul-name">The Applied<br/><span class="accent">Research Lab.</span></h3>
-          <p class="soul-desc" style="margin-top:14px">A proven track record of blockchain projects delivered alongside companies: support across strategy definition and project design, as-is process analysis and to-be architecture, and the development of prototypes and Proofs of Concept (PoC), through to consulting and support in the go-live phase.</p>
+          <p class="soul-desc" style="margin-top:14px">A proven track record of pre-competitive blockchain projects delivered alongside companies and institutions by a team that pairs software and management engineers: support across strategy definition and project design, as-is process analysis and to-be architecture, and the development of prototypes and Proofs of Concept (PoC), through to consulting and support in the go-live phase.</p>
         </div>
         <div class="soul-meta">
-          <div class="soul-meta-cell"><span class="lbl">SERVICES</span><span class="val">04</span></div>
+          <div class="soul-meta-cell"><span class="lbl">RESEARCHERS</span><span class="val">10</span></div>
           <div class="soul-meta-cell"><span class="lbl">DELIVERED</span><span class="val">80+</span></div>
           <div class="soul-meta-cell"><span class="lbl">PARTNERS</span><span class="val">30+</span></div>
           <div class="soul-meta-cell"><span class="lbl">CERT</span><span class="val">PoliMi</span></div>
@@ -2568,7 +2569,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       </div>
       <div class="proj-intro-copy fade-up delay-2">
         <span class="proj-intro-label">Track record</span>
-        <p class="lede">A <b style="color:var(--blue)">proven track record</b> of blockchain projects delivered alongside companies: support across strategy definition and project design, as-is process analysis and to-be architecture, and the development of prototypes and Proofs of Concept (PoC), through to consulting and support in the go-live phase.</p>
+        <p class="lede">A <b style="color:var(--blue)">proven track record</b> of <b style="color:var(--blue)">pre-competitive</b> blockchain projects delivered alongside companies and institutions by a team that pairs software and management engineers: support across strategy definition and project design, as-is process analysis and to-be architecture, and the development of prototypes and Proofs of Concept (PoC), through to consulting and support in the go-live phase.</p>
       </div>
     </div>
 
@@ -2725,6 +2726,77 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <p class="lede fade-up delay-2">Joining WEB3HUB means becoming part of Italy's most authoritative blockchain research ecosystem, backed by the credibility of the Politecnico di Milano, which ranks <b style="color:var(--blue)">#1 in Italy, #6 in Europe and #33 globally</b> for blockchain according to CoinDesk.</p>
     </div>
 
+    <!-- ECOSYSTEM SHOWCASE -->
+    <div class="eco-showcase">
+      <div class="wrap eco-wrap">
+      <div class="eco-bar fade-up">
+        <div class="eco-bar-lead">
+          <span class="tag"><span class="dot"></span>THE ECOSYSTEM</span>
+          <h2 class="eco-title">A network of <span class="accent">30 leading</span><br/>organisations &amp; institutions.</h2>
+          <p class="eco-sub">The companies, sponsors and institutions that fund the research, sit at the table and put it to work.</p>
+        </div>
+        <div class="eco-stats">
+          <div class="eco-stat" style="--c:var(--blue)"><span class="es-num">10</span><span class="es-lbl">Partners</span></div>
+          <div class="eco-stat" style="--c:var(--blue-bright)"><span class="es-num">12</span><span class="es-lbl">Sponsors</span></div>
+          <div class="eco-stat" style="--c:#5b6b85"><span class="es-num">8</span><span class="es-lbl">Advisors</span></div>
+        </div>
+      </div>
+
+      <div class="eco-rails fade-up">
+        <span class="erc tl"></span><span class="erc tr"></span><span class="erc bl"></span><span class="erc br"></span>
+
+        <div class="eco-rail" data-dir="l" style="--cat-color:var(--blue)">
+          <div class="eco-rail-label"><span class="erl-cat">Partners</span><span class="erl-count">10 · Tier 01</span></div>
+          <div class="eco-rail-view"><div class="eco-track">
+            <div class="eco-chip" title="Accenture"><img src="assets/logos/partner/accenture.png" alt="Accenture" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Accenture</span>'" /></div>
+            <div class="eco-chip" title="Almaviva"><img src="assets/logos/partner/almaviva.png" alt="Almaviva" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Almaviva</span>'" /></div>
+            <div class="eco-chip" title="Bancomat"><img src="assets/logos/partner/BANCOMAT.png" alt="Bancomat" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Bancomat</span>'" /></div>
+            <div class="eco-chip" title="B&ouml;rse Stuttgart Digital"><img src="assets/logos/partner/Boerse_Stuttgart_Digital.png" alt="B&ouml;rse Stuttgart Digital" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Börse Stuttgart</span>'" /></div>
+            <div class="eco-chip" title="Enel"><img src="assets/logos/partner/enel.png" alt="Enel" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Enel</span>'" /></div>
+            <div class="eco-chip" title="EY"><img src="assets/logos/partner/ey.png" alt="EY" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>EY</span>'" /></div>
+            <div class="eco-chip" title="Fleap"><img src="assets/logos/partner/fleap.png" alt="Fleap" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Fleap</span>'" /></div>
+            <div class="eco-chip" title="Intesa Sanpaolo"><img src="assets/logos/partner/INTESA-logo.svg" alt="Intesa Sanpaolo" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Intesa Sanpaolo</span>'" /></div>
+            <div class="eco-chip" title="Mediolanum Banca"><img src="assets/logos/partner/mediolanum-banca.png" alt="Mediolanum Banca" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Mediolanum Banca</span>'" /></div>
+            <div class="eco-chip" title="Pomiager"><img src="assets/logos/partner/POMIAGER-logo.png" alt="Pomiager" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Pomiager</span>'" /></div>
+          </div></div>
+        </div>
+
+        <div class="eco-rail" data-dir="r" style="--cat-color:var(--blue-bright)">
+          <div class="eco-rail-label"><span class="erl-cat">Sponsors</span><span class="erl-count">12 · Tier 02</span></div>
+          <div class="eco-rail-view"><div class="eco-track">
+            <div class="eco-chip" title="42LF Innovation"><img src="assets/logos/sponsor/42LF-logo.png" alt="42LF Innovation" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>42LF Innovation</span>'" /></div>
+            <div class="eco-chip" title="BNL BNP Paribas"><img src="assets/logos/sponsor/bnl-bnp-paribas.svg" alt="BNL BNP Paribas" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>BNL BNP Paribas</span>'" /></div>
+            <div class="eco-chip" title="Crypfy"><img src="assets/logos/sponsor/Crypfy.png" alt="Crypfy" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Crypfy</span>'" /></div>
+            <div class="eco-chip" title="Deloitte"><img src="assets/logos/sponsor/deloitte.png" alt="Deloitte" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Deloitte</span>'" /></div>
+            <div class="eco-chip" title="Fortiland"><img src="assets/logos/sponsor/Fortiland.png" alt="Fortiland" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Fortiland</span>'" /></div>
+            <div class="eco-chip" title="Gruppo BCC Iccrea"><img src="assets/logos/sponsor/Gruppo%20BCC%20Iccrea.webp" alt="Gruppo BCC Iccrea" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Gruppo BCC Iccrea</span>'" /></div>
+            <div class="eco-chip" title="Lab-go"><img src="assets/logos/sponsor/LABGO-logo.png" alt="Lab-go" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Lab-go</span>'" /></div>
+            <div class="eco-chip" title="MoneyViz"><img src="assets/logos/sponsor/moneyviz-logo.png" alt="MoneyViz" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>MoneyViz</span>'" /></div>
+            <div class="eco-chip" title="NEST Company"><img src="assets/logos/sponsor/NEST-Company.png" alt="NEST Company" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>NEST Company</span>'" /></div>
+            <div class="eco-chip" title="Nexi"><img src="assets/logos/sponsor/nexi.png" alt="Nexi" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Nexi</span>'" /></div>
+            <div class="eco-chip" title="Prometeia"><img src="assets/logos/sponsor/Prometeia.png" alt="Prometeia" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Prometeia</span>'" /></div>
+            <div class="eco-chip" title="Smart Brick Investments"><img src="assets/logos/sponsor/Smart%20Brick%20investiment.png" alt="Smart Brick Investments" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Smart Brick</span>'" /></div>
+          </div></div>
+        </div>
+
+        <div class="eco-rail" data-dir="l" style="--cat-color:#5b6b85">
+          <div class="eco-rail-label"><span class="erl-cat">Advisors</span><span class="erl-count">8 · Institutional</span></div>
+          <div class="eco-rail-view"><div class="eco-track">
+            <div class="eco-chip" title="ABI"><img src="assets/logos/advisor/ABI.jpg" alt="ABI" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>ABI</span>'" /></div>
+            <div class="eco-chip" title="Banca d'Italia"><img src="assets/logos/advisor/banca-italia.png" alt="Banca d'Italia" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Banca d'Italia</span>'" /></div>
+            <div class="eco-chip" title="Arma dei Carabinieri"><img src="assets/logos/advisor/CARABINIERI-logo.svg" alt="Arma dei Carabinieri" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Carabinieri</span>'" /></div>
+            <div class="eco-chip" title="CONSOB"><img src="assets/logos/advisor/CONSOB.jpg" alt="CONSOB" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>CONSOB</span>'" /></div>
+            <div class="eco-chip" title="DIA"><img src="assets/logos/advisor/DIA-logo.png" alt="DIA" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>DIA</span>'" /></div>
+            <div class="eco-chip" title="ECSDA"><img src="assets/logos/advisor/ECSDA-logo.png" alt="ECSDA" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>ECSDA</span>'" /></div>
+            <div class="eco-chip" title="Guardia di Finanza"><img src="assets/logos/advisor/FINANZA-logo.png" alt="Guardia di Finanza" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Guardia di Finanza</span>'" /></div>
+            <div class="eco-chip" title="Nordic Blockchain Association"><img src="assets/logos/advisor/NORDIC-logo.png" alt="Nordic Blockchain Association" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Nordic</span>'" /></div>
+          </div></div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+
     <div class="partner-layout">
       <div>
         <div class="values-head fade-up">
@@ -2806,73 +2878,6 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         </div>
         <div class="partner-cta-inline">
           <button class="btn btn--solid" onclick="openContact()">Request Partnership Info <span class="arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ECOSYSTEM SHOWCASE -->
-    <div class="eco-showcase">
-      <div class="eco-bar fade-up">
-        <div class="eco-bar-lead">
-          <span class="tag"><span class="dot"></span>THE ECOSYSTEM</span>
-          <h3 class="eco-title">A network of <span class="accent">30 leading</span> organisations &amp; institutions.</h3>
-        </div>
-        <div class="eco-legend" aria-hidden="true">
-          <span class="elg"><i style="--c:var(--blue)"></i><b>10</b>&nbsp;Partners</span>
-          <span class="elg"><i style="--c:var(--blue-bright)"></i><b>12</b>&nbsp;Sponsors</span>
-          <span class="elg"><i style="--c:#5b6b85"></i><b>8</b>&nbsp;Advisors</span>
-        </div>
-      </div>
-
-      <div class="eco-rails fade-up">
-        <span class="erc tl"></span><span class="erc tr"></span><span class="erc bl"></span><span class="erc br"></span>
-
-        <div class="eco-rail" data-dir="l" style="--cat-color:var(--blue)">
-          <div class="eco-rail-label"><span class="erl-cat">Partners</span><span class="erl-count">10 · Tier 01</span></div>
-          <div class="eco-rail-view"><div class="eco-track">
-            <div class="eco-chip" title="Accenture"><img src="assets/logos/partner/accenture.png" alt="Accenture" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Accenture</span>'" /></div>
-            <div class="eco-chip" title="Almaviva"><img src="assets/logos/partner/almaviva.png" alt="Almaviva" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Almaviva</span>'" /></div>
-            <div class="eco-chip" title="Bancomat"><img src="assets/logos/partner/BANCOMAT.png" alt="Bancomat" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Bancomat</span>'" /></div>
-            <div class="eco-chip" title="B&ouml;rse Stuttgart Digital"><img src="assets/logos/partner/Boerse_Stuttgart_Digital.png" alt="B&ouml;rse Stuttgart Digital" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Börse Stuttgart</span>'" /></div>
-            <div class="eco-chip" title="Enel"><img src="assets/logos/partner/enel.png" alt="Enel" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Enel</span>'" /></div>
-            <div class="eco-chip" title="EY"><img src="assets/logos/partner/ey.png" alt="EY" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>EY</span>'" /></div>
-            <div class="eco-chip" title="Fleap"><img src="assets/logos/partner/fleap.png" alt="Fleap" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Fleap</span>'" /></div>
-            <div class="eco-chip" title="Intesa Sanpaolo"><img src="assets/logos/partner/INTESA-logo.svg" alt="Intesa Sanpaolo" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Intesa Sanpaolo</span>'" /></div>
-            <div class="eco-chip" title="Mediolanum Banca"><img src="assets/logos/partner/mediolanum-banca.png" alt="Mediolanum Banca" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Mediolanum Banca</span>'" /></div>
-            <div class="eco-chip" title="Pomiager"><img src="assets/logos/partner/POMIAGER-logo.png" alt="Pomiager" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Pomiager</span>'" /></div>
-          </div></div>
-        </div>
-
-        <div class="eco-rail" data-dir="r" style="--cat-color:var(--blue-bright)">
-          <div class="eco-rail-label"><span class="erl-cat">Sponsors</span><span class="erl-count">12 · Tier 02</span></div>
-          <div class="eco-rail-view"><div class="eco-track">
-            <div class="eco-chip" title="42LF Innovation"><img src="assets/logos/sponsor/42LF-logo.png" alt="42LF Innovation" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>42LF Innovation</span>'" /></div>
-            <div class="eco-chip" title="BNL BNP Paribas"><img src="assets/logos/sponsor/bnl-bnp-paribas.svg" alt="BNL BNP Paribas" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>BNL BNP Paribas</span>'" /></div>
-            <div class="eco-chip" title="Crypfy"><img src="assets/logos/sponsor/Crypfy.png" alt="Crypfy" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Crypfy</span>'" /></div>
-            <div class="eco-chip" title="Deloitte"><img src="assets/logos/sponsor/deloitte.png" alt="Deloitte" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Deloitte</span>'" /></div>
-            <div class="eco-chip" title="Fortiland"><img src="assets/logos/sponsor/Fortiland.png" alt="Fortiland" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Fortiland</span>'" /></div>
-            <div class="eco-chip" title="Gruppo BCC Iccrea"><img src="assets/logos/sponsor/Gruppo%20BCC%20Iccrea.webp" alt="Gruppo BCC Iccrea" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Gruppo BCC Iccrea</span>'" /></div>
-            <div class="eco-chip" title="Lab-go"><img src="assets/logos/sponsor/LABGO-logo.png" alt="Lab-go" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Lab-go</span>'" /></div>
-            <div class="eco-chip" title="MoneyViz"><img src="assets/logos/sponsor/moneyviz-logo.png" alt="MoneyViz" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>MoneyViz</span>'" /></div>
-            <div class="eco-chip" title="NEST Company"><img src="assets/logos/sponsor/NEST-Company.png" alt="NEST Company" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>NEST Company</span>'" /></div>
-            <div class="eco-chip" title="Nexi"><img src="assets/logos/sponsor/nexi.png" alt="Nexi" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Nexi</span>'" /></div>
-            <div class="eco-chip" title="Prometeia"><img src="assets/logos/sponsor/Prometeia.png" alt="Prometeia" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Prometeia</span>'" /></div>
-            <div class="eco-chip" title="Smart Brick Investments"><img src="assets/logos/sponsor/Smart%20Brick%20investiment.png" alt="Smart Brick Investments" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Smart Brick</span>'" /></div>
-          </div></div>
-        </div>
-
-        <div class="eco-rail" data-dir="l" style="--cat-color:#5b6b85">
-          <div class="eco-rail-label"><span class="erl-cat">Advisors</span><span class="erl-count">8 · Institutional</span></div>
-          <div class="eco-rail-view"><div class="eco-track">
-            <div class="eco-chip" title="ABI"><img src="assets/logos/advisor/ABI.jpg" alt="ABI" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>ABI</span>'" /></div>
-            <div class="eco-chip" title="Banca d'Italia"><img src="assets/logos/advisor/banca-italia.png" alt="Banca d'Italia" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Banca d'Italia</span>'" /></div>
-            <div class="eco-chip" title="Arma dei Carabinieri"><img src="assets/logos/advisor/CARABINIERI-logo.svg" alt="Arma dei Carabinieri" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Carabinieri</span>'" /></div>
-            <div class="eco-chip" title="CONSOB"><img src="assets/logos/advisor/CONSOB.jpg" alt="CONSOB" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>CONSOB</span>'" /></div>
-            <div class="eco-chip" title="DIA"><img src="assets/logos/advisor/DIA-logo.png" alt="DIA" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>DIA</span>'" /></div>
-            <div class="eco-chip" title="ECSDA"><img src="assets/logos/advisor/ECSDA-logo.png" alt="ECSDA" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>ECSDA</span>'" /></div>
-            <div class="eco-chip" title="Guardia di Finanza"><img src="assets/logos/advisor/FINANZA-logo.png" alt="Guardia di Finanza" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Guardia di Finanza</span>'" /></div>
-            <div class="eco-chip" title="Nordic Blockchain Association"><img src="assets/logos/advisor/NORDIC-logo.png" alt="Nordic Blockchain Association" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Nordic</span>'" /></div>
-          </div></div>
         </div>
       </div>
     </div>
