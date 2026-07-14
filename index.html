@@ -136,7 +136,7 @@ svg{display:block}
 /* remove decorative status / bullet dots site-wide (green "live" pulses + blue dots) */
 .live,.pulse,.rs-dot,
 .nav-block .blk .live,.hero-rail .seg .live,.viz-hud .hud-tag .live,
-.chain-stream-head .live,.wire-tag .live,.activity-tile .a-id .live,
+.chain-stream-head .live,.wire-tag .live,
 .partner-cta .pc-tag .dot,.xpl-feat-label .dot,.euro-tag .dot,.intl-tag .dot,
 .f-wordmark .wm-rail .live,.contact-info-head .live{display:none!important}
 .sb-foot .sb-ok::before{display:none}
@@ -731,7 +731,7 @@ svg{display:block}
 
 /* Themes — token cloud */
 .themes-block{margin-top:clamp(56px,7vw,96px)}
-.themes-block .themes-head{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end;margin-bottom:28px}
+.themes-block .themes-head{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:baseline;margin-bottom:28px}
 .themes-cloud{display:flex;flex-wrap:wrap;gap:8px;padding:clamp(24px,3vw,32px);background:var(--surface);border:1px dashed var(--line-2)}
 .theme-token{
   display:inline-flex;align-items:center;gap:10px;
@@ -749,7 +749,7 @@ svg{display:block}
 
 /* Activities — HUD dashboard tiles */
 .activity-block{margin-top:clamp(56px,7vw,96px)}
-.activity-block .a-head{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end;margin-bottom:28px}
+.activity-block .a-head{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:baseline;margin-bottom:28px}
 .activity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-1);overflow:hidden;position:relative}
 .activity-grid::before,.activity-grid::after,.activity-grid .ac-bl,.activity-grid .ac-br{content:'';position:absolute;width:var(--tick);height:var(--tick);border:var(--tick-w) solid var(--tick-color);pointer-events:none;z-index:3;transition:border-color .4s var(--ease-out)}
 .activity-grid:hover::before,.activity-grid:hover::after,.activity-grid:hover .ac-bl,.activity-grid:hover .ac-br{border-color:var(--tick-color-hover)}
@@ -759,8 +759,6 @@ svg{display:block}
 .activity-grid .ac-br{bottom:7px;right:7px;border-left:none;border-top:none}
 .activity-tile{background:var(--bg);padding:clamp(20px,2.4vw,28px);display:flex;flex-direction:column;gap:10px;transition:background .3s,transform .3s var(--ease)}
 .activity-tile:hover{background:var(--surface)}
-.activity-tile .a-id{font-family:var(--mono);font-size:.56rem;letter-spacing:.16em;color:var(--text-subtle);text-transform:uppercase;display:flex;align-items:center;gap:6px}
-.activity-tile .a-id .live{width:5px;height:5px;border-radius:50%;background:var(--signal);animation:livepulse 1.6s ease-in-out infinite}
 .activity-tile .a-num{font-family:var(--display);font-weight:700;font-size:clamp(2.2rem,3.4vw,3rem);letter-spacing:-.04em;line-height:.9;color:var(--blue);display:flex;align-items:baseline;gap:2px}
 .activity-tile .a-num .suffix{font-family:var(--mono);font-size:.4em;color:var(--blue-mid);letter-spacing:0;font-weight:600}
 .activity-tile .a-name{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--text);letter-spacing:-.01em}
@@ -819,7 +817,7 @@ svg{display:block}
 
 /* Why — terminal-style ordered list */
 .why-block{margin-bottom:clamp(64px,8vw,108px)}
-.why-head{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end;margin-bottom:28px}
+.why-head{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:baseline;margin-bottom:28px}
 .why-rack{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-1);overflow:hidden;background:var(--bg);position:relative}
 .why-rack::before,.why-rack::after,.why-rack .wc-bl,.why-rack .wc-br{content:'';position:absolute;width:var(--tick);height:var(--tick);border:var(--tick-w) solid var(--tick-color);pointer-events:none}
 .why-rack::before{top:7px;left:7px;border-right:none;border-bottom:none}
@@ -835,12 +833,7 @@ svg{display:block}
 .why-cell:hover::after{transform:scaleX(1)}
 .why-ghost{position:absolute;top:clamp(16px,1.8vw,24px);right:clamp(14px,1.8vw,24px);font-family:var(--display);font-weight:600;font-size:clamp(3.6rem,5.4vw,5rem);line-height:.8;letter-spacing:-.05em;color:var(--blue);opacity:.05;pointer-events:none;transition:opacity .5s var(--ease),transform .6s var(--ease)}
 .why-cell:hover .why-ghost{opacity:.1;transform:translateY(-3px)}
-.why-meta,.why-name,.why-desc,.why-kicker{position:relative;z-index:1}
-.why-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
-.why-num{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;color:var(--blue);font-weight:600;text-transform:uppercase}
-.why-num b{font-family:var(--display);font-size:1.2em}
-.why-status{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#0c6b48;padding:4px 9px 4px 6px;border:1px solid rgba(16,163,74,.30);border-radius:100px;background:rgba(16,163,74,.07)}
-.why-status svg{width:11px;height:11px;flex:none}
+.why-name,.why-desc,.why-kicker{position:relative;z-index:1}
 .why-name{font-family:var(--display);font-weight:600;font-size:clamp(1.3rem,2vw,1.6rem);letter-spacing:-.025em;line-height:1.15;color:var(--text);margin-top:2px}
 .why-name .accent{color:var(--blue)}
 .why-desc{font-size:.88rem;line-height:1.6;color:var(--text-muted)}
@@ -851,7 +844,7 @@ svg{display:block}
 
 /* Services — spec sheet rows */
 .services-block{margin-bottom:clamp(64px,8vw,108px)}
-.services-head{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end;margin-bottom:28px}
+.services-head{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:baseline;margin-bottom:28px}
 /* SERVICES — elegant editorial list (no IDs, codes or status column) */
 .spec-sheet{border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-1);overflow:hidden;background:var(--bg)}
 .svc-row{display:grid;grid-template-columns:1fr auto;gap:clamp(20px,4vw,72px);align-items:start;padding:clamp(26px,3vw,40px) clamp(24px,3vw,42px);border-bottom:1px solid var(--line);transition:background .35s var(--ease-out)}
@@ -865,7 +858,7 @@ svg{display:block}
 .svc-foot b{color:var(--blue);font-weight:600}
 
 /* Cases — lab files / project cards */
-.cases-block .cases-head{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end;margin-bottom:28px}
+.cases-block .cases-head{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:baseline;margin-bottom:28px}
 .cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-1);overflow:hidden;position:relative}
 .cases-grid::before,.cases-grid::after,.cases-grid .cc-bl,.cases-grid .cc-br{content:'';position:absolute;width:var(--tick);height:var(--tick);border:var(--tick-w) solid var(--tick-color);pointer-events:none;z-index:3}
 .cases-grid::before{top:7px;left:7px;border-right:none;border-bottom:none}
@@ -873,6 +866,22 @@ svg{display:block}
 .cases-grid .cc-bl{bottom:7px;left:7px;border-right:none;border-top:none}
 .cases-grid .cc-br{bottom:7px;right:7px;border-left:none;border-top:none}
 .case-file{background:var(--bg);padding:clamp(24px,2.8vw,32px);display:flex;flex-direction:column;gap:18px;position:relative;transition:background .3s;min-height:280px}
+/* Cases · closing CTA — centred, contained, quietly elevated */
+.cases-more-row{display:flex;justify-content:center;margin-top:clamp(26px,3.2vw,40px)}
+.cases-more{position:relative;z-index:1;display:inline-flex;align-items:center;gap:clamp(20px,2.4vw,32px);padding:16px 22px 16px 28px;background:var(--grad);border-radius:var(--r);color:#fff;overflow:hidden;isolation:isolate;
+  box-shadow:0 1px 1px rgba(15,32,64,.06),0 6px 16px -8px var(--glow),0 18px 40px -20px var(--glow);
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+/* hairline top highlight — catches the light, keeps the slab from reading flat */
+.cases-more::after{content:'';position:absolute;inset:0;border-radius:inherit;border:1px solid rgba(255,255,255,.14);border-bottom-color:rgba(255,255,255,.05);pointer-events:none;z-index:2}
+.cases-more::before{content:'';position:absolute;inset:0;background:var(--navy-dark);transform:translateY(101%);transition:transform .5s var(--ease);z-index:-1}
+.cases-more:hover::before{transform:translateY(0)}
+.cases-more:hover{transform:translateY(-2px);
+  box-shadow:0 1px 1px rgba(15,32,64,.06),0 10px 24px -10px var(--glow),0 28px 56px -22px var(--glow),0 0 0 3px var(--glow-soft)}
+.cases-more:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+.cases-more .cm-l{font-family:var(--mono);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1;color:#fff;white-space:nowrap}
+.cases-more .cm-arrow{flex-shrink:0;display:inline-flex;align-items:center;padding-left:clamp(16px,1.8vw,24px);border-left:1px solid rgba(255,255,255,.16)}
+.cases-more .cm-arrow svg{width:22px;height:10px;stroke:#fff;fill:none;stroke-width:1.5;stroke-linecap:square}
+.cases-more:hover .cm-arrow svg{animation:arrow-slide .5s var(--ease)}
 .case-file:hover{background:var(--surface)}
 .case-file::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:var(--blue-mid);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
 .case-file:hover::before{transform:scaleX(1)}
@@ -1050,7 +1059,7 @@ svg{display:block}
 .ea-tile.ink .ea-desc strong{color:#fff}
 
 /* Chain */
-.chain-head{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end;margin-bottom:36px}
+.chain-head{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:baseline;margin-bottom:36px}
 .chain{position:relative;display:flex;flex-direction:column;gap:14px;max-width:920px}
 .chain::before{content:'';position:absolute;left:30px;top:30px;bottom:30px;width:2px;background:var(--line-2);z-index:0}
 .chain-progress{position:absolute;left:30px;top:30px;width:2px;height:0;background:linear-gradient(180deg,var(--blue),var(--blue-mid));z-index:1;box-shadow:0 0 12px var(--glow);will-change:height}
@@ -2182,7 +2191,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
   <div class="wrap">
     <div class="identity-head fade-up">
       <span class="tag"><span class="dot"></span>TWO SOULS · ONE MISSION</span>
-      <h2 class="h-xl" id="identity-heading" style="margin-top:20px">Research and application,<br/><span class="accent">without compromise.</span></h2>
+      <h2 class="h-xl" id="identity-heading" style="margin-top:20px">Research and <span class="accent">application.</span></h2>
       <p class="lede lede-identity" style="margin:20px auto 0">Two complementary missions, one shared foundation. <br class="d-br"/>WEB3HUB couples a rigorous research observatory with an applied lab — bound by a single <br class="d-br"/>hub of expertise, partners and infrastructure.</p>
     </div>
 
@@ -2480,31 +2489,26 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <div class="activity-grid fade-up">
         <span class="ac-bl"></span><span class="ac-br"></span>
         <div class="activity-tile">
-          <span class="a-id">A01</span>
           <span class="a-num">8<span class="suffix">×</span></span>
           <span class="a-name">National Conferences</span>
           <span class="a-desc">Each with 2,000+ registered attendees — Italy's most important blockchain event.</span>
         </div>
         <div class="activity-tile">
-          <span class="a-id">A02</span>
           <span class="a-num">4<span class="suffix">+</span></span>
           <span class="a-name">Annual Workshops</span>
           <span class="a-desc">300+ participants/year, including CIOs, CTOs and IT Managers from leading Italian organisations.</span>
         </div>
         <div class="activity-tile">
-          <span class="a-id">A03</span>
           <span class="a-num">500<span class="suffix">+</span></span>
           <span class="a-name">Webinar Participants</span>
           <span class="a-desc">Annual attendance on Osservatori.net, with educational content and market updates.</span>
         </div>
         <div class="activity-tile">
-          <span class="a-id">A04</span>
           <span class="a-num">4</span>
           <span class="a-name">Intl. Working Groups</span>
           <span class="a-desc">Inatba, EU Blockchain Forum, EBSI and IBSI — shaping European dialogue.</span>
         </div>
         <div class="activity-tile">
-          <span class="a-id">A05</span>
           <span class="a-num">300<span class="suffix">+</span></span>
           <span class="a-name">LinkedIn Posts</span>
           <span class="a-desc">Over 2 million views — the authoritative Italian voice in blockchain and Web3.</span>
@@ -2578,30 +2582,18 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <span class="wc-bl"></span><span class="wc-br"></span>
         <div class="why-cell">
           <span class="why-ghost" aria-hidden="true">01</span>
-          <div class="why-meta">
-            <span class="why-num">PROOF <b>01</b></span>
-            <span class="why-status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>VERIFIED</span>
-          </div>
           <h3 class="why-name">Super-partes <span class="accent">guarantor.</span></h3>
           <p class="why-desc">The Politecnico di Milano's independence ensures objective analysis, free from commercial conflicts of interest — a guarantee that few private partners can match.</p>
           <span class="why-kicker">Independence</span>
         </div>
         <div class="why-cell">
           <span class="why-ghost" aria-hidden="true">02</span>
-          <div class="why-meta">
-            <span class="why-num">PROOF <b>02</b></span>
-            <span class="why-status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>VERIFIED</span>
-          </div>
           <h3 class="why-name">Specialised expertise,<br/><span class="accent">years in the field.</span></h3>
           <p class="why-desc">Our team brings deep, vertical competence built over years of hands-on work in blockchain and Web3 — combining academic rigour with direct experience on real industry projects.</p>
           <span class="why-kicker">Field expertise</span>
         </div>
         <div class="why-cell">
           <span class="why-ghost" aria-hidden="true">03</span>
-          <div class="why-meta">
-            <span class="why-num">PROOF <b>03</b></span>
-            <span class="why-status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>VERIFIED</span>
-          </div>
           <h3 class="why-name">Ecosystem <span class="accent">development.</span></h3>
           <p class="why-desc">Supporting each project means contributing to the growth of the entire blockchain ecosystem — value that extends beyond the individual initiative.</p>
           <span class="why-kicker">Ecosystem value</span>
@@ -2643,7 +2635,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <article class="svc-row">
           <div class="svc-main">
             <span class="svc-cat">Startup Review</span>
-            <h3 class="svc-name">Project Evaluation</h3>
+            <h3 class="svc-name">Validation</h3>
             <p class="svc-desc">Independent analysis and structured feedback on an existing blockchain project or startup — Politecnico di Milano certification.</p>
           </div>
           <span class="svc-dur">2–3 months</span>
@@ -2708,6 +2700,14 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <p class="case-desc">Study on Wallet-as-a-Service providers and selection of the optimal blockchain platform for Enel's strategic requirements.</p>
           <span class="case-foot">DOMAIN · <b>WALLET / INFRA</b></span>
         </article>
+      </div>
+
+      <!-- TODO(cases-index): replace href="#" with the project-articles page once the URL is available -->
+      <div class="cases-more-row fade-up">
+        <a href="#" class="cases-more" data-todo="cases-index">
+          <span class="cm-l">Discover more success stories</span>
+          <span class="cm-arrow"><svg viewBox="0 0 22 10"><line x1="0" y1="5" x2="20" y2="5"/><polyline points="15,1 20,5 15,9"/></svg></span>
+        </a>
       </div>
     </div>
 
@@ -3457,14 +3457,14 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <p class="f-title">Institution</p>
       <div class="f-inst">
         <img src="assets/logos/polimi%20logo/logo-polimi.png" alt="Politecnico di Milano" onerror="this.outerHTML='<span style=&quot;font-family:var(--mono);font-size:.7rem;color:rgba(255,255,255,.85);letter-spacing:.05em;display:block;margin-bottom:14px&quot;>POLITECNICO DI MILANO</span>'" />
-        <p>Osservatori Digital Innovation<br/>School of Management<br/>DEIB · Dept. of Electronics, Information &amp; Bioengineering</p>
+        <p>Digital Innovation Observatories<br/>School of Management<br/>DIG · Dept. of Management, Economics and Industrial Engineering<br/>DEIB · Dept. of Electronics, Information &amp; Bioengineering</p>
         <a href="https://www.polimi.it" target="_blank" rel="noopener">polimi.it ↗</a>
       </div>
     </div>
   </div>
 
   <div class="f-bottom">
-    <p class="f-copy">© 2026 WEB3HUB · Osservatori Digital Innovation · Politecnico di Milano · All rights reserved.</p>
+    <p class="f-copy">© 2026 WEB3HUB · Digital Innovation Observatories · Politecnico di Milano · All rights reserved.</p>
     <div class="f-bottom-links">
       <a href="https://www.polimi.it/en/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
       <a href="https://www.polimi.it" target="_blank" rel="noopener">Politecnico di Milano</a>
