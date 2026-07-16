@@ -336,37 +336,30 @@ svg{display:block}
 /* ════════════════════════════════════════════════════════════
    HERO — Animated network. HUD frame. Massive type.
 ════════════════════════════════════════════════════════════ */
-#hero{position:relative;min-height:100vh;padding:110px 0 60px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+#hero{position:relative;min-height:100vh;padding:96px 0 56px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;
+  background:
+    radial-gradient(90% 75% at 50% -8%, rgba(58,107,200,.16), transparent 60%),
+    linear-gradient(180deg,#e9f1fb 0%,#f3f7fc 46%,#e6eef9 100%);
+}
 #hero::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;z-index:1;
   background:var(--grad-line);opacity:.6;
 }
+#hero::after{content:'';position:absolute;z-index:0;top:46%;left:50%;width:900px;height:900px;
+  transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(circle,rgba(42,82,152,.12),transparent 65%);
+  animation:heroBreath 12s ease-in-out infinite}
+@keyframes heroBreath{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}
+  50%{opacity:.85;transform:translate(-50%,-50%) scale(1.12)}}
 .hero-aurora{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .hero-aurora::before,.hero-aurora::after{content:'';position:absolute;border-radius:50%;filter:blur(80px);opacity:.45}
-.hero-aurora::before{width:680px;height:680px;top:-200px;right:-150px;background:radial-gradient(circle,rgba(58,107,200,.35),transparent 70%);animation:orb-a 30s var(--ease) infinite}
-.hero-aurora::after{width:520px;height:520px;bottom:-200px;left:-120px;background:radial-gradient(circle,rgba(27,54,100,.22),transparent 70%);animation:orb-b 36s var(--ease) infinite}
+.hero-aurora::before{width:760px;height:760px;top:-220px;right:-140px;background:radial-gradient(circle,rgba(58,107,200,.42),transparent 70%);opacity:.7;filter:blur(90px);animation:orb-a 26s var(--ease) infinite}
+.hero-aurora::after{width:620px;height:620px;bottom:-240px;left:-140px;background:radial-gradient(circle,rgba(27,54,100,.30),transparent 70%);opacity:.6;filter:blur(90px);animation:orb-b 32s var(--ease) infinite}
 @keyframes orb-a{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,30px) scale(1.1)}}
 @keyframes orb-b{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,30px) scale(1.08)}}
 
-/* Free-floating canvas — overlays the hero on the background plane */
-#netCanvas{
-  position:absolute;inset:0;
-  width:100%;height:100%;
-  z-index:1;
-  pointer-events:auto;
-  cursor:default;
-  display:block;
-}
-/* Pass-through pointer events on text content, but keep interactive UI clickable */
-#hero .hero-content{pointer-events:none}
-#hero .hero-content a,
-#hero .hero-content button,
-#hero .hero-content input{pointer-events:auto}
-#hero .hero-rail{pointer-events:auto}
-.hero-right-spacer{width:100%;height:1px;pointer-events:none}
-
-/* Tooltip lives directly inside #hero now */
-#hero > .node-tip{position:absolute;z-index:6}
+/* Hero graphic is now the two-souls bridge (see .hero-bridge); the abstract
+   network canvas + node tooltip were removed in Wave 4 (feedback L1). */
 
 .hero-rail{
   position:relative;z-index:2;
@@ -381,47 +374,53 @@ svg{display:block}
 .hero-rail .seg .live{width:6px;height:6px;border-radius:50%;background:var(--signal);animation:livepulse 1.6s ease-in-out infinite;box-shadow:0 0 6px var(--signal-soft)}
 .hero-rail .seg + .seg{padding-left:20px;border-left:1px solid var(--line)}
 
-.hero-content{position:relative;z-index:2;width:100%;max-width:1600px;margin:0 auto;padding:clamp(40px,6vw,72px) var(--gutter) 0;display:grid;grid-template-columns:1fr clamp(360px,38vw,560px);gap:clamp(32px,5vw,72px);align-items:center}
+.hero-content{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:clamp(24px,4vw,52px) var(--gutter) 0;display:flex;flex-direction:column;align-items:center;text-align:center}
 
 .hero-left{position:relative}
-.hero-tag{margin-bottom:32px}
+.hero-tag{margin-bottom:22px}
 
-.hero-title{margin-bottom:36px;position:relative}
+.hero-title{margin-bottom:26px;position:relative}
 .hero-title .line{display:block;overflow:hidden;padding:2px 0}
 .hero-title .line > span{display:inline-block;transform:translateY(105%);transition:transform .9s var(--ease)}
 .hero-title.in .line > span{transform:translateY(0)}
 .hero-title .line:nth-child(2) > span{transition-delay:.1s}
 .hero-title .line:nth-child(3) > span{transition-delay:.2s}
 
-.hero-sub{font-family:var(--display);font-weight:400;font-size:clamp(1.1rem,1.45vw,1.32rem);line-height:1.5;color:var(--text-muted);max-width:540px;margin-bottom:44px;letter-spacing:-.005em}
+.hero-sub{font-family:var(--display);font-weight:400;font-size:clamp(1.1rem,1.45vw,1.32rem);line-height:1.5;color:var(--text-muted);max-width:640px;margin:0 auto;letter-spacing:-.005em}
 .hero-sub b{color:var(--blue);font-weight:600}
 
-/* Hero CTAs — two co-equal primary actions */
-.hero-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:stretch;margin-bottom:28px;max-width:560px}
-/* Two co-equal, solid-blue primary CTAs — high visibility, premium */
-.cta-major{
-  position:relative;flex:1 1 210px;
-  display:flex;flex-direction:column;gap:14px;
-  padding:20px 22px;
-  border:1px solid var(--blue);
-  background:var(--blue);
-  color:#fff;
-  overflow:hidden;
-  box-shadow:0 10px 30px -10px var(--glow);
-  transition:color .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease),transform .4s var(--ease);
+/* ── HERO BRIDGE — two souls diverging from one foundation (feedback L1/L2) ── */
+.hero-bridge{width:100%;max-width:1200px;margin:clamp(22px,3.2vw,38px) auto 0;display:flex;flex-direction:column;align-items:center}
+.hb-hub{display:flex;flex-direction:column;align-items:center;gap:10px}
+.hb-hub-node{width:11px;height:11px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 5px var(--glow-soft),0 0 18px var(--glow)}
+.hb-hub-lbl{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted)}
+/* connector: centre stem → horizontal bar → two drops above the card centres (25%/75%) */
+.hb-fork{position:relative;width:100%;height:40px}
+.hb-fork::before{content:'';position:absolute;top:0;left:50%;width:1px;height:20px;background:var(--line-3);transform:translateX(-50%)}
+.hb-bar{position:absolute;top:20px;left:24.3%;right:24.3%;height:1px;background:var(--line-3)}
+.hb-bar::before,.hb-bar::after{content:'';position:absolute;top:0;width:1px;height:20px;background:var(--line-3)}
+.hb-bar::before{left:0}
+.hb-bar::after{right:0}
+.hb-paths{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,32px);width:100%}
+.hb-path{position:relative;display:flex;flex-direction:column;gap:9px;padding:clamp(24px,2.4vw,34px);text-align:left;background:var(--panel);border:1px solid var(--line-2);border-radius:var(--r-lg);box-shadow:var(--shadow-1);transition:border-color .35s var(--ease),box-shadow .35s var(--ease),transform .35s var(--ease)}
+.hb-path:hover{border-color:var(--blue);box-shadow:var(--shadow-2);transform:translateY(-3px)}
+.hb-path:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.hb-k{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-mid)}
+.hb-name{font-family:var(--display);font-weight:600;font-size:clamp(1.3rem,2vw,1.7rem);letter-spacing:-.025em;line-height:1.05;color:var(--text)}
+.hb-desc{font-size:.9rem;line-height:1.55;color:var(--text-muted)}
+.hb-enter{margin-top:6px;display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--blue)}
+.hb-arrow{display:inline-flex;align-items:center}
+.hb-arrow svg{width:20px;height:9px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:square;transition:transform .4s var(--ease)}
+.hb-path:hover .hb-arrow svg{transform:translateX(4px)}
+@media(max-width:560px){
+  .hb-paths{grid-template-columns:1fr}
+  .hb-fork{height:22px}
+  .hb-bar{left:50%;right:auto;width:0;background:transparent}
+  .hb-bar::before,.hb-bar::after{display:none}
 }
-.cta-major::before{content:'';position:absolute;inset:0;background:var(--navy-dark);transform:translateY(101%);transition:transform .45s var(--ease);z-index:-1}
-.cta-major:hover{color:#fff;border-color:var(--navy-dark);box-shadow:0 0 0 3px var(--glow-soft),0 18px 46px -10px var(--glow);transform:translateY(-3px)}
-.cta-major:hover::before{transform:translateY(0)}
-.cta-major:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-.cta-major .cta-k{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7)}
-.cta-major .cta-l{display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--mono);font-size:.86rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;line-height:1.1;color:#fff}
-.cta-major .cta-arrow{flex-shrink:0;display:inline-flex;align-items:center}
-.cta-major .cta-arrow svg{width:22px;height:10px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:square}
-.cta-major:hover .cta-arrow svg{animation:arrow-slide .5s var(--ease)}
 
-/* Hero metrics — compact bar sitting in the left column, right under the CTAs */
-.hero-metrics{margin:0;max-width:560px;display:flex;pointer-events:none}
+/* Hero metrics — compact bar, centred under the bridge */
+.hero-metrics{margin:clamp(22px,3vw,38px) auto 0;display:flex;justify-content:center}
 .hero-metrics-inner{display:inline-flex;align-items:stretch;border:1px solid var(--line-2);background:linear-gradient(180deg,var(--panel),var(--surface));box-shadow:0 14px 40px -24px var(--glow)}
 .metric{display:flex;flex-direction:column;justify-content:center;gap:7px;padding:14px clamp(16px,1.6vw,24px)}
 .metric + .metric{border-left:1px solid var(--line-2)}
@@ -505,25 +504,6 @@ svg{display:block}
   white-space:nowrap;
 }
 .viz-net:hover .viz-hint{opacity:.7}
-
-.node-tip{
-  position:absolute;z-index:8;pointer-events:none;
-  background:var(--blue);color:#fff;
-  padding:10px 14px;
-  font-family:var(--mono);font-size:.62rem;
-  letter-spacing:.04em;line-height:1.4;
-  opacity:0;transform:translate(8px,-100%) translateY(-8px);
-  transition:opacity .2s ease;
-  white-space:nowrap;
-  box-shadow:0 12px 32px -8px var(--glow);
-}
-.node-tip.show{opacity:1}
-.node-tip .tip-corner{position:absolute;width:6px;height:6px;border:var(--tick-w) solid var(--tick-on-dark);pointer-events:none}
-.node-tip .tip-corner.tl{top:-1px;left:-1px;border-right:none;border-bottom:none}
-.node-tip .tip-corner.br{bottom:-1px;right:-1px;border-left:none;border-top:none}
-.node-tip .tip-id{font-size:.5rem;color:rgba(255,255,255,.6);letter-spacing:.16em;text-transform:uppercase;margin-bottom:4px}
-.node-tip .tip-name{font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.72rem;margin-bottom:3px}
-.node-tip .tip-addr{color:rgba(255,255,255,.7);font-size:.56rem;letter-spacing:.04em}
 
 /* BOTTOM — live block stream */
 .viz-chain{
@@ -617,8 +597,7 @@ svg{display:block}
 .identity-link{position:relative;display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;max-width:1280px;margin:0 auto}
 .id-bridge{position:relative;width:clamp(60px,10vw,140px);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
 .id-bridge::before{content:'';position:absolute;top:50%;left:0;right:0;height:2px;background:var(--blue);transform:translateY(-50%);opacity:.4}
-.id-bridge::after{content:'';position:absolute;top:calc(50% - 6px);left:50%;width:12px;height:12px;border-radius:50%;background:var(--blue-mid);transform:translateX(-50%);box-shadow:0 0 20px var(--glow);animation:bridge-pulse 2s ease-in-out infinite}
-@keyframes bridge-pulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.4)}}
+.id-bridge::after{content:'';position:absolute;top:calc(50% - 5px);left:50%;width:10px;height:10px;border-radius:50%;background:var(--blue-mid);transform:translateX(-50%);box-shadow:0 0 12px var(--glow-soft)}
 .id-bridge .bridge-label{position:relative;z-index:2;background:var(--surface);padding:6px 10px;font-family:var(--mono);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);border:1px solid var(--line-2)}
 
 .soul-panel{
@@ -631,21 +610,10 @@ svg{display:block}
   transition:border-color .35s var(--ease-out),box-shadow .35s var(--ease-out),transform .35s var(--ease-out);
 }
 .soul-panel:hover{border-color:var(--line-2);box-shadow:var(--shadow-2)}
-.soul-panel .corner-tl,.soul-panel .corner-tr,.soul-panel .corner-bl,.soul-panel .corner-br{position:absolute;width:var(--tick);height:var(--tick);border:var(--tick-w) solid var(--tick-color);transition:border-color .35s var(--ease-out)}
-.soul-panel .corner-tl{top:7px;left:7px;border-right:none;border-bottom:none}
-.soul-panel .corner-tr{top:7px;right:7px;border-left:none;border-bottom:none}
-.soul-panel .corner-bl{bottom:7px;left:7px;border-right:none;border-top:none}
-.soul-panel .corner-br{bottom:7px;right:7px;border-left:none;border-top:none}
-.soul-panel:hover .corner-tl,.soul-panel:hover .corner-tr,.soul-panel:hover .corner-bl,.soul-panel:hover .corner-br{border-color:var(--tick-color-hover)}
 .soul-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;border-bottom:1px solid var(--line);padding-bottom:20px}
 .soul-id{display:flex;flex-direction:column;gap:4px}
 .soul-id .tag{margin-bottom:0}
 .soul-id .hid{margin-top:6px}
-.soul-icon{width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid var(--blue);color:var(--blue);background:var(--blue-ultra);position:relative}
-.soul-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.soul-icon::before,.soul-icon::after{content:'';position:absolute;width:6px;height:6px;border:var(--tick-w) solid var(--tick-color)}
-.soul-icon::before{top:-2px;left:-2px;border-right:none;border-bottom:none}
-.soul-icon::after{bottom:-2px;right:-2px;border-left:none;border-top:none}
 .soul-name{font-family:var(--display);font-weight:600;font-size:clamp(1.6rem,2.4vw,2.1rem);letter-spacing:-.025em;line-height:1.1;color:var(--text)}
 .soul-name .accent{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
 .soul-desc{font-size:.95rem;line-height:1.65;color:var(--text-muted)}
@@ -1508,12 +1476,6 @@ footer::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;backg
    RESPONSIVE
 ════════════════════════════════════════════════════════════ */
 @media(max-width:1080px){
-  .hero-content{grid-template-columns:1fr;gap:48px}
-  /* Hero collapses to one column here, so the cube network now drifts behind the
-     copy — dim it to ambient texture so the text stays legible. Desktop (>1080px)
-     keeps the network in its own column at full strength. */
-  #netCanvas{opacity:.6}
-  .hero-viz{max-width:520px;margin:0 auto}
   .hero-metrics-inner{max-width:100%}
   .research-intro,.proj-intro,.partner-intro,.events-intro,.team-intro,.resources-intro{grid-template-columns:1fr;gap:32px}
   .proj-intro-copy{padding-left:0;padding-top:28px;border-top:1px solid var(--line-2)}
@@ -1597,7 +1559,7 @@ footer::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;backg
   .wire-track{animation:none!important}
   .fade-up,.hero-title .line > span{opacity:1!important;transform:none!important}
   .h-mega .accent::after{transform:scaleX(1)!important}
-  .hero-aurora::before,.hero-aurora::after,.edge-active,.id-bridge::after,.tag .live,.tag .live::after{animation:none!important}
+  #hero::after,.hero-aurora::before,.hero-aurora::after,.edge-active,.id-bridge::after,.tag .live,.tag .live::after{animation:none!important}
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -2052,70 +2014,61 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 <section id="hero" aria-labelledby="hero-title">
   <div class="hero-aurora" aria-hidden="true"></div>
 
-  <!-- Free-floating cube network — drifts on the hero's background plane -->
-  <canvas id="netCanvas" aria-hidden="true"></canvas>
-  <div class="node-tip" id="nodeTip" aria-hidden="true">
-    <div class="tip-corner tl"></div><div class="tip-corner br"></div>
-    <div class="tip-id"></div>
-    <div class="tip-name"></div>
-    <div class="tip-addr"></div>
-  </div>
-
   <div class="hero-content">
-    <div class="hero-left">
-      <span class="tag hero-tag fade-up"><span class="dot"></span>Blockchain &amp; Web3 Research Lab</span>
+    <span class="tag hero-tag fade-up"><span class="dot"></span>Blockchain &amp; Web3 Research Lab</span>
 
-      <h1 class="hero-title h-mega" id="hero-title">
-        <span class="line"><span>The future of</span></span>
-        <span class="line"><span><span class="accent">Web3</span> is built</span></span>
-        <span class="line"><span>here.</span></span>
-      </h1>
+    <h1 class="hero-title h-mega" id="hero-title">
+      <span class="line"><span>The future of</span></span>
+      <span class="line"><span><span class="accent">Web3</span> is built</span></span>
+      <span class="line"><span>here.</span></span>
+    </h1>
 
-      <p class="hero-sub fade-up delay-2">
-        WEB3HUB is the Blockchain &amp; Web3 <b>Research and Projects Lab</b> of the Politecnico di Milano, where rigorous academic research meets applied innovation for companies and institutions worldwide.
-      </p>
+    <p class="hero-sub fade-up delay-2">
+      One lab, two souls: a rigorous <b>research observatory</b> and an <b>applied projects lab</b>, at the Politecnico di Milano.
+    </p>
 
-      <!-- HERO CTAs — two co-equal primary actions (Contact removed) -->
-      <div class="hero-actions fade-up delay-3">
-        <a href="#projects" class="cta-major">
-          <span class="cta-k">01 · Applied</span>
-          <span class="cta-l">Explore Projects
-            <span class="cta-arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span>
-          </span>
-        </a>
-        <a href="#research" class="cta-major">
-          <span class="cta-k">02 · Research</span>
-          <span class="cta-l">Explore Research
-            <span class="cta-arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span>
-          </span>
-        </a>
+    <!-- HERO BRIDGE — two souls diverging from one foundation (feedback L1/L2) -->
+    <div class="hero-bridge fade-up delay-3">
+      <div class="hb-hub" aria-hidden="true">
+        <span class="hb-hub-node"></span>
+        <span class="hb-hub-lbl">Politecnico di Milano</span>
       </div>
-
-      <!-- HERO METRICS — key figures, directly under the two CTAs -->
-      <div class="hero-metrics fade-up delay-4" role="group" aria-label="Key metrics">
-        <div class="hero-metrics-inner">
-          <div class="metric">
-            <span class="m-lbl">Since</span>
-            <span class="m-val">2017</span>
-          </div>
-          <div class="metric metric--rank">
-            <span class="m-lbl m-lbl--logo">
-              <img src="assets/logos/others/coindesk-logo.png" alt="CoinDesk" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="m-lbl-fallback" style="display:none">CoinDesk</span> Rank
-            </span>
-            <span class="m-val">#1<small>IT</small> · 6<sup>th</sup><small>EU</small> · 33<sup>rd</sup><small>WW</small></span>
-          </div>
-          <div class="metric">
-            <span class="m-lbl">Reach</span>
-            <span class="m-val">2M<small>+ LinkedIn views</small></span>
-          </div>
-        </div>
+      <div class="hb-fork" aria-hidden="true"><span class="hb-bar"></span></div>
+      <div class="hb-paths">
+        <a href="#research" class="hb-path">
+          <span class="hb-k">01 · Research</span>
+          <span class="hb-name">The Observatory</span>
+          <span class="hb-desc">Generating and sharing knowledge on blockchain and Web3 since 2017.</span>
+          <span class="hb-enter">Enter <span class="hb-arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></span>
+        </a>
+        <a href="#projects" class="hb-path">
+          <span class="hb-k">02 · Projects</span>
+          <span class="hb-name">The Applied Lab</span>
+          <span class="hb-desc">Pre-competitive projects delivered alongside companies and institutions.</span>
+          <span class="hb-enter">Enter <span class="hb-arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></span>
+        </a>
       </div>
     </div>
 
-    <!-- HERO RIGHT — NETWORK HUD -->
-    <!-- right column intentionally empty — the cube network floats over the whole hero -->
-    <div class="hero-right-spacer" aria-hidden="true"></div>
-
+    <!-- HERO METRICS — key figures, under the bridge -->
+    <div class="hero-metrics fade-up delay-4" role="group" aria-label="Key metrics">
+      <div class="hero-metrics-inner">
+        <div class="metric">
+          <span class="m-lbl">Since</span>
+          <span class="m-val">2017</span>
+        </div>
+        <div class="metric metric--rank">
+          <span class="m-lbl m-lbl--logo">
+            <img src="assets/logos/others/coindesk-logo.png" alt="CoinDesk" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="m-lbl-fallback" style="display:none">CoinDesk</span> Rank
+          </span>
+          <span class="m-val">#1<small>IT</small> · 6<sup>th</sup><small>EU</small> · 33<sup>rd</sup><small>WW</small></span>
+        </div>
+        <div class="metric">
+          <span class="m-lbl">Reach</span>
+          <span class="m-val">2M<small>+ LinkedIn views</small></span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -2200,13 +2153,9 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 
     <div class="identity-link">
       <article class="soul-panel fade-up">
-        <span class="corner-tl"></span><span class="corner-tr"></span><span class="corner-bl"></span><span class="corner-br"></span>
         <div class="soul-head">
           <div class="soul-id">
             <span class="tag"><span class="dot"></span> 01 · RESEARCH</span>
-          </div>
-          <div class="soul-icon">
-            <svg viewBox="0 0 24 24"><path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 15.803a7.5 7.5 0 0010.607 10.607z"/></svg>
           </div>
         </div>
         <div>
@@ -2227,13 +2176,9 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       </div>
 
       <article class="soul-panel fade-up delay-2">
-        <span class="corner-tl"></span><span class="corner-tr"></span><span class="corner-bl"></span><span class="corner-br"></span>
         <div class="soul-head">
           <div class="soul-id">
             <span class="tag"><span class="dot"></span> 02 · PROJECTS</span>
-          </div>
-          <div class="soul-icon">
-            <svg viewBox="0 0 24 24"><path d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
           </div>
         </div>
         <div>
