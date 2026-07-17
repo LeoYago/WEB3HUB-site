@@ -137,7 +137,7 @@ svg{display:block}
 .live,.pulse,.rs-dot,
 .nav-block .blk .live,.hero-rail .seg .live,.viz-hud .hud-tag .live,
 .chain-stream-head .live,.wire-tag .live,
-.partner-cta .pc-tag .dot,.xpl-feat-label .dot,.euro-tag .dot,.intl-tag .dot,
+.partner-cta .pc-tag .dot,.xpl-feat-label .dot,.euro-tag .dot,
 .f-wordmark .wm-rail .live,.contact-info-head .live{display:none!important}
 .sb-foot .sb-ok::before{display:none}
 @keyframes livepulse{0%,100%{opacity:.7}50%{opacity:1}}
@@ -1625,6 +1625,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 /* ════════════════════════════════════════════════════════════
    HOME · EUROPEAN PRESENCE — institutional 3D presence map
 ════════════════════════════════════════════════════════════ */
+.cat-host{--c:#6a4bb0;--cd:#452c7d}
 .cat-participated{--c:#3a6bc8;--cd:#1c4f93}
 .cat-confirmed{--c:#1f9e74;--cd:#0e6a4b}
 .cat-pipeline{--c:#d2922f;--cd:#9a6a23}
@@ -1636,7 +1637,8 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 .euro-section::after{content:'';position:absolute;top:0;left:12%;right:12%;height:1px;background:var(--grad-line);opacity:.5}
 .euro-section .wrap{position:relative;z-index:2}
 
-.euro-head{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start;margin-bottom:clamp(32px,3.8vw,56px)}
+/* meta rail · headline+lede · footprint stats */
+.euro-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(24px,3vw,52px);align-items:start;margin-bottom:clamp(32px,3.8vw,56px)}
 .euro-head .meta{display:flex;flex-direction:column;gap:7px;padding-left:16px;border-left:1px solid var(--blue);padding-top:6px;min-width:152px}
 .euro-head .meta .ord{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;color:var(--blue);font-weight:600;text-transform:uppercase}
 .euro-head .meta .hash{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;color:var(--text-subtle)}
@@ -1649,7 +1651,10 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 .euro-grid{display:grid;grid-template-columns:1.62fr 1fr;gap:clamp(22px,2.6vw,40px);align-items:start;margin-top:clamp(26px,3vw,42px)}
 
 /* MAP STAGE — no box, rendered seamlessly on the page background */
-.euro-map{position:relative;width:100%;aspect-ratio:1000/600;overflow:visible}
+/* aspect must track the generated viewBox (1000x821) — a true-shape Europe is
+   taller than the old foreshortened plane, which was only wide because the
+   perspective squashed the north */
+.euro-map{position:relative;width:100%;aspect-ratio:1000/821;overflow:visible}
 .euro-stagebox{position:absolute;inset:0;will-change:transform}
 .euro-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible}
 .euro-pins{position:absolute;inset:0}
@@ -1669,19 +1674,13 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 .euro-pin:hover .head::before,.euro-pin.is-active .head::before,.euro-pin:focus-visible .head::before{inset:-9px;opacity:1}
 .euro-pin:hover .ground,.euro-pin.is-active .ground{width:calc(29px * var(--depth));border-color:color-mix(in srgb,var(--c) 68%,transparent)}
 .euro-pin:hover .label,.euro-pin.is-active .label,.euro-pin:focus-visible .label{opacity:1;transform:translate(-50%,0)}
-/* HQ — Milano flagship beacon: stronger hierarchy + radar sweep on the plane */
-.euro-pin.hq{--lift:46px;z-index:3}
-.euro-pin.hq .head{width:15px;height:15px;background:var(--blue);border-color:#fff;box-shadow:0 5px 14px -2px rgba(27,54,100,.5),0 0 0 5px rgba(27,54,100,.12)}
-.euro-pin.hq .head::before{inset:-7px;border-color:rgba(27,54,100,.3);opacity:1}
-.euro-pin.hq .head::after{content:'';position:absolute;left:50%;top:50%;width:3.5px;height:3.5px;transform:translate(-50%,-50%);border-radius:50%;background:#fff}
-.euro-pin.hq .ground{width:30px;height:30px;border-color:rgba(27,54,100,.4)}
-.euro-pin.hq .ground::after{content:'';position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(27,54,100,.5);animation:euroRadar 3.1s var(--ease) infinite}
-.euro-pin.hq .label{opacity:1;transform:translate(-50%,0)}
-@keyframes euroRadar{0%{transform:scale(.45);opacity:.85}100%{transform:scale(2.3);opacity:0}}
-/* location-to-confirm pins — dashed beacon ring */
-.euro-pin.tbc .ground,.euro-pin.tbc .head::before{border-style:dashed}
 .euro-pin:focus-visible{outline:none}
 .euro-pin:focus-visible .head{box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 45%,transparent),0 3px 9px -1px rgba(27,54,100,.4)}
+
+/* footprint stats — the four-figure summary in the section head */
+.euro-fp{display:grid;grid-template-columns:repeat(2,auto);gap:clamp(16px,1.6vw,22px) clamp(24px,2.4vw,38px);padding-left:clamp(22px,2vw,30px);border-left:1px solid var(--line-2);align-self:center}
+.euro-fp-stat b{font-family:var(--display);font-weight:600;font-size:clamp(1.6rem,2.3vw,2.05rem);color:var(--blue);display:block;line-height:1;letter-spacing:-.03em}
+.euro-fp-stat span{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-subtle);margin-top:8px;display:block}
 
 .euro-legend{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:28px}
 .euro-leg{display:inline-flex;align-items:center;gap:11px;font-family:var(--body);font-weight:500;font-size:.82rem;letter-spacing:.005em;color:var(--text-muted)}
@@ -1689,7 +1688,9 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 
 /* SIDE PANEL — light cards matching the site card language */
 .euro-side{display:flex;flex-direction:column;gap:18px}
-.euro-card{position:relative;border:1px solid var(--line-2);border-radius:16px;background:var(--panel);padding:clamp(22px,2vw,30px);min-height:196px;overflow:hidden;box-shadow:0 26px 60px -42px rgba(27,54,100,.5)}
+/* height follows the content: the default card is 3 lines, a selected city adds
+   its events (the old min-height was sized for the removed KPI row) */
+.euro-card{position:relative;border:1px solid var(--line-2);border-radius:16px;background:var(--panel);padding:clamp(22px,2vw,30px);overflow:hidden;box-shadow:0 26px 60px -42px rgba(27,54,100,.5)}
 .euro-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--c,#3a6bc8),transparent 72%);opacity:.95}
 .euro-card-eyebrow{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-mid);font-weight:600}
 .euro-card-city{font-family:var(--display);font-weight:600;font-size:1.7rem;letter-spacing:-.03em;color:var(--blue);margin-top:9px;line-height:1.06}
@@ -1699,15 +1700,9 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 .euro-ev::before{content:'';position:absolute;left:0;top:3px;bottom:3px;width:3px;background:var(--c);border-radius:3px}
 .euro-ev .n{font-family:var(--display);font-weight:600;font-size:1rem;color:var(--blue);line-height:1.25}
 .euro-ev .d{font-family:var(--body);font-size:.8rem;letter-spacing:.01em;color:var(--text-muted);margin-top:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.euro-role{font-family:var(--body);font-size:.78rem;color:var(--text-muted)}
 .euro-chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:20px;background:color-mix(in srgb,var(--c) 13%,transparent);border:1px solid color-mix(in srgb,var(--c) 36%,transparent);color:var(--cd)}
 .euro-chip i{width:5px;height:5px;border-radius:50%;background:var(--c)}
-.euro-evtbc{font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:#9a6a23}
-.euro-stats{display:flex;gap:0;margin-top:18px}
-.euro-stat{padding-right:20px;margin-right:20px;border-right:1px solid var(--line-2)}
-.euro-stat:last-child{border:0;margin:0;padding:0}
-.euro-stat b{font-family:var(--display);font-weight:600;font-size:1.7rem;color:var(--blue);display:block;line-height:1}
-.euro-stat span{font-family:var(--body);font-size:.66rem;letter-spacing:.04em;color:var(--text-subtle);margin-top:7px;display:block}
-.euro-hint{font-family:var(--body);font-size:.78rem;letter-spacing:.01em;color:var(--text-subtle);margin-top:18px;display:flex;align-items:center;gap:8px}
 
 .euro-list{border:1px solid var(--line-2);border-radius:16px;overflow:hidden;max-height:330px;overflow-y:auto;background:var(--panel)}
 .euro-li{width:100%;text-align:left;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:13px;padding:14px 18px;background:none;border:0;border-top:1px solid var(--line-2);cursor:pointer;color:inherit;transition:background .25s,padding-left .25s}
@@ -1716,7 +1711,6 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 .euro-li .dotc{width:9px;height:9px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 13%,transparent)}
 .euro-li .li-name{font-family:var(--display);font-weight:600;font-size:.94rem;color:var(--blue);line-height:1.2}
 .euro-li .li-sub{font-family:var(--body);font-size:.72rem;letter-spacing:.01em;color:var(--text-muted);margin-top:3px;display:block}
-.euro-li .li-tbc{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:#9a6a23;border:1px solid rgba(154,106,35,.4);border-radius:20px;padding:3px 7px;white-space:nowrap}
 .euro-li .li-arrow{color:var(--text-subtle);font-size:.9rem;transition:transform .25s,color .25s}
 .euro-li:hover .li-arrow{transform:translate(3px,-3px);color:var(--blue)}
 
@@ -1731,18 +1725,17 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
   .euro-grid{grid-template-columns:1fr}
   .euro-head{grid-template-columns:1fr}
   .euro-head .meta{flex-direction:row;align-items:center;gap:16px;border-left:0;border-top:1px solid var(--blue);padding:12px 0 0;min-width:0}
+  .euro-fp{display:flex;flex-wrap:wrap;border-left:0;padding-left:0;gap:18px 32px}
+  .euro-fp-stat{min-width:64px}
 }
 @media(max-width:560px){
-  .euro-map{aspect-ratio:1000/680}
   .euro-pin{--lift:20px!important}
-  .euro-pin.hq{--lift:28px!important}
   .euro-pin .label{display:none}
-  .euro-pin.hq .label,.euro-pin.is-active .label{display:block}
+  .euro-pin.is-active .label{display:block}
   .euro-list{max-height:300px}
 }
 @media(prefers-reduced-motion:reduce){
   .euro-tag .dot{animation:none}
-  .euro-pin.hq .ground::after{animation:none;opacity:0}
   .euro-canvas .arc{transition:none;stroke-dashoffset:0}
   .euro-canvas .arc-glow{transition:none}
   .euro-pin{transition:none;opacity:1;transform:translate(-50%,-100%)}
@@ -1750,106 +1743,46 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
   .euro-stagebox{transition:none}
 }
 
-/* ════════════ INTERNATIONAL · EUROPEAN CIRCUIT (homepage) ════════════
-   Compact, premium "signal-trace" presence band — a flowing hairline
-   threading city beacons across Europe. Replaces the full map/dashboard
-   (which lives on the Research page) with a lighter, editorial composition. */
-.intl-section{position:relative;background:linear-gradient(180deg,#ffffff 0%,#f4f8fd 54%,#eaf1fb 100%);color:var(--blue);overflow:hidden;padding:clamp(78px,9vw,140px) 0}
-.intl-section::before{content:'';position:absolute;inset:0;background:radial-gradient(70% 50% at 64% 12%,rgba(58,107,200,.08),transparent 70%);pointer-events:none}
-.intl-section::after{content:'';position:absolute;top:0;left:12%;right:12%;height:1px;background:var(--grad-line);opacity:.5}
-.intl-section .wrap{position:relative;z-index:2}
+/* ════════════ RESEARCH · BLOCKCHAIN MONTHLY OVERVIEW ════════════
+   Newsletter block occupying the slot the European presence map held before
+   it moved to the homepage. Editorial, not a signup banner. */
+.bmo-section{position:relative;background:linear-gradient(180deg,#ffffff 0%,#f5f8fd 100%);color:var(--blue);padding:clamp(78px,9vw,132px) 0}
+.bmo-section::after{content:'';position:absolute;top:0;left:12%;right:12%;height:1px;background:var(--grad-line);opacity:.5}
+.bmo-panel{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(30px,4vw,56px);align-items:center;background:var(--panel);border:1px solid var(--line-2);border-radius:var(--r-lg);box-shadow:var(--shadow-1);padding:clamp(28px,3.4vw,56px)}
+.bmo-copy .meta{display:flex;align-items:center;gap:14px;padding-left:16px;border-left:1px solid var(--blue);margin-bottom:24px}
+.bmo-copy .meta .ord{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;color:var(--blue);font-weight:600;text-transform:uppercase}
+.bmo-copy .meta .hash{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;color:var(--text-subtle)}
+.bmo-tag{display:inline-flex;align-items:center;font-family:var(--mono);font-size:.64rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-mid)}
+.bmo-h{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,3.2vw,2.7rem);letter-spacing:-.04em;line-height:1.04;margin-top:16px;color:var(--blue)}
+.bmo-h .accent{color:var(--blue-mid)}
+.bmo-lede{font-family:var(--body);font-size:clamp(1rem,1.15vw,1.12rem);line-height:1.66;color:var(--text-muted);max-width:50ch;margin-top:16px}
+.bmo-actions{display:flex;align-items:center;gap:16px 24px;flex-wrap:wrap;margin-top:30px}
+.bmo-cta{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:.98rem;letter-spacing:-.01em;color:#fff;background:var(--blue);border:1px solid var(--blue);border-radius:var(--r);padding:13px 22px;text-decoration:none;box-shadow:var(--shadow-1);transition:background .3s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease)}
+.bmo-cta:hover{background:var(--blue-mid);border-color:var(--blue-mid);transform:translateY(-2px);box-shadow:var(--shadow-2)}
+.bmo-cta .arw{transition:transform .3s var(--ease)}
+.bmo-cta:hover .arw{transform:translateX(4px)}
+.bmo-note{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-subtle)}
 
-.intl-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(24px,3vw,52px);align-items:start;margin-bottom:clamp(30px,3.6vw,52px)}
-.intl-head .meta{display:flex;flex-direction:column;gap:7px;padding-left:16px;border-left:1px solid var(--blue);padding-top:6px;min-width:150px}
-.intl-head .meta .ord{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;color:var(--blue);font-weight:600;text-transform:uppercase}
-.intl-head .meta .hash{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;color:var(--text-subtle)}
-.intl-head-main{max-width:60ch}
-.intl-tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.64rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-mid)}
-.intl-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--blue-mid);box-shadow:0 0 10px var(--glow)}
-.intl-h{font-family:var(--display);font-weight:600;font-size:clamp(2rem,3.7vw,3.05rem);letter-spacing:-.04em;line-height:1.02;margin-top:18px;color:var(--blue)}
-.intl-h .accent{color:var(--blue-mid)}
-.intl-lede{font-family:var(--body);font-size:clamp(1.02rem,1.2vw,1.16rem);line-height:1.66;color:var(--text-muted);margin-top:18px}
+/* stylised issue plate — hairline abstraction of the briefing itself */
+.bmo-visual{display:flex;justify-content:center}
+.bmo-issue{position:relative;width:100%;max-width:392px;display:flex;flex-direction:column;gap:11px;background:#fff;border:1px solid var(--line-2);border-radius:var(--r-lg);box-shadow:var(--shadow-2);padding:26px 22px;transform:rotate(-1.4deg);transition:transform .5s var(--ease)}
+.bmo-issue::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;border-radius:var(--r-lg) var(--r-lg) 0 0;background:linear-gradient(90deg,var(--blue-mid),transparent 74%)}
+.bmo-panel:hover .bmo-issue{transform:rotate(0) translateY(-3px)}
+.bmo-issue-eyebrow{font-family:var(--mono);font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue-mid);font-weight:600}
+.bmo-issue-rule{height:1px;background:var(--line-2);margin:3px 0}
+.bmo-line{height:7px;border-radius:2px;background:linear-gradient(90deg,rgba(27,54,100,.14),rgba(27,54,100,.05))}
+.bmo-line.w1{width:100%}
+.bmo-line.w2{width:82%}
+.bmo-line.w3{width:64%}
 
-.intl-stats{display:grid;grid-template-columns:repeat(2,auto);gap:clamp(16px,1.6vw,22px) clamp(24px,2.4vw,38px);padding-left:clamp(22px,2vw,30px);border-left:1px solid var(--line-2);align-self:center}
-.intl-stat b{font-family:var(--display);font-weight:600;font-size:clamp(1.6rem,2.3vw,2.05rem);color:var(--blue);display:block;line-height:1;letter-spacing:-.03em}
-.intl-stat span{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-subtle);margin-top:8px;display:block}
-
-/* ── circuit · signal-trace lane (desktop / tablet) ── */
-.intl-circuit{margin-top:clamp(6px,1.6vw,22px)}
-.intl-trace{position:relative;width:100%;aspect-ratio:1200/210}
-.intl-trace-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.intl-line-soft{fill:none;stroke:var(--blue-pale);stroke-width:5;stroke-opacity:.45;stroke-linecap:round}
-.intl-line{fill:none;stroke:var(--blue-mid);stroke-width:1.4;stroke-opacity:.34;stroke-linecap:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset 1.9s var(--ease)}
-.intl-section.in .intl-line{stroke-dashoffset:0}
-.intl-pulse{fill:none;stroke:url(#intlPulse);stroke-width:2.6;stroke-linecap:round;opacity:0;transition:opacity .7s var(--ease) 1.1s}
-.intl-section.in .intl-pulse{opacity:1;animation:intlPulseRun 7.5s linear infinite 1.2s}
-
-.intl-nodes{position:absolute;inset:0}
-.intl-node{position:absolute;transform:translate(-50%,calc(-50% + 12px));background:none;border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent;opacity:0;z-index:1}
-.intl-node.is-active,.intl-node:hover,.intl-node:focus-visible{z-index:4}
-.intl-section.in .intl-node{opacity:1;transform:translate(-50%,-50%);transition:opacity .65s var(--ease) var(--d,0s),transform .7s var(--spring) var(--d,0s)}
-.intl-node .ndot{display:block;position:relative;width:13px;height:13px;border-radius:50%;background:var(--c);border:2.5px solid #fff;box-shadow:0 3px 9px -2px rgba(27,54,100,.4),0 0 0 4px color-mix(in srgb,var(--c) 13%,transparent);transition:transform .42s var(--spring),box-shadow .42s var(--ease)}
-.intl-node .ndot::before{content:'';position:absolute;inset:-1px;border-radius:50%;border:1px solid color-mix(in srgb,var(--c) 38%,transparent);opacity:.7;transition:transform .42s var(--spring),opacity .35s}
-.intl-node:hover .ndot,.intl-node.is-active .ndot,.intl-node:focus-visible .ndot{transform:scale(1.22);box-shadow:0 5px 14px -2px rgba(27,54,100,.45),0 0 0 7px color-mix(in srgb,var(--c) 16%,transparent)}
-.intl-node:hover .ndot::before,.intl-node.is-active .ndot::before,.intl-node:focus-visible .ndot::before{transform:scale(1.9);opacity:0}
-.intl-node .nlabel{position:absolute;left:50%;transform:translate(-50%,4px);white-space:nowrap;text-align:center;opacity:.62;transition:opacity .3s var(--ease),transform .3s var(--ease)}
-.intl-node.up .nlabel{bottom:calc(100% + 14px)}
-.intl-node.down .nlabel{top:calc(100% + 14px)}
-.intl-node:hover .nlabel,.intl-node.is-active .nlabel,.intl-node:focus-visible .nlabel{opacity:1;transform:translate(-50%,0)}
-.intl-node .nlabel b{display:block;font-family:var(--display);font-weight:600;font-size:.82rem;letter-spacing:-.01em;color:var(--blue);line-height:1.05}
-.intl-node .nlabel small{display:block;font-family:var(--mono);font-weight:500;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-subtle);margin-top:3px}
-.intl-node.hq .ndot{width:16px;height:16px;background:var(--blue);box-shadow:0 4px 12px -2px rgba(27,54,100,.5),0 0 0 5px rgba(27,54,100,.12)}
-.intl-node.hq .ndot::before{border-color:rgba(27,54,100,.32);opacity:1}
-.intl-node.hq .ndot::after{content:'';position:absolute;inset:-1px;border-radius:50%;border:1.5px solid rgba(27,54,100,.5);animation:intlRadar 3.1s var(--ease) infinite}
-.intl-node.hq .nlabel{opacity:1}
-.intl-node:focus-visible{outline:none}
-.intl-node:focus-visible .ndot{box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 45%,transparent),0 3px 9px -1px rgba(27,54,100,.4)}
-
-@keyframes intlPulseRun{to{stroke-dashoffset:var(--pulse-end,-2000)}}
-@keyframes intlRadar{0%{transform:scale(1);opacity:.6}70%,100%{transform:scale(2.8);opacity:0}}
-
-/* ── compact stacked stops (mobile / fallback) ── */
-.intl-stops{display:none;list-style:none;grid-template-columns:1fr;gap:0;border:1px solid var(--line-2);border-radius:16px;overflow:hidden;background:var(--panel)}
-.intl-stop{width:100%;text-align:left;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:13px;padding:14px 16px;background:none;border:0;border-top:1px solid var(--line-2);cursor:pointer;color:inherit;transition:background .25s}
-.intl-stop:first-child{border-top:0}
-.intl-stop.is-active{background:linear-gradient(90deg,color-mix(in srgb,var(--c) 11%,transparent),transparent)}
-.intl-stop>span{min-width:0}
-.intl-stop .sdot{width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 13%,transparent)}
-.intl-stop .scity{font-family:var(--display);font-weight:600;font-size:.96rem;color:var(--blue);line-height:1.15}
-.intl-stop .scity small{font-family:var(--mono);font-weight:500;font-size:.56rem;letter-spacing:.12em;color:var(--text-subtle);margin-left:7px}
-.intl-stop .sev{display:block;font-family:var(--body);font-size:.76rem;color:var(--text-muted);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.intl-stop .sdate{font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;color:var(--text-subtle);white-space:nowrap}
-
-/* ── feature caption (auto-cycling + hover-driven) + legend ── */
-.intl-feature{margin-top:clamp(24px,3vw,40px);display:flex;align-items:center;justify-content:space-between;gap:20px 28px;flex-wrap:wrap;border-top:1px solid var(--line-2);padding-top:clamp(18px,2vw,24px)}
-.intl-feat-main{display:flex;align-items:center;gap:14px;flex-wrap:wrap;min-height:30px;min-width:0}
-.intl-feat-chip{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.56rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;border-radius:20px;background:color-mix(in srgb,var(--c) 12%,transparent);border:1px solid color-mix(in srgb,var(--c) 34%,transparent);color:var(--cd)}
-.intl-feat-chip i{width:6px;height:6px;border-radius:50%;background:var(--c)}
-.intl-feat-city{font-family:var(--display);font-weight:600;font-size:clamp(1.1rem,1.5vw,1.35rem);letter-spacing:-.02em;color:var(--blue)}
-.intl-feat-sep{width:5px;height:5px;border-radius:50%;background:var(--line-3)}
-.intl-feat-ev{font-family:var(--body);font-size:.96rem;color:var(--text-muted)}
-.intl-feat-date{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-subtle);padding-left:12px;margin-left:4px;border-left:1px solid var(--line-2)}
-.intl-feat-legend{display:flex;flex-wrap:wrap;gap:10px 20px}
-.intl-feat-legend .ilg{display:inline-flex;align-items:center;gap:9px;font-family:var(--body);font-weight:500;font-size:.76rem;color:var(--text-muted)}
-.intl-feat-legend .ilg i{width:8px;height:8px;border-radius:50%;background:var(--c);box-shadow:0 0 0 2.5px #fff,0 0 0 3.5px color-mix(in srgb,var(--c) 42%,transparent)}
-
-@media(max-width:980px){
-  .intl-head{grid-template-columns:1fr;gap:22px}
-  .intl-head .meta{flex-direction:row;align-items:center;gap:16px;border-left:0;border-top:1px solid var(--blue);padding:12px 0 0;min-width:0}
-  .intl-stats{display:flex;flex-wrap:wrap;border-left:0;padding-left:0;gap:18px 32px}
-  .intl-stat{min-width:64px}
-}
-@media(max-width:760px){
-  .intl-trace{display:none}
-  .intl-stops{display:grid}
-  .intl-feature{justify-content:flex-start}
+@media(max-width:900px){
+  .bmo-panel{grid-template-columns:1fr;gap:34px}
+  .bmo-visual{justify-content:flex-start}
+  .bmo-issue{transform:none;max-width:340px}
 }
 @media(prefers-reduced-motion:reduce){
-  .intl-line{transition:none;stroke-dashoffset:0}
-  .intl-pulse{display:none}
-  .intl-node{transition:none!important;opacity:1;transform:translate(-50%,-50%)}
-  .intl-node.hq .ndot::after{animation:none;opacity:0}
-  .intl-tag .dot{animation:none}
+  .bmo-issue,.bmo-cta,.bmo-cta .arw{transition:none}
+  .bmo-panel:hover .bmo-issue{transform:rotate(-1.4deg)}
 }
 </style>
 </head>
@@ -2314,47 +2247,51 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 </section>
 
 <!-- ════════════════════════ INTERNATIONAL · EUROPEAN CIRCUIT ════════════════════════ -->
-<!-- Homepage variant — compact "signal-trace" band. The full interactive map +
-     itinerary dashboard lives on the Research page (.euro-section); this is its
-     lighter, editorial counterpart so the homepage stays in rhythm and avoids a
-     verbatim duplicate. Markup is built from data by the intl-circuit script. -->
-<section class="section intl-section" id="intl-section" aria-labelledby="intl-title">
+<!-- INTERNATIONAL · EUROPEAN PRESENCE MAP — the interactive map + itinerary
+     dashboard, moved here from the Research page so the homepage carries the
+     footprint directly (the earlier signal-trace band it replaced was a
+     lighter duplicate of this same dataset). -->
+<section class="section euro-section" id="intl-section" aria-labelledby="intl-title">
   <div class="wrap">
-    <div class="intl-head fade-up">
+    <div class="euro-head fade-up">
       <div class="meta">
         <span class="ord">INTERNATIONAL</span>
-        <span class="hash">EUROPE · 2024—2026</span>
+        <span class="hash">EUROPE · 2022—2026</span>
       </div>
-      <div class="intl-head-main">
-        <span class="intl-tag"><span class="dot"></span>On the European circuit</span>
-        <h2 class="intl-h" id="intl-title">Present where Europe<br/><span class="accent">sets the agenda.</span></h2>
-        <p class="intl-lede">From Milano outward (Paris, Berlin, Amsterdam, Madrid and beyond), WEB3HUB takes part in, and is invited to, the workshops and conferences shaping Europe's blockchain and Web3 conversation.</p>
+      <div>
+        <span class="euro-tag"><span class="dot"></span>On the European circuit</span>
+        <h2 class="euro-h" id="intl-title">Present where Europe<br/><span class="accent">sets the agenda.</span></h2>
+        <p class="euro-lede">From Milano outward (Paris, Berlin, Amsterdam, Madrid and beyond), WEB3HUB takes part in, and is invited to, the workshops and conferences shaping Europe's blockchain and Web3 conversation.</p>
       </div>
-      <div class="intl-stats" role="list" aria-label="International footprint">
-        <div class="intl-stat" role="listitem"><b>8</b><span>Cities</span></div>
-        <div class="intl-stat" role="listitem"><b>7</b><span>Countries</span></div>
-        <div class="intl-stat" role="listitem"><b>12</b><span>Appointments</span></div>
-        <div class="intl-stat" role="listitem"><b>4</b><span>EU working groups</span></div>
+      <div class="euro-fp" role="list" aria-label="International footprint">
+        <div class="euro-fp-stat" role="listitem"><b>10</b><span>Cities</span></div>
+        <div class="euro-fp-stat" role="listitem"><b>9</b><span>Countries</span></div>
+        <div class="euro-fp-stat" role="listitem"><b>16</b><span>Appointments</span></div>
+        <div class="euro-fp-stat" role="listitem"><b>4</b><span>EU working groups</span></div>
       </div>
     </div>
 
-    <div class="intl-circuit fade-up">
-      <!-- desktop / tablet · flowing signal trace -->
-      <div class="intl-trace" id="intl-trace">
-        <svg class="intl-trace-svg" viewBox="0 0 1200 210" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
-        <div class="intl-nodes"></div>
+    <div class="euro-grid fade-up">
+      <div>
+        <div class="euro-map">
+          <div class="euro-stagebox">
+            <svg class="euro-canvas" viewBox="0 0 1000 821" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+            <div class="euro-pins"></div>
+          </div>
+        </div>
+        <div class="euro-legend">
+          <span class="euro-leg cat-hq"><i></i>WEB3HUB · Milano</span>
+          <span class="euro-leg cat-host"><i></i>Hosted by WEB3HUB</span>
+          <span class="euro-leg cat-participated"><i></i>Participated</span>
+          <span class="euro-leg cat-confirmed"><i></i>Confirmed</span>
+          <span class="euro-leg cat-pipeline"><i></i>In pipeline</span>
+        </div>
       </div>
-      <!-- mobile / fallback · compact stacked stops -->
-      <ul class="intl-stops" id="intl-stops" aria-label="European appointments"></ul>
-    </div>
 
-    <div class="intl-feature fade-up" id="intl-feature">
-      <div class="intl-feat-main" id="intl-feat-main" aria-live="polite"></div>
-      <div class="intl-feat-legend" aria-hidden="true">
-        <span class="ilg cat-participated"><i></i>Participated</span>
-        <span class="ilg cat-confirmed"><i></i>Confirmed</span>
-        <span class="ilg cat-pipeline"><i></i>In pipeline</span>
-      </div>
+      <aside class="euro-side" aria-label="International events detail">
+        <div class="euro-card"></div>
+        <div class="euro-list" role="list" aria-label="International events itinerary"></div>
+      </aside>
     </div>
   </div>
 </section>
@@ -2464,41 +2401,36 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 
   </div><!-- /.wrap -->
 
-  <!-- ════ INTERNATIONAL · EUROPEAN PRESENCE MAP — shared component (mirrors homepage) ════ -->
-  <section class="section euro-section" aria-labelledby="euro-title-research">
+  <!-- ════ BLOCKCHAIN MONTHLY OVERVIEW — occupies the slot the European map
+       held before it moved to the homepage. ════ -->
+  <section class="section bmo-section" aria-labelledby="bmo-title">
     <div class="wrap">
-      <div class="euro-head fade-up">
-        <div class="meta">
-          <span class="ord">INTERNATIONAL</span>
-          <span class="hash">EUROPE · 2024—2026</span>
-        </div>
-        <div>
-          <span class="euro-tag"><span class="dot"></span>On the European circuit</span>
-          <h2 class="euro-h" id="euro-title-research">A European presence,<br/><span class="accent">by design.</span></h2>
-          <p class="euro-lede">From Paris to Berlin, Amsterdam to Madrid, WEB3HUB takes part in, and is invited to, the gatherings that set the European blockchain and Web3 agenda. A live map of where the centre has been, where it is confirmed, and where it is heading next.</p>
-        </div>
-      </div>
-
-      <div class="euro-grid fade-up">
-        <div>
-          <div class="euro-map">
-            <div class="euro-stagebox">
-              <svg class="euro-canvas" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
-              <div class="euro-pins"></div>
-            </div>
+      <div class="bmo-panel fade-up">
+        <div class="bmo-copy">
+          <div class="meta">
+            <span class="ord">NEWSLETTER</span>
+            <span class="hash">MONTHLY · FREE</span>
           </div>
-          <div class="euro-legend">
-            <span class="euro-leg cat-hq"><i></i>WEB3HUB · Milano</span>
-            <span class="euro-leg cat-participated"><i></i>Participated</span>
-            <span class="euro-leg cat-confirmed"><i></i>Confirmed</span>
-            <span class="euro-leg cat-pipeline"><i></i>In pipeline</span>
+          <span class="bmo-tag">Blockchain Monthly Overview</span>
+          <h2 class="bmo-h" id="bmo-title">The month in Web3,<br/><span class="accent">read by the market.</span></h2>
+          <p class="bmo-lede">Every month the Observatory distils the news, industry analysis and market data that matter into a single briefing: what moved, what it means, and what to watch next. Written by the researchers behind the Observatory's reports.</p>
+          <div class="bmo-actions">
+            <a class="bmo-cta" href="https://forms.office.com/pages/responsepage.aspx?id=K3EXCvNtXUKAjjCd8ope66FKAF0nOyNGsrfXuK9y9r9UQTdWSkEwNDgxTjNHS00xQ1lST1ExS0FFSy4u" target="_blank" rel="noopener">Subscribe for free<span class="arw">→</span></a>
+            <span class="bmo-note">No cost, no commitment. Unsubscribe anytime.</span>
           </div>
         </div>
-
-        <aside class="euro-side" aria-label="International events detail">
-          <div class="euro-card"></div>
-          <div class="euro-list" role="list" aria-label="International events itinerary"></div>
-        </aside>
+        <div class="bmo-visual" aria-hidden="true">
+          <div class="bmo-issue">
+            <span class="bmo-issue-eyebrow">BMO · Monthly briefing</span>
+            <span class="bmo-issue-rule"></span>
+            <span class="bmo-line w1"></span>
+            <span class="bmo-line w2"></span>
+            <span class="bmo-line w3"></span>
+            <span class="bmo-issue-rule"></span>
+            <span class="bmo-line w2"></span>
+            <span class="bmo-line w1"></span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -4070,8 +4002,16 @@ if('requestIdleCallback' in window){
   });
 }
 
-/* ════════════════════ EUROPEAN PRESENCE · interactive pseudo-3D map ════════════════════ */
+/* ════════════════════ EUROPEAN PRESENCE · interactive hairline map ════════════════════ */
 (function(){
+  /* Europe, drawn from real geography rather than suggested by abstract shapes.
+     Source: Natural Earth 1:50m coastline + admin-0 land boundaries (public
+     domain), clipped to lon[-14,33] lat[35.5,62], projected Lambert conformal
+     conic and simplified to 0.6px, then encoded as relative polylines to keep
+     the payload ~30KB. Paired with the LCC constants in project() below. */
+  const EURO_COAST='M650.7 128.1l-4.1.9-2.3-.5-3.1 1.8-.5 2.3-1.6-0-1.1 1.3-1.3-.8-2.1.7 2.3 2.9-1.6 2.8.6 1.1 5.2 2.4-2.4 5 .4 1.8 2.3-1.4.9-5.8 1.3-1.9 5.3-1.3 5-6.8 2.9-1-6.1-3.5M787.8 783.6l1.8-1.4-1.1-1.6-1.7.4-1.6 2.2-3.8.5-1.5-.3-1.8-2.7-0 3.2-.8 1.2-1.8-1.3-.8 2.2M781.8 705.7l-2.5-.1-2.2-1.3-3.3-6.6-.1-2.3-2.9-3.4-5.1.5-8.5-2.3-5.9-5.5-3.6 1.6-5.5 4.8 1.6.6 1.9-1.3 5.4 1.2 9.4 5.8 1.3 3 2.7.8 6.4-.8 4.3 4.7 1 2.4 3.9 2.2 3.5.8 1.4-1.7-.3-3.1-2.9-0M590.9 157.1l-.4 2-1.3-.7-2.8 1.2-5.3 8.6.8 6.3-.5 2 3.4 5.2-1.7 4.9 2.9-2 1.5-5.6 3.3-2.6.9-3.6 1.8-1.3-2.1-2.2-.3-6.5 1.9-1.3.5-2.1 1.2-.8-3-2-.8.5M488.2 248.7l.2-6.1 5.2-2.9-.5-2.9-2.9-2.3.5-2.1 5.2-4.3-.9-6.8 1.2-3.3-1.3-1.5-3.3-1-1.7.1-5.6 4.5 1.1 2.1-1.8 5.8-2.1-.9 0-5.2-1.1-1.4-2.5.4-2.4 5.6-5.6.9.5 2.3 1.9 1.2 1.1 3.9-.2 4 1.9 3.5 6.1.5 1.5 7.8 2.1 4.1 3.1-1.3.3-4.7M466.8 244.5l.6-5.5-2.9-8.3-2.3 1.5-3.6-1.5-7 2.7-0 4.6 2.1 5.6 7.5 3.3 3-.1 2.6-2.3M299.8 680.4l-2.1-1.2 1.5-2.8-.7-1 .9-1-.9-.4-8.6 2.5-10 6.1-.1 1.2 2.6 3 3.2-1.9 1.5.5 1.7 4.8 5.9 3.1 4.1-2.2 5.7-8.5-.1-1.9-1.1-.6-3.5.3M444.1 657.2l-2.8-3.3 1.4-2.5-3.4-3.9-3.8-1.5-1.1-1.7-9.1 8.8-5.6 2.7-4.5 0-3-2-1 7.6 3.5 4.5 2.4 6.1-1.7 10.9 1.9.6 1.2 1.7-.3 3.2-1.5-.6-.5.8-.2 4.6-1.2 2.4.2 8 5.1 8.3 5.2.5 2-1.4 1.3-2.3.9-5.7 2.1 1.3 2.6-.6 5 2.3 1.7-.7 3.5-24.8-1.3-7.3 3.7-6.7-2.7-9.3M422.2 619.1l1.2.7 0 1.5-1.8 3.2 2.6.2.3 1.6-.9 3.2 3.6 1.8-1.8 3.2 1.9 2.2 6.2 3.9 1.5-2.1 3.2-7.9.2-5.6 3.5-6.8-.6-11.3-1.4-3.1.3-9.3-1-1.2-1.1.1-.7 2.1 0 5.1-1.1 2.1-3.1-1.2-2.1 2.1-4.9 1.4-2.2 1.6-3.3 5.5 2.3 2.2-2.4 1.8 1.6 3M573.4 729.6l-1.5-.3-3.5 2.5-7.6 0-6.3 3.9-5 1.1-5.5-.4-6 2-2.5-.5-9.2-5.2-3 .2-2.3 1.8-.1 1.4-3.4 1.5-4-4.2-4.2 3.9-2.4 6.9 2.2 4.4 2.7 2.1 6.7.5 5.8 2.5 4.5 3.6 13.1 6.8 5.5-.4 5.5 3.6 3.4 5 6.6 2.2 2.6-.5 5.4.7-.2-4.4 3.8-5.4-0-1.2-3.1-4.4 1.2-1.1-2.8-2.5-.6-3.6 2.5-9.7 8.3-14.7-3.2-.5-3.4 2.4M237.6 151.9l9.6-1.9 5.5 2 14.9 1.8 2.7 3.1.7 4.2-4.7 5.5-5.7 10.7-4.9 5.8-3.4 3-10.7 2.6 6.9.2 3.2 2.9-.6 1.8-1.8 1.2-3.4-.4-3.7 2.7-3.2 1-6.5-3.2 2.5 2.8 8.6 3.4 3.7-1.5 3.8.7 6.6 4.8 6.4 10.8 2.9 25.8 8.4 7.1 8.2 12.5-2.4 2.5 3.8 12.5-3.1-1.4-2.9-3.2-6.7-.6 6.1 1.9 6.2 7.4 1.9 4.1.8 5.2-6.3 6.5 3.6 3.4 1.9-.3 3.6-3.6 8.5 1.3 5.4 2.6 4.3 4.5.7 2.3-.1 6.1-3.9 9.6-3.6 3.2-1.8.9-1.5-.6.3 3.7-1.6 1-4.1-.6-3.9 1.8 2.4 1.4-.5 3.4-8.7 1.9 1.9-.3 2.5 3.2 3.5 1.2 9.4 1.1-1 5.1-6.8 3.1-1.9 3.3-3.4-.7-10.8 3.5-7.2-2.5-10.7-.1-10.7-5.5 1.1 2.4-3.6 1.6-9.3-.9.7 2.9-1.4.5-5.5-1.9-1.7.8-5.6-4.1-4-1-7.7 1-4.8 8.2-2.2 2-2.1-.1-6.4-6-10.1 1-5.9 2.6-2.7 3-2 .1-3.3-3.2-3.7.8-.1-2.4 1.9-1.5 4.4-.5 7.6-5.7 2.2-.7 6.9-5.7 2.3-5.5 4.3-.6 2.8-4.1 6.3-0 12.4 3 15.1-12.9-6.2 3.5-4.4.5-6.3 3.2-4.6-1.6-4.9-6.1-6.1-.5 3-2.1-3.1-1.3-1.6-2-3.8-.7-5.9 2.1-3.4-3.1-.4-4.6-1-.8 3.7-2.6 13.4-3.2 4.8-2.8 4.1-5.6-1.4-2.2 1.3-2.6-.7-3.5.8-2.6-4.5-.4-6.1 1.5 1.3-2.3 4.6-2.6 3.1-3.3 8.6-2.9 2.8.6 3.9-.5 1.8.1 3.4 3.2-.5-4 1.9-.6 1.8 3.9 2.9.4-2.5-1.7-1.8-5 .5-2.1 3-3.8-1.6-1.4.2-2.1.6-1.7 2.4-1.2 1.6-6-5.2.5-4.9-10.9.2-2.8 3.2-5.6 3.9-3.1 4-.7-8.4-1.4-7.6 3.5-2.8-.5-1.6-2.3-4.8 1.6-4.4-3.5-2.5 4.2-2.6-5.6.1-3.7 1.1-.6.8.9 9.1-13.3-.2-2.9-2.1-3.4 2.4-6.3 3.9.5-3.4-4 1.3-2.9-2.8 3.3-2.9.6-2.5 2.4 1-5.1 4.5-4-7.4 4.8-1.5 7.1-5.1 10.1-1.8 1.5-1.7-1.4 3-7.1 3.9-4.5-1.8-.7 4-12.1 8.5-13.2-8.6 4.9-3.1-1.6-.8-4-2.4-1.3 4.3-.9 2.8-1.6-1.7-1.8 2.3-1.3 3.1-3.5 1.2-3.6-.8-3.2-1.8-1.7-0-1.7 1.3-1.6 2.9-.8-1.3-1-.5-2.3 2.3-4.8 1.2-1.5 3.9.9 1.1-.5 1.8 1.1-2.7-6.2 2.2-4.6 5 .4-.5-3.8 1.2-3.8 1.7-1.4 2.5.7 1 2.1 3.7-1 .5 1.8 18.3-.6 3 1-2.1 6.3-1.9 2.3-13.7 8.1-1.3 2.9 2.5 1.5-4.1 3.4-1.5 2.7 2.3.3M108.5 297.4l-.5-.9-10-.1 8.1-4.4 3-.7-9.1.5-2.4-1.9-1.8-.1-.1-2.1 10-4.8-8.1-2.6 1.1-1.9 4.4-1 3 2.2 2.9.4-1.1-4.9 5.7-2.7 15.3.2-2.9-3.1-4 2.6-3.9-.5-2.5-1.8-4 1.1-2.6-.4 9.5-5 1.8-1.7-.8-1.7 3.8-3.5 5.6-.4 1.4-1-3.2-2.1-6.3-1.4-1.1-3.1-4.1-1.4 1.7-1.1-4.7-1.9 1.1-1.6-.5-2.2 7 .2-2.7-2.3.6-1.9 5.9-.7.6-2.1-5.6-1.1 2.7-6.2-1.4.3.1-3.3-2.1.3 1.4-2.7 8.4.8 3.9 1.4 2.1 3.2 3-1.6 7.1 3.3-.5-3.3 3.1-2 4.4-.8 2.5-3.4-5.4-.4-4.5-3.3 7.8-4.3.6-3.7 2.8-3 4.7-.3 4 1.3.3-1.8 1.5.1.9 4.2-2.7 3.9 3.4-1.5.8-5.8 3.8-.6-.6-1.9 1.8.6 3.8 4.3-4 2.1-1.1 1.1.4 1.1 2.6-.1 2-2.5 8 .1 5.4 1.9 2.3 9.4 1.9 3.4-.3 1.7-3.2 1.4-.3 1.2 2.5-.3 2.5.8.8 5-.5 1.6-2.4-3.7-.8 4.8 1.5.6-1.4 2.6-3.8.3-2.8 3.7-1.6.8-3-1.8.5 2.2-3.3.2.8 12.3-1.5 5.9-.6 12.8-3.6 4.8-2.1 5.3-3.1 3.4-2.3 1.2 1.7 3.3-4.4.7-3.7-1.5-2.2 1-.7-2.8-1.2 2.2-9.4-.3-2.4 2.5-4.7.6-4 2.3-1.6-.1-1.9-2.8-2.1-.4.8 1.4-.8 3-4.8 1.4-2.6-.2-1.7 1-9 .2-2.7-1.6-5.1.2-1.7-.7 3.1-2.7 3.4-.9M496.2 773.1l-.2 1.9 1.5 1 1.2-.4-.7-1.8-1.8-.7M379.9 289.8l-.9.1 1.3.8 3.4-.2-3.8-.7M367.9 293.7l-1.9 2 3.3-1.8-1.4-.2M374.8 290.7l-3.9.9 2.3.3 4.5-1.2-2.9-0M599.2 590.3l4.4-.1-2.1-1.2-9.4-.1 2.1 2.2 2.4.3 2.6-1.1M601.8 584.6l-9.1-.9-1-1.1-5.9.5 6.6 2.1 9.4-.6M591 581.1l-4.4-1.1.4-2 8.1.3 1.3 1-2.1 1.4-3.3.4M224.5 393.5l-.7 2.5 4.2.6.1-1.5-3.6-1.6M582.3 109.7l-.9 2.1.5 1.2 1.7-2.8-1.3-.5M876.2 440.6l-2-1.5 1.9 2.9 3 .5 9.1-.9-12-1M641.2 122l1.6 4.2 1.2.5 1.7-.9 1-3.4 1.3 1 2.2-2-2.2-4.3-2.8-.2-1.5-1.9-2.2 3.7-5.9 1.8 5.6 1.5M653.3 125.5l-1.2 2.2 3.3 1.5 1.2-.5-.6-2.8-2.7-.4M871.6 740.7l-3.5 6.1 1.7 2.7-.2 3.5 1 1.1 2.1-1 2.1-4.1 2.7-1.2-.9-1.7 2.1-7.8-.4-1.8-6.7 4.2M858.7 765.4l.3-5.9-1.3 1.3-.8 5.9 1.6 2.6M847.2 726.5l-4.1-1.7 1.6 1.6.1 2.3 2.2-.9.2-1.3M848.7 731l-2 2.5-.6 1.5.7-.1 8.4-6.2-2.3-.6-4.2 2.9M808.2 732.7l3 3.6 1.9-1.5-.2-5.6-1.6-.9-3.1 4.4M805.9 731.1l-2.8 1.5-.6 2.2.9.9 1.5-0 1.4-2.6-.4-2M813.1 750.5l-.6 2.6 1.6.3.8-1.8-.6-1.1-1.6-.9.4.9M810.7 744.5l.6-1.9-3-1.5-.6 1 3 2.4M840.9 704.5l-5.6.3-2.2 1.4-.9 1.9 3.2-.2 3.2 1.2 4.4-2.9-.7-1.7-1.4-0M824.3 712.3l-2.8.7-1.7 3.7 4.8-2.3 2.7-3.8-3 1.7M822.6 735.2l-4 3.8 2.7-.6 4.1-4.2-1.7-.7-1.1 1.7M833.6 742.1l-1.6-.1.3 1.4 1.6.7 2.5-2.7-2.4-1.1.5.8-.9 1M780.4 722.1l.7 2.1 1.3-1.7.6-2.3-.7-.9-1.3.4-.6 2.4M784.4 727.9l-.1 2.1 1.8-3.2-1.5-1.7-1.1 1.9.9.9M788.6 747.1l-1.7-.6-.3 2.7 4.6-1.7-.3-2.3-2.3 1.9M796.2 722.3l-.9-.2.8 3.4.6-.1-.5-3.1M794.3 711.8l-.1-1.3-2.3.1-1.9-1.9-1.9 1.2.7 1.8 6.8 4.8.3-2-1.6-2.7M800.8 719.9l1.5 0 .5-2-.9-.8-5.5-.3 4.4 3.1M793.1 738.9l.8 1.1 1.2-1.2-1.5-1.9-.8.2.3 1.8M814 685.7l-3.5 1.5.5 1.9 4 3.8-2.1 2.9 3.4 2.6 2.8-4.8-1.4-6.9-3.7-1M822.1 666.9l-3.6-2.1-0-1.8-1.7-1.2-4 1.1.2 1.2-1.5 1.1-3.8 1.3-1 2.8 1.8 1.5 3.9.5 1.7-3.3 2.2-.6-3 4.1 1.5 1.4 5.4.4 3.4-1.4-1.8-2 2.4.8-2.1-3.8M760.5 681.7l.8-1.1-4.6-2 2.2 3 1.6.1M764.8 675.4l-1.6 1.5-.7 2.5 1.9-1.9.4-2.1M780.5 684.1l-.8-1.8-1.9-.7-.1 2.7 2.7 1.2-.4 1.3 2.9-1.1-2.4-1.6M793 633l-2.4 1.5 3.2 1.8 2.3-1.3-3.1-2M791.7 648.1l-1.6 2.1-1.4-1.2-3.9 1 1 4.1 2.8.2 1-2.2.7 2 2.2 0 .7-6.8-1.5.8M771 629.1l-1.5 4.6 3.2 1.4 2.6-1.5-.3-2.6-1.9-2.1-2.1.2M798.6 641.4l-1.2 2 1.8.6 4.8-2-1.7-2.6-3.7 2M211.8 247.1l1.7-2.1.1-3.7-.7-.5-5.6 4.2-2.3 4 2.8 1 4-2.9M192.2 169.6l-2 2 3.4-1.8-1.4-.2M208.6 205.5l-.6-3.6-2-1-1.7 2.3.1 4.1 3.4 1.7.8-3.5M202.8 176.1l-1.7-.7-1.7-3.7-3.1.3-.7 1.6 2.3 2.4-1.6 3.6-1.9.1-.5 1.2 8.7.5 1.2-4.1-1-1.2M194.5 191.8l-3.4 1.5-.9-.7-1.8 1.5-1.2 3 3.8-1.3-1.4 4.6 3.8-.7.8-.9.3-7M198.2 189.3l-.8 1.4.8.7-3.1 1.7-0 2.6 1.2-0 5.7-7.8-3.8 1.4M296.1 69l-1.6 3.2 1 3.2 1.9-5.2-.1-.9-1.2-.3M293 75.5l-.8.4.4-4.1-1.6-0-2.8 2.7 1.7 1 .4 4.1-4.4.8.1 1.4 2 .7 0 1.5 2.4-.1.3 1.1-2.1 6.9.7 1 2-3.4 4.1-12.4-1.6.5-.8-2.1M299.7 70.6l1.3-3.3-.6-1-1.4.5-.6 1.8.2 1.8 1.1.2M255.6 116l-1.2-.6-.9 1 1.3 3.2.8.2 1.1-.5-1.1-3.3M209.1 269.2l-4.4-0-.5 3.6 2.4 4.2 6.4-3.8-1.8-.3-2.1-3.7M268.5 106.5l-2.2 1.8 3.6-.6.5-.7-1.9-.5M262.7 115.1l-3.6-1.4.7-2.6-1.3-1.4-2.3-.2-1.3 4 .5.7 1.1-.8.2 2.3 3.2.1 2.2 1.8 1.3-1.6-.7-.9M225 21.1l-2.7-1.8 2 4.4.9-.9-.2-1.7M222 31.5l0-2.3-2.2-2.4 1 5.7 1 1.4.2-2.4M262 106.3l1.4 1 .3 2.6 1.3-.5.2-1.2-2.9-4.1-1.3.5 1 1.7M195.5 135.6l8.2-4.5-.1-1.5-1.8-.5 4-1.9 3.1-4.6.3-4.1-9.4 3.9 0 3.4-2.4-.4-1.6-1.7-1.4 1-.5 3 1.1 1.1-1.3 1.1 2.4 3-4.1 2.3 1.5 2.2 2-1.8M196.7 160l.9 2.1 1.5-.6-.5-2-1.9.5M199.2 154l1.1 1.9 3.7.3-.3 4.6 6.1-4.1-.4-1.3-2.7-.4-3.6-2.3 1.3-7.8-1.6-3-.8-0-.7 1.7-3.9.3.1 1.7-1.9-.1-1.2 1.3.8 2.6 3.3 1.8.7 2.8M189.3 138.4l-4.3-.1-1 1.3 2.5 2.6 2.1.6 2-2.4-1.3-2M185.9 146.6l-1.8-.4-1.2 4.3-.1 2.9 1.3.9.8-.3 1-7.4M116.4 229.6l-2.3.2 3.2 1.4 1.2 2.6.7-2.9-2.8-1.3M627 78.9l.5-.4-2-1.7.2 2.6 1.7 1.2 1.1-.3-1.5-1.4M593.6 87.9l-.2 1.7 1 1.4 1-1.7-.7-1.6-1.1.2M601.3 88.4l1.8-.2.3-2.7-2.4-1.8-2.1.1-1-1.3-.9.6 1 4.9-.9.3-.3-2.1-1.4 1.8 1.5 3.7 4.2-.3.2-3M595.1 154.2l-1.2 2.3 1.7 1.2.1-1.8 2.5-1.5-3.1-.2M563.6 178.8l-2.9 10.4-1.4.8-2.8 9.2 1 9.4 1.5-1.5 2.8-15.2 3.3-12-.2-2.1.9-1.2-1.5-.6-.7 2.8M532.3 237.8l-1 5.7 6.2 2.4 1.1-4.1-6.3-4M514.2 263.9l-.4-1.1 1.2-2.8-2.9-1.5-1.2-2.4-1.4.1-2.5 4.5.4 6.3 3 2.2.9-.1 1-2.6 1.9-.1 2 1.5-.1-2.9-1.9-1.1M492.1 246.8l-.6-.7-2.5 4.4 1.1.6 2.8-2 3.2-.2-1.3-1.5-2.7-.6M495.1 230.1l.6 1.7 1.8-1.2-.8-2.4-1.6 1.9M481.4 253l-2 .1-4.7-3.4-3.3.3-.4 4.9 7.1 4.1 5.2-1.6-.5-3.7-1.4-.7M459.6 251l-2.5-1.6 2.4 3 1.2.6 1.5-.6-2.6-1.4M450.2 246.3l.4 4.7 2.5 1 1.7-.4-1-2.9-3.6-2.4M466.1 249.4l-2 3.2 1.2 3.1.7-.2 3.6-11.7-3.5 5.6M462.6 225.7l1 .5 1.1-3.3-1.8-3.3-.3 6.1M471.9 261.8l-1.2 1.9 2 1.5 2.6-.1-.9-2.4-2.5-.9M468.9 181.4l-.9 1.4 2.2.9 2.5-2.7-3.8.4M428.2 246.3l-.8-.2-1.9 4.3-.3 4.1 1.1-2.3 4.2-.4.5-.7-4.1-.4 1.3-4.4M225.4 487.4l.1 2.4 2.4 4.8 1-2.4-3.5-4.8M248.1 353.4l-5 2.3 4.3 3 2-0 2.8-2.2-4.1-3.1M362.5 299.6l-.6 1.6 1.2 1.1 1.9-1.9.2-3.2-2.7 2.4M459.1 599.2l-4.9.3-.4.8.5 1.2 4.3-.5 1.8 1.4.2-3.1-.7-1.1-.8 1M413.8 706.2l-.2 2.3 1.3 2 1.4-2.8-2.5-1.5M414.9 648.4l-.5-.6-1.1.6-1.5 2.9 1.1.2 2-3.1M318.8 672.8l-4.6-0-.5 2.5 9.3 5 1.2-1.8-1.8-4.1-3.6-1.6M255.6 705.5l-.5 1.9 4.3.5 0-.9-2.1-.5-1.2-1.8-.5.8M255.2 695.4l-3.4 4.8 4 1.8 1.1-1.7 4.4-3-.1-1.4-1-1.1-5 .6M556.3 797.1l-2.3-.5.2 3.1 2.1 1.4 2.3-.1.7-1-3-2.9M560.2 560.3l-3.6-2.5 1.3 1.7 2.7 1.8-.4-1M548.4 532l-3.7-4.4-2.5 3.8 1.6 1.7 2.1.2 1.6 1.9 2.5-.7-1.6-2.5M551.4 542l-2.3-3.7-1.3 0-.2 2.3 3.8 1.4M552.9 548.5l5.5 4.8 1.5-1.3-10.8-9.4 3.8 5.9M554.4 559.1l-1.9-1.4.6 1.2 5.4 6 1.4.2-5.5-6M563.5 564.4l1.3.3-1.5-2-2.2-1 2.4 2.7M543.4 542.1l-.4-7.1-3-5.4-.9.6 1.3 3.5-.4 3.5 2.5 6.5 1.3 1.4-.4-3M608.2 593.2l7.8 2.2-3.1-1.7-4.7-.5M698.3 719.3l-2.6-2.8-1.7-.4-2.2-5.8-.4 4.3-2.5.2-.7 4.7 2-1.9 2.2 3.5 1.8-.6 3.7.9.4-2.1M700.6 727.8l-1.9-.1-1.8-2-1.4 2.4 2.4 3 3 1.9 1.8-2.2 2 .4-4.1-3.4M693.3 706.4l1.3-1.3-1.2-5.9-1.3 1-1.1 4.7.2 2.3 2.1-.8M695.1 710.6l-1.9-.6 2.6 4.4 1-.5-1.7-3.3M674.4 683.3l-1.7-4.2-1.4-1.3 1.7-2.5-.3-.7-2.2-1.1-4 2 6.3 8.2 5.2 1.9-.7-1.6-2.9-.7M761.4 716.6l.8-.9-1.9-1.6-1.1 2 2.2.5M755.9 762.7l-.7 2 .6 2.9.9 1.2 2.5.5.8-3.2-4.1-3.4M345.5 337.3l-2.8-.4-1.7.9 4.2 2.7 2.3-.4-2-2.8M633.4 82.8l-.1-1.2 1.4-1.2-1.2-1.4-2.6-0-1 2.6 3.1 3.1 1.5-.2-1.1-1.7M616.1 74.2l1.8 3.5 1.9-.4 0-1.4-3-2.8-.7 1.1M625.7 84.8l-.7.9.7 1.9 1.3-1.2.2-1.9-1.5.3M382.2 64.8l-1.2 3.2 1 .4 1.3-.3.3-1.8-.7-1.6-.7.1M381.4 92.8l.5 1.4 1.4.3-.9-7.8-1 1.1 0 5M807.2 722.4l1-1.7-2.8-.6-.7.7.3 2.2 2.2-.6M787.3 732.5l-1 2.5 1.6.4.8-1.9-1.4-1M387.5 41.4l1.9 2 2.9-.1 9 3.3 8.3-0-3.7 1.6-6.4.2-7.4-3.7-7.5.1-.4 4.9 3 5.2 2.3 1.8-4.8 1.2-.2 5.4 4 4.5 10.9-1 4.2 1.2 1.6-.5 1.7-3.9.7 2.4 4 1.6 4.8-.4 1-5.6 1.6-1.8-1.5 3.9.7 2.4 2.8.4-8.1 3.2-.2 4.1-.8-3.1-2.7-2.7-2.4.1-2.8 1.4-6.1-1.4-6.9 1.4-5.8-.8-1.3.8-.1 9.8.8 2.2 1.7 2 6-3-7.8 6.6 1.7 7.1 1.8 1.7 3.5.2.4.9-3 1.4-4.1-.8-.1 3.2-2.2 7.1.5 2.8 5.5-5.1 3.3-5.2 2.7-1.6.6-2.4 3.9-5.5 2.9-2 9.6-2.2-4.2 2.5-3.2 7.7 1-6.1-.7-1.4-2.5 1.5-3.3 3.3-1.2 4.3-4.5 4.8-.9 1.4.4 1.6 6.7.1-5.3 2.2-1.6 2-4.3-1.8-1.1 1.6-1.5.3-1.1 2.2-2.3 9.8.5 1.9 2.8.1 3.3-3.5 4.3-1.5 6.7-4.9 2.1-.3-7.3 6.9 0 3.3-1.3 2.5-.1 1.1 3 3.3 3.4-1.7.6.5-4.2 3.6-7-4.6-1 1-1 7.2 2.5 6.1 9.9 8.1 4.2.4.4 1.1-2.2 2.8.5.8 2.1 1 1.2-2.5 1.1.2.3 2.3 1.5 1.5 3-.6 4.1 1 6.4-1.5 2.6-1.9 1.9.1 5.6-4.3 11.2-12.6 1.3-.2 1.1-1.7-1.3-1.5 5.3-3.3.6-1.1-2-3 1.1-.2 3.1 4.7 1.8-.3 1.8-1.7 1.5.6 3.8-7.9-.5-7 2.5-2-.5-3.2.9-2 .8 11 2.8 6 8 2.2.3 1.1.1.9-1.4-1.5-1.5.3-.7 2.6 2 15-.3 3.1 1.2-.3 1.6 1.1.3 6.5 1.6 3.4 2.4.7.6 7.5 2.3 1 1.4 7.4 1.4-.6 1.7 6.3 4.5 9.2 2.4 2.4 2.5 4.6 2.7 1.2.6 2.9-.9 1.9-3.2.4 2.5 5.1-1.5.9-3.9-1.5 8.6 15.4-1.1 9.8 7.2 1.6 7.9-2.7 6.1.7 2.5-3.9-2.5-5.7 0-3 5.3-6.6 1.6.8 1.5-.5-.8-2.9 1.1-.9 8.8-.2 4.7-1.3 3.4 1.5 2.5-3 1.9-8.2 2.7-6.3 2-10.6-1.3-5.6 2.2-7.1-2.2-8.9.4-3 1.5-.2-.5-7.1.9-1.6-2.3-6.3 4-2-2.3-2.5-8.8-.8 1.5-.9 10-.6 5.3-4.1 1.4-2.4 11.7-8.6 1.4-5.4 2.9-1.4-1.1-1.9-4.2 1.3-1.9 1.7-2.3-.2-.3-.8 4.4-2.8 9.2-10.4.1-2.1-2.7-5.5-1.1-1.5-3.9-1.7 0-3-6.2-3.9-3.5-5-4.1 2-1.2-2.6-3.4-.1-1.7-1.6.1-3.3-1.4-4-2.7-18.2 1-2.5-.4-2 3.8.8-1.7-5.2.4-4M610.9 33.4l2.1 2.2 4.5 9-1.4 1.4 1.3 1.9-.9.1 1 5.9-.8 9.4 2.6 10.7 2.8 1.5 2.5-2.2 1.1 2.4 6.2 2.2 4.8-.2-.6 3.1 1.4 1.3-1.6 1.1-.2 1.3.9 3.7 2.7-.4 1.9-1.8.4-4.2 3.8 4.4 1.9.5.1 1.4-2.6 4.8 3.1-1.1 3.4-4.8 3.8-0 8.6-3.9 1.6.4 1.7-3.1 7.5-3.9 6.3-5.4 1.9 1.6 2.2-2.8 1.3-.1-1.9-3.6 3.9 1.2 2.3-1 1.5-6.4.8 6.2 5.6-3 3.1-2.8 4.1 1.4 3.8-2.9 5.6-2.5 4-4.1 2.3 1.4.5 3.5-2.2-1 3.3 4.2 2.7.7 4.6 3.1 9.2-2.5 4.9 3.9 3.3 1.2-.1 2.5-7.1-.6-7.7.7-1.7 5.5-2.7 1.4-3.5-.5-1.6 5.2-3.5-2-1.1.4-.2 1.7 1.9 4.7-1.6 4.6-13.5 2-5.8-1.9-16.6 1 .6 2.2-.9 1.4-8.3 1.6-3.9 2.7-3.1 0-2.4 3.4-1.8.4.9 2.2-4.4 1.3-3.8 3.1.4 4.7.9.9-.9 2.4 1.7 3.6 2.7-.4-1.9 2.5-0 1.7 3.5 3.9 1.9 3.9 5.7 1.8 1.7-1 1-2.9 3 .2.6 1.4-.7 1.4-.3 14.2 1.7 3.8 2.4 11.2-5.7 8.2-4.3 1.9-6.2-2.4-3.4-6.4-8.8-6.5-2.1-3.5-12 6.4-3.1 7.8-.4 9-3.6 6.2.1 5.5 3.8 23.5 4.3 9.9 1.3 15-4.8 1.4-5.1-1.4 5.7-11.6.3-7.8-.8 6.4-4.3 9.3-4.1 5-4.7.5-2.1 1.3.1 4.9-1 3.5-4.3 6.4-2.3 1.7-7.1 1.9-2.4-.4-3-1.4-4.9-8.6 6.4 2.5-.8-1.4-7.7-3.6-7.9 1.4-9.4 3.4-5.9 4.4-5.4 1.7-5.6 8-14.9 5.4-14.9 7.1-2.3-.1-7.4-5.3.1 2 1.6 1.7.3 3.4 10.8 1.1.7 5.2-11-4.1-1.5-1.4-2.8-8.6-4.6.6-5.3-3.9-2.1-3.7-7.7-1.4-7.6 8.9-5.3.7-6.6 5.9-5-1.8-3.2.4-1.8-2.3 3.3-3 .9-2.9-.8-2.9-4.8 1.9-6.2-3.5-2.5.8-1.2-2.3-4.6.4 2.7-3.1-.1-2.7-2.1-3.1-2.4-.8-.9-5.5-3.9-1.2 3.7-6.6-1.3-6.5 7.2-7.7-2-2.4 1.9-.9 2.7.3 3.1-11.2.8-.7 1.8 2.2 1.4-.1 3.8-2.7.6-1.8.4-2.5-1.2-2.2-5.7 0-3.4-2.9.3-11 3.6-7.1.2-5.9-1.4-3.3.5-2.6 2-2.5-1.2 0-4.2 3.5-4.7 1-8.4 11.7-12.9 1.6-5.4 7.4-.4 2.8 3.1 2.7 4.9-1.7 3.7-8.3 1.9-.8 2.2 1-1 9-2.1-2.7-2.8 1.6-2.5 3.1-1.1 3.8-1.9-2-4.3-1.7-1.9.2-1.1 13.5 1.2 4.6-1.5 11.1 7.8 5.4.7 7.7-1.6.5 1.3 4.4.2 5.6 4.5 7.4-.2 2-5.1 2-.1 2.9 2.3-.5 2 1.6-.2 7.5 1.3 2.2 5.6 2 5.3 7.6 2.6 1.3-3.3-1.4-4.4-6.2-2-1.2-5.3.5-4.7-1.3-1.6 2.7-.9 11.1.1-3.4-2.6-2.8-2.5 5-1.5-1.1 1-2.1-2.5-4.4-6.5-.4-7.3 1-1.8 2.7-1.2 5.2 2.4 2.8-3.9-1.5-2.4-3.4-13 .3-9.4 3.4-3.3 4.7-5.4 3.6-3.1 1.3-2-1.1-6.4 17.7-7.8 8.5-2.9 5.1 3.7 6.1-3.2.1 4.5 4-2.4.2-4.2-3.8-2.5-.8-3.5-.1-1.9 1.2 2.2 2.7 4.1 1.7 3.4-.7 3.8 1.9-2.1.6-1.8-1.2-2.3 1-8.1-1.8-8.7 2.8-9.8 4.8-9.9 1.1-2.8 1.3-1.8 1.2-2.2 4-2 12.6.6 1.3-4 4.3-3.3 2.2-12 2.4-8.5 3.5-2 3.9.2 1.5 2.5 1.6 3.1.2-.5.6-5.4.6-6 2.2-6.4-2.6-11.3-2.6-1.3-3.3.4-5.4-1.9-1.1-4.2.5-4.9-1.2-.6 2.4.5 3.2 2.9 8.8-1.5 11.4 1.1 3.3 1.8 1.6-8.5-.8-1.2-2.1-2.4 3-1.1-2.1-6.9-1.2-5.1 2.3-4.6-8.2-4-2.2-4.6-0-5.1 2-6.4-1.1-9.3.7-4 1.5-1.3 2.4.3 2.6 6.2 1.1 2.5 2.4-6.4-.9.9 2 3.1 2.3-1.2 1-5 .3-1.2 1.1 4.4 2.9 1.3 4.6 7.9 1.1 7 3.8 1 1.4 5.4 1.5 1.4 2.4 1.8.9 3.5-.1.9.9-1.5 1.6.4.7 4.2.4 2.1 2-2.4 2.2.2 2.1 2.7 1.4 7.4.3 4.1 3.4-5.3-2.5-2.5 1-1.3 1.6 2.9 4.1-2.3 4.7 4.3 10.9 7 6 4.7 1.8-.9 11.1.6 5.5-3.4-1.4.1 1.7 7 8.2 1.3 11.2 1.5 2.9-2.4-3.1-1.5-8.6-4.5-5.1-3.8 10.2-3.3 13.9 2.3-2.4 1.2 2.3-2 .5-2 2.7-4.5 15.1-4.9 12.5-3.6 3.1-7.9 1.4-7.2-.7-10.5-5.5-4 1.7-10.7-6.3-3.8.5-2.2-1.1-9.2.7-4.3-.9-22.5-9.6-3.3-2.6-5.1.4-16.8-3.6-3.5.1-3.8-2.1-3.9-5.3-1.9-0-1.9-1.6-3.5.8-3.2-.4-5.9 1.9-.9 1 .1 3-2.5.7-6.9.6-4.1-1.6-7.4 2.8-2.6 5.2 2.7 5.6 2.3 1.1-3.3 3.2-.4 1.9 4.9-.1-1.3 4.8 1.3 2.1-2.7 3.1 2.5 1-5.3 3.6-1 4.5 2.1.7-2.9 2.5-.7 1.9.4 1.9 1.9.7-1.5 1-.6 2.6-.7 15.7-2.6 7.6-3 3.7-4.7 9.2-.9 2.1.6 2.1-11 14.4-6.4 4.4-.2 2.7-6.2 11.9-.4 1.9 2.3 1.7 5.2-0 6-6.7 4.1-.8-3.8 1.4-2.1 2.4-.2 2.9-1.4 1.3-5.8 1.3-.7 6.1 9.7.4 2.2 3.4-4.6-1.9-.2 7.9-3.3 6 .2 6.9-2.7 8.4-7.1 10.3 1.3.8 2.4-1.2 2.4.7 3.6-.5 10.1 3.9 4 3.2 2.4.6 8.9-2.8 7.5.6 4.5 1.4 3.1-1.7-1.1 2.3 7.4 8.9 1.4 4.1 2.2-1.9 2.5.4-3 1.3-2.7 3 0 2.8 2.4 1.8-.1 5.1 2.8 7.8 1.8.6 6.8 6.2 4.1-.6.9-2.1 1.8.8 1.4-2.7 4.8-4.6 5.9-1.2 6.1 1.2 6.7-4.5 1.7-.2 12.7 1.3 8.9 3.2 6.8-.3 8.1 2.8 5-1.9 3.4-.1 3.4.9 2.3 2.6 1.9-.6 4.9-4.2 4.6-7.8 4.3-3.9 8.1-3.9 11.7 1.2 2.5-1.1-2-2.7.5-1.6 3.9-6 1.5-4.5 2.5-1.2 1.1-3.2 3.7-2.9 8-3.3 6.5-4.2-.8-2.1-4-2.5-3.1-5.5-1.3-10.6.4-3 7.1-9.5 11.4-11.4 6.3-7.9 2.8-.1 4-2.1-1.8-2.6-1.7-.8 7.9-6 23.5-3.8 5.5-4.6 15.9-7.2 5.7-4.6.2-4-1.7-2.5.6-2.6 3.1-.7-3.7-9.1-.3-7.2.4-2.2 5.1-7.6 11.7-6.7 2.9-2.7 3.1-.6 3.3 3.5 9.9 3.9 7.5-1.5.1 2.3 5.1 1 1.6 3.4 5.5 1.9 2.7 2.5 4.7.2 1.7.9 9.8-3.1 1.9-1.8 1.5-3.1 11.8-8.8 15.7-4.6 11.7-13.2 4.5-2.1 10.7 3.2 9.1 6.4 6.5 2.4 2.9 2.1 2.8 12.5 2.6 4.1 1.6 4.9-.2 6.8 4.1.9 2.1 3.8 2.8 1.9 5 5.9.3 2.2-1.7 1.2.8.8 3.3-1 7.4 3.8 3.7 5.9 5.9 4 12.3 13.3 4.8 1.7 5.4 4.6 3.4-1.4 6.8 1.3 3.9-.2 2.9 2.9 4.4 7.4 0 1.7 5.9-.3 3.4 2.2-2.5 3.9 9.3-2.5 1.7 1 2.7 4.6 1 2.6-1.2 2 .6 2 8 4.5 6.5.1 2.5 1.6 8.7 18 2.6 9.5 2.5 2.2.1 5.3-5 1.8-1.9 3 .8 3.7-1.5 5.4-2.7 1.4-1.1 2.7.3 4.1 2 2.6 7.7-.6 4.5-9.4 5.6-5.1-.4-8.9 1.1-2.6 3-2.9 4.3-1.8 3.4.3 1.5-2.5-1.5-3.9-.8-7.1-7.1-5.1-5.2-1.4-1.9-3-.1-3.3 2.5-8.3 4.9-9.8 2.1-1.8 3.3.1 2 2.8 3.2 1.4 10.5.8 5.8 9.5 6.2 2.7 2.3-8.5-.9-3.3-3.4-4.1-9-7.3-11.1-4.4-8.7-5.7-12.4-3.9-12.2-5-2.6-2 .1-3.2 4.8-4.3.7-1.7-.7-2.3-4.4-1-12 1.6-5.1-.3-6.7-3-7.3-5.2-8-7.2-3.9-5.1-5-14-5.5-11-5.8-3.1-8.3-6.6-4.6-1.9-6.3-6.5-2-5.9-1.4-8.4.6-3.2 2.2.9 1.6-1.3 1.1-3.6-2.7-2-3.6-5.8.9-5.9 4.3-3 .9 0-2 2.3 1.3.2 10.6-5.4 3.4-4 5.3 1.6 1.8-1.8 1.4-.1 3.3 4-5.2 4.4 2.7 10.7 5 7.6 2.2-.1 5-9.6 1.3-5.2 4.9.9 6.5 5.9 1.3 3.1.2 7.7 1.9 2.8 10.7 8.9-3.9-.2-3.3 1.1 1.5 2.4 7 7.2 9.7 6.6 1.2 3.9 3 .1 5.5-1.5 11 3.5 5.1 4.8 13.5 9.3-11.1-4.1-3.6.6 4.6 1 7.2 3.1 5.2.7 15.7 9 2.7-.6-0 1.9 5.9 3.1 5.5 4.9 1.8 3.1 8.9 3.6.5 4.3-2.2 6.5 1.5 5.3.6 8.8-1.8 8.1 3.6 7.2-.3.9-2.7-.6 4.2 5.3 8.7 3.8 3.2 4.6 1.4 4.6 4.8 4.2 3.3 6 4 1.6 7.9 6.2 7.6-1.7 1.2 3-.9.9-5.1-.6-2.5.7 0 1.6.5 1.9 2.3.6 3.1 3.2 3.9 7.4 1.7.9 2.6-1.2.2-3.4 3.9 4.4 10.8-4.3 8.3.3 1.9-2.7 10.3 4.4 7.4.5 1 1.1-1.1 1.9-5.1 1.6 1.1 2.5-2.9-.2-6.2-2.9-7.4-1.1-7.2-2.8-2.9.3-3.2 5-5.8.2-1.5 5.2-3.6 4.6.4 1 3.8 1.8 1.4 2.9 6.1 2.9 3.1 4.1.7 2.3-2.2 3.5.6 3.5 4.6 5.8 4.1 3.1.4-7.6 2.7-1.6 8.3 8.5.9 5.4 1.4.9 1.6.6-.6-3.5 1.8-6.6 2.4-.8 1.5 0 6 6.7 4.5 1.6-3.7-5.2-.6-6.1-6.9-11.9-2.5-2.6-1.6-4.2.9-1.4 6 2 2.1.9.5 2.2 1.5.7 7-4.4-2.8-3.7-4.8-.4-2-4.8-2.9-2 3.2-2.9 5-1.9 1.6-1.5 1.9.4 10.7 8 1.7-1.3-.4-3.1-2.5-9.2-2.1-3.6-6.7-1.1-3.3-3.5-4.7-.3-3.3-3.4-2.6.2-3-1.7-10.8-1.9 5.1-1.9 5.3-4.9-2.2.6-2.5-3.7-1.5-2.4 1.7-1.7 1.4-.9 4.1 1.5-.3 3.7.9.8 1.4-.4 2.1-2.4-3-4.9-6.6-5-4.3-6.3-6.5-5.9-.9-2.3.5-7.3-.9-3.7 3.6-3 2.4-.8-1.1 3.2 1.4 2.4 10 3.7 1 3.6 1.9 2.6 5.4 1 .9-1.1-6.1-3.6-1.5-2.9.6-1.3 5.5.2 4.7 5.1 2.8 1.2.8-1.9-1.2-2.5-6.2-3.9-.1-1.3 1.9-1.5 2-0 5.8 1.2 4.7 3.1-3.8-4.6-4.4-1.6-3.6.3-1.1-1.6.7-2-3.6-3.3 0-2.1 7.1-.6 7.4-7.9 7.3 1.3 5.9-5.2 3.5 1.1 1.6-.6 4 .8 7.9-.3 3.8 1.4 3 4.1 14.7-3.6-1 2.7-5.3 4.1-3.4 4.6.8 3.1-.5 3.9 2.5-1.9 7.3-12.8 9.3-7.7 2.7-5.1.6-4.1 5-2.4 4-.2 4.7-3.8 13.6-.2 3.5-1.8.6-6.8-16.7-3-3.7-1.7-6.4-7.5-.2-3.3-1.2-2.1-7.7-7.2-5.5-2.2 4.1-8 2.5-1.9-2.1-12.5 2.8-6.9 3.6-1.8 3.3.4 1.2-3.6-1.5-8.5.1-5.6-2.4-8.6 2.9-9.1-1.5.7-.2-4.4.9-3-1.5-2.9 1.3-2.5 2.4-.1-.6 1.6 1.5 3.4-.4 1.3 9.5-4.9.6-4.2-.8-10.7-2.6-5.2-1.8-1.3-.3-3.5.9-1.2 2.8-.1 6.7-5.8 5.5-13.4.5-8.6 5.9-3.8 5-1.6 1.9-5 .3 3.3 5-.4 1.6-1-1.5-7.9-5.2-7.1 2 1.1 3.3 4.3 1.7 5.5 3 3.3 1.9.8 4.6-.4 3.8-2.6-2.9 5.1-16 2.3 3.7 1.4 5.9-.5.2 1.9-3.7 2.3 1.3.9 4.1-.6 9.9 2.4 9.6-4.4M908.4 449.8l-7.2 10.5 2.7 1.5 2.8-1.8 2.9-.6 2 .8M940.4 553.9l-12.9 9.4-3.4 5.2-11 11.3-1 5.2-1.5 2-9.2 3.2-10.7-.5-8.7 3.7-13.2 1.1-3.6 1.1-.8 1.6.1 5 2 1.6 6.2 2.3 10.7-1.3.1.6-18.2 7.9-2.9 3.6 6.5 1.7-.8 1.2-8 2.4-7.6 1-6.8 2.6-.8-.1.6-3.4-2.6-.1-2.9 1.6 3.2 2.3-2.3 2.1-5.4 1.5-3.4-.9-1.6-2-3.5.9-2 2.1-5.9 1.2-7 12.6-2.6 1.7 1.4 9.6-.5 4.1.7 1.5 16.8-6.1.4.9-3.6 7.5 4.9 4.2.1 4.6 4.9 1.1-1.6 3.7-2.9 2.6 4.7 5.8 1.6.7 3.9-1-.8 1.3-5.1 2.4-3.3-.7-.6 2.6-2.3-2-1.1-3.9-2-1.7-1.7 0-1.3.8 2.4 7.2-1.7.2-.6 3 7.4 2.2 1.9-1.9 3.2 1.1 2.1 2.1 1.4-.6 7.1 1 1.4 7.2-3.1 1.9 0 .9 2.2 1.1 3 5.8 3.8.6 3.9 1.8.9 2.4-5.1 2.3-.8 1.6.9 2.9 1.7-1.7 20.4-5-4.1 6.9-8.3 3.3-3.5 2-.1 1.1 4.9-0 3-2.6 6.3-1.9-.7 3.7 3.7-2.5 1.6-4.1 4.2-.8 8.5 1.8 1.9-.4 1.4-1.6 1.7.2 4.5 7.9 2.4 1.6 11.9 2 11.4-7.5 4 .8 1.2-1.1.6-8-1.6-7.8.9-2.3 13.9-2.6 20 3.1 11 7.5 4.3 1.3 6.5 0 4.1-3.2M474.6 813l-.4-4-7.6-4.8-2.3-2.6-2-4.3-.7-4.2 1.1-4.3 6.5-5.1 3.9-7.3 3.8-3.9-1.8-5.8-2.4.4-4.3 3.8-4.6 1.5-1.3 2.6-2.5 1.7-2.8-1.4 1-2.5-3.4-5 .2-5-2.5-1.4-5-.1.5 2.2-1.6 1.3-1-2.2 1.3-2.9-3.5-.9-12.8 4-7.6 5.7-5.9 1.6-10.5.5-5.2 1.4-2.8-.8-4.1-3.6-4.1-2-5.3-1.1.7 3.6-7.4 1.1-8.1-2.8-2-2.6-3.8 1-2 3.1-4.4 1.9-8.1 1.4-10.4 3.8-12.1-8.2-23-1.9-6.3 2.4-12.9-.9-9.4 4.4-5.9-.9-25.8-.3-6.9 1.4-16.6 6.2-4.2 2.4-3.1 4.4-2.6 1.6-3.4-0-5.4-2.1-12.5 3.9-7.4 3.9M88.7 774.3l-3.2-8.1.7-3.2 1.7-1-2.7-1.4-5.9 1.8-7.3-.3-4.4 7.6';
+  const EURO_BORD='M695.7 328.4l-.4-2.6 1.5-1.2 5.1.6 4.3-6.2 1-2.9 15.4-5 11.6-1.6 9.7.9 12.4-.9 3.7 3.7 5.2-1.3 1.8.5.8 2.6 2-3.9 2.9.3 2.6-2.1 7.7.1 1.4 2.2 1.7.3 1.3-3.5 3.8-3.5 5.9 5.8 3.2-2.4 10.3-4 3.1 1.5 1 2 4.1.6.9-2.9-3.6-6.2 1.6-9.3 4.1-6.6 2.6.1 1.7-2.2 7.2-1.9M681.6 260.1l4.3 0 7.5-2.5 2.4 1.3 4.6-3.4 2.5-.3.7-5.2 3-.2 1.8-2.8 4.2-3.1 1.5 2 .1 1.6 3.9-.7-.6-2.9-3.7-1.4 1.6-7.2-.7-7.8.8-2.7 4.7-3.4.5-3.7 5.6-1.4 1.9-4.6-5.5-.9.2-9.6M524.9 426.5l-5.3-5.3-2.7-.4-1.3-2.4-3.8-2.7-4.4-4.8-1.9.1-2.6-2.3-5.6-9.2 2.1-4.6-5.8-5.7-2.3-5.8 1.6.4 1.9 3 4.9-6.2 3.9-1.2 3.3.6 1.3-2.5 3-.6.9-2 2.5-1.4 1.1.6 2.1-3.1 6.1-1.9 8.4-4.3-2.2-2.9 1.1-1.1 4.1 1.1 2.3 4.5 2 .3.7-1.2M723 145.8l-2.5.3-3.9-1.2-6.1 3.6-1.1-.1-2.9-1.1-6.1-5.8-3.1-.2-8.8-3.6-.1 1.6-2.6-1.5-10.9 7.8M723 145.8l2.6.1.9 2.1 5.3 2.8.7 2.8-.6 10.6 3.2-1 4.1 6.6 1.8 1.2 3.5 7.6-.1 3.5M632.1 205.5l8.7-8.4 6.4-3.7 8.1-.4 4.5-1.3 3 1.6 2.2-1.6 10-.6 5.2.9 5.5-1.6 5.1-4.7 1 .2 3.8 5.1 9.9.9 7.9 4.5 4 3.5 5.5 1.3M486.3 43.7l-1 8.3 6.3 5.2 4.2 5.4-2.3 8.7-5.8 1.8 4.7 16.1-1.3 10.2-4.5 5.8-3.4 1.5-1.4 4.9-2.2 3.1 1.9 8.8-2.2 10.7-1.4 1-1.1-.5-2-5.2-1.6-.5-1.4.5-1.3 3.8-2.2.4M384.5 406l.8-4.2 2.2-3 .2-2.6-3-1.3-2.1-2.3-1.5-3.5.2-2.5M318.3 353.2l.6 6.5 2.6 3.9 1.3 1.3 5-1.5 2 3.6.4 3.8 5.7 2.1 1.3 5.1 1.1-1 3.7.5 3.9 3-1.1 7.8 7.2.9 2.2-1 1.1-2.7 2.2-1.4.7.5-1.6 5 1 5 2.6.5 4.8 3.2 4 5.1 5.3-.5M381.3 386.6l-.4-1-2.1-.5-4.7 6.8-.6 3.2 2.6 4.9-1.8 2.9M691.4 640.5l-.9-1.4-5-.1-1.7-3.7-2.1-1.6-2.3-4-1.8-7 1.2-1.7-.7-3.8.7-5M678.8 612.2l-.4-4-2.7-5.8-5.6-2.6-4.5-5.5M427.3 245l3.2 5.4 5.1.6 5.8 2.7 6-1.3 2.1.9M656.1 491.8l5.1-2.3 2.2.7 1.7-1.4.7-2.2 5.6-.7 1.4-1.4 1-3.3 1.3-.8-.5-2 .8-3.7 3-3.3-.4-2.4 2.4-5.4-.2-2.3 2-3 .9-5 2.1-3-.4-3.1 4.6-7.2 5.9-2.1 4.2-5.9M617.4 397.9l2 .1.9 2.9 3.3-.5 1.5-3.4 3.3-2.9 4.2 5.1 2.7.6.3 4.9 2.9-.9 2.8.8 1.5-4.1 3.4-2.4 4.7-.9 5 1.6 2.4-1.1 1.1-2.4 10.4-1.3 4.9 1.2 3 3.5 10.3 2.4M171.6 211.5l-3 1.2-4.5 6.6-6.4.5 1.9 3.5-6.8 1.9-.4 1.7 2.9 4.6-0 2.1 3.6 3 4.5 1.4 3.5-2.3-.3-2 3.9-2.2 1.6 2.7.5 3.5 2.2 2.1-.7 2.9 7.3.8M617.4 397.9l-.8-2.9-4.4-3.7-.9-3.4-4.1-1-.8.5-5.4-2.9-2.7 2.1-4.9-3.7-.8-1.1 2.4-2.4-.8-2.1-5.1 2-5.1-3.1-5.1-1 2.5 5.3-6.2 4.4-6.1-7.2-2.4-1.4 3.5-4.6-2.7-2.2-4.9 1.7-1.2-1.7-4.1-1.7-7-1.6-2-4.1-4.9-1.3 0 3.7-3.1 1M674.6 676.2l3 1 2.6-.8.8-3.6 1.7-.4-2.3-4.9 1.9-2.3 5.2-2.7 2-9.9 3-1.8 1.2-4-2.2-4.1-.1-2.2M683.3 421.2l-.5-4.7 2.4-3.7 2.8-11.7M524.9 426.5l3.4 2 1.3 2.5 6.1.5 2.2-1.6 3.9.6 1.6-4.4 2.5-.8.6-6.2 1.7-.5 1.9 1.4 2.8-1 7.5 2.8 2.4-.3 4.6 2.8 5.9.1 1.9-2 1.3 0 6.6 2.2 1.6 2.9M572.1 478.6l2.9-3.4 3.8-1.3.5-3.4-1.1-.6-.6-2.2.8-1.5-.7-3.5 3.4-1.7.9-2.6-.9-2.1-4.4-1.5 3.1-2.4 3.9 1.7 5.4-1.3-1-3.6 1.8-5.1M392.4 508l2.1 1.4 8.4-2.4 4.9 1.8 4.2-2.6 2.8-4.1-.5-3.2 5.6-4.8 1-0 .6 5.8 3.5 3.9 3.5 1.1-.8 2.3 3.4 4.9 1.4-.5-.3-4.8 5.1-7.8.2-5.4 3.4-.2 1.9 5.1 2.2.4 6-1.9 2 3.6 1.7 0-1.7-7.1.9-3.3 2.2-.6 1.5 1.6 3.1.4-.6-3.3 1.1-5.7M461.2 482.6l-.8-2.9-1.2-.6-4.3 3.9-5-2.6-.6-2-5.2-1.5M681.6 260.1l-1.5-5.7-1.7-1.4-5.9-2.1-2.9-2-1.2 0-.8 1.3M405.2 296.7l-.5 8.1-3.2 9.9-5.6.7-.5 2.5.9 2 3.8.7 1.1 1.9-1.2 5-4.7 3.4-.2 1.2 1.4 2.1-1.1 1.6-4.1 1.4-2.9.7-3.3-1.8-4 2 3.9 10.4-2.6 6.4.9 2.2-5.1 3.1 3.2 3.8-1.3 4.4M399.4 570.6l-.1-2.8 4.3-6.1-.8-2.4-6.6.5-8.4-6.1-.9-5.1 4.1-5.8-.6-3.2-5.1-2.9-1.9-4.4-0-1.4 1.3-.7 3.1.4 4.9-2.8 1.5-4-6.6-10.7.3-2.1 4.5-3M734.7 8l-9.8 24.3-8.9 14-6.1 12.4-.4 2.5M581.2 488.4l-3.9-.7-1.6 1.5.1 3.2-3.2.3-2.4 2.9-5.8 2.6-.7 1.8 1.6 2.6.1 5.3-7.3 4.3 1.7 2-1.3 2.3 1.4 3.2-1.9.9-6-1.4-3.2.9-4.8-4.9-3.7 5.2-5.8.4-1.9-.8-2.2 2.4-5.3-1.1-.8-1.2M630.2 500.1l-4.7 1.2-2.3 3.5-3.4 1.6-11.1 0-4.4-3.1-6.1-1.8-1.6-2.2-6.4-4.6-1.6-2.3-7.4-4M656.1 491.8l-1.7-.7-11 .6-1.5.6-4.5 4.9-2.6.8-1.3-.7-3.3 2.8M581.2 488.4l-3-3.8-2.4-6.1-3.7.1M836.2 580.4l-3 .2-6.8 3.5-7.2-3.5-4.6 2.1-2.3 2.5-6.2 2.6-.6 3.8-3.1 1.3-.3 2.6M380.1 368.4l4.2 4.6-1.3 1.5.5 1.3 2.5 1.5.2 3.9-3.6 2.2-1.3 3.2M461.2 482.6l4.6.5 2.8 2.1 3.2-.1 2.8-4.6 2.1-1.2 10.5-.4 7.6-2.9.7.6-1.4 2.2.5 1.4 4.8 6.6 15.5 3.3 10.6 1.1M525.5 491.2l-.3 1.6-5.4 4.4-.4 1.7.9 1.4 4.3.8-2.9 4.9.6 1 2.2.3-.5 4.3 2.9 1.4 3.2 4.1-3.1.9M269.3 594.2l-1.4-2.9-13.2-6.2-1.9 4.3-7.9-1.2-1.1-.9-5.2.2-4.9-4.7-6.1-.1-3.1-4.6-3.6-.8-4.7-2.9-2.1-1.4-.1-1.3-1.8 1.6-1.8-.7 1.9-5.2-6-2.9-1.2-3.2M269.3 594.2l1.7-1.2 4.3 1.6.4 1.5-.9 1.4M274.8 597.5l4.5 2.8 2 2.3 3.8-1.5 9.3 3.3 1.3-1.8 4.1-1 6.8 1.4M269.3 594.2l-.1 4.6 5.6-1.3M691.4 640.5l7.7-1.6 1.6-1.4 3.9.5 4.1-3 3.8-5.8 4-1.5 6.9.1 2.3-1 2.4-1.5.6-4.6 2.8-.6M698.4 598.5l-3.5 1.4-1.7 3.7-3.3-1.7-1.8.3-5.6 3.8-.3 5.8-3.4.4M714.7 594.1l-2.4-.9-3.7 2.1-3.2 0-7 3.2M714.7 594.1l1.6-.7 1.7-3.5-.3-1.8-2.4-3.3-.4-6.2 4.9-2 4.2-8.3-0-1.3-5.2-4-4.8-2.2-5.3-8.7-0-6.6 3.3-2.5 0-3.5 1.4-1.5M731.5 620.1l-.1-11.9-1.4-.8-3.3-5.8-5.9-2.3-6.1-5.2M631 597.9l-7-3.1-6.4-3.8-1-1.6-2.8.4M670.4 585.5l2.5-1.2-.2-2.8 2.8-2.7.5-2-1.1-2.7 3.4-2.3 1.3 2.4 4.8 1.7 4.4 4.5 3.9 1.9 0 2.3 8 1.2-1.8 8.6-1.7 1.9 1.3 2.3M670.4 585.5l-2.6 1.2-.3 1.3-2.9.2-.4.9 1.6 2.7-.2 2.5M643.9 568.2l.8 2.3 4.4 2.6 4.8 4.4 7.2 1.8 7.3 3.3 1.7 1 .3 1.9M349.6 347.8l-1.2 2.2-5.1 2.5-5.5-2.8-2.8.9-1.1-3.9M380.1 368.4l-4.4-.6-1.8-2.5 2.2-2.9 1.5-3.9-.3-1.9-3.3-1.5-2.2-2.7-3.1.6-1.7-.7-1.9-2.1-.9-3.6-1.7 1.6-1.8 0-1.4-2.6-2.4 1.8-2.2-1.7-2.2 1.2-.4 2-2.5-1.1M384.5 406l2.1.4 1.3 1.5 3.4 6.9 3-1.2 2.1.9.5 1.9 7.9-.8 2.9 2.7 9.8 2.9 0 2.5-6 7-4.7 13.7-2.2 13.8 1.6 2.4M443.2 463.5l-6.6-4.3-5.9.3-.9-1.4-2 .1-2.9-2.3-2.7 1.2-.7 1.2.9 1.1 2.3.1-2.3 1.5-4.9-.4-5.3 1-6-1M443.1 470.8l2-5.6-1.9-1.7M392.4 508l-4.6-7.1 1-3.1-.9-4.1-6.5-.8-4 2.6.6 2.4-1.6 1.6-3.9 1.2-.6-2.1 2.6-1.7.7-2.8-.9-2.4 2-4.3 5.2-3.8 1.2-5.5 4.2-2.1 7-8.2-1.9-2.1 1.4-1.6 3.3-1 1.3 1.7 2.7.2 5.5-4.4M47.1 714.2l.6-12.1 2.3-3.8 7.7-6.5 3.9-.2 2.5-3.8-3.4-.5-3.4-9.2 3.1-7 6.5-4.2 2.1-4-.7-1.6-2.6-1.5-1.6-6.5.2-3.7-1.9-2.6-1.1-4.1 9.2 1.7 2-.5 1.9-2.1 3.2-6-1.9-4.8 5.9-3.8-.2-3.1 2.5-9.4-.4-7 3.9-2 2.5-2.6 7.2-3.1 5-3.6-1.3-3.5-4.8-2 1-5.8-.8-2.2-8.6-2.3-2.2-1.4-1.9 2.1-4.5.8-5.7-3.1-4.8-1-5.4.8-.9-2.7 2.8-3-.9-3.7-1-.3-7.4.6-4.7 2.1M524.9 426.5l-.3 5.2-1.1 1.3-.9.6-3.7-1.5-1.9 6.4-8.9 4.8-2.6 2.9 3.9 6.1-.9 4.9 2.7.6.4 1.2-.6 5.1-4-1.7-.9-2.8-1.6-.8-3.9 1.1-5.4-2.2-.4 2.8-9.1 1.2-6.2 2.9-1.9 1.8-4.9.9-1.2-.1-2.1-3.5-8.5-.9-1.3 5.4-1.1 1.5-2.6 1 .4-2.5-2.6-.8-.1-1.7-1.8-1.6-4.3-2-1.9 1.4-2.4-0M572.1 478.6l-2.2 1.9-.1 3.6-3.8-.7-6.3 2.8-4.4-.1-6.3 1.4-6.5 6.3-17-2.6M631 597.9l2.1-2.6-2.1-3.7-.8-6.3 3.4-1.3.4-5.9 3.3-3.7 3.9 1.1-0-1.9-2.4-4.6 5.1-.8M643.9 568.2l2-2 3.2.5.7-2.4-.4-1.7-5.9-6.9 6.8-2.2-1-1.7-4.8-3.8-4.1-1.8-.8-1.6.1-4.8 2.3-5.2.5-5.4-2.3-.7-5.9 2.1-3.2-1.1-1.3-3.1-1.8-1.3-13.7-.4-3.5 2.2-3.5-2.2-2.9 1.5-7.8-.7-4.4-2.7-2.4 2.5-5.3-.1-4.4 6.3-2.9-1.6-2.9-3.2-4.1-0-.7.7-.2 12 8 6.5 2.9 8.6 2 2.5 17.7 16.1 4.2 1.7.7 4 8.3 7.9 0 1.4-1.2.7M635.6 530.3l-.3-1 1.7-.8.2-1.4-1.3-4.6 1.3-.6 0-1.3 3.5.5 1.6-.4.2-1.1-8.6-4.5.8-3.4-3.2-2.1.4-1.7-2.7-4.9 1-1-0-1.9M584.7 427.5l2.9-7.3.9-.6 5.6.4 5.1-2.2 5.6-5.7.9-5.6 3.5-2.7 3.9-4.9 4.3-1M589.9 444.1l-1.3-.8-5-9.6 1.1-6.2M589.9 444.1l3.3.2 9.1 5.5 18.5-2.4.8-2-.8-2.4.6-1.8 2.2-1.7 10.3-3 1.5-3.1 1.2-.4 5.5 1.9.9-.5 6.8-5.2 2-7 7.1-1.5 3.9.6 7.1-2.3 6.8 5.2 6.6-3M540.3 365.5l3.1-11.6-2.3-5.9-3.4-1.6.1-2.9-2.8-5.8 2.3-7.3-.9-.8-.6-4-2.4-3 .9-4.9-2.1-3.3-7-6.4.1-1.5 3.7-5.2.6-2.7-4.5-21.5M699.5 432l-.7-2.3-2.1-2-3.6-.1-1.5-1.9-3.5-.9-2.5-4-2.3.4M836 527.7l-7.6.9-3.8-.6-4.5-3.8-2.7 1.5-1.6-.8-5.2.5-7.7-2.6-11.6 5-5.1 3.4-5 5-1.7 3.4-6 4.1-7 .9-15.6-.2-4 1.7-5.8.3-15.3.2-6.1 2.1-1.2-.6-.4-2.4 2.7-4.3-7.4-3.4M656.1 491.8l2.8 3.5 4.8 2.5 3.1 3.5 1.3-.6 1.4 8 5.2 3.5 10.1 3.6-.9 3.5-1.3.9 4.1 2.6-3.4 1.6.2 1M731.5 620.1l5.2-.5 1.5-2.1 8.5-1.5 7.7-3.5.6-2.1 7-1.2 2-1.3 3 2.8 4.2 1.7 1.4-1.4 3.3.3 6.2 2.3 10.9-4.7 3-.1 4.1-3-.6-3.9-2.6-4 .6-1.7 1.9-.9 4.7.4 4.2 1.9 2.2 5.5-.2 1.4-5.1 4.6 1.7 8-3.5 6.9-1.4.9M665.6 594.3l-5.6 2.8-1.3-1.3-.6-3.1-1.5.3-6.4 14.1 2.1 2.8.3 5.8M768.4 409.7l3.2-.6 4.3 2 4.4 4.8 5.5 8.2 7.2 7.2 6 5.3 5.1 2.8 5.4 8.7 1.4 5.3.4 14.1 3.3 8.8-1.3 1.7 3.7 3.6M699.5 432l3.1-2.3 1.3-2.5 1.2-.2 4.3 2 5-.9 10 .7 5.6-2.2 1.9.1 7.1 4.9 1.6-.5 1.7-.9 1.4-2.6 5.1-3.6 12.7-5 1.4-6.5 5.5-2.8M688 401.1l5.3.6.5-1.3-3.2-2.6-.1-3.6-2.6-6.7.7-2.1 4.7-9.3 9.9-15.7 4.6-1.7 1.5-3.8-.4-2.5-2.9-4.4 1.9-2.1-.3-.7-2.3-1.6-3.1-4.9-4.5-4.5-.1-2.5-1.9-3.3M632.9 228.3l8-.8 3 1.9 9.1 2.5 8.1-1.2 1.4 2.4 3.7 2.3-.9 9.1 2.3 5.7M833.3 279.4l-4.9-4.9-1.2-6.7-2.8-3.8.3-1.9-7.2-5.6 1.3-5.8 4.1-1.3 3.8 1.8 4.9-1 3.8-4.7.2-1.9 3.3-3-.6-2.3-5-2.3-1.5-4-4.8-1.2-7.5 1.3-.6-6.4-8.2-2.6-5.6-6.2-2.1-.6.2-4-6.9-2.8-.5-3.9 1.3-4.4-.9-2.3-3.4-3.3.4-3.7-1.2-4.9-5.2-1.4-3.5-2.7-4-.7-4.6 1.3-6 6.3-2.8-2.2-.8-4.5-5.9-.9-3.2 3.1-4.7-3.3-4.1 2.1-2.8-2M833.3 279.4l4 .5 2.5-.9 2.2-2.5 0-4.8 1-1.3 6.7-.4 2.9-2M723 145.8l-.1-4.1 1.3-4.2 3.1-2.9-2-1.4-4.5-7.6-.9-6.1-3.8-9.7 3.1-8.6.5-6.9 3-3.7-2.7-2.6M667.6 250.2l-27.2 3.1-25.8 1.5M409.8 812.3l-0-4.6-1.6-6.4 2.9-14.6-1-2.6-2.2-1.9 3.9-3.3 1.9-3.7 3.7-2-.5-3.1M374.3 402.9l3.9 3 3.3-1.4 3 1.5M502.4 565.2l-.8 1.4.6 1.1 1.2-.2.6-1.5-.3-1.1-1.3.3M768.4 409.7l3.5-4.5 7.2-1.2 1.7-2.2 1.3.2 2.3-2.3 5.5.5 4.7 1.7 1.3 1.6 3.9-.4 1.2.5.4 2 1.5-.5 1.1 1.4.9-2 4.7-.2 4 4 1 .3 2.7-1.6 2.9 4.9.6 8.3 5.8 3.3 3.3.8.5 4.2 2.4 4.2 6.8 2.3 2 2.6 1 5.2 4.8 2.2-.7 1.5-4.4 2-3.2-2.1-1.4 1.9-6.5-.4-1.3 2.9-1.4-3.9-3.9 2.9.1 2.8 2.8 4.9-.3 3.8-3.2 4.1.4 2.5-3.4 6.3 1.2 4.1-3.6 1.5-1.6 1.8M744.4 182.1l-3.5 2.9-2.9 5.5-.3 3.5-8.5.9-1.5.9-1.4 3.4-3.4 2M817 481.6l2.7 2.4 3 .9 6.5.1-.1-2.2 2.4-0 5.7-4.8 3.4-1.4 3.5.6 3.6 2.4M683.5 525.4l3.5.5 2.6 2 5.7.4 2.6 1 1.7 2 2.1-.9 2.5-3.8 2.9-1.3 3.1 1.1 2.3 2-3.5 1.4-.8 3.2 5.2 5M695.7 328.4l-2.1-5.2 1-3.1-.7-6.6-1.3-1.6-8.2-4 2.9-7.2 6.8-5.5.7-3.2-2.7-9.5-6.9-13.1-3.6-9.3';
+
   function initEuroMap(sec){
   const root=sec.querySelector('.euro-map');
   const card=sec.querySelector('.euro-card');
@@ -4080,38 +4020,29 @@ if('requestIdleCallback' in window){
   const svg=root.querySelector('.euro-canvas');
   const pinsLayer=root.querySelector('.euro-pins');
   const NS='http://www.w3.org/2000/svg';
-  const W=1000,H=600;
+  const W=1000,H=821;
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── projection (equirect → pseudo-3D foreshortened plane) ── */
-  const lonMin=-10.5,lonMax=29,latMin=35.5,latMax=61.5;
-  const cx=500,spanX=940,yNear=545,yFar=72,nearScale=1,farScale=0.56;
+  /* ── projection — Lambert conformal conic, standard parallels 40°N/58°N,
+        central meridian 10.5°E: the conventional projection for institutional
+        maps of Europe, so the continent keeps its true shape.
+        These constants are baked to match the pre-built coastline geometry
+        below — both are emitted together by tools/gen_europe.py, so if the
+        window or parallels ever change, regenerate BOTH or the pins will
+        drift off the coastline. ── */
+  const lonMin=-14,lonMax=33,latMin=35.5,latMax=62;
+  const LCC_N=0.7578710437034317,LCC_F=1.8020304878332996,LCC_R0=0.8377350104689092,LCC_LON=10.5;
+  const MAP_MINX=-0.2710729280343373,MAP_MAXY=0.23040690220920634;
+  const MAP_S=1668.37080591076,MAP_OX=9.866545996176058,MAP_OY=8;
   function project(lon,lat){
-    const d=Math.max(0,Math.min(1,(lat-latMin)/(latMax-latMin)));
-    const s=nearScale+(farScale-nearScale)*d;
-    const u=(lon-lonMin)/(lonMax-lonMin);
-    const x=cx+(u-0.5)*spanX*s;
-    const y=yNear-(yNear-yFar)*Math.pow(d,1.3);
-    return {x,y,s};
-  }
-
-  /* ── stylised European landmass (union of ellipses, lon/lat) ── */
-  const land=[
-    [-3.5,40,4.8,3.4,12],[2.2,46.6,4.2,3.2,0],[4.6,50.4,2.7,2.1,0],
-    [-1.9,53.0,2.0,3.2,-10],[-7.6,53.2,1.5,1.5,0],[12.4,43.0,1.7,4.2,-32],
-    [14.6,51.4,6.6,3.5,0],[9.8,47.1,3.4,1.7,0],[20.5,46.0,5.4,3.2,0],
-    [14.2,59.0,3.6,4.2,-16],[16.2,61.0,3.0,2.8,-18],[9.5,56.1,1.5,1.5,0]
-  ];
-  function isLand(lon,lat){
-    for(const e of land){
-      const t=-e[4]*Math.PI/180, dx=lon-e[0], dy=lat-e[1];
-      const rx=dx*Math.cos(t)-dy*Math.sin(t), ry=dx*Math.sin(t)+dy*Math.cos(t);
-      if((rx*rx)/(e[2]*e[2])+(ry*ry)/(e[3]*e[3])<=1)return true;
-    }
-    return false;
+    const rho=LCC_F/Math.pow(Math.tan(Math.PI/4+lat*Math.PI/360),LCC_N);
+    const th=LCC_N*(lon-LCC_LON)*Math.PI/180;
+    const x=MAP_OX+(rho*Math.sin(th)-MAP_MINX)*MAP_S;
+    const y=MAP_OY+(MAP_MAXY-(LCC_R0-rho*Math.cos(th)))*MAP_S;
+    return {x,y};
   }
   function el(n,a){const x=document.createElementNS(NS,n);for(const k in a)x.setAttribute(k,a[k]);return x;}
-  const catColor=c=>c==='participated'?'#3a6bc8':c==='confirmed'?'#1f9e74':c==='pipeline'?'#d2922f':'#1B3664';
+  const catColor=c=>c==='host'?'#6a4bb0':c==='participated'?'#3a6bc8':c==='confirmed'?'#1f9e74':c==='pipeline'?'#d2922f':'#1B3664';
 
   /* ── defs: a single soft radial for the continent under-glow (no blur filters,
         so the parallax transform never triggers expensive re-rasterisation) ── */
@@ -4123,69 +4054,55 @@ if('requestIdleCallback' in window){
   defs.appendChild(rg);
   svg.appendChild(defs);
 
-  /* ── continent under-glow (light, depth) — static gradient ellipses, no filter ── */
+  /* ── continent under-glow — one soft radial behind the landmass for depth ── */
   const landG=el('g',{});
-  land.forEach(e=>{
-    const p=project(e[0],e[1]);
-    const rx=(e[2]*22*p.s*0.95).toFixed(1), ry=(e[3]*16.5*0.82).toFixed(1);
-    landG.appendChild(el('ellipse',{cx:p.x.toFixed(1),cy:p.y.toFixed(1),rx,ry,fill:'url(#euroLand)',transform:`rotate(${(-e[4]).toFixed(1)} ${p.x.toFixed(1)} ${p.y.toFixed(1)})`}));
-  });
+  landG.appendChild(el('ellipse',{cx:452,cy:430,rx:430,ry:360,fill:'url(#euroLand)'}));
   svg.appendChild(landG);
 
-  /* ── continent silhouette — soft flat fill beneath the dots for solidity/depth ── */
-  const landFillG=el('g',{});
-  land.forEach(e=>{
-    const p=project(e[0],e[1]);
-    const rx=(e[2]*22*p.s*0.95).toFixed(1), ry=(e[3]*16.5*0.82).toFixed(1);
-    landFillG.appendChild(el('ellipse',{cx:p.x.toFixed(1),cy:p.y.toFixed(1),rx,ry,fill:'#2a5298','fill-opacity':(0.03+0.03*((p.s-farScale)/(nearScale-farScale))).toFixed(3),transform:`rotate(${(-e[4]).toFixed(1)} ${p.x.toFixed(1)} ${p.y.toFixed(1)})`}));
-  });
-  svg.appendChild(landFillG);
-
-  /* ── graticule (under dots) — faint navy on light ── */
+  /* ── graticule — meridians/parallels curve under the conic projection, which
+        is exactly what gives the plate its atlas character. Kept very faint so
+        the coastline and beacons carry the hierarchy. ── */
   const gridG=el('g',{});
-  [40,48,56].forEach(lat=>{let d='';for(let lon=lonMin;lon<=lonMax;lon+=1){const p=project(lon,lat);d+=(lon===lonMin?'M':'L')+p.x.toFixed(1)+' '+p.y.toFixed(1)+' ';}gridG.appendChild(el('path',{d,fill:'none',stroke:'#2a5298','stroke-opacity':.07,'stroke-width':1}));});
-  [-5,5,15,25].forEach(lon=>{let d='';for(let lat=latMin;lat<=latMax;lat+=1){const p=project(lon,lat);d+=(lat===latMin?'M':'L')+p.x.toFixed(1)+' '+p.y.toFixed(1)+' ';}gridG.appendChild(el('path',{d,fill:'none',stroke:'#2a5298','stroke-opacity':.05,'stroke-width':1}));});
+  [40,45,50,55,60].forEach(lat=>{let d='';for(let lon=lonMin;lon<=lonMax;lon+=1){const p=project(lon,lat);d+=(lon===lonMin?'M':'L')+p.x.toFixed(1)+' '+p.y.toFixed(1)+' ';}gridG.appendChild(el('path',{d,fill:'none',stroke:'#2a5298','stroke-opacity':.06,'stroke-width':1}));});
+  [-10,0,10,20,30].forEach(lon=>{let d='';for(let lat=latMin;lat<=latMax;lat+=1){const p=project(lon,lat);d+=(lat===latMin?'M':'L')+p.x.toFixed(1)+' '+p.y.toFixed(1)+' ';}gridG.appendChild(el('path',{d,fill:'none',stroke:'#2a5298','stroke-opacity':.05,'stroke-width':1}));});
   svg.appendChild(gridG);
 
-  /* ── dotted landmass — fine navy dot-matrix, depth-graded (atmospheric perspective) ──
-        smaller, lower-contrast dots so the texture reads as a refined surface, not the
-        focal element; the markers and arcs carry the hierarchy. ── */
-  const dotsG=el('g',{});
-  for(let lat=latMin+0.4;lat<=latMax-0.2;lat+=0.82){
-    for(let lon=lonMin+0.4;lon<=lonMax-0.2;lon+=0.82){
-      if(!isLand(lon,lat))continue;
-      const p=project(lon,lat);
-      const t=(p.s-farScale)/(nearScale-farScale); // 0 = far/back, 1 = near/front
-      const r=Math.round(158-(158-31)*t), g=Math.round(182-(182-60)*t), bl=Math.round(218-(218-110)*t);
-      dotsG.appendChild(el('circle',{cx:p.x.toFixed(1),cy:p.y.toFixed(1),r:(0.75+1.2*t).toFixed(2),fill:`rgb(${r},${g},${bl})`,'fill-opacity':(0.14+0.5*t).toFixed(2)}));
-    }
-  }
-  svg.appendChild(dotsG);
+  /* ── landmass — real Natural Earth 1:50m geometry (public domain), clipped to
+        the window, projected, simplified to 0.6px and stored as relative paths.
+        Internal borders sit under the coastline so coastlines always win. ── */
+  svg.appendChild(el('path',{d:EURO_BORD,fill:'none',stroke:'#1B3664','stroke-opacity':.28,'stroke-width':.6,'stroke-linejoin':'round','stroke-linecap':'round'}));
+  svg.appendChild(el('path',{d:EURO_COAST,fill:'none',stroke:'#1B3664','stroke-opacity':.66,'stroke-width':1.3,'stroke-linejoin':'round','stroke-linecap':'round'}));
 
-  /* ── data — every event mapped to a city (assigned cities flagged tbcLoc) ── */
+  /* ── data — every event mapped to a city. Dates are deliberately not carried
+        here: the section states its span once, in the header (2024—2026), and
+        individual appointments are shown undated. ── */
   const HQ={id:'milan',city:'Milano',country:'Italy · Headquarters',lon:9.19,lat:45.46,cat:'hq',hq:true,
-    events:[{n:'WEB3HUB — Politecnico di Milano',d:'Home base',cat:'hq'}]};
+    events:[{n:'Blockchain & Web3 Outlook',cat:'hq'}]};
   const cities=[
-    {id:'paris',city:'Paris',country:'France',lon:2.35,lat:48.85,cat:'participated',events:[
-      {n:'Paris Blockchain Week',d:'2026',cat:'participated'},
-      {n:'Proof of Talk',d:'12 Jun 2026',cat:'pipeline'}]},
+    {id:'brussels',city:'Brussels',country:'Belgium',lon:4.35,lat:50.85,cat:'host',events:[
+      {n:'Blockchain impact on businesses',cat:'host',venue:'European Parliament'}]},
+    {id:'paris',city:'Paris',country:'France',lon:2.35,lat:48.85,cat:'host',events:[
+      {n:'The future of financial tokenization: regulation and innovation in the EU',cat:'host',role:'Co-hosted with BPI France and Ledger'},
+      {n:'Paris Blockchain Week',cat:'participated'},
+      {n:'Proof of Talk',cat:'pipeline'}]},
     {id:'cannes',city:'Cannes',country:'France',lon:7.02,lat:43.55,cat:'participated',events:[
-      {n:'Stable Summit II',d:'2024',cat:'participated',tbcLoc:true},
-      {n:'Stable Summit IV',d:'2026',cat:'pipeline'}]},
-    {id:'prague',city:'Prague',country:'Czechia',lon:14.44,lat:50.08,cat:'participated',tbc:true,events:[
-      {n:'Emergence.xyz',d:'2024',cat:'participated',tbcLoc:true}]},
-    {id:'copenhagen',city:'Copenhagen',country:'Denmark · Nordics',lon:12.57,lat:55.68,cat:'participated',tbc:true,events:[
-      {n:'Nordics Blockchain Week',d:'2025',cat:'participated',tbcLoc:true},
-      {n:'Nordic Blockchain Week',d:'2026',cat:'confirmed',tbcLoc:true}]},
+      {n:'Stable Summit II',cat:'participated'},
+      {n:'Stable Summit IV',cat:'pipeline'}]},
+    {id:'prague',city:'Prague',country:'Czechia',lon:14.44,lat:50.08,cat:'participated',events:[
+      {n:'Emergence.xyz',cat:'participated'}]},
+    {id:'stockholm',city:'Stockholm',country:'Sweden · Nordics',lon:18.07,lat:59.33,cat:'participated',events:[
+      {n:'Nordics Blockchain Week',cat:'participated'},
+      {n:'Nordic Blockchain Week',cat:'confirmed'}]},
     {id:'berlin',city:'Berlin',country:'Germany',lon:13.40,lat:52.52,cat:'pipeline',events:[
-      {n:'Berlin Blockchain Festival',d:'15–21 Jun 2026',cat:'pipeline'},
-      {n:'Token Engineering · TERSE',d:'Date TBC',cat:'pipeline',tbcLoc:true}]},
+      {n:'Berlin Blockchain Festival',cat:'pipeline'},
+      {n:'Token Engineering · TERSE',cat:'pipeline'}]},
     {id:'amsterdam',city:'Amsterdam',country:'Netherlands',lon:4.90,lat:52.37,cat:'pipeline',events:[
-      {n:'Dutch Blockchain Week',d:'24–25 Jun 2026',cat:'pipeline'}]},
-    {id:'london',city:'London',country:'United Kingdom',lon:-0.13,lat:51.51,cat:'pipeline',events:[
-      {n:'Fintech Connect',d:'22 Dec 2026',cat:'pipeline'}]},
+      {n:'Dutch Blockchain Week',cat:'pipeline'}]},
+    {id:'london',city:'London',country:'United Kingdom',lon:-0.13,lat:51.51,cat:'host',events:[
+      {n:'Internet of value: cryptocurrencies, stablecoins and CBDCs state of adoption',cat:'host',role:'Co-hosted with UCL (University College London)'},
+      {n:'Fintech Connect',cat:'pipeline'}]},
     {id:'madrid',city:'Madrid',country:'Spain',lon:-3.70,lat:40.42,cat:'pipeline',events:[
-      {n:'Merge',d:'27 Oct 2026',cat:'pipeline'}]}
+      {n:'Merge',cat:'pipeline'}]}
   ];
   const mapped=[HQ,...cities];
 
@@ -4208,19 +4125,20 @@ if('requestIdleCallback' in window){
   });
   svg.appendChild(arcsG);
 
-  /* ── pins (premium glossy beacons, billboarded above the plane) ── */
+  /* ── pins (premium glossy beacons, standing above the plate) ──
+        The plate is now flat and true-shape, so depth comes from the beacons
+        themselves — stem, lifted head and ground ellipse — rather than from
+        foreshortening the continent. ── */
   mapped.forEach(c=>{
     const p=project(c.lon,c.lat);
-    const lift=Math.round(16+20*p.s)+(c.hq?14:0);
     const b=document.createElement('button');
-    b.className='euro-pin cat-'+c.cat+(c.hq?' hq':'')+(c.tbc?' tbc':'');
+    b.className='euro-pin cat-'+c.cat;
     b.style.left=(p.x/W*100)+'%';
     b.style.top=(p.y/H*100)+'%';
-    b.style.setProperty('--lift',lift+'px');
-    b.style.setProperty('--depth',p.s.toFixed(2));
+    b.style.setProperty('--lift','30px');
     b.setAttribute('data-id',c.id);
-    b.setAttribute('aria-label',c.city+' — '+c.events.map(e=>e.n).join('; ')+(c.tbc?' (location to confirm)':''));
-    b.innerHTML='<span class="ground"></span><span class="stem"></span><span class="head"></span><span class="label">'+c.city+(c.tbc?'<small>location to confirm</small>':'')+'</span>';
+    b.setAttribute('aria-label',c.city+': '+c.events.map(e=>e.n).join('; '));
+    b.innerHTML='<span class="ground"></span><span class="stem"></span><span class="head"></span><span class="label">'+c.city+'</span>';
     b.addEventListener('mouseenter',()=>setActive(c.id));
     b.addEventListener('focus',()=>setActive(c.id));
     b.addEventListener('click',()=>setActive(c.id));
@@ -4228,7 +4146,7 @@ if('requestIdleCallback' in window){
   });
 
   /* ── side panel rendering ── */
-  const labels={participated:'Participated',confirmed:'Confirmed',pipeline:'In pipeline',hq:'Home base'};
+  const labels={host:'Hosted by WEB3HUB',participated:'Participated',confirmed:'Confirmed',pipeline:'In pipeline',hq:'Home base'};
   const chip=c=>`<span class="euro-chip cat-${c}"><i></i>${labels[c]}</span>`;
   function clearActive(){
     pinsLayer.querySelectorAll('.euro-pin').forEach(p=>p.classList.remove('is-active'));
@@ -4237,12 +4155,14 @@ if('requestIdleCallback' in window){
     arcsG.querySelectorAll('.arc-glow').forEach(a=>{a.setAttribute('stroke-opacity','.06');a.setAttribute('stroke-width','5');});
     arcsG.querySelectorAll('.arc-node').forEach(a=>{a.setAttribute('fill-opacity','.5');a.setAttribute('r','2.1');});
   }
-  function evRow(e){return `<div class="euro-ev cat-${e.cat}"><div class="n">${e.n}</div><div class="d">${chip(e.cat)} <span>${e.d}</span>${e.tbcLoc?' <span class="euro-evtbc">· loc. to confirm</span>':''}</div></div>`;}
+  function evRow(e){
+    const meta=[e.role,e.venue].filter(Boolean).join(' · ');
+    return `<div class="euro-ev cat-${e.cat}"><div class="n">${e.n}</div><div class="d">${chip(e.cat)}${meta?`<span class="euro-role">${meta}</span>`:''}</div></div>`;}
   function renderCity(c){
     card.className='euro-card cat-'+c.cat;
-    card.innerHTML=`<span class="euro-card-eyebrow">${c.hq?'Headquarters':(c.tbc?'Selected · location to confirm':'Selected location')}</span>
+    card.innerHTML=`<span class="euro-card-eyebrow">${c.hq?'Headquarters':'Selected location'}</span>
       <div class="euro-card-city">${c.city}</div>
-      <div class="euro-card-coord">${c.country} · ${c.lat.toFixed(2)}°N ${Math.abs(c.lon).toFixed(2)}°${c.lon<0?'W':'E'}${c.tbc?' · approx.':''}</div>
+      <div class="euro-card-coord">${c.country} · ${c.lat.toFixed(2)}°N ${Math.abs(c.lon).toFixed(2)}°${c.lon<0?'W':'E'}</div>
       <div class="euro-card-events">${c.events.map(evRow).join('')}</div>`;
   }
   function setActive(id){
@@ -4257,28 +4177,24 @@ if('requestIdleCallback' in window){
   }
   function renderDefault(){
     card.className='euro-card';
-    const all=cities.flatMap(c=>c.events);
-    const n=k=>all.filter(e=>e.cat===k).length;
-    card.innerHTML=`<span class="euro-card-eyebrow">European circuit · 2024—2026</span>
+    const all=mapped.flatMap(c=>c.events);
+    /* counts are derived, never written by hand, so the headline can't drift
+       out of step with the dataset as appointments are added */
+    const nCountries=new Set(mapped.map(c=>c.country.split(' · ')[0])).size;
+    card.innerHTML=`<span class="euro-card-eyebrow">European circuit · 2022—2026</span>
       <div class="euro-card-city">Active across Europe</div>
-      <div class="euro-card-coord">8 cities · 7 countries · 12 appointments</div>
-      <div class="euro-stats">
-        <div class="euro-stat"><b>${n('participated')}</b><span>Participated</span></div>
-        <div class="euro-stat"><b>${n('confirmed')}</b><span>Confirmed</span></div>
-        <div class="euro-stat"><b>${n('pipeline')}</b><span>In pipeline</span></div>
-      </div>
-      <div class="euro-hint">↳ Hover a beacon or select an appointment below</div>`;
+      <div class="euro-card-coord">${mapped.length} cities · ${nCountries} countries · ${all.length} appointments</div>`;
   }
 
-  /* ── itinerary list (all 12 appointments, ordered by status) ── */
+  /* ── itinerary list (every appointment, ordered by status) ── */
   const flat=[];
-  cities.forEach(c=>c.events.forEach(e=>flat.push({...e,id:c.id,city:c.city})));
-  const order={participated:0,confirmed:1,pipeline:2};
+  mapped.forEach(c=>c.events.forEach(e=>flat.push({...e,id:c.id,city:c.city})));
+  const order={hq:0,host:1,participated:2,confirmed:3,pipeline:4};
   flat.sort((a,b)=>order[a.cat]-order[b.cat]);
   list.innerHTML=flat.map(e=>`<button class="euro-li cat-${e.cat}" data-id="${e.id}" role="listitem">
       <span class="dotc"></span>
-      <span><span class="li-name">${e.n}</span><span class="li-sub">${e.city} · ${e.d}</span></span>
-      ${e.tbcLoc?'<span class="li-tbc">TBC</span>':'<span class="li-arrow">↗</span>'}
+      <span><span class="li-name">${e.n}</span><span class="li-sub">${e.city}</span></span>
+      <span class="li-arrow">↗</span>
     </button>`).join('');
   list.querySelectorAll('.euro-li').forEach(li=>li.addEventListener('click',()=>setActive(li.getAttribute('data-id'))));
 
@@ -4311,137 +4227,6 @@ if('requestIdleCallback' in window){
   }
   }
   document.querySelectorAll('.euro-section').forEach(initEuroMap);
-})();
-
-/* ════════════════════ INTERNATIONAL · EUROPEAN CIRCUIT (homepage) ════════════════════
-   Lightweight "signal-trace" presence band. Builds an SVG flowing path through
-   city beacons (desktop) + a compact stacked list (mobile) from one dataset, with
-   a hover-driven / slowly auto-cycling feature caption. No map, no dashboard. */
-(function(){
-  const sec=document.getElementById('intl-section');
-  if(!sec)return;
-  const svg=sec.querySelector('.intl-trace-svg');
-  const nodesLayer=sec.querySelector('.intl-nodes');
-  const stopsEl=sec.querySelector('.intl-stops');
-  const featMain=sec.querySelector('.intl-feat-main');
-  if(!svg||!nodesLayer||!stopsEl||!featMain)return;
-  const NS='http://www.w3.org/2000/svg';
-  const W=1200,H=210;
-  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ── data (curated homepage subset — mirrors the Research itinerary) ── */
-  const STOPS=[
-    {id:'milan',     city:'Milano',     code:'IT · HQ', cat:'hq',          event:'WEB3HUB · Politecnico di Milano', date:'Home base'},
-    {id:'paris',     city:'Paris',      code:'FR',      cat:'participated', event:'Paris Blockchain Week',           date:'2026'},
-    {id:'cannes',    city:'Cannes',     code:'FR',      cat:'participated', event:'Stable Summit',                   date:'2024 → 2026'},
-    {id:'prague',    city:'Prague',     code:'CZ',      cat:'participated', event:'Emergence.xyz',                   date:'2024'},
-    {id:'copenhagen',city:'Copenhagen', code:'DK',      cat:'confirmed',    event:'Nordic Blockchain Week',          date:'2026'},
-    {id:'amsterdam', city:'Amsterdam',  code:'NL',      cat:'pipeline',     event:'Dutch Blockchain Week',           date:'Jun 2026'},
-    {id:'berlin',    city:'Berlin',     code:'DE',      cat:'pipeline',     event:'Berlin Blockchain Festival',      date:'Jun 2026'},
-    {id:'london',    city:'London',     code:'UK',      cat:'pipeline',     event:'Fintech Connect',                 date:'Dec 2026'},
-    {id:'madrid',    city:'Madrid',     code:'ES',      cat:'pipeline',     event:'Merge',                           date:'Oct 2026'}
-  ];
-  const labels={hq:'Home base',participated:'Participated',confirmed:'Confirmed',pipeline:'In pipeline'};
-  const el=(name,attrs)=>{const x=document.createElementNS(NS,name);for(const k in attrs)x.setAttribute(k,attrs[k]);return x;};
-
-  /* ── layout: evenly spaced across the lane, riding a gentle wave ── */
-  const padX=72,n=STOPS.length;
-  const pts=STOPS.map((s,i)=>({
-    x:padX+(W-2*padX)*(i/(n-1)),
-    y:H/2+Math.sin(i*0.9+0.5)*44
-  }));
-
-  /* ── smooth path through the points (Catmull-Rom → cubic Bézier) ── */
-  function smooth(p){
-    let d='M'+p[0].x.toFixed(1)+' '+p[0].y.toFixed(1);
-    for(let i=0;i<p.length-1;i++){
-      const p0=p[i-1]||p[i],p1=p[i],p2=p[i+1],p3=p[i+2]||p2;
-      const c1x=p1.x+(p2.x-p0.x)/6,c1y=p1.y+(p2.y-p0.y)/6;
-      const c2x=p2.x-(p3.x-p1.x)/6,c2y=p2.y-(p3.y-p1.y)/6;
-      d+=' C'+c1x.toFixed(1)+' '+c1y.toFixed(1)+' '+c2x.toFixed(1)+' '+c2y.toFixed(1)+' '+p2.x.toFixed(1)+' '+p2.y.toFixed(1);
-    }
-    return d;
-  }
-  const dPath=smooth(pts);
-
-  /* ── SVG: under-glow, hairline, travelling pulse ── */
-  const defs=el('defs',{});
-  const lg=el('linearGradient',{id:'intlPulse',x1:'0%',y1:'0%',x2:'100%',y2:'0%'});
-  lg.appendChild(el('stop',{offset:'0%','stop-color':'#3a6bc8','stop-opacity':'0'}));
-  lg.appendChild(el('stop',{offset:'50%','stop-color':'#3a6bc8','stop-opacity':'1'}));
-  lg.appendChild(el('stop',{offset:'100%','stop-color':'#3a6bc8','stop-opacity':'0'}));
-  defs.appendChild(lg);svg.appendChild(defs);
-  svg.appendChild(el('path',{d:dPath,class:'intl-line-soft'}));
-  const line=el('path',{d:dPath,class:'intl-line'});svg.appendChild(line);
-  const pulse=el('path',{d:dPath,class:'intl-pulse'});svg.appendChild(pulse);
-
-  const total=Math.ceil(line.getTotalLength());
-  line.style.setProperty('--len',total);
-  const seg=46;
-  pulse.setAttribute('stroke-dasharray',seg+' '+(total+seg));
-  pulse.style.setProperty('--pulse-end',-(total+seg)+'px');
-
-  /* ── beacons (desktop) ── */
-  STOPS.forEach((s,i)=>{
-    const p=pts[i];
-    const up=p.y>=H/2; // label sits on the open side of the wave
-    const b=document.createElement('button');
-    b.className='intl-node cat-'+s.cat+(s.cat==='hq'?' hq':'')+(up?' up':' down');
-    b.style.left=(p.x/W*100)+'%';
-    b.style.top=(p.y/H*100)+'%';
-    b.style.setProperty('--d',(0.25+i*0.07).toFixed(2)+'s');
-    b.dataset.id=s.id;
-    b.setAttribute('aria-label',s.city+' — '+s.event+' · '+s.date);
-    b.innerHTML='<span class="ndot"></span><span class="nlabel"><b>'+s.city+'</b><small>'+s.code+'</small></span>';
-    b.addEventListener('mouseenter',()=>setActive(s.id,true));
-    b.addEventListener('focus',()=>setActive(s.id,true));
-    b.addEventListener('click',()=>setActive(s.id,true));
-    nodesLayer.appendChild(b);
-  });
-
-  /* ── stacked stops (mobile / fallback) ── */
-  stopsEl.innerHTML=STOPS.map(s=>`<li><button class="intl-stop cat-${s.cat}" data-id="${s.id}">
-      <span class="sdot"></span>
-      <span><span class="scity">${s.city}<small>${s.code}</small></span><span class="sev">${s.event}</span></span>
-      <span class="sdate">${s.date}</span>
-    </button></li>`).join('');
-  stopsEl.querySelectorAll('.intl-stop').forEach(li=>li.addEventListener('click',()=>setActive(li.dataset.id,true)));
-
-  /* ── feature caption ── */
-  function render(s){
-    featMain.className='intl-feat-main cat-'+s.cat;
-    featMain.innerHTML=`<span class="intl-feat-chip"><i></i>${labels[s.cat]}</span>
-      <span class="intl-feat-city">${s.city}</span>
-      <span class="intl-feat-sep"></span>
-      <span class="intl-feat-ev">${s.event}</span>
-      <span class="intl-feat-date">${s.date}</span>`;
-  }
-  function setActive(id,fromUser){
-    const s=STOPS.find(x=>x.id===id);if(!s)return;
-    render(s);
-    nodesLayer.querySelectorAll('.intl-node').forEach(nd=>nd.classList.toggle('is-active',nd.dataset.id===id));
-    stopsEl.querySelectorAll('.intl-stop').forEach(li=>li.classList.toggle('is-active',li.dataset.id===id));
-    if(fromUser)stopAuto();
-  }
-
-  /* ── gentle auto-cycle (paused on interaction / hover; off when reduced) ── */
-  let cyc=1,timer=null;
-  function tick(){cyc=cyc>=STOPS.length-1?1:cyc+1;setActive(STOPS[cyc].id,false);}
-  function startAuto(){if(reduce||timer)return;timer=setInterval(tick,3600);}
-  function stopAuto(){if(timer){clearInterval(timer);timer=null;}}
-  sec.querySelector('.intl-circuit').addEventListener('pointerenter',stopAuto);
-  sec.querySelector('.intl-circuit').addEventListener('pointerleave',startAuto);
-
-  setActive(STOPS[1].id,false); // open on the first European stop
-
-  /* ── entrance ── */
-  if(reduce){sec.classList.add('in');}
-  else{
-    const io=new IntersectionObserver(es=>es.forEach(e=>{
-      if(e.isIntersecting){sec.classList.add('in');startAuto();io.disconnect();}
-    }),{threshold:.25});
-    io.observe(sec);
-  }
 })();
 
 /* ════════════════════════════════════════════════════════════
