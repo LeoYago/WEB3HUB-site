@@ -1087,9 +1087,20 @@ svg{display:block}
 .team-grid .tgc-bl{bottom:7px;left:7px;border-right:none;border-top:none}
 .team-grid .tgc-br{bottom:7px;right:7px;border-left:none;border-top:none}
 .team-grid.scientific{grid-template-columns:repeat(2,1fr)}
-.team-grid.directors{grid-template-columns:repeat(3,1fr)}
-.team-grid.projects{grid-template-columns:repeat(2,1fr);max-width:780px}
-.team-grid.researchers{grid-template-columns:repeat(6,1fr)}
+/* directors + researchers flow as flex rows, not fixed columns: the soul filter removes
+   cards, and grow-to-fill keeps the hairline mesh whole instead of leaving empty cells */
+.team-grid.directors,.team-grid.researchers{display:flex;flex-wrap:wrap}
+.team-grid.directors{transition:max-width .4s var(--ease)}
+.team-grid.directors > .team-node{flex:1 1 232px;min-width:0;padding:clamp(18px,1.7vw,24px)}
+.team-grid.directors .tn-email{font-size:.59rem}   /* 5-up row: keeps the longest address whole */
+/* advisors — two wide horizontal cards: photo, then name, then id + LinkedIn on the right */
+.team-grid.advisors{display:flex;flex-wrap:wrap}
+.team-grid.advisors > .team-node{flex:1 1 330px;min-width:0;flex-direction:row;align-items:center;gap:clamp(14px,1.6vw,20px);padding:clamp(18px,1.9vw,26px) clamp(20px,2.2vw,30px)}
+.team-grid.advisors .tn-avatar{width:54px;height:54px;font-size:.82rem}
+.team-grid.advisors .adv-body{display:flex;flex-direction:column;gap:5px;min-width:0}
+.team-grid.advisors .tn-name{font-size:1.02rem}
+.team-grid.advisors .tn-foot{margin:0 0 0 auto;padding:0;border-top:0}
+.team-grid.researchers > .team-node{flex:1 1 150px;min-width:0}
 .team-node{background:var(--bg);padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:14px;position:relative;transition:background .3s,transform .3s var(--ease)}
 .team-node:hover{background:var(--surface)}
 .team-node::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--blue-mid);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
@@ -1103,17 +1114,36 @@ svg{display:block}
 .team-node:hover .tn-avatar .tn-photo{filter:grayscale(0) contrast(1) brightness(1)}
 .team-node.lg .tn-avatar{width:64px;height:64px;background:var(--blue);color:#fff;font-size:.95rem;border-color:var(--blue)}
 .team-node.lg .tn-avatar::before,.team-node.lg .tn-avatar::after{border-color:var(--tick-color)}
-.team-node .tn-id{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;color:var(--text-subtle);text-transform:uppercase;text-align:right}
-.team-node .tn-id b{color:var(--blue);font-weight:600;display:block}
 .team-node .tn-name{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:-.015em;color:var(--text);line-height:1.15}
 .team-node.lg .tn-name{font-size:clamp(1.25rem,1.8vw,1.5rem);letter-spacing:-.02em}
 .team-node .tn-role{font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;color:var(--text-muted);text-transform:uppercase;line-height:1.5}
-.team-node .tn-email{margin-top:auto;font-family:var(--mono);font-size:.62rem;color:var(--blue);letter-spacing:.04em;padding-top:8px;display:inline-flex;align-items:center;gap:6px;border-top:1px solid var(--line)}
-.team-node .tn-email::after{content:'→'}
+/* Card footer: optional email + LinkedIn action, anchored to the bottom edge */
+.team-node .tn-foot{margin-top:auto;display:flex;align-items:center;gap:10px;padding-top:10px;border-top:1px solid var(--line)}
+.team-node .tn-email{font-family:var(--mono);font-size:.62rem;color:var(--blue);letter-spacing:.04em;display:inline-flex;align-items:center;gap:6px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.team-node .tn-email::after{content:'→';flex-shrink:0}
+.team-node .tn-li{margin-left:auto;width:30px;height:30px;border:1px solid var(--line-2);border-radius:var(--r-sm);display:inline-flex;align-items:center;justify-content:center;color:var(--blue);background:var(--bg);flex-shrink:0;transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease)}
+.team-node .tn-li:hover,.team-node .tn-li:focus-visible{background:var(--blue);border-color:var(--blue);color:#fff}
+.team-node .tn-li svg{width:15px;height:15px;fill:currentColor;display:block}
 .team-grid.researchers .team-node{padding:18px 14px;gap:10px}
 .team-grid.researchers .team-node .tn-avatar{width:38px;height:38px;font-size:.68rem}
 .team-grid.researchers .team-node .tn-name{font-size:.88rem}
 .team-grid.researchers .team-node .tn-role{font-size:.58rem}
+.team-grid.researchers .team-node .tn-foot{padding-top:8px}
+.team-grid.researchers .team-node .tn-li{width:26px;height:26px}
+.team-grid.researchers .team-node .tn-li svg{width:13px;height:13px}
+/* soul filter — All / Research / Projects, segmented mono control */
+.team-filter{display:flex;align-items:center;gap:clamp(14px,2vw,22px);flex-wrap:wrap;margin-bottom:clamp(30px,3.6vw,46px)}
+.team-filter .tf-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-subtle)}
+.tf-seg{display:inline-flex;border:1px solid var(--line-2);border-radius:var(--r-sm);background:var(--bg);overflow:hidden;box-shadow:var(--shadow-1)}
+.tf-btn{appearance:none;-webkit-appearance:none;background:transparent;border:0;border-left:1px solid var(--line);padding:10px clamp(15px,1.8vw,24px);font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;transition:color .3s var(--ease),background .3s var(--ease)}
+.tf-btn:first-child{border-left:0}
+.tf-btn:hover{color:var(--blue);background:var(--surface)}
+.tf-btn[aria-pressed="true"]{background:var(--blue);color:#fff}
+.tf-btn:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+.tf-rule{flex:1;min-width:24px;height:1px;background:var(--line)}
+.tf-count{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--text-subtle);white-space:nowrap}
+.tf-count b{color:var(--blue);font-weight:600}
+.team-node.is-out,.team-block.is-out{display:none}
 
 /* Advisory */
 .team-advisory{margin-top:clamp(56px,7vw,80px);padding:clamp(36px,4vw,56px);background:linear-gradient(180deg,var(--panel),var(--surface));border:1px solid var(--line);border-radius:var(--r-lg);position:relative;display:grid;grid-template-columns:4.6fr 7.4fr;gap:clamp(32px,4vw,56px);align-items:stretch;box-shadow:var(--shadow-2)}
@@ -1491,8 +1521,7 @@ footer::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;backg
   .why-rack{grid-template-columns:1fr}
   .why-cell{border-right:none;border-bottom:1px solid var(--line-2)}
   .why-cell:last-child{border-bottom:none}
-  .cases-grid,.values-list,.team-grid.scientific,.team-grid.directors,.team-grid.projects{grid-template-columns:repeat(2,1fr)}
-  .team-grid.researchers{grid-template-columns:repeat(3,1fr)}
+  .cases-grid,.values-list,.team-grid.scientific{grid-template-columns:repeat(2,1fr)}
   .events-aside{grid-template-columns:repeat(2,1fr)}
   .ea-tile:nth-child(2){border-right:none}
   .partner-layout{grid-template-columns:1fr;gap:32px}
@@ -1512,8 +1541,9 @@ footer::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;backg
   .hero-metrics-inner{flex-direction:column;width:100%}
   .metric{align-items:flex-start}
   .metric + .metric{border-left:none;border-top:1px solid var(--line-2)}
-  .pillars-rack,.activity-grid,.cases-grid,.values-list,.events-aside,.team-grid.scientific,.team-grid.directors,.team-grid.projects{grid-template-columns:1fr}
-  .team-grid.researchers{grid-template-columns:repeat(2,1fr)}
+  .pillars-rack,.activity-grid,.cases-grid,.values-list,.events-aside,.team-grid.scientific{grid-template-columns:1fr}
+  .team-grid.directors > .team-node{flex:1 1 100%}
+  .team-grid.researchers > .team-node{flex:1 1 130px}
   .pillar,.activity-tile,.case-file,.value-cell,.ea-tile,.team-node{border-right:none;border-bottom:1px solid var(--line)}
   .eco-rail{grid-template-columns:1fr}
   .eco-rail-label{flex-direction:row;justify-content:space-between;align-items:center;border-right:none;border-bottom:1px solid var(--line-2);padding:11px 16px}
@@ -2986,126 +3016,161 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <div class="team-node lg">
           <div class="tn-head">
             <div class="tn-avatar"><img class="tn-photo" src="assets/images/perego.png" alt="Alessandro Perego" loading="lazy" decoding="async">AP</div>
-            <span class="tn-id"><b>#L01</b></span>
           </div>
           <h4 class="tn-name">Alessandro Perego</h4>
           <span class="tn-role">Scientific Director</span>
+          <div class="tn-foot"><a class="tn-li" href="https://www.linkedin.com/in/alessandro-perego-0b69322a/" target="_blank" rel="noopener" aria-label="Alessandro Perego on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         </div>
         <div class="team-node lg">
           <div class="tn-head">
             <div class="tn-avatar"><img class="tn-photo" src="assets/images/sciuto.png" alt="Donatella Sciuto" loading="lazy" decoding="async">DS</div>
-            <span class="tn-id"><b>#L02</b></span>
           </div>
           <h4 class="tn-name">Donatella Sciuto</h4>
           <span class="tn-role">Scientific Director</span>
+          <div class="tn-foot"><a class="tn-li" href="https://www.linkedin.com/in/donatellasciuto/" target="_blank" rel="noopener" aria-label="Donatella Sciuto on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         </div>
       </div>
     </div>
 
-    <div class="team-block fade-up">
+    <!-- SOUL FILTER — Scientific Direction above stays cross-cutting and is never filtered -->
+    <div class="team-filter fade-up" id="teamFilter">
+      <span class="tf-label">Filter by</span>
+      <div class="tf-seg" role="group" aria-label="Filter the team by area">
+        <button type="button" class="tf-btn" data-soul="all" aria-pressed="true">All</button>
+        <button type="button" class="tf-btn" data-soul="research" aria-pressed="false">Research</button>
+        <button type="button" class="tf-btn" data-soul="projects" aria-pressed="false">Projects</button>
+      </div>
+      <span class="tf-rule"></span>
+      <span class="tf-count" aria-live="polite"><b id="tfCount">16</b> members</span>
+    </div>
+
+    <div class="team-block fade-up" data-filterable>
       <div class="team-block-head">
-        <span class="tag"><span class="dot"></span>OBSERVATORY DIRECTORS</span>
+        <span class="tag"><span class="dot"></span>DIRECTORS</span>
         <span class="rule"></span>
-        <span class="count">3 MEMBERS</span>
+        <span class="count">5 MEMBERS</span>
       </div>
       <div class="team-grid directors">
         <span class="tgc-bl"></span><span class="tgc-br"></span>
-        <div class="team-node">
+        <div class="team-node" data-research="Director · Research" data-projects="Director · Projects">
           <div class="tn-head">
             <div class="tn-avatar"><img class="tn-photo" src="assets/images/bruschi.png" alt="Francesco Bruschi" loading="lazy" decoding="async">FB</div>
-            <span class="tn-id"><b>#D01</b></span>
           </div>
           <h4 class="tn-name">Francesco Bruschi</h4>
-          <span class="tn-role">Director · Blockchain &amp; Web3 Observatory</span>
-          <a href="mailto:francesco.bruschi@polimi.it" class="tn-email">francesco.bruschi@polimi.it</a>
+          <span class="tn-role">Director · Research &amp; Projects</span>
+          <div class="tn-foot"><a href="mailto:francesco.bruschi@polimi.it" class="tn-email">francesco.bruschi@polimi.it</a><a class="tn-li" href="https://www.linkedin.com/in/francesco-bruschi-5ab1b15/" target="_blank" rel="noopener" aria-label="Francesco Bruschi on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         </div>
-        <div class="team-node">
+        <div class="team-node" data-research="Director · Research" data-projects="Director · Projects">
           <div class="tn-head">
             <div class="tn-avatar"><img class="tn-photo" src="assets/images/portale.png" alt="Valeria Portale" loading="lazy" decoding="async">VP</div>
-            <span class="tn-id"><b>#D02</b></span>
           </div>
           <h4 class="tn-name">Valeria Portale</h4>
-          <span class="tn-role">Director · Blockchain &amp; Web3 Observatory</span>
-          <a href="mailto:valeria.portale@polimi.it" class="tn-email">valeria.portale@polimi.it</a>
+          <span class="tn-role">Director · Research &amp; Projects</span>
+          <div class="tn-foot"><a href="mailto:valeria.portale@polimi.it" class="tn-email">valeria.portale@polimi.it</a><a class="tn-li" href="https://www.linkedin.com/in/valeriaportale/" target="_blank" rel="noopener" aria-label="Valeria Portale on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         </div>
-        <div class="team-node">
+        <div class="team-node" data-projects="Director · Projects">
           <div class="tn-head">
             <div class="tn-avatar"><img class="tn-photo" src="assets/images/vella.png" alt="Giacomo Vella" loading="lazy" decoding="async">GV</div>
-            <span class="tn-id"><b>#D03</b></span>
           </div>
           <h4 class="tn-name">Giacomo Vella</h4>
-          <span class="tn-role">Director · Blockchain &amp; Web3 Observatory</span>
-          <a href="mailto:giacomo.vella@polimi.it" class="tn-email">giacomo.vella@polimi.it</a>
+          <span class="tn-role">Director · Projects</span>
+          <div class="tn-foot"><a href="mailto:giacomo.vella@polimi.it" class="tn-email">giacomo.vella@polimi.it</a><a class="tn-li" href="https://www.linkedin.com/in/giacomovella/" target="_blank" rel="noopener" aria-label="Giacomo Vella on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         </div>
-      </div>
-    </div>
-
-    <div class="team-block fade-up">
-      <div class="team-block-head">
-        <span class="tag"><span class="dot"></span>WEB3HUB DIRECTORS</span>
-        <span class="rule"></span>
-        <span class="count">2 MEMBERS</span>
-      </div>
-      <div class="team-grid projects">
-        <span class="tgc-bl"></span><span class="tgc-br"></span>
-        <div class="team-node">
+        <div class="team-node" data-projects="Director · Projects">
           <div class="tn-head">
             <div class="tn-avatar"><img class="tn-photo" src="assets/images/fracassi.png" alt="Jacopo Fracassi" loading="lazy" decoding="async">JF</div>
-            <span class="tn-id"><b>#P01</b></span>
           </div>
           <h4 class="tn-name">Jacopo Fracassi</h4>
-          <span class="tn-role">Director · WEB3HUB</span>
-          <a href="mailto:jacopo.fracassi@polimi.it" class="tn-email">jacopo.fracassi@polimi.it</a>
+          <span class="tn-role">Director · Projects</span>
+          <div class="tn-foot"><a href="mailto:jacopo.fracassi@polimi.it" class="tn-email">jacopo.fracassi@polimi.it</a><a class="tn-li" href="https://www.linkedin.com/in/jacopo-fracassi-670805b6/" target="_blank" rel="noopener" aria-label="Jacopo Fracassi on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         </div>
-        <div class="team-node">
+        <div class="team-node" data-projects="Director · Projects">
           <div class="tn-head">
             <div class="tn-avatar"><img class="tn-photo" src="assets/images/rana.png" alt="Vincenzo Rana" loading="lazy" decoding="async">VR</div>
-            <span class="tn-id"><b>#P02</b></span>
           </div>
           <h4 class="tn-name">Vincenzo Rana</h4>
-          <span class="tn-role">Director · WEB3HUB</span>
-          <a href="mailto:vincenzo.rana@polimi.it" class="tn-email">vincenzo.rana@polimi.it</a>
+          <span class="tn-role">Director · Projects</span>
+          <div class="tn-foot"><a href="mailto:vincenzo.rana@polimi.it" class="tn-email">vincenzo.rana@polimi.it</a><a class="tn-li" href="https://www.linkedin.com/in/vincenzo-rana/" target="_blank" rel="noopener" aria-label="Vincenzo Rana on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         </div>
       </div>
     </div>
 
-    <div class="team-block fade-up">
+    <div class="team-block fade-up" data-filterable>
       <div class="team-block-head">
         <span class="tag"><span class="dot"></span>RESEARCHERS &amp; ANALYSTS</span>
         <span class="rule"></span>
-        <span class="count">6 MEMBERS</span>
+        <span class="count">7 MEMBERS</span>
       </div>
       <div class="team-grid researchers">
         <span class="tgc-bl"></span><span class="tgc-br"></span>
-        <div class="team-node">
-          <div class="tn-head"><div class="tn-avatar"><img class="tn-photo" src="assets/images/ghezzi.png" alt="Davide Ghezzi" loading="lazy" decoding="async">DG</div><span class="tn-id">#R01</span></div>
+        <div class="team-node" data-research="Researcher" data-projects="Researcher">
+          <div class="tn-head"><div class="tn-avatar"><img class="tn-photo" src="assets/images/ghezzi.png" alt="Davide Ghezzi" loading="lazy" decoding="async">DG</div></div>
           <h4 class="tn-name">Davide Ghezzi</h4>
           <span class="tn-role">Researcher</span>
+          <div class="tn-foot"><a class="tn-li" href="https://www.linkedin.com/in/davide-ghezzi-blockchain-web3/" target="_blank" rel="noopener" aria-label="Davide Ghezzi on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         </div>
-        <div class="team-node">
-          <div class="tn-head"><div class="tn-avatar"><img class="tn-photo" src="assets/images/paulon.png" alt="Tommaso Paulon" loading="lazy" decoding="async">TP</div><span class="tn-id">#R02</span></div>
+        <div class="team-node" data-research="Researcher" data-projects="Researcher">
+          <div class="tn-head"><div class="tn-avatar"><img class="tn-photo" src="assets/images/paulon.png" alt="Tommaso Paulon" loading="lazy" decoding="async">TP</div></div>
           <h4 class="tn-name">Tommaso Paulon</h4>
           <span class="tn-role">Researcher</span>
+          <div class="tn-foot"><a class="tn-li" href="https://www.linkedin.com/in/tommaso-paulon-86438013a/" target="_blank" rel="noopener" aria-label="Tommaso Paulon on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         </div>
-        <div class="team-node">
-          <div class="tn-head"><div class="tn-avatar"><img class="tn-photo" src="assets/images/zauli.png" alt="Ettore Zauli" loading="lazy" decoding="async">EZ</div><span class="tn-id">#R03</span></div>
+        <div class="team-node" data-research="Researcher" data-projects="Project Manager">
+          <div class="tn-head"><div class="tn-avatar"><img class="tn-photo" src="assets/images/zauli.png" alt="Ettore Zauli" loading="lazy" decoding="async">EZ</div></div>
           <h4 class="tn-name">Ettore Zauli</h4>
-          <span class="tn-role">Researcher</span>
+          <span class="tn-role">Researcher · Project Manager</span>
+          <div class="tn-foot"><a class="tn-li" href="https://www.linkedin.com/in/ettore-zauli-935355144/" target="_blank" rel="noopener" aria-label="Ettore Zauli on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         </div>
-        <div class="team-node">
-          <div class="tn-head"><div class="tn-avatar"><img class="tn-photo" src="assets/images/esposito.png" alt="Marco Esposito" loading="lazy" decoding="async">ME</div><span class="tn-id">#R04</span></div>
+        <div class="team-node" data-research="Analyst" data-projects="Analyst">
+          <div class="tn-head"><div class="tn-avatar"><img class="tn-photo" src="assets/images/esposito.png" alt="Marco Esposito" loading="lazy" decoding="async">ME</div></div>
           <h4 class="tn-name">Marco Esposito</h4>
           <span class="tn-role">Analyst</span>
+          <div class="tn-foot"><a class="tn-li" href="https://www.linkedin.com/in/marcoesposito101/" target="_blank" rel="noopener" aria-label="Marco Esposito on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         </div>
-        <div class="team-node">
-          <div class="tn-head"><div class="tn-avatar"><img class="tn-photo" src="assets/images/weiss.png" alt="Giacomo Weiss" loading="lazy" decoding="async">GW</div><span class="tn-id">#R05</span></div>
+        <div class="team-node" data-research="Analyst">
+          <div class="tn-head"><div class="tn-avatar"><img class="tn-photo" src="assets/images/weiss.png" alt="Giacomo Weiss" loading="lazy" decoding="async">GW</div></div>
           <h4 class="tn-name">Giacomo Weiss</h4>
           <span class="tn-role">Analyst</span>
+          <div class="tn-foot"><a class="tn-li" href="https://www.linkedin.com/in/giacomo-weiss-615486251/" target="_blank" rel="noopener" aria-label="Giacomo Weiss on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         </div>
-        <div class="team-node">
-          <div class="tn-head"><div class="tn-avatar"><img class="tn-photo" src="assets/images/franzese.png" alt="Michela Franzese" loading="lazy" decoding="async">MF</div><span class="tn-id">#R06</span></div>
+        <div class="team-node" data-projects="Analyst">
+          <div class="tn-head"><div class="tn-avatar"><img class="tn-photo" src="assets/images/agostini.png" alt="Leonardo Agostini" loading="lazy" decoding="async">LA</div></div>
+          <h4 class="tn-name">Leonardo Agostini</h4>
+          <span class="tn-role">Analyst</span>
+          <div class="tn-foot"><a class="tn-li" href="https://www.linkedin.com/in/leonardo-agostini/" target="_blank" rel="noopener" aria-label="Leonardo Agostini on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
+        </div>
+        <div class="team-node" data-research="Community Coordinator" data-projects="Community Coordinator">
+          <div class="tn-head"><div class="tn-avatar"><img class="tn-photo" src="assets/images/franzese.png" alt="Michela Franzese" loading="lazy" decoding="async">MF</div></div>
           <h4 class="tn-name">Michela Franzese</h4>
           <span class="tn-role">Community Coordinator</span>
+          <div class="tn-foot"><a class="tn-li" href="https://www.linkedin.com/in/michela-franzese/" target="_blank" rel="noopener" aria-label="Michela Franzese on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-block fade-up" data-filterable>
+      <div class="team-block-head">
+        <span class="tag"><span class="dot"></span>ADVISORS</span>
+        <span class="rule"></span>
+        <span class="count">2 MEMBERS</span>
+      </div>
+      <div class="team-grid advisors">
+        <span class="tgc-bl"></span><span class="tgc-br"></span>
+        <div class="team-node" data-projects="Advisor">
+          <div class="tn-avatar"><img class="tn-photo" src="assets/images/giordano.png" alt="Marco Tullio Giordano" loading="lazy" decoding="async">MG</div>
+          <div class="adv-body">
+            <h4 class="tn-name">Marco Tullio Giordano</h4>
+            <span class="tn-role">Advisor</span>
+          </div>
+          <div class="tn-foot"><a class="tn-li" href="https://www.linkedin.com/in/marcogiordano/" target="_blank" rel="noopener" aria-label="Marco Tullio Giordano on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
+        </div>
+        <div class="team-node" data-projects="Advisor">
+          <div class="tn-avatar"><img class="tn-photo" src="assets/images/rozzoni.png" alt="Daniele Rozzoni" loading="lazy" decoding="async">DR</div>
+          <div class="adv-body">
+            <h4 class="tn-name">Daniele Rozzoni</h4>
+            <span class="tn-role">Advisor</span>
+          </div>
+          <div class="tn-foot"><a class="tn-li" href="https://www.linkedin.com/in/daniele-rozzoni/" target="_blank" rel="noopener" aria-label="Daniele Rozzoni on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         </div>
       </div>
     </div>
@@ -3506,6 +3571,50 @@ window.addEventListener('load',()=>{setTimeout(()=>document.querySelector('.hero
   window.addEventListener('hashchange',()=>setTimeout(paint,60));
   window.addEventListener('load',paint);
   paint();
+})();
+
+/* ── TEAM · soul filter (All / Research / Projects) ──
+   Cross-cutting people stay put: the Scientific Direction block carries no
+   [data-filterable], so it is never hidden; Franzese holds a role in both souls. */
+(function(){
+  const bar=document.getElementById('teamFilter');
+  if(!bar)return;
+  const btns=Array.from(bar.querySelectorAll('.tf-btn'));
+  const out=document.getElementById('tfCount');
+  const blocks=Array.from(document.querySelectorAll('#team .team-block[data-filterable]'));
+  const fixed=document.querySelectorAll('#team .team-block:not([data-filterable]) .team-node').length;
+
+  /* stash the default (All) label once — filtered views rewrite it to the soul role */
+  const cards=blocks.map(b=>({block:b,nodes:Array.from(b.querySelectorAll('.team-node')).map(el=>{
+    const role=el.querySelector('.tn-role');
+    return {el,role,all:role?role.textContent:''};
+  })}));
+
+  function apply(soul){
+    let total=fixed;
+    cards.forEach(({block,nodes})=>{
+      let shown=0;
+      nodes.forEach(n=>{
+        const label=soul==='all'?n.all:(n.el.dataset[soul]||'');
+        const inSoul=soul==='all'||!!label;
+        n.el.classList.toggle('is-out',!inSoul);
+        if(inSoul){shown++;if(n.role)n.role.textContent=label;}
+      });
+      block.classList.toggle('is-out',shown===0);
+      /* few directors left: cap the rack so cards keep their proportions instead of
+         stretching across the full page (flex-grow would otherwise blow them up) */
+      const dir=block.querySelector('.team-grid.directors');
+      if(dir)dir.style.maxWidth=shown&&shown<4?(shown*340)+'px':'';
+      const c=block.querySelector('.team-block-head .count');
+      if(c)c.textContent=shown+(shown===1?' MEMBER':' MEMBERS');
+      total+=shown;
+    });
+    if(out)out.textContent=total;
+    btns.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.soul===soul)));
+  }
+
+  btns.forEach(b=>b.addEventListener('click',()=>apply(b.dataset.soul)));
+  apply('all');
 })();
 
 /* ── INTERNAL PAGE LINKS ── route hash links to their simulated page */
