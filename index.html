@@ -1218,6 +1218,8 @@ svg{display:block}
 /* per-section accent (tonal blue family — distinct yet coherent) */
 .res-cat[data-cat="articles"]{--acc:var(--blue)}
 .res-cat[data-cat="reports"]{--acc:var(--blue-mid)}
+.res-cat[data-cat="newsletters"]{--acc:var(--blue)}
+.res-cat[data-cat="publications"]{--acc:var(--blue-mid)}
 /* section header — clean editorial divider, accent marks the section start */
 .res-cat__head{position:relative;display:grid;grid-template-columns:1fr auto;gap:clamp(20px,3vw,40px);align-items:end;padding-top:clamp(18px,2vw,26px);padding-bottom:clamp(20px,2.2vw,26px);margin-bottom:clamp(26px,3vw,38px);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
 .res-cat__head::before{content:'';position:absolute;top:-1px;left:0;width:clamp(48px,6vw,72px);height:2px;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease) .08s}
@@ -1282,6 +1284,20 @@ svg{display:block}
 .rc-act svg{width:15px;height:9px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:square;transition:transform .25s}
 .res-card:hover .rc-act svg,.res-card:focus-within .rc-act svg{transform:translateX(4px)}
 .res-empty{padding:26px 10px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--text-subtle)}
+/* end-of-section rail: hairline that runs into the Discover more button */
+.res-cat__foot{display:flex;align-items:center;gap:clamp(16px,2.4vw,28px)}
+.res-collapse.open + .res-cat__foot{margin-top:clamp(20px,2.4vw,32px)}   /* only the open list needs the breathing room */
+.res-cat__foot .rule{flex:1;min-width:20px;height:1px;background:var(--line)}
+.res-more{
+  border-color:transparent;color:#fff;
+  background:linear-gradient(115deg,var(--blue) 0%,var(--blue-mid) 48%,var(--blue) 100%);
+  background-size:230% 100%;background-position:0 0;
+  box-shadow:0 8px 26px -12px var(--glow);
+  transition:background-position .6s var(--ease),box-shadow .35s var(--ease),transform .35s var(--ease);
+}
+.res-more:hover,.res-more:focus-visible{color:#fff;background-position:100% 0;transform:translateY(-2px);box-shadow:0 0 0 3px var(--glow-soft),0 16px 40px -12px var(--glow)}
+@media(prefers-reduced-motion:reduce){.res-more{transition:none}.res-more:hover,.res-more:focus-visible{transform:none}}
+@media(max-width:680px){.res-cat__foot .rule{display:none}.res-more{width:100%;justify-content:center}}
 
 /* reveal for JS-rendered rows */
 .res-card{opacity:0;transform:translateY(12px);transition:opacity .6s var(--ease),transform .6s var(--ease),background .3s var(--ease)}
@@ -2433,7 +2449,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 
   <!-- ════ BLOCKCHAIN MONTHLY OVERVIEW — occupies the slot the European map
        held before it moved to the homepage. ════ -->
-  <section class="section bmo-section" aria-labelledby="bmo-title">
+  <section class="section bmo-section" aria-labelledby="bmo-research-title">
     <div class="wrap">
       <div class="bmo-panel fade-up">
         <div class="bmo-copy">
@@ -2442,7 +2458,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
             <span class="hash">MONTHLY · FREE</span>
           </div>
           <span class="bmo-tag">Blockchain Monthly Overview</span>
-          <h2 class="bmo-h" id="bmo-title">The month in Web3,<br/><span class="accent">read by the market.</span></h2>
+          <h2 class="bmo-h" id="bmo-research-title">The month in Web3,<br/><span class="accent">read by the market.</span></h2>
           <p class="bmo-lede">Every month the Observatory distils the news, industry analysis and market data that matter into a single briefing: what moved, what it means, and what to watch next. Written by the researchers behind the Observatory's reports.</p>
           <div class="bmo-actions">
             <a class="bmo-cta" href="https://forms.office.com/pages/responsepage.aspx?id=K3EXCvNtXUKAjjCd8ope66FKAF0nOyNGsrfXuK9y9r9UQTdWSkEwNDgxTjNHS00xQ1lST1ExS0FFSy4u" target="_blank" rel="noopener">Subscribe for free<span class="arw">→</span></a>
@@ -3251,7 +3267,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <span class="tag fade-up"><span class="dot"></span> 06 · RESOURCES</span>
         <h2 class="h-xl fade-up delay-1" id="resources-title" style="margin-top:20px">Research, analysis<br/><span class="accent">&amp; publications.</span></h2>
       </div>
-      <p class="lede fade-up delay-2">Explore <b style="color:var(--blue)">articles and reports</b> from the Blockchain &amp; Web3 Observatory research ecosystem and the WEB3HUB at the Politecnico di Milano: the knowledge shaping the blockchain and Web3 debate.</p>
+      <p class="lede fade-up delay-2">Explore <b style="color:var(--blue)">articles, reports, newsletters and academic publications</b> from the Blockchain &amp; Web3 Observatory research ecosystem and the WEB3HUB at the Politecnico di Milano: the knowledge shaping the blockchain and Web3 debate.</p>
     </div>
 
     <!-- ── STICKY CATEGORY NAVIGATION ── client-side filter + anchor jump -->
@@ -3261,6 +3277,8 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <button type="button" class="res-seg__btn" data-cat="all" aria-pressed="true">All</button>
         <button type="button" class="res-seg__btn" data-cat="articles" aria-pressed="false">Articles <span class="n" data-count="articles">0</span></button>
         <button type="button" class="res-seg__btn" data-cat="reports" aria-pressed="false">Reports <span class="n" data-count="reports">0</span></button>
+        <button type="button" class="res-seg__btn" data-cat="newsletters" aria-pressed="false">Newsletters <span class="n" data-count="newsletters">0</span></button>
+        <button type="button" class="res-seg__btn" data-cat="publications" aria-pressed="false">Publications <span class="n" data-count="publications">0</span></button>
       </div>
     </nav>
 
@@ -3283,6 +3301,10 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <div class="res-collapse" id="grid-articles">
         <div class="res-grid" data-grid="articles"></div>
       </div>
+      <div class="res-cat__foot fade-up">
+        <span class="rule"></span>
+        <a class="btn res-more" href="https://www.osservatori.net/blockchain-web3/" target="_blank" rel="noopener" aria-label="Discover more articles on Osservatori.net">Discover more <span class="arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></a>
+      </div>
     </section>
 
     <!-- ── B · REPORTS ── -->
@@ -3303,6 +3325,61 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       </header>
       <div class="res-collapse" id="grid-reports">
         <div class="res-grid" data-grid="reports"></div>
+      </div>
+      <div class="res-cat__foot fade-up">
+        <span class="rule"></span>
+        <a class="btn res-more" href="https://www.osservatori.net/blockchain-web3/" target="_blank" rel="noopener" aria-label="Discover more reports on Osservatori.net">Discover more <span class="arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></a>
+      </div>
+    </section>
+
+
+    <!-- ── C · NEWSLETTERS ── -->
+    <section class="res-cat" id="cat-newsletters" data-cat="newsletters" aria-labelledby="cat-newsletters-title">
+      <header class="res-cat__head fade-up">
+        <div class="res-cat__lead">
+          <span class="res-cat__kicker">C · Newsletters</span>
+          <h3 class="h-lg" id="cat-newsletters-title">Recurring intelligence</h3>
+          <p class="res-cat__desc">The recurring dispatches of the Blockchain &amp; Web3 Observatory: a weekly curation of what moved the ecosystem, and a monthly deep dive into the research and the market figures behind it.</p>
+        </div>
+        <div class="res-cat__aside">
+          <p class="res-cat__count"><b data-count="newsletters">0</b>resources</p>
+          <button class="res-toggle" type="button" aria-expanded="false" aria-controls="grid-newsletters">
+            <span class="rt-label"><span class="rt-show">View newsletters</span><span class="rt-hide">Hide list</span></span>
+            <span class="rt-ico" aria-hidden="true"><svg viewBox="0 0 16 16" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,6 8,11 13,6"/></svg></span>
+          </button>
+        </div>
+      </header>
+      <div class="res-collapse" id="grid-newsletters">
+        <div class="res-grid" data-grid="newsletters"></div>
+      </div>
+      <div class="res-cat__foot fade-up">
+        <span class="rule"></span>
+        <a class="btn res-more" href="https://www.osservatori.net/blockchain-web3/" target="_blank" rel="noopener" aria-label="Discover more newsletters on Osservatori.net">Discover more <span class="arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></a>
+      </div>
+    </section>
+
+    <!-- ── D · ACADEMIC PUBLICATIONS ── -->
+    <section class="res-cat" id="cat-publications" data-cat="publications" aria-labelledby="cat-publications-title">
+      <header class="res-cat__head fade-up">
+        <div class="res-cat__lead">
+          <span class="res-cat__kicker">D · Academic publications</span>
+          <h3 class="h-lg" id="cat-publications-title">Peer-reviewed research</h3>
+          <p class="res-cat__desc">Scientific work authored by the WEB3HUB researchers at the Politecnico di Milano: journal articles, conference papers and academic contributions underpinning the Observatory research.</p>
+        </div>
+        <div class="res-cat__aside">
+          <p class="res-cat__count"><b data-count="publications">0</b>resources</p>
+          <button class="res-toggle" type="button" aria-expanded="false" aria-controls="grid-publications">
+            <span class="rt-label"><span class="rt-show">View publications</span><span class="rt-hide">Hide list</span></span>
+            <span class="rt-ico" aria-hidden="true"><svg viewBox="0 0 16 16" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,6 8,11 13,6"/></svg></span>
+          </button>
+        </div>
+      </header>
+      <div class="res-collapse" id="grid-publications">
+        <div class="res-grid" data-grid="publications"></div>
+      </div>
+      <div class="res-cat__foot fade-up">
+        <span class="rule"></span>
+        <a class="btn res-more" href="https://www.osservatori.net/blockchain-web3/" target="_blank" rel="noopener" aria-label="Discover more publications on Osservatori.net">Discover more <span class="arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></a>
       </div>
     </section>
 
@@ -4353,10 +4430,6 @@ if('requestIdleCallback' in window){
      by editorial type. */
   const RESOURCES=[
     /* ───────── ARTICLES ───────── */
-    {cat:'articles',featured:true,chip:'News Digest',title:'Weekly News Digest',
-     excerpt:'A weekly curation of the most important national and international news in blockchain and Web3, delivered to the community. Supporters can also submit news, content and events for inclusion.',
-     access:{label:'Community',kind:'community'},date:'Weekly',tags:['Curation','Web3','News'],
-     action:{type:'request',label:'Request access'}},
     {cat:'articles',chip:'Insight',title:'Web3 in 2026: macro-trend to watch',
      excerpt:'A research-driven read on the structural shifts defining the year ahead, from real-world asset tokenization to the institutionalisation of digital finance.',
      access:{label:'Open access',kind:'open'},date:'Insight',tags:['Trends','Analysis'],
@@ -4369,6 +4442,16 @@ if('requestIdleCallback' in window){
      excerpt:'A research session on the tokenization of financial instruments across European markets, covering the regulatory framework, market infrastructure and the outlook for institutional adoption.',
      access:{label:'Open access',kind:'open'},date:'Insight',tags:['Tokenization','Finance','Europe'],
      action:{type:'link',label:'Read',href:'https://www.osservatori.net/webinar/blockchain-web3/tokenizzazione-strumenti-finanziari-europa/'}},
+
+    /* ───────── NEWSLETTERS ───────── */
+    {cat:'newsletters',featured:true,chip:'Monthly',title:'Blockchain Monthly Overview',
+     excerpt:'The monthly deep dive from the WEB3HUB researchers: curated insights, research highlights, in-depth analyses and the market figures shaping the Web3 landscape. Free subscription.',
+     access:{label:'Open access',kind:'open'},date:'Monthly',tags:['Newsletter','Market data','Analysis'],
+     action:{type:'link',label:'Subscribe',href:'https://forms.office.com/pages/responsepage.aspx?id=K3EXCvNtXUKAjjCd8ope66FKAF0nOyNGsrfXuK9y9r9UQTdWSkEwNDgxTjNHS00xQ1lST1ExS0FFSy4u'}},
+    {cat:'newsletters',chip:'News Digest',title:'Weekly News Digest',
+     excerpt:'A weekly curation of the most important national and international news in blockchain and Web3, delivered to the community. Supporters can also submit news, content and events for inclusion.',
+     access:{label:'Community',kind:'community'},date:'Weekly',tags:['Curation','Web3','News'],
+     action:{type:'request',label:'Request access'}},
 
     /* ───────── REPORTS ───────── */
     {cat:'reports',featured:true,chip:'Research Reports',title:'In-depth Research Reports',
@@ -4415,12 +4498,18 @@ if('requestIdleCallback' in window){
   }
 
   /* ── render per category ── */
-  const cats=['articles','reports'];
-  cats.forEach(cat=>{
-    const grid=document.querySelector(`#resources .res-grid[data-grid="${cat}"]`);
+  const CATS=[
+    {id:'articles'},
+    {id:'reports'},
+    {id:'newsletters'},
+    /* shell until the publication list arrives (Wave 7 · RE5) */
+    {id:'publications',empty:'The publication list is being compiled. It will be published here shortly.'}
+  ];
+  CATS.forEach(({id,empty})=>{
+    const grid=document.querySelector(`#resources .res-grid[data-grid="${id}"]`);
     if(!grid)return;
-    const items=RESOURCES.filter(r=>r.cat===cat);
-    grid.innerHTML=items.length?items.map(cardHTML).join(''):'<p class="res-empty">No resources in this category yet.</p>';
+    const items=RESOURCES.filter(r=>r.cat===id);
+    grid.innerHTML=items.length?items.map(cardHTML).join(''):`<p class="res-empty">${empty||'No resources in this category yet.'}</p>`;
   });
 
   /* ── counts ── */
