@@ -853,8 +853,10 @@ svg{display:block}
 .case-file:hover{background:var(--surface)}
 .case-file::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:var(--blue-mid);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
 .case-file:hover::before{transform:scaleX(1)}
-.case-logo{height:36px;display:flex;align-items:center;margin-bottom:4px}
+.case-logo{height:36px;display:flex;align-items:center;gap:10px;margin-bottom:4px}
 .case-logo img{height:30px;width:auto;object-fit:contain;max-width:140px}
+/* square brand tiles (logo mark on its own background): rounded so the block reads as an icon, not a crop */
+.case-logo img.is-tile{border-radius:5px}
 .case-logo .case-text{font-family:var(--mono);font-size:.78rem;font-weight:600;color:var(--blue);letter-spacing:.04em}
 .case-title{font-family:var(--display);font-weight:600;font-size:1.2rem;letter-spacing:-.02em;line-height:1.2;color:var(--text)}
 .case-desc{font-size:.84rem;line-height:1.55;color:var(--text-muted)}
@@ -2142,10 +2144,10 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <p class="soul-desc" style="margin-top:14px">Since 2017, the Observatory has been dedicated to generating and sharing knowledge on blockchain and Web3, contributing to the growth of the Italian and international market. Four pillars drive everything we do: Research, Network, Education and Communication.</p>
         </div>
         <div class="soul-meta">
-          <div class="soul-meta-cell"><span class="lbl">PILLARS</span><span class="val">04</span></div>
+          <div class="soul-meta-cell"><span class="lbl">REPORTS</span><span class="val">25+</span></div>
+          <div class="soul-meta-cell"><span class="lbl">PAPERS</span><span class="val">30+</span></div>
+          <div class="soul-meta-cell"><span class="lbl">NEWSLETTERS</span><span class="val">59/YR</span></div>
           <div class="soul-meta-cell"><span class="lbl">REACH/YR</span><span class="val">2M+</span></div>
-          <div class="soul-meta-cell"><span class="lbl">SINCE</span><span class="val">2017</span></div>
-          <div class="soul-meta-cell"><span class="lbl">YEARS</span><span class="val">8+</span></div>
         </div>
         <a href="#research" class="link-arr">Open Research <span class="arr">→</span></a>
       </article>
@@ -2165,7 +2167,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <p class="soul-desc" style="margin-top:14px">A proven track record of pre-competitive blockchain projects delivered alongside companies and institutions by a team that pairs software and management engineers: support across strategy definition and project design, as-is process analysis and to-be architecture, and the development of prototypes and Proofs of Concept (PoC), through to consulting and support in the go-live phase.</p>
         </div>
         <div class="soul-meta">
-          <div class="soul-meta-cell"><span class="lbl">RESEARCHERS</span><span class="val">10</span></div>
+          <div class="soul-meta-cell"><span class="lbl">RESEARCHERS</span><span class="val">14</span></div>
           <div class="soul-meta-cell"><span class="lbl">DELIVERED</span><span class="val">80+</span></div>
           <div class="soul-meta-cell"><span class="lbl">PARTNERS</span><span class="val">30+</span></div>
           <div class="soul-meta-cell"><span class="lbl">CERT</span><span class="val">PoliMi</span></div>
@@ -2602,11 +2604,12 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         </article>
         <article class="case-file">
           <div class="case-logo">
-            <img src="assets/logos/others/pwc.png" alt="PwC" onerror="this.outerHTML='<span class=&quot;case-text&quot;>PwC</span>'" />
+            <img class="is-tile" src="assets/logos/others/unlayer.png" alt="Unlayer" onerror="this.remove()" />
+            <span class="case-text">Unlayer</span>
           </div>
-          <h4 class="case-title">Italian blockchain startup ecosystem</h4>
-          <p class="case-desc">Custom research study on the blockchain startup ecosystem in Italy, co-developed with PwC in 2022.</p>
-          <span class="case-foot">DOMAIN · <b>RESEARCH / MARKET</b></span>
+          <h4 class="case-title">Tokenization platform for financial products</h4>
+          <p class="case-desc">Design and implementation support for a blockchain platform for the issuance and management of tokens, from international market and token standard analysis through to a working prototype.</p>
+          <span class="case-foot">DOMAIN · <b>FINANCE / TOKENIZATION</b></span>
         </article>
         <article class="case-file">
           <div class="case-logo">
