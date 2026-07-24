@@ -1300,6 +1300,19 @@ svg{display:block}
 .res-more:hover,.res-more:focus-visible{color:#fff;background-position:100% 0;transform:translateY(-2px);box-shadow:0 0 0 3px var(--glow-soft),0 16px 40px -12px var(--glow)}
 @media(prefers-reduced-motion:reduce){.res-more{transition:none}.res-more:hover,.res-more:focus-visible{transform:none}}
 @media(max-width:680px){.res-cat__foot .rule{display:none}.res-more{width:100%;justify-content:center}}
+/* on phones the five filters need ~600px in one row: the scrollbar is hidden, so
+   Newsletters and Publications would sit off-screen with nothing to reveal them.
+   Drop the "Browse" label and wrap instead — every category stays in sight. */
+@media(max-width:680px){
+  .res-seg{flex-wrap:wrap;overflow-x:visible;row-gap:8px}
+  .res-seg__label{display:none}
+  .res-seg__btn{flex:1 1 auto;justify-content:center}
+}
+/* tighten the chips on the narrowest phones so five filters still land in two
+   rows rather than three, keeping the sticky bar shallow */
+@media(max-width:360px){
+  .res-seg__btn{padding:9px 10px;letter-spacing:.08em}
+}
 
 /* reveal for JS-rendered rows */
 .res-card{opacity:0;transform:translateY(12px);transition:opacity .6s var(--ease),transform .6s var(--ease),background .3s var(--ease)}
@@ -1392,7 +1405,9 @@ svg{display:block}
 @media(max-width:680px){
   .res-nav{top:0}
   .res-cat__head{grid-template-columns:1fr;align-items:start;gap:16px}
-  .res-cat__aside{flex-direction:row;align-items:center;justify-content:space-between;width:100%;gap:16px}
+  /* the count and the nowrap toggle stop fitting side by side around 340px:
+     let the toggle drop to its own line instead of pushing the header wider */
+  .res-cat__aside{flex-direction:row;align-items:center;justify-content:space-between;width:100%;gap:16px;flex-wrap:wrap;row-gap:14px}
   .res-cat__count{text-align:left;display:flex;align-items:baseline;gap:8px}
   .res-cat__count b{margin-bottom:0}
   .res-card{grid-template-columns:1fr;gap:12px;padding:20px 4px}
@@ -1512,6 +1527,18 @@ footer::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;backg
 .form-select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231B3664' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;cursor:pointer;padding-right:36px}
 .form-submit-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding-top:8px}
 .form-note{font-family:var(--mono);font-size:.62rem;color:var(--text-muted);letter-spacing:.06em}
+/* the privacy consent sits on its own row: the <label> is the real tap target,
+   but the box itself must stay big enough to aim at next to the inline link */
+.form-consent{display:flex;align-items:flex-start;gap:10px;cursor:pointer;padding:6px 0}
+.form-consent input[type="checkbox"]{width:18px;height:18px;margin:1px 0 0;accent-color:var(--blue);flex-shrink:0}
+.form-consent .form-consent__txt{font-size:.8rem;color:var(--text-muted);line-height:1.5}
+/* iOS Safari zooms the viewport when a focused field is under 16px and never
+   zooms back out, so touch devices get 16px regardless of the desktop scale */
+@media(pointer:coarse){
+  .form-input,.form-textarea,.form-select{font-size:16px}
+  .form-consent input[type="checkbox"]{width:20px;height:20px}
+  .form-consent{padding:8px 0}
+}
 
 /* ════════════════════════════════════════════════════════════
    ENTRANCE ANIMATIONS
@@ -1968,9 +1995,9 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
               <textarea class="form-textarea" id="cf-message" name="message" placeholder="Describe your interest or request…" required></textarea>
             </div>
             <div class="form-group">
-              <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
-                <input type="checkbox" id="cf-privacy" name="privacy" required style="margin-top:3px;accent-color:var(--blue);flex-shrink:0" />
-                <span style="font-size:.8rem;color:var(--text-muted);line-height:1.5">I have read and accept the <a href="https://www.polimi.it/en/privacy-policy" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">Privacy Policy</a> of Politecnico di Milano. *</span>
+              <label class="form-consent">
+                <input type="checkbox" id="cf-privacy" name="privacy" required />
+                <span class="form-consent__txt">I have read and accept the <a href="https://www.polimi.it/en/privacy-policy" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">Privacy Policy</a> of Politecnico di Milano. *</span>
               </label>
             </div>
             <div class="form-submit-row">
