@@ -1629,6 +1629,22 @@ footer::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;backg
   .sec-head__meta{min-width:0}
   .stats-head .stats-meta{text-align:left}
 }
+/* Phone header. With the links collapsed, brand + CTA + burger compete for the
+   ~250px left inside .nav-inner and the grid was shrinking the wordmark track
+   to nothing (10px at 320, 50px at 360). Floor the brand at its intrinsic width
+   and reclaim the difference from the spacing, so the CTA can stay. */
+@media(max-width:560px){
+  .nav-brand{min-width:max-content}
+  .nav-inner{gap:10px;padding:10px 10px 10px 12px}
+  .nav-cta{gap:4px}
+  .nav-cta .btn{padding:12px 14px;gap:8px}
+  /* the freed space also buys the burger a proper 44px touch target */
+  .nav-burger{padding:0;width:44px;height:44px;align-items:center;justify-content:center}
+}
+@media(max-width:360px){
+  .nav-inner{gap:8px;padding:10px 8px 10px 10px}
+  .nav-cta .btn{padding:12px 10px;gap:6px}
+}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .wire-track{animation:none!important}
