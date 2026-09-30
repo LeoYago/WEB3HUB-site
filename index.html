@@ -135,7 +135,7 @@ svg{display:block}
 .tag .dot,.tag .live{display:none}
 /* remove decorative status / bullet dots site-wide (green "live" pulses + blue dots) */
 .live,.pulse,.rs-dot,
-.nav-block .blk .live,.hero-rail .seg .live,.viz-hud .hud-tag .live,
+.hero-rail .seg .live,.viz-hud .hud-tag .live,
 .chain-stream-head .live,.wire-tag .live,
 .partner-cta .pc-tag .dot,.xpl-feat-label .dot,.euro-tag .dot,
 .f-wordmark .wm-rail .live,.contact-info-head .live{display:none!important}
@@ -299,11 +299,9 @@ svg{display:block}
 #nav.scrolled .nav-inner{background:rgba(255,255,255,.95);box-shadow:0 2px 6px rgba(27,54,100,.06),0 14px 40px -12px var(--glow)}
 
 .nav-brand{display:flex;align-items:center;gap:12px}
-.nav-brand img.w3{height:28px;width:auto;object-fit:contain}
+.nav-brand img.w3{height:11px;width:auto;object-fit:contain}
 .nav-brand .hair-v{width:1px;height:22px;background:var(--line-3)}
 .nav-brand img.polimi{height:22px;width:auto;object-fit:contain;opacity:.78}
-.nav-brand .lab-id{font-family:var(--mono);font-size:.58rem;color:var(--text-subtle);letter-spacing:.1em;line-height:1.3;display:flex;flex-direction:column;border-left:1px solid var(--line);padding-left:10px;margin-left:4px}
-.nav-brand .lab-id b{color:var(--blue);font-weight:600}
 
 .nav-links{display:flex;align-items:center;justify-content:center;gap:0;list-style:none}
 .nav-links li{position:relative}
@@ -315,9 +313,6 @@ svg{display:block}
 .nav-links a:hover::before,.nav-links a.is-active::before{color:var(--blue-mid)}
 
 .nav-cta{display:flex;align-items:center;gap:14px}
-.nav-block{font-family:var(--mono);font-size:.6rem;color:var(--text-subtle);letter-spacing:.06em;line-height:1.3;display:flex;flex-direction:column;align-items:flex-end;padding-right:10px;border-right:1px solid var(--line)}
-.nav-block .blk{color:var(--blue);font-weight:600;display:flex;align-items:center;gap:5px}
-.nav-block .blk .live{width:6px;height:6px;border-radius:50%;background:var(--signal);animation:livepulse 1.6s ease-in-out infinite}
 
 .nav-burger{display:none;flex-direction:column;gap:5px;padding:8px}
 .nav-burger span{display:block;width:22px;height:1.5px;background:var(--blue);transition:transform .3s var(--ease),opacity .2s var(--ease)}
@@ -628,13 +623,11 @@ svg{display:block}
 .stats{background:var(--blue);color:#fff;position:relative;overflow:hidden;padding:clamp(64px,8vw,120px) 0}
 .stats::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
 .stats::after{content:'';position:absolute;width:800px;height:800px;border-radius:50%;top:-400px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(58,107,200,.25),transparent 70%);pointer-events:none}
-.stats-head{padding:0 var(--gutter);margin-bottom:clamp(40px,5vw,64px);max-width:1600px;margin-left:auto;margin-right:auto;position:relative;z-index:2;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:end}
+.stats-head{padding:0 var(--gutter);margin-bottom:clamp(40px,5vw,64px);max-width:1600px;margin-left:auto;margin-right:auto;position:relative;z-index:2;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end}
 .stats-head .tag{color:#fff}
 .stats-head .tag::before,.stats-head .tag::after{color:rgba(255,255,255,.5)}
-.stats-head .h-lg{color:#fff;max-width:560px}
+.stats-head .h-lg{color:#fff}
 .stats-head .h-lg .accent{color:#fff;background:none;-webkit-text-fill-color:#fff;opacity:.65}
-.stats-head .stats-meta{font-family:var(--mono);font-size:.62rem;color:rgba(255,255,255,.6);letter-spacing:.1em;text-align:right;line-height:1.6}
-.stats-head .stats-meta b{color:#fff}
 .stats-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1600px;margin:0 auto;border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.14)}
 .stat-cell{padding:clamp(28px,3.5vw,44px) clamp(20px,2.4vw,32px);border-right:1px solid rgba(255,255,255,.14);position:relative;display:flex;flex-direction:column;gap:12px}
 .stat-cell:last-child{border-right:none}
@@ -943,9 +936,8 @@ svg{display:block}
 .eco-rail:last-child{border-bottom:none}
 .eco-rail-label{display:flex;flex-direction:column;justify-content:center;gap:6px;padding:clamp(16px,1.8vw,22px) clamp(16px,1.8vw,26px);border-right:1px solid var(--line-2);background:var(--surface);position:relative;z-index:3}
 .eco-rail-label::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--cat-color)}
-.erl-cat{font-family:var(--display);font-weight:600;font-size:clamp(.98rem,1.3vw,1.18rem);letter-spacing:-.01em;color:var(--text);display:flex;align-items:center;gap:9px}
-.erl-cat::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--cat-color);box-shadow:0 0 9px var(--glow-soft)}
-.erl-count{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;color:var(--text-subtle);text-transform:uppercase}
+.erl-cat{font-family:var(--display);font-weight:600;font-size:clamp(.98rem,1.3vw,1.18rem);line-height:1.25;letter-spacing:-.01em;color:var(--text);display:flex;align-items:flex-start;gap:9px}
+.erl-cat::before{content:'';flex-shrink:0;margin-top:calc(.625em - 3.5px);width:7px;height:7px;border-radius:50%;background:var(--cat-color);box-shadow:0 0 9px var(--glow-soft)}
 .eco-rail-view{position:relative;overflow:hidden;display:flex;align-items:stretch;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 93%,transparent)}
 .eco-track{display:flex;align-items:stretch;width:max-content;animation:ecoMarqL 48s linear infinite;will-change:transform}
 .eco-rail[data-dir="r"] .eco-track{animation-name:ecoMarqR}
@@ -1437,7 +1429,7 @@ footer::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;backg
 .f-col .f-title::before{content:none}
 .f-col .f-brand-row{display:flex;align-items:center;gap:14px;margin-bottom:22px}
 .f-col .f-brand-row .f-logo-box{display:inline-flex;align-items:center;justify-content:center;background:#fff;border-radius:3px;padding:7px 12px}
-.f-col .f-brand-row .f-logo-box img{height:22px;width:auto;object-fit:contain;display:block}
+.f-col .f-brand-row .f-logo-box img{height:9px;width:auto;object-fit:contain;display:block}
 .f-col .f-brand-row .hair-v{width:1px;height:24px;background:rgba(255,255,255,.2)}
 .f-col .f-brand-row .pol-mini{height:24px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.7}
 .f-col .f-desc{font-family:var(--body);font-size:.95rem;line-height:1.65;color:rgba(255,255,255,.72);margin-bottom:22px;max-width:36ch}
@@ -1479,7 +1471,7 @@ footer::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;backg
 .contact-back{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text);padding:8px 12px;font-weight:600}
 .contact-back:hover{color:var(--blue)}
 .contact-brand{display:flex;align-items:center;gap:10px}
-.contact-brand img{height:22px;width:auto;object-fit:contain}
+.contact-brand img{height:9px;width:auto;object-fit:contain}
 .contact-brand span{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)}
 .contact-body{flex:1;padding:clamp(48px,6vw,88px) var(--gutter)}
 .contact-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:5fr 7fr;gap:clamp(40px,6vw,80px);align-items:start}
@@ -1575,7 +1567,6 @@ footer::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;backg
   .team-advisory .ta-side .ab-bridge{margin-top:28px}
   .nav-links{display:none}
   .nav-burger{display:flex}
-  .nav-block{display:none}
   .contact-grid{grid-template-columns:1fr;gap:48px}
   .f-cols{grid-template-columns:1fr 1fr}
 }
@@ -1605,7 +1596,6 @@ footer::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;backg
   .f-bottom{flex-direction:column;align-items:flex-start}
   .nav-brand img.polimi{display:none}
   .nav-brand .hair-v{display:none}
-  .nav-brand .lab-id{display:none}
   .svc-row{grid-template-columns:1fr;gap:10px;padding:22px 18px}
   .svc-dur{text-align:left;padding-top:0}
   .form-row{grid-template-columns:1fr}
@@ -1627,7 +1617,6 @@ footer::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;backg
   .euro-head,
   .stats-head{grid-template-columns:1fr;gap:14px;align-items:start}
   .sec-head__meta{min-width:0}
-  .stats-head .stats-meta{text-align:left}
 }
 /* Phone header. With the links collapsed, brand + CTA + burger compete for the
    ~250px left inside .nav-inner and the grid was shrinking the wordmark track
@@ -1888,11 +1877,10 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
   <div class="nav-inner">
     <span class="nc-tl"></span><span class="nc-br"></span>
     <a href="#home" class="nav-brand" aria-label="WEB3HUB Homepage">
-      <img src="assets/logos/polimi%20logo/logo-web3hub.png" alt="WEB3HUB" class="w3" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex'" />
+      <img src="assets/logos/polimi%20logo/web3hub-logo.png" alt="WEB3HUB" class="w3" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex'" />
       <span style="display:none;align-items:center;justify-content:center;width:32px;height:28px;background:var(--blue);font-family:var(--mono);font-size:.62rem;font-weight:700;color:#fff;letter-spacing:.04em">W3H</span>
       <span class="hair-v"></span>
       <img src="assets/logos/polimi%20logo/logo-polimi.png" alt="Politecnico di Milano" class="polimi" onerror="this.style.display='none'" />
-      <span class="lab-id">EST.<br/><b>2017</b></span>
     </a>
 
     <ul class="nav-links" role="list">
@@ -1905,10 +1893,6 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
     </ul>
 
     <div class="nav-cta">
-      <div class="nav-block">
-        <span class="blk">MILANO</span>
-        <span><span id="navClk">12:00</span> CET</span>
-      </div>
       <button class="btn btn--solid" onclick="openContact()">Contact <span class="arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></button>
       <button class="nav-burger" id="burgerBtn" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
@@ -1932,7 +1916,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
     <div class="contact-header">
       <button class="contact-back" onclick="closeContact()">← BACK TO LAB</button>
       <div class="contact-brand">
-        <img src="assets/logos/polimi%20logo/logo-web3hub.png" alt="WEB3HUB" onerror="this.style.display='none'" />
+        <img src="assets/logos/polimi%20logo/web3hub-logo.png" alt="WEB3HUB" onerror="this.style.display='none'" />
         <span>Politecnico di Milano</span>
       </div>
     </div>
@@ -2226,7 +2210,6 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
   <div class="stats-head">
     <span class="tag"><span class="dot"></span>LAB METRICS</span>
     <h2 class="h-lg">Eight years of <span class="accent">frontier research,</span> measured.</h2>
-    <div class="stats-meta">Politecnico di Milano<br/>EST. <b>2017</b></div>
   </div>
   <div class="stats-grid">
     <div class="stat-cell" style="--bar:88%">
@@ -2279,11 +2262,11 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 
       <!-- LEFT · ADVISORY BOARD — authority wall -->
       <div class="xpl-feature">
-        <span class="xpl-feat-label"><span class="dot"></span>01 · ADVISORY BOARD</span>
+        <span class="xpl-feat-label"><span class="dot"></span>INSTITUTIONAL BOARD</span>
         <h3 class="xpl-feat-h">Steered by Italy's<br/><span class="accent">institutions.</span></h3>
         <p class="xpl-feat-desc">A board of regulators, banks and leading firms gives WEB3HUB its independence and authority, the same institutions that anchor a 30-strong ecosystem of partners and research sponsors.</p>
 
-        <div class="xpl-board" role="list" aria-label="Advisory board members">
+        <div class="xpl-board" role="list" aria-label="Institutional Board members">
           <span class="xpl-chip" role="listitem"><img src="assets/logos/advisor/ABI.jpg" alt="ABI" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">ABI</span></span>
           <span class="xpl-chip" role="listitem"><img src="assets/logos/advisor/banca-italia.png" alt="Banca d'Italia" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">Banca d'Italia</span></span>
           <span class="xpl-chip" role="listitem"><img src="assets/logos/advisor/CARABINIERI-logo.svg" alt="Arma dei Carabinieri" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">Carabinieri</span></span>
@@ -2294,10 +2277,10 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <span class="xpl-chip" role="listitem"><img src="assets/logos/advisor/NORDIC-logo.png" alt="Nordic Blockchain Association" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">Nordic</span></span>
         </div>
 
-        <div class="xpl-feat-meta"><b>8</b> advisory members<span class="sep"></span><b>30</b> ecosystem partners<span class="sep"></span>since <b>2017</b></div>
+        <div class="xpl-feat-meta"><b>8</b> Institutional Board members<span class="sep"></span><b>30</b> ecosystem partners<span class="sep"></span>since <b>2017</b></div>
 
         <div class="xpl-feat-ctas">
-          <a href="#partner" class="btn btn--white">Meet the advisory board <span class="arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></a>
+          <a href="#partner" class="btn btn--white">Meet the Institutional Board <span class="arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></a>
           <a href="#partner" class="btn btn--inv">Explore the ecosystem <span class="arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></a>
         </div>
       </div>
@@ -2404,7 +2387,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
     <div class="logos-tier-head fade-up" style="margin-bottom:24px">
       <span class="tag"><span class="dot"></span>FOUR FOUNDATIONAL PILLARS</span>
       <span class="rule"></span>
-      <span class="count">EST. 2017</span>
+      <span class="count">SINCE 2017</span>
     </div>
     <div class="pillars-rack">
       <span class="pc-bl"></span><span class="pc-br"></span>
@@ -2707,7 +2690,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <div class="eco-stats">
           <div class="eco-stat" style="--c:var(--blue)"><span class="es-num">10</span><span class="es-lbl">Partners</span></div>
           <div class="eco-stat" style="--c:var(--blue-bright)"><span class="es-num">12</span><span class="es-lbl">Sponsors</span></div>
-          <div class="eco-stat" style="--c:#5b6b85"><span class="es-num">8</span><span class="es-lbl">Advisors</span></div>
+          <div class="eco-stat" style="--c:#5b6b85"><span class="es-num">8</span><span class="es-lbl">Institutional Board members</span></div>
         </div>
       </div>
 
@@ -2715,7 +2698,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <span class="erc tl"></span><span class="erc tr"></span><span class="erc bl"></span><span class="erc br"></span>
 
         <div class="eco-rail" data-dir="l" style="--cat-color:var(--blue)">
-          <div class="eco-rail-label"><span class="erl-cat">Partners</span><span class="erl-count">10 · Tier 01</span></div>
+          <div class="eco-rail-label"><span class="erl-cat">Partners</span></div>
           <div class="eco-rail-view"><div class="eco-track">
             <div class="eco-chip" title="Accenture"><img src="assets/logos/partner/accenture.png" alt="Accenture" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Accenture</span>'" /></div>
             <div class="eco-chip" title="Almaviva"><img src="assets/logos/partner/almaviva.png" alt="Almaviva" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Almaviva</span>'" /></div>
@@ -2731,7 +2714,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         </div>
 
         <div class="eco-rail" data-dir="r" style="--cat-color:var(--blue-bright)">
-          <div class="eco-rail-label"><span class="erl-cat">Sponsors</span><span class="erl-count">12 · Tier 02</span></div>
+          <div class="eco-rail-label"><span class="erl-cat">Sponsors</span></div>
           <div class="eco-rail-view"><div class="eco-track">
             <div class="eco-chip" title="42LF Innovation"><img src="assets/logos/sponsor/42LF-logo.png" alt="42LF Innovation" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>42LF Innovation</span>'" /></div>
             <div class="eco-chip" title="BNL BNP Paribas"><img src="assets/logos/sponsor/bnl-bnp-paribas.svg" alt="BNL BNP Paribas" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>BNL BNP Paribas</span>'" /></div>
@@ -2749,7 +2732,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         </div>
 
         <div class="eco-rail" data-dir="l" style="--cat-color:#5b6b85">
-          <div class="eco-rail-label"><span class="erl-cat">Advisors</span><span class="erl-count">8 · Institutional</span></div>
+          <div class="eco-rail-label"><span class="erl-cat">Institutional Board</span></div>
           <div class="eco-rail-view"><div class="eco-track">
             <div class="eco-chip" title="ABI"><img src="assets/logos/advisor/ABI.jpg" alt="ABI" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>ABI</span>'" /></div>
             <div class="eco-chip" title="Banca d'Italia"><img src="assets/logos/advisor/banca-italia.png" alt="Banca d'Italia" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Banca d'Italia</span>'" /></div>
@@ -2815,7 +2798,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
             <span class="tc-bl"></span><span class="tc-br"></span><span class="tier-spot" aria-hidden="true"></span>
             <div class="tier-head">
               <div>
-                <span class="tier-tag">TIER 01 · RECOMMENDED</span>
+                <span class="tier-tag">RECOMMENDED</span>
                 <h4 class="tier-name" style="margin-top:6px">PARTNER</h4>
               </div>
               <span class="hid" style="color:rgba(255,255,255,.6)">01</span>
@@ -2833,7 +2816,6 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
             <span class="tc-bl"></span><span class="tc-br"></span><span class="tier-spot" aria-hidden="true"></span>
             <div class="tier-head">
               <div>
-                <span class="tier-tag">TIER 02 · SPONSOR</span>
                 <h4 class="tier-name" style="margin-top:6px">SPONSOR</h4>
               </div>
               <span class="hid">02</span>
@@ -3021,10 +3003,10 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <div class="eco-cta-main">
         <span class="eco-cta-tag">The ecosystem</span>
         <h3 class="eco-cta-title">Events open the door.<br/><span class="accent">The ecosystem is who you meet.</span></h3>
-        <p class="eco-cta-body">Every workshop and conference brings together the partners, sponsors and advisors that power WEB3HUB: <strong>leading companies and institutions</strong> shaping blockchain and Web3 across Italy and Europe. Discover who stands behind the programme, and the network you can build with.</p>
+        <p class="eco-cta-body">Every workshop and conference brings together the partners, sponsors and Institutional Board that power WEB3HUB: <strong>leading companies and institutions</strong> shaping blockchain and Web3 across Italy and Europe. Discover who stands behind the programme, and the network you can build with.</p>
         <div class="eco-cta-actions">
           <a href="#partner" class="btn btn--solid">Explore the partner ecosystem <span class="arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></a>
-          <span class="eco-cta-meta"><b>10</b> partners · <b>12</b> sponsors · <b>8</b> advisors</span>
+          <span class="eco-cta-meta"><b>10</b> partners · <b>12</b> sponsors · <b>8</b> Institutional Board members</span>
         </div>
       </div>
       <div class="eco-cta-aside">
@@ -3048,7 +3030,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <circle class="ecn-hub" cx="185" cy="150" r="9" stroke="#fff" stroke-width="2"/>
           <text class="ecn-label" x="80" y="55" text-anchor="middle">PARTNERS</text>
           <text class="ecn-label" x="300" y="81" text-anchor="middle">SPONSORS</text>
-          <text class="ecn-label" x="168" y="276" text-anchor="middle">ADVISORS</text>
+          <text class="ecn-label" x="168" y="276" text-anchor="middle">INSTITUTIONAL BOARD</text>
         </svg>
       </div>
     </div>
@@ -3237,12 +3219,11 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       </div>
     </div>
 
-    <!-- ADVISORY BOARD — institutional authority wall + bridge to partners -->
+    <!-- INSTITUTIONAL BOARD — institutional authority wall + bridge to partners -->
     <div class="team-advisory fade-up">
       <span class="ac-bl"></span><span class="ac-br"></span>
       <div class="ta-side">
-        <span class="tag"><span class="dot"></span>ADVISORY · BOARD</span>
-        <h3 class="h-md" style="margin-top:14px">Institutional partners<br/>&amp; <span style="color:var(--blue)">advisory.</span></h3>
+        <h3 class="h-md">Institutional<br/><span style="color:var(--blue)">Board.</span></h3>
         <p class="body-sm" style="margin-top:10px;max-width:44ch">WEB3HUB maintains direct relationships with the leading Italian and European regulatory and institutional bodies, ensuring research remains grounded in the real policy landscape.</p>
         <a class="ab-bridge" href="#partner" aria-label="Explore the WEB3HUB partner ecosystem">
           <span class="abb-grid" aria-hidden="true"></span>
@@ -3258,7 +3239,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <span class="abc-k">Institutional bodies</span>
           <span class="abc-v">Regulators · Central banks · Authorities</span>
         </div>
-        <div class="ab-wall" role="list" aria-label="Advisory board members">
+        <div class="ab-wall" role="list" aria-label="Institutional Board members">
         <div class="ab-cell" role="listitem">
           <img src="assets/logos/advisor/banca-italia.png" alt="Banca d'Italia" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
           <span class="ab-name">Banca d'Italia</span>
@@ -3482,7 +3463,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
     <div class="f-col">
       <p class="f-title">Lab</p>
       <div class="f-brand-row">
-        <span class="f-logo-box"><img src="assets/logos/polimi%20logo/logo-web3hub.png" alt="WEB3HUB" onerror="this.style.display='none'" /></span>
+        <span class="f-logo-box"><img src="assets/logos/polimi%20logo/web3hub-logo.png" alt="WEB3HUB" onerror="this.style.display='none'" /></span>
         <span class="hair-v"></span>
         <img src="assets/logos/polimi%20logo/logo-polimi.png" alt="Politecnico di Milano" class="pol-mini" onerror="this.style.display='none'" />
       </div>
@@ -3819,14 +3800,6 @@ function tickBlk(){
 }
 setInterval(tickBlk,4200);
 
-/* ── CLOCK ── */
-function updateClock(){
-  const c=document.getElementById('navClk');
-  if(!c)return;
-  const t=new Date().toLocaleTimeString('en-GB',{timeZone:'Europe/Rome',hour:'2-digit',minute:'2-digit',hour12:false});
-  c.textContent=t;
-}
-updateClock();setInterval(updateClock,30000);
 
 /* ════════════════════════════════════════════════════════════
    HERO VIZ — Minimal interactive network (canvas) + block stream
