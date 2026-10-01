@@ -313,6 +313,13 @@ svg{display:block}
 .nav-links a:hover::before,.nav-links a.is-active::before{color:var(--blue-mid)}
 
 .nav-cta{display:flex;align-items:center;gap:14px}
+/* language switch — two-cell segmented control beside Contact */
+.lang-toggle{display:inline-flex;align-items:stretch;border:1px solid var(--line-3);border-radius:var(--r-sm);overflow:hidden;background:rgba(255,255,255,.55)}
+.lang-toggle button{font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.14em;color:var(--text-muted);background:transparent;border:0;padding:9px 10px;min-width:40px;cursor:pointer;transition:background .25s var(--ease),color .25s var(--ease)}
+.lang-toggle button + button{border-left:1px solid var(--line-2)}
+.lang-toggle button:hover{color:var(--blue)}
+.lang-toggle button[aria-pressed="true"]{background:var(--blue);color:#fff;cursor:default}
+.lang-toggle button:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 
 .nav-burger{display:none;flex-direction:column;gap:5px;padding:8px}
 .nav-burger span{display:block;width:22px;height:1.5px;background:var(--blue);transition:transform .3s var(--ease),opacity .2s var(--ease)}
@@ -623,7 +630,7 @@ svg{display:block}
 .stats{background:var(--blue);color:#fff;position:relative;overflow:hidden;padding:clamp(64px,8vw,120px) 0}
 .stats::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
 .stats::after{content:'';position:absolute;width:800px;height:800px;border-radius:50%;top:-400px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(58,107,200,.25),transparent 70%);pointer-events:none}
-.stats-head{padding:0 var(--gutter);margin-bottom:clamp(40px,5vw,64px);max-width:1600px;margin-left:auto;margin-right:auto;position:relative;z-index:2;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end}
+.stats-head{padding:0 var(--gutter);margin-bottom:clamp(40px,5vw,64px);max-width:1600px;margin-left:auto;margin-right:auto;position:relative;z-index:2}
 .stats-head .tag{color:#fff}
 .stats-head .tag::before,.stats-head .tag::after{color:rgba(255,255,255,.5)}
 .stats-head .h-lg{color:#fff}
@@ -1150,6 +1157,7 @@ svg{display:block}
 .team-advisory .ta-side{display:flex;flex-direction:column}
 .team-advisory .ta-side .tag{margin-bottom:14px}
 .team-advisory .ta-side .h-md{margin-bottom:10px}
+.team-advisory .ta-side .body-sm{margin-bottom:24px}
 
 /* bridge → partners — premium ink card, anchored to balance the wall */
 .ab-bridge{position:relative;margin-top:auto;padding:clamp(24px,2.6vw,34px);display:flex;flex-direction:column;gap:10px;background:var(--grad);border:1px solid var(--blue);border-radius:var(--r-lg);color:#fff;text-decoration:none;overflow:hidden;box-shadow:var(--shadow-2);transition:transform .5s var(--ease-out),box-shadow .5s var(--ease-out)}
@@ -1627,12 +1635,14 @@ footer::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;backg
   .nav-inner{gap:10px;padding:10px 10px 10px 12px}
   .nav-cta{gap:4px}
   .nav-cta .btn{padding:12px 14px;gap:8px}
+  .lang-toggle button{padding:9px 7px;min-width:34px}
   /* the freed space also buys the burger a proper 44px touch target */
   .nav-burger{padding:0;width:44px;height:44px;align-items:center;justify-content:center}
 }
 @media(max-width:360px){
   .nav-inner{gap:8px;padding:10px 8px 10px 10px}
   .nav-cta .btn{padding:12px 10px;gap:6px}
+  .lang-toggle button{padding:9px 5px;min-width:30px;letter-spacing:.08em}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
@@ -1893,6 +1903,10 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
     </ul>
 
     <div class="nav-cta">
+      <div class="lang-toggle" id="langToggle" role="group" aria-label="Language" data-i18n-skip>
+        <button type="button" data-lang="it" lang="it" aria-pressed="false">ITA</button>
+        <button type="button" data-lang="en" lang="en" aria-pressed="true">ENG</button>
+      </div>
       <button class="btn btn--solid" onclick="openContact()">Contact <span class="arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></button>
       <button class="nav-burger" id="burgerBtn" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
@@ -2023,8 +2037,6 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
   <div class="hero-aurora" aria-hidden="true"></div>
 
   <div class="hero-content">
-    <span class="tag hero-tag fade-up"><span class="dot"></span>Blockchain &amp; Web3 Research Lab</span>
-
     <h1 class="hero-title h-mega" id="hero-title">
       <span class="line"><span>The future of</span></span>
       <span class="line"><span><span class="accent">Web3</span> is built</span></span>
@@ -2032,7 +2044,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
     </h1>
 
     <p class="hero-sub fade-up delay-2">
-      One lab, two souls: a rigorous <b>research observatory</b> and an <b>applied projects lab</b>, at the Politecnico di Milano.
+      One lab, two souls: a <b>research observatory</b> and an <b>applied projects lab</b>, at the Politecnico di Milano.
     </p>
 
     <!-- HERO BRIDGE — two souls diverging from one foundation (feedback L1/L2) -->
@@ -2156,7 +2168,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
     <div class="identity-head fade-up">
       <span class="tag"><span class="dot"></span>TWO SOULS · ONE MISSION</span>
       <h2 class="h-xl" id="identity-heading" style="margin-top:20px">Research and <span class="accent">application.</span></h2>
-      <p class="lede lede-identity" style="margin:20px auto 0">Two complementary missions, one shared foundation. <br class="d-br"/>WEB3HUB couples a rigorous research observatory with an applied lab, bound by a single <br class="d-br"/>hub of expertise, partners and infrastructure.</p>
+      <p class="lede lede-identity" style="margin:20px auto 0">Two complementary missions, one shared foundation. <br class="d-br"/>WEB3HUB couples a research observatory with an applied lab, bound by a single <br class="d-br"/>hub of expertise, partners and infrastructure.</p>
     </div>
 
     <div class="identity-link">
@@ -2208,7 +2220,6 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 <!-- ════════════════════════ STATS — MISSION CONTROL ════════════════════════ -->
 <div class="stats" role="region" aria-label="Key metrics">
   <div class="stats-head">
-    <span class="tag"><span class="dot"></span>LAB METRICS</span>
     <h2 class="h-lg">Eight years of <span class="accent">frontier research,</span> measured.</h2>
   </div>
   <div class="stats-grid">
@@ -2247,10 +2258,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 <section class="section" aria-labelledby="explore-title">
   <div class="wrap">
     <div class="sec-head fade-up">
-      <div class="sec-head__meta">
-        <span class="ord">THE CENTRE</span>
-        <span class="hash">NETWORK · PEOPLE · KNOWLEDGE</span>
-      </div>
+      <div class="sec-head__meta" aria-hidden="true"></div>
       <div>
         <span class="tag"><span class="dot"></span>BEYOND THE RESEARCH</span>
         <h2 class="h-lg" id="explore-title" style="margin-top:16px">An ecosystem,<br/><span class="accent">not just a lab.</span></h2>
@@ -2277,7 +2285,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <span class="xpl-chip" role="listitem"><img src="assets/logos/advisor/NORDIC-logo.png" alt="Nordic Blockchain Association" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">Nordic</span></span>
         </div>
 
-        <div class="xpl-feat-meta"><b>8</b> Institutional Board members<span class="sep"></span><b>30</b> ecosystem partners<span class="sep"></span>since <b>2017</b></div>
+        <div class="xpl-feat-meta"><b>8</b> Institutional Board members<span class="sep"></span><b>30</b> ecosystem partners</div>
 
         <div class="xpl-feat-ctas">
           <a href="#partner" class="btn btn--white">Meet the Institutional Board <span class="arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></a>
@@ -2329,7 +2337,6 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
   <div class="wrap">
     <div class="euro-head fade-up">
       <div class="meta">
-        <span class="ord">INTERNATIONAL</span>
         <span class="hash">EUROPE · 2022—2026</span>
       </div>
       <div>
@@ -3065,7 +3072,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <span class="tn-role">Scientific Director</span>
           <div class="tn-foot"><a class="tn-li" href="https://www.linkedin.com/in/alessandro-perego-0b69322a/" target="_blank" rel="noopener" aria-label="Alessandro Perego on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         </div>
-        <div class="team-node lg">
+        <div data-g="f" class="team-node lg">
           <div class="tn-head">
             <div class="tn-avatar"><img class="tn-photo" src="assets/images/sciuto.png" alt="Donatella Sciuto" loading="lazy" decoding="async">DS</div>
           </div>
@@ -3104,7 +3111,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <span class="tn-role">Director · Research &amp; Projects</span>
           <div class="tn-foot"><a href="mailto:francesco.bruschi@polimi.it" class="tn-email">francesco.bruschi@polimi.it</a><a class="tn-li" href="https://www.linkedin.com/in/francesco-bruschi-5ab1b15/" target="_blank" rel="noopener" aria-label="Francesco Bruschi on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         </div>
-        <div class="team-node" data-research="Director · Research" data-projects="Director · Projects">
+        <div data-g="f" class="team-node" data-research="Director · Research" data-projects="Director · Projects">
           <div class="tn-head">
             <div class="tn-avatar"><img class="tn-photo" src="assets/images/portale.png" alt="Valeria Portale" loading="lazy" decoding="async">VP</div>
           </div>
@@ -3467,7 +3474,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <span class="hair-v"></span>
         <img src="assets/logos/polimi%20logo/logo-polimi.png" alt="Politecnico di Milano" class="pol-mini" onerror="this.style.display='none'" />
       </div>
-      <p class="f-desc">The Blockchain &amp; Web3 Research and Projects Lab of the Politecnico di Milano, <strong>#1 in Italy</strong> for blockchain research (CoinDesk, 2022).</p>
+      <p class="f-desc">The Blockchain &amp; Web3 Research and Projects Lab of the Politecnico di Milano, <strong>#1 in Italy</strong> for blockchain research.</p>
       <div class="f-socials">
         <a href="https://www.linkedin.com/company/web3hub-polimi" target="_blank" rel="noopener">LinkedIn ↗</a>
         <a href="https://www.osservatori.net" target="_blank" rel="noopener">Osservatori.net ↗</a>
@@ -4614,6 +4621,126 @@ if('requestIdleCallback' in window){
     if(ok)ok.classList.add('show');
     return false;
   };
+})();
+</script>
+
+<!-- ════════════════════════ I18N · EN (source) / IT ════════════════════════
+     English lives in the markup above. Switching to IT swaps text in place from
+     assets/i18n/it.js (and swaps it back on EN), then keeps watching the DOM so
+     content the scripts render later (map cards, team filter, resources) follows
+     the chosen language. Anything missing from the dictionary stays in English. -->
+<script src="assets/i18n/it.js"></script>
+<script>
+(function(){
+  const DICT=window.W3H_IT;
+  const toggle=document.getElementById('langToggle');
+  if(!DICT||!toggle)return;
+  const STORE='w3h-lang', ATTRS=['aria-label','title','placeholder','alt'];
+  const INL=new Set(['B','STRONG','EM','I','BR','SPAN','A','SUP','SUB','SMALL']);
+  const norm=s=>s.replace(/\s+/g,' ').trim();
+  const doneText=new Map(), doneHTML=new Map(), doneAttr=new Map(); // node → {orig,val}
+  const EN={title:document.title};
+  let lang='en', obs=null;
+
+  const t=k=>DICT.text[k]!==undefined?DICT.text[k]:k;
+  function lookup(raw,el){
+    const k=norm(raw);
+    if(!k||!/[A-Za-z]/.test(k))return null;
+    if(el&&DICT.textF[k]!==undefined&&el.closest('[data-g="f"]'))return DICT.textF[k];
+    if(DICT.text[k]!==undefined)return DICT.text[k];
+    for(const [re,fn] of DICT.patterns){const m=k.match(re);if(m)return fn(m,t);}
+    return null;
+  }
+  /* a block that mixes its own text with inline tags is translated as a whole */
+  function isRich(el){
+    if(!el.firstElementChild)return false;
+    let direct=false;
+    for(const c of el.childNodes){if(c.nodeType===3&&c.data.trim()){direct=true;break;}}
+    if(!direct||!/[A-Za-z]/.test(el.textContent))return false;
+    for(const d of el.querySelectorAll('*')){
+      if(!INL.has(d.tagName)||d.id||d.hasAttribute('data-target')||d.hasAttribute('data-count')||d.classList.contains('val')||d.classList.contains('aval'))return false;
+    }
+    return true;
+  }
+  const skip=el=>!!el.closest('script,style,noscript,[data-i18n-skip]');
+
+  function doText(n){
+    const pe=n.parentElement;if(!pe||skip(pe))return;
+    const rec=doneText.get(n);
+    if(rec&&n.data===rec.val)return;
+    const v=lookup(n.data,pe);if(v==null)return;
+    const lead=n.data.match(/^\s*/)[0], trail=n.data.match(/\s*$/)[0];
+    const val=lead+v+trail;
+    doneText.set(n,{orig:n.data,val});n.data=val;
+  }
+  function doAttrs(el){
+    if(skip(el))return;
+    for(const a of ATTRS){
+      const cur=el.getAttribute(a);if(!cur)continue;
+      let rec=doneAttr.get(el);
+      if(rec&&rec[a]&&rec[a].val===cur)continue;
+      const v=lookup(cur,el);if(v==null)continue;
+      if(!rec){rec={};doneAttr.set(el,rec);}
+      rec[a]={orig:cur,val:v};el.setAttribute(a,v);
+    }
+  }
+  function translate(root){
+    if(root.nodeType===3){doText(root);return;}
+    if(root.nodeType!==1||skip(root))return;
+    const rich=[], texts=[], els=[];
+    const walk=document.createTreeWalker(root,NodeFilter.SHOW_ELEMENT|NodeFilter.SHOW_TEXT,{acceptNode(n){
+      if(n.nodeType===3)return NodeFilter.FILTER_ACCEPT;
+      if(/^(SCRIPT|STYLE|NOSCRIPT)$/.test(n.tagName)||n.hasAttribute('data-i18n-skip'))return NodeFilter.FILTER_REJECT;
+      if(doneHTML.has(n))return NodeFilter.FILTER_REJECT;
+      if(isRich(n)&&!(n.parentElement&&n!==root&&isRich(n.parentElement))){
+        const v=DICT.html[norm(n.innerHTML)];
+        if(v!==undefined){rich.push([n,v]);return NodeFilter.FILTER_REJECT;}
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    }});
+    els.push(root);
+    for(let n=walk.nextNode();n;n=walk.nextNode()){if(n.nodeType===3)texts.push(n);else els.push(n);}
+    rich.forEach(([el,v])=>{doneHTML.set(el,{orig:el.innerHTML,val:v});el.innerHTML=v;doAttrs(el);});
+    texts.forEach(doText);
+    els.forEach(doAttrs);
+  }
+  function restore(){
+    doneHTML.forEach((r,el)=>{el.innerHTML=r.orig;});
+    doneText.forEach((r,n)=>{if(n.data===r.val)n.data=r.orig;});
+    doneAttr.forEach((rec,el)=>{for(const a in rec)if(el.getAttribute(a)===rec[a].val)el.setAttribute(a,rec[a].orig);});
+    doneHTML.clear();doneText.clear();doneAttr.clear();
+  }
+  function watch(on){
+    if(obs){obs.disconnect();obs=null;}
+    if(!on)return;
+    obs=new MutationObserver(recs=>{
+      for(const r of recs){
+        if(r.type==='childList')r.addedNodes.forEach(translate);
+        else if(r.type==='characterData')doText(r.target);
+        else if(r.type==='attributes')doAttrs(r.target);
+      }
+      obs.takeRecords(); // drop the mutations we just made ourselves
+    });
+    obs.observe(document.body,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:ATTRS});
+  }
+  function setLang(next,save){
+    if(next!=='it')next='en';
+    if(next!==lang){
+      watch(false);
+      if(next==='it'){translate(document.body);document.title=DICT.title;}
+      else{restore();document.title=EN.title;}
+      lang=next;
+      watch(lang==='it');
+    }
+    document.documentElement.lang=lang;
+    toggle.setAttribute('aria-label',lang==='it'?'Lingua':'Language');
+    toggle.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===lang)));
+    if(save){try{localStorage.setItem(STORE,lang);}catch(e){}}
+  }
+  toggle.addEventListener('click',e=>{const b=e.target.closest('button[data-lang]');if(b)setLang(b.dataset.lang,true);});
+  let saved=null;try{saved=localStorage.getItem(STORE);}catch(e){}
+  if(saved==='it')setLang('it',false);
+  window.W3H_setLang=setLang;
 })();
 </script>
 
