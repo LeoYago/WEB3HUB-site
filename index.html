@@ -1175,7 +1175,7 @@ svg{display:block}
 .ab-board-cap{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:13px;border-bottom:1px solid var(--line-2)}
 .ab-board-cap .abc-k{color:var(--blue)}
 .ab-board-cap .abc-v{font-family:var(--mono);font-size:.56rem;letter-spacing:.07em;text-transform:uppercase;color:var(--text-subtle);text-align:right}
-.ab-wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));grid-auto-rows:minmax(clamp(74px,6.6vw,98px),1fr);gap:10px;align-content:stretch;flex:1}
+.ab-wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(clamp(74px,6.6vw,98px),1fr);gap:10px;align-content:stretch;flex:1}
 .ab-cell{position:relative;display:flex;align-items:center;justify-content:center;height:100%;min-height:clamp(74px,6.6vw,98px);padding:16px;background:linear-gradient(158deg,#ffffff 0%,#edf3fc 100%);border:1px solid var(--line-2);border-radius:10px;box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 1px 2px rgba(15,31,61,.05);overflow:hidden;transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s var(--ease)}
 .ab-cell::before{content:'';position:absolute;top:9px;left:9px;width:8px;height:8px;border-left:var(--tick-w) solid var(--blue);border-top:var(--tick-w) solid var(--blue);opacity:0;transform:translate(-3px,-3px);transition:opacity .4s var(--ease-out),transform .4s var(--ease-out)}
 .ab-cell::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
@@ -2033,7 +2033,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
     </h1>
 
     <p class="hero-sub fade-up delay-2">
-      One lab, two souls: the <b>Observatory</b> and the <b>Applied Research Hub</b>, at the Politecnico di Milano.
+      One lab, two souls: a <b>research observatory</b> and an <b>applied lab</b> at the Politecnico di Milano.
     </p>
 
     <!-- HERO BRIDGE — two souls diverging from one foundation (feedback L1/L2) -->
@@ -2093,9 +2093,9 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <span class="wire-item"><img src="assets/logos/norm/almaviva.png" alt="Almaviva" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Almaviva</span></span><span class="wire-sep"></span>
       <span class="wire-item"><img src="assets/logos/norm/bancomat.png" alt="Bancomat" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Bancomat</span></span><span class="wire-sep"></span>
       <span class="wire-item"><img src="assets/logos/norm/boerse-stuttgart.png" alt="B&ouml;rse Stuttgart Digital" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Börse Stuttgart</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/norm/cdp.png" alt="Cassa Depositi e Prestiti" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">CDP</span></span><span class="wire-sep"></span>
       <span class="wire-item"><img src="assets/logos/norm/enel.png" alt="Enel" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Enel</span></span><span class="wire-sep"></span>
       <span class="wire-item"><img src="assets/logos/norm/ey.png" alt="EY" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">EY</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/norm/fleap.png" alt="Fleap" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Fleap</span></span><span class="wire-sep"></span>
       <span class="wire-item"><img src="assets/logos/norm/intesa-sanpaolo.png" alt="Intesa Sanpaolo" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Intesa Sanpaolo</span></span><span class="wire-sep"></span>
       <span class="wire-item"><img src="assets/logos/norm/mediolanum.png" alt="Mediolanum Banca" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Mediolanum Banca</span></span><span class="wire-sep"></span>
       <span class="wire-item"><img src="assets/logos/norm/pomiager.png" alt="Pomiager" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Pomiager</span></span><span class="wire-sep"></span>
@@ -2124,9 +2124,9 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <span class="wire-item"><img src="assets/logos/norm/almaviva.png" alt="Almaviva" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Almaviva</span></span><span class="wire-sep"></span>
       <span class="wire-item"><img src="assets/logos/norm/bancomat.png" alt="Bancomat" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Bancomat</span></span><span class="wire-sep"></span>
       <span class="wire-item"><img src="assets/logos/norm/boerse-stuttgart.png" alt="B&ouml;rse Stuttgart Digital" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Börse Stuttgart</span></span><span class="wire-sep"></span>
+      <span class="wire-item"><img src="assets/logos/norm/cdp.png" alt="Cassa Depositi e Prestiti" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">CDP</span></span><span class="wire-sep"></span>
       <span class="wire-item"><img src="assets/logos/norm/enel.png" alt="Enel" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Enel</span></span><span class="wire-sep"></span>
       <span class="wire-item"><img src="assets/logos/norm/ey.png" alt="EY" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">EY</span></span><span class="wire-sep"></span>
-      <span class="wire-item"><img src="assets/logos/norm/fleap.png" alt="Fleap" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Fleap</span></span><span class="wire-sep"></span>
       <span class="wire-item"><img src="assets/logos/norm/intesa-sanpaolo.png" alt="Intesa Sanpaolo" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Intesa Sanpaolo</span></span><span class="wire-sep"></span>
       <span class="wire-item"><img src="assets/logos/norm/mediolanum.png" alt="Mediolanum Banca" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Mediolanum Banca</span></span><span class="wire-sep"></span>
       <span class="wire-item"><img src="assets/logos/norm/pomiager.png" alt="Pomiager" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span class="wire-item-text" style="display:none">Pomiager</span></span><span class="wire-sep"></span>
@@ -2160,7 +2160,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
     <div class="identity-head fade-up">
       <span class="tag"><span class="dot"></span>Two souls · One mission</span>
       <h2 class="h-xl" id="identity-heading" style="margin-top:20px">Research and <span class="accent">application.</span></h2>
-      <p class="lede lede-identity" style="margin:20px auto 0">Two complementary missions, one shared foundation. <br class="d-br"/>WEB3HUB couples the Observatory with the Applied Research Hub, bound by a single <br class="d-br"/>hub of expertise, partners and infrastructure.</p>
+      <p class="lede lede-identity" style="margin:20px auto 0">Two complementary missions, one shared foundation. <br class="d-br"/>WEB3HUB couples a research observatory with an applied lab, bound together by a single <br class="d-br"/>hub of expertise, partners and infrastructure.</p>
     </div>
 
     <div class="identity-link">
@@ -2172,7 +2172,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         </div>
         <div>
           <h3 class="soul-name"><span class="accent">Observatory.</span></h3>
-          <p class="soul-desc" style="margin-top:14px">Since 2017, the Observatory has been dedicated to generating and sharing knowledge on blockchain and Web3, contributing to the growth of the Italian and international market. Four pillars drive everything we do: Research, Network, Education and Communication.</p>
+          <p class="soul-desc" style="margin-top:14px">Since 2017, the Observatory has been dedicated to generating and sharing knowledge on blockchain and Web3, contributing to the growth of the Italian and international markets. Four pillars guide everything we do: Research, Network, Education and Communication.</p>
         </div>
         <div class="soul-meta">
           <div class="soul-meta-cell"><span class="lbl">REPORTS</span><span class="val">25+</span></div>
@@ -2212,12 +2212,12 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 <!-- ════════════════════════ STATS — MISSION CONTROL ════════════════════════ -->
 <div class="stats" role="region" aria-label="Key metrics">
   <div class="stats-head">
-    <h2 class="h-lg">Eight years of <span class="accent">frontier research,</span> measured.</h2>
+    <h2 class="h-lg">Nine years of <span class="accent">frontier research,</span> grounded in evidence.</h2>
   </div>
   <div class="stats-grid">
     <div class="stat-cell" style="--bar:88%">
       <span class="stat-ord">01</span>
-      <span class="stat-num" data-target="8" data-suffix="+"><span class="val">0</span><span class="suffix">+</span></span>
+      <span class="stat-num" data-target="9" data-suffix="+"><span class="val">0</span><span class="suffix">+</span></span>
       <span class="stat-lbl">YRS · RESEARCH</span>
       <span class="stat-desc">Continuous blockchain &amp; Web3 research since 2017.</span>
       <span class="stat-bar"></span>
@@ -2240,7 +2240,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <span class="stat-ord">04</span>
       <span class="stat-num" data-target="2000" data-suffix="+"><span class="val">0</span><span class="suffix">+</span></span>
       <span class="stat-lbl">CONF · ATTENDEES</span>
-      <span class="stat-desc">Registered per national conference, the most attended blockchain gathering in Italy.</span>
+      <span class="stat-desc">Registered for our national conference, a reference point for the Italian blockchain community.</span>
       <span class="stat-bar"></span>
     </div>
   </div>
@@ -2307,7 +2307,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <span class="xpl-dir-body">
             <span class="xpl-dir-k">Knowledge</span>
             <h3 class="xpl-dir-h">Knowledge, in the open</h3>
-            <p class="xpl-dir-d">Reports, datasets and materials published openly for the community.</p>
+            <p class="xpl-dir-d">Reports, databases and materials, shared within the community.</p>
           </span>
           <span class="xpl-dir-arr"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></span>
         </a>
@@ -2330,8 +2330,8 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       </div>
       <div>
         <span class="euro-tag"><span class="dot"></span>On the European circuit</span>
-        <h2 class="euro-h" id="intl-title">Present where Europe<br/><span class="accent">sets the agenda.</span></h2>
-        <p class="euro-lede">From Milano outward (Paris, London, Brussels, Barcelona and beyond), WEB3HUB takes part in, and is invited to, the workshops and conferences shaping Europe's blockchain and Web3 conversation.</p>
+        <h2 class="euro-h" id="intl-title">Shaping the debate,<br/><span class="accent">from Milan to Europe.</span></h2>
+        <p class="euro-lede">From Milano outward (Paris, London, Brussels, Barcelona and beyond), WEB3HUB takes part in, and is invited to, events shaping Europe's blockchain and Web3 conversation.</p>
       </div>
       <div class="euro-fp" role="list" aria-label="International footprint">
         <div class="euro-fp-stat" role="listitem"><b>8</b><span>Cities</span></div>
@@ -2351,7 +2351,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         </div>
         <div class="euro-legend">
           <span class="euro-leg cat-hq"><i></i>WEB3HUB · Milano</span>
-          <span class="euro-leg cat-host"><i></i>Hosted by WEB3HUB</span>
+          <span class="euro-leg cat-host"><i></i>Organised by WEB3HUB</span>
           <span class="euro-leg cat-participated"><i></i>Participated</span>
         </div>
       </div>
@@ -2374,7 +2374,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <span class="tag fade-up"><span class="dot"></span>Research</span>
         <h2 class="h-xl fade-up delay-1" id="research-title" style="margin-top:20px"><span class="accent">Observatory.</span></h2>
       </div>
-      <p class="lede fade-up delay-2">Since its founding in 2017, the Observatory has been generating frontier knowledge on blockchain and Web3, shaping the Italian and international market through <b style="color:var(--blue)">four foundational pillars</b>.</p>
+      <p class="lede fade-up delay-2">Since its founding in 2017, the Observatory has been generating frontier knowledge on blockchain and Web3, shaping the Italian and international markets through <b style="color:var(--blue)">four foundational pillars</b>.</p>
     </div>
 
     <!-- PILLARS -->
@@ -2392,7 +2392,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <div class="pil-icon"><svg viewBox="0 0 24 24"><path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 15.803a7.5 7.5 0 0010.607 10.607z"/></svg></div>
         </div>
         <h3 class="pil-name">Research</h3>
-        <p class="pil-desc">Developing in-depth analyses and studies to understand what blockchain and Web3 are, and what concrete opportunities they generate for businesses and institutions.</p>
+        <p class="pil-desc">Developing in-depth analyses to explain what blockchain and Web3 are, and which concrete opportunities they create for businesses and institutions.</p>
         <span class="pil-foot"><span class="d"></span>In-depth analysis</span>
         <span class="pil-bar"></span>
       </div>
@@ -2403,7 +2403,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <div class="pil-icon"><svg viewBox="0 0 24 24"><path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253"/></svg></div>
         </div>
         <h3 class="pil-name">Network</h3>
-        <p class="pil-desc">Building an international community of experts, demand and supply-side actors, facilitating exchange and collaboration to advance responsible adoption of blockchain and Web3.</p>
+        <p class="pil-desc">Building an international community of experts and demand and supply-side actors, facilitating exchange and collaboration to advance the responsible adoption of blockchain and Web3.</p>
         <span class="pil-foot"><span class="d"></span>30+ partners</span>
         <span class="pil-bar"></span>
       </div>
@@ -2425,7 +2425,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <div class="pil-icon"><svg viewBox="0 0 24 24"><path d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z"/></svg></div>
         </div>
         <h3 class="pil-name">Communication</h3>
-        <p class="pil-desc">Creating culture and spreading knowledge on blockchain and Web3, raising awareness among organisations that could benefit from these technologies.</p>
+        <p class="pil-desc">Fostering a culture of blockchain and Web3 knowledge, spreading understanding of these technologies and raising awareness among organisations that could benefit from them.</p>
         <span class="pil-foot"><span class="d"></span>2M+ views · LinkedIn</span>
         <span class="pil-bar"></span>
       </div>
@@ -2435,14 +2435,14 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
     <div class="activity-block">
       <div class="a-head fade-up">
         <span class="tag"><span class="dot"></span>Observatory · Activity</span>
-        <span class="body-sm">Measurable presence in Italy and internationally, shaping the blockchain ecosystem.</span>
+        <span class="body-sm">Engaging the blockchain ecosystem in Italy and internationally, through research, events and projects.</span>
       </div>
       <div class="activity-grid fade-up">
         
         <div class="activity-tile">
           <span class="a-num">8<span class="suffix">×</span></span>
           <span class="a-name">National Conferences</span>
-          <span class="a-desc">Each with 2,000+ registered attendees, Italy's most important blockchain event.</span>
+          <span class="a-desc">Each with 2,000+ registered attendees, a reference point for the Italian blockchain community.</span>
         </div>
         <div class="activity-tile">
           <span class="a-num">4<span class="suffix">+</span></span>
@@ -2451,8 +2451,8 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         </div>
         <div class="activity-tile">
           <span class="a-num">500<span class="suffix">+</span></span>
-          <span class="a-name">Webinar Participants</span>
-          <span class="a-desc">Annual attendance on Osservatori.net, with educational content and market updates.</span>
+          <span class="a-name">Webinar Participants / Year</span>
+          <span class="a-desc">Sessions on blockchain and Web3, with research insights and market updates.</span>
         </div>
         <div class="activity-tile">
           <span class="a-num">4</span>
@@ -2476,8 +2476,8 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <div class="bmo-panel fade-up">
         <div class="bmo-copy">
           <span class="bmo-tag">Blockchain Monthly Overview</span>
-          <h2 class="bmo-h" id="bmo-research-title">The month in Web3,<br/><span class="accent">read by the market.</span></h2>
-          <p class="bmo-lede">Every month the Observatory distils the news, industry analysis and market data that matter into a single briefing: what moved, what it means, and what to watch next. Written by the researchers behind the Observatory.</p>
+          <h2 class="bmo-h" id="bmo-research-title">Web3, every month,<br/><span class="accent">in one briefing.</span></h2>
+          <p class="bmo-lede">Each month, the Observatory researchers distil the news, analysis and market data that count into a single briefing: what moved, what it means and what to watch next.</p>
           <div class="bmo-actions">
             <a class="bmo-cta" href="https://forms.office.com/pages/responsepage.aspx?id=K3EXCvNtXUKAjjCd8ope66FKAF0nOyNGsrfXuK9y9r9UQTdWSkEwNDgxTjNHS00xQ1lST1ExS0FFSy4u" target="_blank" rel="noopener">Subscribe for free<span class="arw">→</span></a>
           </div>
@@ -2529,14 +2529,14 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         </div>
         <div class="why-cell">
           <span class="why-ghost" aria-hidden="true">02</span>
-          <h3 class="why-name">Specialised expertise,<br/><span class="accent">years in the field.</span></h3>
-          <p class="why-desc">Our team brings deep, vertical competence built over years of hands-on work in blockchain and Web3, combining academic rigour with direct experience on real industry projects.</p>
+          <h3 class="why-name">Specialised expertise,<br/><span class="accent">tested in the field.</span></h3>
+          <p class="why-desc">Our team combines academic rigour with years of hands-on experience on real industry projects in blockchain and Web3.</p>
           <span class="why-kicker">Field expertise</span>
         </div>
         <div class="why-cell">
           <span class="why-ghost" aria-hidden="true">03</span>
-          <h3 class="why-name">Ecosystem <span class="accent">development.</span></h3>
-          <p class="why-desc">Supporting each project means contributing to the growth of the entire blockchain ecosystem: value that extends beyond the individual initiative.</p>
+          <h3 class="why-name">Ecosystem development,<br/><span class="accent">beyond each project.</span></h3>
+          <p class="why-desc">Every project we support is pre-competitive, so its lessons, methods and results reach the wider blockchain ecosystem, not only the partners who funded it.</p>
           <span class="why-kicker">Ecosystem value</span>
         </div>
       </div>
@@ -2664,7 +2664,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <span class="tag fade-up"><span class="dot"></span>Partners</span>
         <h2 class="h-xl fade-up delay-1" id="partner-title" style="margin-top:20px">Why partner<br/>with <span class="accent">WEB3HUB?</span></h2>
       </div>
-      <p class="lede fade-up delay-2">Joining WEB3HUB means becoming part of Italy's most authoritative blockchain research ecosystem, backed by the credibility of the Politecnico di Milano, which ranks <b style="color:var(--blue)">#1 in Italy, #6 in Europe and #33 globally</b> for blockchain research according to CoinDesk.</p>
+      <p class="lede fade-up delay-2">Joining WEB3HUB means becoming part of one of Italy's leading blockchain research ecosystems, backed by the Politecnico di Milano, ranked <b style="color:var(--blue)">#1 in Italy, #6 in Europe and #33 globally</b> for blockchain research according to CoinDesk.</p>
     </div>
 
     <!-- ECOSYSTEM SHOWCASE -->
@@ -2693,9 +2693,9 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
             <div class="eco-chip" title="Almaviva"><img src="assets/logos/norm/almaviva.png" alt="Almaviva" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Almaviva</span>'" /></div>
             <div class="eco-chip" title="Bancomat"><img src="assets/logos/norm/bancomat.png" alt="Bancomat" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Bancomat</span>'" /></div>
             <div class="eco-chip" title="B&ouml;rse Stuttgart Digital"><img src="assets/logos/norm/boerse-stuttgart.png" alt="B&ouml;rse Stuttgart Digital" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Börse Stuttgart</span>'" /></div>
+            <div class="eco-chip" title="Cassa Depositi e Prestiti"><img src="assets/logos/norm/cdp.png" alt="Cassa Depositi e Prestiti" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>CDP</span>'" /></div>
             <div class="eco-chip" title="Enel"><img src="assets/logos/norm/enel.png" alt="Enel" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Enel</span>'" /></div>
             <div class="eco-chip" title="EY"><img src="assets/logos/norm/ey.png" alt="EY" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>EY</span>'" /></div>
-            <div class="eco-chip" title="Fleap"><img src="assets/logos/norm/fleap.png" alt="Fleap" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Fleap</span>'" /></div>
             <div class="eco-chip" title="Intesa Sanpaolo"><img src="assets/logos/norm/intesa-sanpaolo.png" alt="Intesa Sanpaolo" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Intesa Sanpaolo</span>'" /></div>
             <div class="eco-chip" title="Mediolanum Banca"><img src="assets/logos/norm/mediolanum.png" alt="Mediolanum Banca" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Mediolanum Banca</span>'" /></div>
             <div class="eco-chip" title="Pomiager"><img src="assets/logos/norm/pomiager.png" alt="Pomiager" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Pomiager</span>'" /></div>
@@ -2750,7 +2750,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <div class="value-cell">
             <span class="v-cat">INTEL</span>
             <h4 class="v-name">Research-first business intelligence</h4>
-            <p class="v-desc">We analyse topics on the frontier of innovation, always interpreted through a business lens, providing guidance on how to navigate the Italian and international market.</p>
+            <p class="v-desc">We analyse topics on the frontier of innovation, always interpreted through a business lens, providing guidance on how to navigate the Italian and international markets.</p>
           </div>
           <div class="value-cell">
             <span class="v-cat">POLICY</span>
@@ -2760,12 +2760,12 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <div class="value-cell">
             <span class="v-cat">BRAND</span>
             <h4 class="v-name">Premium visibility &amp; brand authority</h4>
-            <p class="v-desc">Your brand alongside the Politecnico di Milano on research reports, conference materials, LinkedIn content reaching over 2 million views per year.</p>
+            <p class="v-desc">Your brand alongside the Politecnico di Milano on research reports, conference materials and LinkedIn content that reaches over 2 million views a year.</p>
           </div>
           <div class="value-cell">
             <span class="v-cat">EARLY</span>
             <h4 class="v-name">Early access to research findings</h4>
-            <p class="v-desc">In our exclusive workshops, partners receive research results directly from Observatory researchers before public release, plus interaction with international top-level speakers.</p>
+            <p class="v-desc">In our closed-door workshops, partners and sponsors receive research results before public release and interact directly with leading international speakers.</p>
           </div>
           <div class="value-cell">
             <span class="v-cat">TRUST</span>
@@ -2784,18 +2784,17 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
             <span class="tier-spot" aria-hidden="true"></span>
             <div class="tier-head">
               <div>
-                <span class="tier-tag">RECOMMENDED</span>
                 <h4 class="tier-name" style="margin-top:6px">PARTNER</h4>
               </div>
               <span class="hid" style="color:rgba(255,255,255,.6)">01</span>
             </div>
             <div class="tier-feats">
-              <div class="tier-feat">Participation in all 4 workshops per year</div>
-              <div class="tier-feat">Roundtable participation in the final conference</div>
-              <div class="tier-feat">Raw data sharing: list of 1,000+ blockchain projects</div>
-              <div class="tier-feat">1-page company profile in final conference booklet</div>
-              <div class="tier-feat">Logo on conference cover, reports, website &amp; more</div>
-              <div class="tier-feat">Participant list (GDPR compliant)</div>
+              <div class="tier-feat">Participation in all four workshops a year</div>
+              <div class="tier-feat">Roundtable participation at the final conference</div>
+              <div class="tier-feat">Access to raw data: a list of 1,000+ blockchain projects</div>
+              <div class="tier-feat">One-page company profile in the final conference booklet</div>
+              <div class="tier-feat">Logo on the conference cover, reports, website and other materials</div>
+              <div class="tier-feat">GDPR-compliant participant list</div>
             </div>
           </div>
           <div class="tier">
@@ -2807,9 +2806,9 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
               <span class="hid">02</span>
             </div>
             <div class="tier-feats">
-              <div class="tier-feat">Participation in 2 workshops per year</div>
-              <div class="tier-feat">½ page company profile in final booklet</div>
-              <div class="tier-feat">Logo on conference cover, reports, website &amp; more</div>
+              <div class="tier-feat">Participation in two workshops a year</div>
+              <div class="tier-feat">1/2 page company profile in the final conference booklet</div>
+              <div class="tier-feat">Logo on the conference cover, reports, website and other materials</div>
             </div>
           </div>
         </div>
@@ -2825,7 +2824,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <div class="pcta-main">
         <div class="pc-tag"><span class="dot"></span>UNIQUE IN ITALY</div>
         <h3 class="pc-title">Ready to invest in your company's <span class="accent">future?</span></h3>
-        <p class="pc-body">Join Italy's most authoritative blockchain research community. Gain exclusive insights, build a network with industry decision makers, and shape the future of Web3 alongside the Politecnico di Milano.</p>
+        <p class="pc-body">Join one of Italy's leading blockchain research communities. Gain early access to our insights, build a network with industry decision-makers, and help shape the future of Web3 alongside the Politecnico di Milano.</p>
       </div>
       <div class="pcta-side">
         <div class="pcta-rank">
@@ -2868,7 +2867,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <span class="ea-id">SCALE</span>
         <span class="ea-num">2,000<span class="suffix">+</span></span>
         <span class="ea-name">Conference Attendees</span>
-        <span class="ea-desc">Registered at each national conference, the most attended blockchain gathering in Italy.</span>
+        <span class="ea-desc">Registered for our national conference, a reference point for the Italian blockchain community.</span>
       </div>
       <div class="ea-tile">
         <span class="ea-id">CADENCE</span>
@@ -2886,7 +2885,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 
     <div class="chain-head fade-up">
       <span class="tag"><span class="dot"></span>Annual calendar · 2026/27</span>
-      <span class="body-sm">A structured calendar of the year's research events, from closed-door workshops to flagship conferences.</span>
+      <span class="body-sm">A structured annual calendar of research events, from closed-door workshops to flagship conferences.</span>
     </div>
 
     <div class="chain">
@@ -2901,7 +2900,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
             <span class="bk-type">KICK-OFF</span>
           </div>
           <h4 class="bk-title">Kick-off Workshop</h4>
-          <p class="bk-desc">Explore the 2026 research agenda, key objectives, and methodologies, and engage with Partners and Sponsors to shape priorities and collaboration activities.</p>
+          <p class="bk-desc">Explore the 2026 research agenda, key objectives, methodologies and engage with the community to shape priorities and collaboration activities.</p>
           <div class="bk-foot"><span>POLITECNICO · MILANO</span><span>NEXT → #02</span></div>
         </div>
       </div>
@@ -2988,7 +2987,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <div class="eco-cta-main">
         <span class="eco-cta-tag">The ecosystem</span>
         <h3 class="eco-cta-title">Events open the door.<br/><span class="accent">The ecosystem is who you meet.</span></h3>
-        <p class="eco-cta-body">Every workshop and conference brings together the partners, sponsors and Institutional Board that power WEB3HUB: <strong>leading companies and institutions</strong> shaping blockchain and Web3 across Italy and Europe. Discover who stands behind the programme, and the network you can build with.</p>
+        <p class="eco-cta-body">Every workshop and conference brings together the partners, sponsors and Institutional Board that power WEB3HUB: <strong>leading companies and institutions</strong> working on blockchain and Web3 across Italy and Europe. Discover who stands behind the programme and the network you can build with.</p>
         <div class="eco-cta-actions">
           <a href="#partner" class="btn btn--solid">Explore the partner ecosystem <span class="arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></a>
           <span class="eco-cta-meta"><b>10</b> partners · <b>12</b> sponsors · <b>8</b> Institutional Board members</span>
@@ -3011,9 +3010,9 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
             <span class="orb-chip" style="--a:54.0deg" title="Almaviva"><span class="orb-logo"><img src="assets/logos/norm/almaviva.png" alt="Almaviva" loading="lazy" decoding="async" /></span></span>
             <span class="orb-chip" style="--a:90.0deg" title="Bancomat"><span class="orb-logo"><img src="assets/logos/norm/bancomat.png" alt="Bancomat" loading="lazy" decoding="async" /></span></span>
             <span class="orb-chip" style="--a:126.0deg" title="B&ouml;rse Stuttgart Digital"><span class="orb-logo"><img src="assets/logos/norm/boerse-stuttgart.png" alt="B&ouml;rse Stuttgart Digital" loading="lazy" decoding="async" /></span></span>
-            <span class="orb-chip" style="--a:162.0deg" title="Enel"><span class="orb-logo"><img src="assets/logos/norm/enel.png" alt="Enel" loading="lazy" decoding="async" /></span></span>
-            <span class="orb-chip" style="--a:198.0deg" title="EY"><span class="orb-logo"><img src="assets/logos/norm/ey.png" alt="EY" loading="lazy" decoding="async" /></span></span>
-            <span class="orb-chip" style="--a:234.0deg" title="Fleap"><span class="orb-logo"><img src="assets/logos/norm/fleap.png" alt="Fleap" loading="lazy" decoding="async" /></span></span>
+            <span class="orb-chip" style="--a:162.0deg" title="Cassa Depositi e Prestiti"><span class="orb-logo"><img src="assets/logos/norm/cdp.png" alt="Cassa Depositi e Prestiti" loading="lazy" decoding="async" /></span></span>
+            <span class="orb-chip" style="--a:198.0deg" title="Enel"><span class="orb-logo"><img src="assets/logos/norm/enel.png" alt="Enel" loading="lazy" decoding="async" /></span></span>
+            <span class="orb-chip" style="--a:234.0deg" title="EY"><span class="orb-logo"><img src="assets/logos/norm/ey.png" alt="EY" loading="lazy" decoding="async" /></span></span>
             <span class="orb-chip" style="--a:270.0deg" title="Intesa Sanpaolo"><span class="orb-logo"><img src="assets/logos/norm/intesa-sanpaolo.png" alt="Intesa Sanpaolo" loading="lazy" decoding="async" /></span></span>
             <span class="orb-chip" style="--a:306.0deg" title="Mediolanum Banca"><span class="orb-logo"><img src="assets/logos/norm/mediolanum.png" alt="Mediolanum Banca" loading="lazy" decoding="async" /></span></span>
             <span class="orb-chip" style="--a:342.0deg" title="Pomiager"><span class="orb-logo"><img src="assets/logos/norm/pomiager.png" alt="Pomiager" loading="lazy" decoding="async" /></span></span>
@@ -3282,10 +3281,6 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <img src="assets/logos/norm/nordic.png" alt="Nordic Blockchain Association" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
           <span class="ab-name">Nordic Blockchain Association</span>
         </div>
-        <div class="ab-cell" role="listitem">
-          <img src="assets/logos/norm/polimi-som.png" alt="Politecnico di Milano — School of Management" loading="lazy" decoding="async" onerror="this.closest('.ab-cell').classList.add('no-logo')"/>
-          <span class="ab-name">PoliMi · School of Management</span>
-        </div>
       </div>
     </div>
 
@@ -3300,7 +3295,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <span class="tag fade-up"><span class="dot"></span>Resources</span>
         <h2 class="h-xl fade-up delay-1" id="resources-title" style="margin-top:20px">Research, analysis<br/><span class="accent">&amp; publications.</span></h2>
       </div>
-      <p class="lede fade-up delay-2">Explore <b style="color:var(--blue)">articles, reports, newsletters and academic publications</b> from the Observatory research ecosystem and the WEB3HUB at the Politecnico di Milano: the knowledge shaping the blockchain and Web3 debate.</p>
+      <p class="lede fade-up delay-2">Explore <b style="color:var(--blue)">articles, reports, newsletters and academic publications</b> from the Blockchain &amp; Web3 Observatory and WEB3HUB at the Politecnico di Milano: the knowledge that informs the blockchain and Web3 debate.</p>
     </div>
 
     <!-- ── STICKY CATEGORY NAVIGATION ── client-side filter + anchor jump -->
@@ -3424,7 +3419,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <div class="res-news__body">
         <span class="res-news__tag"><span class="pulse"></span>Blockchain Monthly Overview</span>
         <h3 id="bmo-title">Receive your monthly<br/><span class="accent">deep dive reports.</span></h3>
-        <p class="lead">Curated insights, research highlights, in-depth analyses and the market figures shaping the Web3 landscape, straight from the WEB3HUB researchers at the Politecnico di Milano, every month.</p>
+        <p class="lead">Curated insights, research highlights, in-depth analyses and the market figures that frame the Web3 landscape, directly from our researchers at the Politecnico di Milano, every month.</p>
         <ul>
           <li>Macro-trends decoded</li>
           <li>Deep dives &amp; analysis</li>
@@ -4292,7 +4287,7 @@ if('requestIdleCallback' in window){
     {id:'brussels',city:'Brussels',country:'Belgium',lon:4.35,lat:50.85,cat:'host',events:[
       {n:'Blockchain impact on businesses',cat:'host',venue:'European Parliament',date:'November 2023',ym:'2023-11'}]},
     {id:'paris',city:'Paris',country:'France',lon:2.35,lat:48.85,cat:'host',events:[
-      {n:'The future of financial tokenization: regulation and innovation in the EU',cat:'host',role:'Co-hosted with BPI France and Ledger',date:'October 2025',ym:'2025-10'},
+      {n:'The future of financial tokenization: regulation and innovation in the EU',cat:'host',role:'Co-organised with BPI France and Ledger',date:'October 2025',ym:'2025-10'},
       {n:'Paris Blockchain Week',cat:'participated',date:'April 2025',ym:'2025-04'}]},
     {id:'cannes',city:'Cannes',country:'France',lon:7.02,lat:43.55,cat:'participated',events:[
       {n:'Stable Summit II',cat:'participated',date:'March 2025',ym:'2025-03'}]},
@@ -4303,7 +4298,7 @@ if('requestIdleCallback' in window){
     {id:'barcelona',city:'Barcelona',country:'Spain',lon:2.17,lat:41.39,cat:'participated',events:[
       {n:'European Blockchain Week',cat:'participated',date:'October 2025',ym:'2025-10'}]},
     {id:'london',city:'London',country:'United Kingdom',lon:-0.13,lat:51.51,cat:'host',events:[
-      {n:'Internet of value: cryptocurrencies, stablecoins and CBDCs state of adoption',cat:'host',role:'Co-hosted with UCL (University College London)',date:'September 2024',ym:'2024-09'}]}
+      {n:'Internet of value: cryptocurrencies, stablecoins and CBDCs state of adoption',cat:'host',role:'Co-organised with UCL (University College London)',date:'September 2024',ym:'2024-09'}]}
   ];
   const mapped=[HQ,...cities];
 
@@ -4347,7 +4342,7 @@ if('requestIdleCallback' in window){
   });
 
   /* ── side panel rendering ── */
-  const labels={host:'Hosted by WEB3HUB',participated:'Participated',hq:'Home base'};
+  const labels={host:'Organised by WEB3HUB',participated:'Participated',hq:'Home base'};
   const chip=c=>`<span class="euro-chip cat-${c}"><i></i>${labels[c]}</span>`;
   function clearActive(){
     pinsLayer.querySelectorAll('.euro-pin').forEach(p=>p.classList.remove('is-active'));
