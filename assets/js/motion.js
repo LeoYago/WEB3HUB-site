@@ -29,9 +29,9 @@
     '.pillars-rack','.activity-grid','.why-rack','.spec-sheet','.cases-grid','.values-list',
     '.tier-stack','.events-aside','.team-grid','.ab-wall','.xpl-board','.xpl-dir',
     '.stats-grid','.soul-meta','.euro-fp','.eco-stats','.hero-metrics-inner','.f-cols',
-    '.chain','.res-cat__head','.eco-rails'
+    '.chain','.res-cat__head','.reg-grid'
   ];
-  const ITEM_SKIP=/(^|\s)(chain-progress|pc-bl|pc-br|ac-bl|ac-br|wc-bl|wc-br|cc-bl|cc-br|vc-bl|vc-br|eac-bl|eac-br|tgc-bl|tgc-br|erc|svc-foot)(\s|$)/;
+  const ITEM_SKIP=/(^|\s)(chain-progress|pc-bl|pc-br|ac-bl|ac-br|wc-bl|wc-br|cc-bl|cc-br|vc-bl|vc-br|eac-bl|eac-br|tgc-bl|tgc-br|svc-foot)(\s|$)/;
 
   function tagReveals(){
     document.querySelectorAll(HEADINGS).forEach(h=>{
@@ -228,7 +228,7 @@
   /* marquees answer the reader: they speed up with the scroll, then settle */
   if(!reduce&&lenis){
     let rate=1,anims=[],frame=0;
-    const collect=()=>{anims=Array.from(document.querySelectorAll('.wire-track,.eco-track')).flatMap(t=>t.getAnimations?t.getAnimations():[]);};
+    const collect=()=>{anims=Array.from(document.querySelectorAll('.wire-track')).flatMap(t=>t.getAnimations?t.getAnimations():[]);};
     lenis.on('scroll',({velocity})=>{rate=Math.min(4,1+Math.abs(velocity)*.12);});
     (function tick(){
       if(++frame%60===0)collect();

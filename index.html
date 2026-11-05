@@ -914,7 +914,7 @@ svg{display:block}
 .logos-tier-head .rule{height:1px;background:var(--line)}
 .logos-tier-head .count{font-family:var(--mono);font-size:.62rem;color:var(--text-subtle);letter-spacing:.1em}
 
-/* ── ECOSYSTEM SHOWCASE — compact category marquee rails ── */
+/* ── ECOSYSTEM SHOWCASE — three-tier logo register (styled in premium.css) ── */
 /* ECOSYSTEM — the centre of gravity of the site: full-bleed band, above the commercial block */
 .eco-showcase{position:relative;width:100vw;margin-left:calc(50% - 50vw);padding:clamp(48px,6vw,86px) 0;background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);margin-bottom:clamp(72px,9vw,120px)}
 .eco-bar{display:flex;justify-content:space-between;align-items:flex-end;gap:26px clamp(24px,3vw,48px);flex-wrap:wrap;margin-bottom:clamp(28px,3.2vw,44px)}
@@ -928,36 +928,6 @@ svg{display:block}
 .es-num{font-family:var(--display);font-weight:700;font-size:clamp(1.7rem,2.4vw,2.2rem);line-height:1;letter-spacing:-.026em;color:var(--text)}
 .es-lbl{font-family:var(--mono);font-size:.6rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--text-subtle)}
 
-.eco-rails{position:relative;border:1px solid var(--line-2);border-radius:var(--r);background:var(--bg);box-shadow:var(--shadow-1);overflow:hidden}
-.eco-rails .erc{position:absolute;width:var(--tick);height:var(--tick);border:var(--tick-w) solid var(--tick-color);pointer-events:none;z-index:6}
-.eco-rails .erc.tl{top:-1px;left:-1px;border-right:none;border-bottom:none}
-.eco-rails .erc.tr{top:-1px;right:-1px;border-left:none;border-bottom:none}
-.eco-rails .erc.bl{bottom:-1px;left:-1px;border-right:none;border-top:none}
-.eco-rails .erc.br{bottom:-1px;right:-1px;border-left:none;border-top:none}
-.eco-rail{display:grid;grid-template-columns:clamp(132px,15vw,188px) 1fr;align-items:stretch;border-bottom:1px solid var(--line);position:relative;--cat-color:var(--blue)}
-.eco-rail:last-child{border-bottom:none}
-.eco-rail-label{display:flex;flex-direction:column;justify-content:center;gap:6px;padding:clamp(16px,1.8vw,22px) clamp(16px,1.8vw,26px);border-right:1px solid var(--line-2);background:var(--surface);position:relative;z-index:3}
-.eco-rail-label::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--cat-color)}
-.erl-cat{font-family:var(--display);font-weight:600;font-size:clamp(.98rem,1.3vw,1.18rem);line-height:1.25;letter-spacing:-.01em;color:var(--text);display:flex;align-items:flex-start;gap:9px}
-.erl-cat::before{content:'';flex-shrink:0;margin-top:calc(.625em - 3.5px);width:7px;height:7px;border-radius:50%;background:var(--cat-color);box-shadow:0 0 9px var(--glow-soft)}
-.eco-rail-view{position:relative;overflow:hidden;display:flex;align-items:stretch;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 93%,transparent)}
-.eco-track{display:flex;align-items:stretch;width:max-content;animation:ecoMarqL 48s linear infinite;will-change:transform}
-.eco-rail[data-dir="r"] .eco-track{animation-name:ecoMarqR}
-.eco-rail-view:hover .eco-track{animation-play-state:paused}
-@keyframes ecoMarqL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes ecoMarqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-.eco-chip{flex:none;height:clamp(82px,8.4vw,106px);width:clamp(150px,15vw,196px);display:flex;align-items:center;justify-content:center;padding:0 22px;border-right:1px solid var(--line);position:relative;transition:background .3s var(--ease)}
-.eco-chip:hover{background:var(--surface)}
-.eco-chip::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--cat-color);transform:scaleX(0);transition:transform .35s var(--ease)}
-.eco-chip:hover::after{transform:scaleX(1)}
-.eco-chip img{width:100%;max-width:156px;height:auto;aspect-ratio:3/1;object-fit:contain;filter:saturate(.92) opacity(.9);transition:filter .4s var(--ease),transform .4s var(--ease)}
-.eco-chip:hover img{filter:saturate(1) opacity(1);transform:scale(1.07)}
-.eco-chip .lp-text{font-family:var(--mono);font-size:.66rem;font-weight:600;color:var(--blue);letter-spacing:.02em;text-align:center;line-height:1.25}
-@media(prefers-reduced-motion:reduce){
-  .eco-track{animation:none;flex-wrap:wrap;width:auto}
-  .eco-rail-view{overflow:visible;-webkit-mask-image:none;mask-image:none}
-  .eco-chip[data-clone="1"]{display:none}
-}
 
 /* Partner CTA — compact control-center block */
 .partner-cta{margin-top:clamp(56px,7vw,96px);background:var(--blue);color:#fff;border-radius:var(--r-lg);box-shadow:var(--shadow-2);padding:clamp(36px,4.4vw,58px) clamp(32px,4vw,60px);position:relative;overflow:hidden;display:grid;grid-template-columns:1.45fr .9fr;gap:clamp(28px,4vw,56px);align-items:center}
@@ -1582,11 +1552,6 @@ footer::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;backg
   .team-grid.directors > .team-node{flex:1 1 100%}
   .team-grid.researchers > .team-node{flex:1 1 130px}
   .pillar,.activity-tile,.case-file,.value-cell,.ea-tile,.team-node{border-right:none;border-bottom:1px solid var(--line)}
-  .eco-rail{grid-template-columns:1fr}
-  .eco-rail-label{flex-direction:row;justify-content:space-between;align-items:center;border-right:none;border-bottom:1px solid var(--line-2);padding:11px 16px}
-  .eco-rail-label::before{top:auto;bottom:0;left:0;width:100%;height:2px}
-  .eco-chip{height:62px;width:118px;padding:0 14px}
-  .eco-chip img{max-width:90px}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .stat-cell:nth-child(2){border-right:none}
   .stat-cell:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.14)}
@@ -1701,7 +1666,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 .xpl-dir-row:hover .xpl-dir-arr{background:var(--blue);border-color:var(--blue);color:#fff;transform:rotate(-45deg)}
 
 @media(max-width:980px){.xpl-rack{grid-template-columns:1fr}}
-@media(max-width:560px){.xpl-board{grid-template-columns:repeat(2,1fr)}.xpl-dir-d{display:none}}
+@media(max-width:560px){.xpl-board{gap:8px}.xpl-chip{padding:7px 8px}.xpl-dir-d{display:none}}
 
 /* ════════════════════════════════════════════════════════════
    HOME · EUROPEAN PRESENCE — institutional 3D presence map
@@ -2033,7 +1998,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
     </h1>
 
     <p class="hero-sub fade-up delay-2">
-      One lab, two souls: a <b>research observatory</b> and an <b>applied lab</b> at the Politecnico di Milano.
+      One lab, two souls: the <b>Observatory</b> and the <b>Applied Research Hub</b> at the Politecnico di Milano.
     </p>
 
     <!-- HERO BRIDGE — two souls diverging from one foundation (feedback L1/L2) -->
@@ -2160,7 +2125,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
     <div class="identity-head fade-up">
       <span class="tag"><span class="dot"></span>Two souls · One mission</span>
       <h2 class="h-xl" id="identity-heading" style="margin-top:20px">Research and <span class="accent">application.</span></h2>
-      <p class="lede lede-identity" style="margin:20px auto 0">Two complementary missions, one shared foundation. <br class="d-br"/>WEB3HUB couples a research observatory with an applied lab, bound together by a single <br class="d-br"/>hub of expertise, partners and infrastructure.</p>
+      <p class="lede lede-identity" style="margin:20px auto 0">Two complementary missions, one shared foundation. <br class="d-br"/>WEB3HUB couples the Observatory with the Applied Research Hub, bound together by a single <br class="d-br"/>hub of expertise, partners and infrastructure.</p>
     </div>
 
     <div class="identity-link">
@@ -2232,7 +2197,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
     <div class="stat-cell" style="--bar:65%">
       <span class="stat-ord">03</span>
       <span class="stat-num" data-target="4"><span class="val">0</span></span>
-      <span class="stat-lbl">INTL · WORKING GROUPS</span>
+      <span class="stat-lbl">International Working Groups</span>
       <span class="stat-desc">Inatba · EU Blockchain Forum · EBSI · IBSI, shaping European regulatory dialogue.</span>
       <span class="stat-bar"></span>
     </div>
@@ -2254,7 +2219,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <div>
         <span class="tag"><span class="dot"></span>Beyond the research</span>
         <h2 class="h-lg" id="explore-title" style="margin-top:16px">An ecosystem,<br/><span class="accent">not just a lab.</span></h2>
-        <p class="lede" style="margin-top:18px">Around the research and the applied projects stands a wider institution: a network of partners and sponsors, the people who lead it, the events it convenes and the knowledge it makes public.</p>
+        <p class="lede" style="margin-top:18px">Around the Observatory and the Applied Research Hub stands the Politecnico di Milano: a network of partners and sponsors, the people who lead it, the events it convenes and the knowledge it makes public.</p>
       </div>
     </div>
 
@@ -2264,7 +2229,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <div class="xpl-feature">
         <span class="xpl-feat-label"><span class="dot"></span>Institutional Board</span>
         <h3 class="xpl-feat-h">Supported by Europe's<br/><span class="accent">institutions.</span></h3>
-        <p class="xpl-feat-desc">A board of regulators, banks and leading firms gives WEB3HUB its independence and authority, the same institutions that anchor a 30-strong ecosystem of partners and research sponsors.</p>
+        <p class="xpl-feat-desc">A board of regulators, banks and leading firms gives WEB3HUB its independence and authority, the same institutions that anchor a 31-strong ecosystem of partners and research sponsors.</p>
 
         <div class="xpl-board" role="list" aria-label="Institutional Board members">
           <span class="xpl-chip" role="listitem"><img src="assets/logos/norm/abi.png" alt="ABI" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">ABI</span></span>
@@ -2274,10 +2239,11 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <span class="xpl-chip" role="listitem"><img src="assets/logos/norm/dia.png" alt="DIA" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">DIA</span></span>
           <span class="xpl-chip" role="listitem"><img src="assets/logos/norm/ecsda.png" alt="ECSDA" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">ECSDA</span></span>
           <span class="xpl-chip" role="listitem"><img src="assets/logos/norm/guardia-finanza.png" alt="Guardia di Finanza" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">Guardia di Finanza</span></span>
+          <span class="xpl-chip" role="listitem"><img src="assets/logos/norm/mimit.png" alt="Ministero delle Imprese e del Made in Italy" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">MIMIT</span></span>
           <span class="xpl-chip" role="listitem"><img src="assets/logos/norm/nordic.png" alt="Nordic Blockchain Association" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><span class="xpl-chip-txt" style="display:none">Nordic</span></span>
         </div>
 
-        <div class="xpl-feat-meta"><b>8</b> Institutional Board members<span class="sep"></span><b>30</b> ecosystem partners</div>
+        <div class="xpl-feat-meta"><b>9</b> Institutional Board members<span class="sep"></span><b>31</b> ecosystem partners</div>
 
         <div class="xpl-feat-ctas">
           <a href="#partner" class="btn btn--white">Meet the Institutional Board <span class="arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></a>
@@ -2331,7 +2297,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <div>
         <span class="euro-tag"><span class="dot"></span>On the European circuit</span>
         <h2 class="euro-h" id="intl-title">Shaping the debate,<br/><span class="accent">from Milan to Europe.</span></h2>
-        <p class="euro-lede">From Milano outward (Paris, London, Brussels, Barcelona and beyond), WEB3HUB takes part in, and is invited to, events shaping Europe's blockchain and Web3 conversation.</p>
+        <p class="euro-lede">From Milano outward (Paris, London, Brussels, Barcelona and beyond), WEB3HUB takes part in events shaping Europe's blockchain and Web3 conversation.</p>
       </div>
       <div class="euro-fp" role="list" aria-label="International footprint">
         <div class="euro-fp-stat" role="listitem"><b>8</b><span>Cities</span></div>
@@ -2456,7 +2422,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         </div>
         <div class="activity-tile">
           <span class="a-num">4</span>
-          <span class="a-name">Intl. Working Groups</span>
+          <span class="a-name">International Working Groups</span>
           <span class="a-desc">Inatba, EU Blockchain Forum, EBSI and IBSI: shaping European dialogue.</span>
         </div>
         <div class="activity-tile">
@@ -2524,7 +2490,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <div class="why-cell">
           <span class="why-ghost" aria-hidden="true">01</span>
           <h3 class="why-name">Super-partes <span class="accent">guarantor.</span></h3>
-          <p class="why-desc">The Politecnico di Milano's independence ensures objective analysis, free from commercial conflicts of interest, a guarantee that few private partners can match.</p>
+          <p class="why-desc">The Politecnico di Milano's independence ensures objective analysis, free from commercial conflicts of interest.</p>
           <span class="why-kicker">Independence</span>
         </div>
         <div class="why-cell">
@@ -2673,65 +2639,64 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <div class="eco-bar fade-up">
         <div class="eco-bar-lead">
           <span class="tag"><span class="dot"></span>The ecosystem</span>
-          <h2 class="eco-title">A network of <span class="accent">30 leading</span><br/>organisations &amp; institutions.</h2>
+          <h2 class="eco-title">A network of <span class="accent">31 leading</span><br/>organisations &amp; institutions.</h2>
           <p class="eco-sub">The companies, sponsors and institutions that fund the research, sit at the table and put it to work.</p>
         </div>
         <div class="eco-stats">
           <div class="eco-stat" style="--c:var(--blue)"><span class="es-num">10</span><span class="es-lbl">Partners</span></div>
           <div class="eco-stat" style="--c:var(--blue-bright)"><span class="es-num">12</span><span class="es-lbl">Sponsors</span></div>
-          <div class="eco-stat" style="--c:#5b6b85"><span class="es-num">8</span><span class="es-lbl">Institutional Board members</span></div>
+          <div class="eco-stat" style="--c:#5b6b85"><span class="es-num">9</span><span class="es-lbl">Institutional Board members</span></div>
         </div>
       </div>
 
-      <div class="eco-rails fade-up">
-        
-
-        <div class="eco-rail" data-dir="l" style="--cat-color:var(--blue)">
-          <div class="eco-rail-label"><span class="erl-cat">Partners</span></div>
-          <div class="eco-rail-view"><div class="eco-track">
-            <div class="eco-chip" title="Accenture"><img src="assets/logos/norm/accenture.png" alt="Accenture" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Accenture</span>'" /></div>
-            <div class="eco-chip" title="Almaviva"><img src="assets/logos/norm/almaviva.png" alt="Almaviva" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Almaviva</span>'" /></div>
-            <div class="eco-chip" title="Bancomat"><img src="assets/logos/norm/bancomat.png" alt="Bancomat" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Bancomat</span>'" /></div>
-            <div class="eco-chip" title="B&ouml;rse Stuttgart Digital"><img src="assets/logos/norm/boerse-stuttgart.png" alt="B&ouml;rse Stuttgart Digital" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Börse Stuttgart</span>'" /></div>
-            <div class="eco-chip" title="Cassa Depositi e Prestiti"><img src="assets/logos/norm/cdp.png" alt="Cassa Depositi e Prestiti" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>CDP</span>'" /></div>
-            <div class="eco-chip" title="Enel"><img src="assets/logos/norm/enel.png" alt="Enel" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Enel</span>'" /></div>
-            <div class="eco-chip" title="EY"><img src="assets/logos/norm/ey.png" alt="EY" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>EY</span>'" /></div>
-            <div class="eco-chip" title="Intesa Sanpaolo"><img src="assets/logos/norm/intesa-sanpaolo.png" alt="Intesa Sanpaolo" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Intesa Sanpaolo</span>'" /></div>
-            <div class="eco-chip" title="Mediolanum Banca"><img src="assets/logos/norm/mediolanum.png" alt="Mediolanum Banca" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Mediolanum Banca</span>'" /></div>
-            <div class="eco-chip" title="Pomiager"><img src="assets/logos/norm/pomiager.png" alt="Pomiager" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Pomiager</span>'" /></div>
-          </div></div>
+      <!-- ECOSYSTEM REGISTER — every logo visible at once, three tiers by rank.
+           Rows are fixed per tier and breakpoint (see .reg-grid) so no row is ever orphaned. -->
+      <div class="eco-reg">
+        <div class="reg-tier" data-tier="board" style="--cat-color:#5b6b85">
+          <div class="reg-head"><i aria-hidden="true"></i><h3 class="reg-name" id="reg-board">Institutional Board</h3><span class="reg-count">9</span></div>
+          <div class="reg-grid" role="list" aria-labelledby="reg-board">
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/abi.png" alt="ABI" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Associazione Bancaria Italiana</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/banca-italia.png" alt="Banca d'Italia" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Banca d'Italia</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/carabinieri.png" alt="Arma dei Carabinieri" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Arma dei Carabinieri</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/consob.png" alt="CONSOB" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">CONSOB</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/dia.png" alt="DIA — Direzione Investigativa Antimafia" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Direzione Investigativa Antimafia</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/ecsda.png" alt="ECSDA — European CSD Association" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">European CSD Association</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/guardia-finanza.png" alt="Guardia di Finanza" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Guardia di Finanza</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/mimit.png" alt="Ministero delle Imprese e del Made in Italy" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Ministero delle Imprese e del Made in Italy</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/nordic.png" alt="Nordic Blockchain Association" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Nordic Blockchain Association</span></div>
+          </div>
         </div>
-
-        <div class="eco-rail" data-dir="r" style="--cat-color:var(--blue-bright)">
-          <div class="eco-rail-label"><span class="erl-cat">Sponsors</span></div>
-          <div class="eco-rail-view"><div class="eco-track">
-            <div class="eco-chip" title="42LF Innovation"><img src="assets/logos/norm/42lf.png" alt="42LF Innovation" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>42LF Innovation</span>'" /></div>
-            <div class="eco-chip" title="BNL BNP Paribas"><img src="assets/logos/norm/bnl-bnp-paribas.png" alt="BNL BNP Paribas" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>BNL BNP Paribas</span>'" /></div>
-            <div class="eco-chip" title="Crypfy"><img src="assets/logos/norm/crypfy.png" alt="Crypfy" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Crypfy</span>'" /></div>
-            <div class="eco-chip" title="Deloitte"><img src="assets/logos/norm/deloitte.png" alt="Deloitte" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Deloitte</span>'" /></div>
-            <div class="eco-chip" title="Fortiland"><img src="assets/logos/norm/fortiland.png" alt="Fortiland" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Fortiland</span>'" /></div>
-            <div class="eco-chip" title="Gruppo BCC Iccrea"><img src="assets/logos/norm/bcc-iccrea.png" alt="Gruppo BCC Iccrea" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Gruppo BCC Iccrea</span>'" /></div>
-            <div class="eco-chip" title="Lab-go"><img src="assets/logos/norm/labgo.png" alt="Lab-go" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Lab-go</span>'" /></div>
-            <div class="eco-chip" title="MoneyViz"><img src="assets/logos/norm/moneyviz.png" alt="MoneyViz" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>MoneyViz</span>'" /></div>
-            <div class="eco-chip" title="NEST Company"><img src="assets/logos/norm/nest.png" alt="NEST Company" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>NEST Company</span>'" /></div>
-            <div class="eco-chip" title="Nexi"><img src="assets/logos/norm/nexi.png" alt="Nexi" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Nexi</span>'" /></div>
-            <div class="eco-chip" title="Prometeia"><img src="assets/logos/norm/prometeia.png" alt="Prometeia" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Prometeia</span>'" /></div>
-            <div class="eco-chip" title="Smart Brick Investments"><img src="assets/logos/norm/smart-brick.png" alt="Smart Brick Investments" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Smart Brick</span>'" /></div>
-          </div></div>
+        <div class="reg-tier" data-tier="partners" style="--cat-color:var(--blue)">
+          <div class="reg-head"><i aria-hidden="true"></i><h3 class="reg-name" id="reg-partners">Partners</h3><span class="reg-count">10</span></div>
+          <div class="reg-grid" role="list" aria-labelledby="reg-partners">
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/accenture.png" alt="Accenture" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Accenture</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/almaviva.png" alt="Almaviva" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Almaviva</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/bancomat.png" alt="Bancomat" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Bancomat</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/boerse-stuttgart.png" alt="B&ouml;rse Stuttgart Digital" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">B&ouml;rse Stuttgart Digital</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/cdp.png" alt="Cassa Depositi e Prestiti" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Cassa Depositi e Prestiti</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/enel.png" alt="Enel" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Enel</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/ey.png" alt="EY" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">EY</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/intesa-sanpaolo.png" alt="Intesa Sanpaolo" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Intesa Sanpaolo</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/mediolanum.png" alt="Mediolanum Banca" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Mediolanum Banca</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/pomiager.png" alt="Pomiager" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Pomiager</span></div>
+          </div>
         </div>
-
-        <div class="eco-rail" data-dir="l" style="--cat-color:#5b6b85">
-          <div class="eco-rail-label"><span class="erl-cat">Institutional Board</span></div>
-          <div class="eco-rail-view"><div class="eco-track">
-            <div class="eco-chip" title="ABI"><img src="assets/logos/norm/abi.png" alt="ABI" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>ABI</span>'" /></div>
-            <div class="eco-chip" title="Banca d'Italia"><img src="assets/logos/norm/banca-italia.png" alt="Banca d'Italia" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Banca d'Italia</span>'" /></div>
-            <div class="eco-chip" title="Arma dei Carabinieri"><img src="assets/logos/norm/carabinieri.png" alt="Arma dei Carabinieri" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Carabinieri</span>'" /></div>
-            <div class="eco-chip" title="CONSOB"><img src="assets/logos/norm/consob.png" alt="CONSOB" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>CONSOB</span>'" /></div>
-            <div class="eco-chip" title="DIA"><img src="assets/logos/norm/dia.png" alt="DIA" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>DIA</span>'" /></div>
-            <div class="eco-chip" title="ECSDA"><img src="assets/logos/norm/ecsda.png" alt="ECSDA" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>ECSDA</span>'" /></div>
-            <div class="eco-chip" title="Guardia di Finanza"><img src="assets/logos/norm/guardia-finanza.png" alt="Guardia di Finanza" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Guardia di Finanza</span>'" /></div>
-            <div class="eco-chip" title="Nordic Blockchain Association"><img src="assets/logos/norm/nordic.png" alt="Nordic Blockchain Association" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=&quot;lp-text&quot;>Nordic</span>'" /></div>
-          </div></div>
+        <div class="reg-tier" data-tier="sponsors" style="--cat-color:var(--blue-bright)">
+          <div class="reg-head"><i aria-hidden="true"></i><h3 class="reg-name" id="reg-sponsors">Sponsors</h3><span class="reg-count">12</span></div>
+          <div class="reg-grid" role="list" aria-labelledby="reg-sponsors">
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/42lf.png" alt="42LF Innovation" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">42LF Innovation</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/bnl-bnp-paribas.png" alt="BNL BNP Paribas" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">BNL BNP Paribas</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/crypfy.png" alt="Crypfy" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Crypfy</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/deloitte.png" alt="Deloitte" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Deloitte</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/fortiland.png" alt="Fortiland" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Fortiland</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/bcc-iccrea.png" alt="Gruppo BCC Iccrea" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Gruppo BCC Iccrea</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/labgo.png" alt="Lab-go" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Lab-go</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/moneyviz.png" alt="MoneyViz" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">MoneyViz</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/nest.png" alt="NEST Company" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">NEST Company</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/nexi.png" alt="Nexi" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Nexi</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/prometeia.png" alt="Prometeia" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Prometeia</span></div>
+            <div class="reg-logo" role="listitem"><img src="assets/logos/norm/smart-brick.png" alt="Smart Brick Investments" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('no-logo');this.nextElementSibling.removeAttribute('aria-hidden')" /><span class="reg-cap" aria-hidden="true">Smart Brick Investments</span></div>
+          </div>
         </div>
       </div>
       </div>
@@ -2769,7 +2734,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           </div>
           <div class="value-cell">
             <span class="v-cat">TRUST</span>
-            <h4 class="v-name">Authentic pre-competitive environment</h4>
+            <h4 class="v-name">Pre-competitive environment</h4>
             <p class="v-desc">Closed-door events in an informal, genuinely pre-competitive atmosphere, designed to share experience and generate real value for the community.</p>
           </div>
         </div>
@@ -2849,7 +2814,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <span class="tag fade-up"><span class="dot"></span>Events</span>
         <h2 class="h-xl fade-up delay-1" id="events-title" style="margin-top:20px">Events<br/><span class="accent">&amp; activities.</span></h2>
       </div>
-      <p class="lede fade-up delay-2">Every year the Observatory runs a structured cycle of events, from intimate closed-door workshops to major national and international conferences, giving partners and sponsors privileged access to research findings and peer networks.</p>
+      <p class="lede fade-up delay-2">Every year the Observatory runs a structured cycle of events, from closed-door workshops to major national and international conferences, giving partners and sponsors privileged access to research findings and peer networks.</p>
     </div>
 
     <div class="events-aside fade-up">
@@ -2878,7 +2843,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
       <div class="ea-tile">
         <span class="ea-id">POLICY</span>
         <span class="ea-num">4</span>
-        <span class="ea-name">Intl. Working Groups</span>
+        <span class="ea-name">International Working Groups</span>
         <span class="ea-desc">Inatba · EU Blockchain Forum · EBSI · IBSI, shaping European regulatory dialogue.</span>
       </div>
     </div>
@@ -2957,7 +2922,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <div class="bk-head">
             <span class="bk-num">EVENT <b>#05</b></span>
             <span class="bk-month">19 NOVEMBER 2026</span>
-            <span class="bk-type">WORKSHOP</span>
+            <span class="bk-type">INTERNATIONAL WORKSHOP</span>
           </div>
           <h4 class="bk-title">Consumer Workshop</h4>
           <p class="bk-desc">Presentation of the annual survey on European consumers and crypto-assets, covering adoption trends, investor profiles, behaviors and sentiment across major European markets.</p>
@@ -2990,20 +2955,21 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <p class="eco-cta-body">Every workshop and conference brings together the partners, sponsors and Institutional Board that power WEB3HUB: <strong>leading companies and institutions</strong> working on blockchain and Web3 across Italy and Europe. Discover who stands behind the programme and the network you can build with.</p>
         <div class="eco-cta-actions">
           <a href="#partner" class="btn btn--solid">Explore the partner ecosystem <span class="arrow"><svg viewBox="0 0 18 9"><line x1="0" y1="4.5" x2="16" y2="4.5"/><polyline points="11,1 16,4.5 11,8"/></svg></span></a>
-          <span class="eco-cta-meta"><b>10</b> partners · <b>12</b> sponsors · <b>8</b> Institutional Board members</span>
+          <span class="eco-cta-meta"><b>10</b> partners · <b>12</b> sponsors · <b>9</b> Institutional Board members</span>
         </div>
       </div>
       <div class="eco-cta-aside">
         <div class="eco-orbit" role="img" aria-label="WEB3HUB partner ecosystem network">
           <div class="orb-ring orb-ring--board" data-ring="board">
             <span class="orb-chip" style="--a:0.0deg" title="ABI"><span class="orb-logo"><img src="assets/logos/norm/abi.png" alt="ABI" loading="lazy" decoding="async" /></span></span>
-            <span class="orb-chip" style="--a:45.0deg" title="Banca d'Italia"><span class="orb-logo"><img src="assets/logos/norm/banca-italia.png" alt="Banca d'Italia" loading="lazy" decoding="async" /></span></span>
-            <span class="orb-chip" style="--a:90.0deg" title="Arma dei Carabinieri"><span class="orb-logo"><img src="assets/logos/norm/carabinieri.png" alt="Arma dei Carabinieri" loading="lazy" decoding="async" /></span></span>
-            <span class="orb-chip" style="--a:135.0deg" title="CONSOB"><span class="orb-logo"><img src="assets/logos/norm/consob.png" alt="CONSOB" loading="lazy" decoding="async" /></span></span>
-            <span class="orb-chip" style="--a:180.0deg" title="DIA"><span class="orb-logo"><img src="assets/logos/norm/dia.png" alt="DIA" loading="lazy" decoding="async" /></span></span>
-            <span class="orb-chip" style="--a:225.0deg" title="ECSDA"><span class="orb-logo"><img src="assets/logos/norm/ecsda.png" alt="ECSDA" loading="lazy" decoding="async" /></span></span>
-            <span class="orb-chip" style="--a:270.0deg" title="Guardia di Finanza"><span class="orb-logo"><img src="assets/logos/norm/guardia-finanza.png" alt="Guardia di Finanza" loading="lazy" decoding="async" /></span></span>
-            <span class="orb-chip" style="--a:315.0deg" title="Nordic Blockchain Association"><span class="orb-logo"><img src="assets/logos/norm/nordic.png" alt="Nordic Blockchain Association" loading="lazy" decoding="async" /></span></span>
+            <span class="orb-chip" style="--a:40.0deg" title="Banca d'Italia"><span class="orb-logo"><img src="assets/logos/norm/banca-italia.png" alt="Banca d'Italia" loading="lazy" decoding="async" /></span></span>
+            <span class="orb-chip" style="--a:80.0deg" title="Arma dei Carabinieri"><span class="orb-logo"><img src="assets/logos/norm/carabinieri.png" alt="Arma dei Carabinieri" loading="lazy" decoding="async" /></span></span>
+            <span class="orb-chip" style="--a:120.0deg" title="CONSOB"><span class="orb-logo"><img src="assets/logos/norm/consob.png" alt="CONSOB" loading="lazy" decoding="async" /></span></span>
+            <span class="orb-chip" style="--a:160.0deg" title="DIA"><span class="orb-logo"><img src="assets/logos/norm/dia.png" alt="DIA" loading="lazy" decoding="async" /></span></span>
+            <span class="orb-chip" style="--a:200.0deg" title="ECSDA"><span class="orb-logo"><img src="assets/logos/norm/ecsda.png" alt="ECSDA" loading="lazy" decoding="async" /></span></span>
+            <span class="orb-chip" style="--a:240.0deg" title="Guardia di Finanza"><span class="orb-logo"><img src="assets/logos/norm/guardia-finanza.png" alt="Guardia di Finanza" loading="lazy" decoding="async" /></span></span>
+            <span class="orb-chip" style="--a:280.0deg" title="Ministero delle Imprese e del Made in Italy"><span class="orb-logo"><img src="assets/logos/norm/mimit.png" alt="Ministero delle Imprese e del Made in Italy" loading="lazy" decoding="async" /></span></span>
+            <span class="orb-chip" style="--a:320.0deg" title="Nordic Blockchain Association"><span class="orb-logo"><img src="assets/logos/norm/nordic.png" alt="Nordic Blockchain Association" loading="lazy" decoding="async" /></span></span>
           </div>
           <div class="orb-ring orb-ring--partners" data-ring="partners">
             <span class="orb-chip" style="--a:18.0deg" title="Accenture"><span class="orb-logo"><img src="assets/logos/norm/accenture.png" alt="Accenture" loading="lazy" decoding="async" /></span></span>
@@ -3034,7 +3000,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <div class="orb-core"><img src="assets/logos/polimi%20logo/web3hub-logo.png" alt="WEB3HUB" /></div>
         </div>
         <ul class="orb-legend">
-          <li data-ring="board"><i></i><span class="orb-n">8</span><span>Institutional Board</span></li>
+          <li data-ring="board"><i></i><span class="orb-n">9</span><span>Institutional Board</span></li>
           <li data-ring="partners"><i></i><span class="orb-n">10</span><span>Partners</span></li>
           <li data-ring="sponsors"><i></i><span class="orb-n">12</span><span>Sponsors</span></li>
         </ul>
@@ -3165,10 +3131,10 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
           <span class="tn-role">Researcher</span>
           <div class="tn-foot"><a class="tn-li" href="https://www.linkedin.com/in/tommaso-paulon-86438013a/" target="_blank" rel="noopener" aria-label="Tommaso Paulon on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         </div>
-        <div class="team-node" data-research="Researcher" data-projects="Project Manager">
+        <div class="team-node" data-research="Researcher" data-projects="Project Lead">
           <div class="tn-head"><div class="tn-avatar"><img class="tn-photo" src="assets/images/zauli.png" alt="Ettore Zauli" loading="lazy" decoding="async">EZ</div></div>
           <h4 class="tn-name">Ettore Zauli</h4>
-          <span class="tn-role">Researcher · Project Manager</span>
+          <span class="tn-role">Researcher · Project Lead</span>
           <div class="tn-foot"><a class="tn-li" href="https://www.linkedin.com/in/ettore-zauli-935355144/" target="_blank" rel="noopener" aria-label="Ettore Zauli on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         </div>
         <div class="team-node" data-research="Analyst" data-projects="Analyst">
@@ -3295,7 +3261,7 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
         <span class="tag fade-up"><span class="dot"></span>Resources</span>
         <h2 class="h-xl fade-up delay-1" id="resources-title" style="margin-top:20px">Research, analysis<br/><span class="accent">&amp; publications.</span></h2>
       </div>
-      <p class="lede fade-up delay-2">Explore <b style="color:var(--blue)">articles, reports, newsletters and academic publications</b> from the Blockchain &amp; Web3 Observatory and WEB3HUB at the Politecnico di Milano: the knowledge that informs the blockchain and Web3 debate.</p>
+      <p class="lede fade-up delay-2">Explore <b style="color:var(--blue)">articles, reports, newsletters and academic publications</b> from the Observatory and the Applied Research Hub at the Politecnico di Milano: the knowledge that informs the blockchain and Web3 debate.</p>
     </div>
 
     <!-- ── STICKY CATEGORY NAVIGATION ── client-side filter + anchor jump -->
@@ -3461,13 +3427,13 @@ main > section.view > .wrap{padding-top:clamp(30px,3.5vw,52px)}
 <footer role="contentinfo">
   <div class="f-cols">
     <div class="f-col">
-      <p class="f-title">Lab</p>
+      <p class="f-title">WEB3HUB</p>
       <div class="f-brand-row">
         <span class="f-logo-box"><img src="assets/logos/polimi%20logo/web3hub-logo.png" alt="WEB3HUB" onerror="this.style.display='none'" /></span>
         <span class="hair-v"></span>
         <img src="assets/logos/polimi%20logo/logo-polimi.png" alt="Politecnico di Milano" class="pol-mini" onerror="this.style.display='none'" />
       </div>
-      <p class="f-desc">The Blockchain &amp; Web3 Observatory of the Politecnico di Milano, <strong>#1 in Italy</strong> for blockchain research.</p>
+      <p class="f-desc">Home of the Observatory and the Applied Research Hub on blockchain &amp; Web3 at the Politecnico di Milano, <strong>#1 in Italy</strong> for blockchain research.</p>
       <div class="f-socials">
         <a href="https://www.linkedin.com/company/web3hub-polimi" target="_blank" rel="noopener">LinkedIn ↗</a>
         <a href="https://www.osservatori.net" target="_blank" rel="noopener">Osservatori.net ↗</a>
@@ -3624,19 +3590,6 @@ window.addEventListener('load',()=>{setTimeout(()=>document.querySelector('.hero
       const r=card.getBoundingClientRect();
       card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100).toFixed(2)+'%');
       card.style.setProperty('--my',((e.clientY-r.top)/r.height*100).toFixed(2)+'%');
-    });
-  });
-})();
-
-/* ── PARTNER · ecosystem marquee rails (seamless infinite loop) ── */
-(function(){
-  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-  document.querySelectorAll('.eco-track').forEach(track=>{
-    Array.from(track.children).forEach(chip=>{
-      const clone=chip.cloneNode(true);
-      clone.setAttribute('aria-hidden','true');
-      clone.setAttribute('data-clone','1');
-      track.appendChild(clone);
     });
   });
 })();
